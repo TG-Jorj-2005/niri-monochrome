@@ -3,6 +3,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Networking
+import qs.config
 
 // NetworkManager via Quickshell.Networking (+ nmcli for things the API does not expose).
 Singleton {
@@ -49,8 +50,10 @@ Singleton {
     signal connectFinished(bool ok, string message)
     function connectWithPassword(ssidName, password) {
         if (!ssidName) return
-        const p = nmcliComp.createObject(net, { command: ["nmcli", "device", "wifi", "connect", ssidName, "password", password] })
+        // `--ask` reads the secret from stdin, so it never appears in argv or logs.
+        const p = nmcliComp.createObject(net, { command: ["nmcli", "--wait", "30", "--ask", "device", "wifi", "connect", ssidName], stdinEnabled: true })
         p.running = true
+        p.write(password + "\n")
     }
     function connectKnown(network) { if (network) network.connect() }
     function disconnect(network) { if (network) network.disconnect() }
@@ -69,4 +72,29 @@ Singleton {
         }
     }
     function openEditor() { Quickshell.execDetached({ command: ["nm-connection-editor"] }) }
+
+    readonly property string status: !available ? "unavailable" : (devices.length === 0 ? "initializing" : "ready")
+
+    // ---- VPN (not exposed by Quickshell.Networking): one long-lived `nmcli monitor`, refresh on change ----
+    property bool vpnActive: false
+    property string vpnName: ""
+    Process {
+        id: monitor
+        command: ["nmcli", "monitor"]
+        running: net.available
+        stdout: SplitParser { onRead: line => { if (/connection|VPN|device/i.test(line)) vpnDebounce.restart() } }
+        onExited: (code) => { Log.warn("Network", "nmcli monitor exited", code); if (net.available) monitorRestart.restart() }
+    }
+    Timer { id: monitorRestart; interval: 5000; onTriggered: monitor.running = true }
+    Timer { id: vpnDebounce; interval: 400; onTriggered: vpnQuery.running = true }
+    Process {
+        id: vpnQuery
+        command: ["nmcli", "-t", "-f", "NAME,TYPE", "connection", "show", "--active"]
+        running: net.available
+        stdout: StdioCollector { onStreamFinished: {
+            const vpn = text.split("\n").map(l => l.split(":")).find(f => f.length >= 2 && /^(vpn|wireguard)$/i.test(f[1]))
+            net.vpnActive = !!vpn
+            net.vpnName = vpn ? vpn[0] : ""
+        } }
+    }
 }

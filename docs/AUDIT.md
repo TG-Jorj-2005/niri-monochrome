@@ -2,7 +2,9 @@
 
 Refreshed: 2026-11-12 (engineering review). The 2026-11-11 pre-build audit is superseded by this document.
 
-## 1. Environment (verified live)
+> Phase 3 update (2026-11-12): the current implementation and fresh measurements are documented in [PHASE3-RELEASE.md](PHASE3-RELEASE.md). The sections below retain historical Phase 1/2 evidence. Phase 3 found and fixed a source entrypoint parse failure that the earlier component-only check missed. tuned-ppd is now verified active, and the notification server requires explicit migration approval even if mako is absent.
+
+## 1. Environment (historical live audit)
 
 | Component | State |
 |---|---|
@@ -13,7 +15,7 @@ Refreshed: 2026-11-12 (engineering review). The 2026-11-11 pre-build audit is su
 | Audio | PipeWire 1.6.9 + WirePlumber · sink "Built-in Audio Analog Stereo" |
 | Network | NetworkManager · wlp8s0 connected (Quickshell.Networking backend = NetworkManager) |
 | Bluetooth | BlueZ active, adapter powered |
-| Power | UPower BAT1 (72 %, charging at audit time) · **power-profiles-daemon not installed** → profile selector shows "unavailable" |
+| Power | UPower BAT1 (72 %, charging at original audit time) · `power-profiles-daemon` package absent; `tuned-ppd` package is installed, but service and D-Bus ownership could not be checked from this review environment |
 | Backlight | `nvidia_wmi_ec_backlight` via `brightnessctl` (max 800) |
 | PAM | `/etc/pam.d/login` (used by PamContext; untouched) |
 | Fonts | Inter (UI), JetBrains Mono (technical). Geist absent. |
@@ -87,6 +89,7 @@ height 40 · widthPercent 92 · maxWidth 1760 · marginX 24 (minimum) · marginB
 - **Tray**: Quickshell is the only SNI host (waybar stopped).
 - **Wallpaper**: swaybg removed; `WallpaperLayer` cross-fades two `Image` slots (sourceSize = screen size, async, no cache) under one
   MultiEffect layer for grayscale. Rotation is wall-clock based (`nextAt`), so suspend/resume does not burst.
+- **Niri IPC recovery**: peer-close errors explicitly enter the guarded reconnect path; disconnect clears stale workspace/window state, reconnect uses capped exponential backoff, and initial state is re-read after the stream resumes.
 
 ## 7. Measurements (2026-11-12)
 
@@ -105,3 +108,16 @@ height 40 · widthPercent 92 · maxWidth 1760 · marginX 24 (minimum) · marginB
 - Multi-monitor paths (per-output workspaces, popover placement, profile persistence on reconnect) are implemented against
   `Quickshell.screens` + niri outputs but only one display was available to test.
 - Quickshell auto-reloads the shell on any file save in the project directory; `qs ipc` calls during a reload return "Not ready to accept queries yet".
+
+## 9. Phase 2 targeted verification (2026-11-12)
+
+| Check | Result |
+|---|---|
+| `tests/niri-ipc-test.sh` | **14/14 passed**: initial state, workspace/window/focus/overview changes, unknown and malformed events, peer-close detection, reconnect, and resync. The fixture accepts both the persistent event stream and the separate `niri msg outputs` request. |
+| `tests/validate.sh` | **Passed**: shell syntax, user JSON, desktop entry, `niri validate`, and headless loading of 17 component groups. The headless harness reports expected scene-placement warnings for hidden objects; no QML load errors. |
+| `shellcheck tests/*.sh` | Passed with no findings after cleanup. |
+| `qmllint` | Not run; executable is not installed. The headless Quickshell load check is the available QML validation. |
+| Live compositor recovery / monitor hotplug | Not exercised in this verification run; covered only by the fake IPC test for stream recovery. |
+| Power-profile backend state | Package query found `tuned-ppd` installed and `power-profiles-daemon` absent. Service and system-bus ownership are unverified because the review environment cannot access the system bus. |
+
+The IPC test revealed that Quickshell 0.2.1 can report a peer-close socket error without a reliable connection-state transition. NiriService now routes socket errors through a single guarded disconnect handler and exposes a lifetime reconnect counter for diagnostics. The Control Center's unavailable label no longer incorrectly names only `power-profiles-daemon`.

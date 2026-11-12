@@ -8,6 +8,7 @@ Singleton {
     id: bt
     readonly property var adapter: Bluetooth.defaultAdapter
     readonly property bool available: adapter !== null
+    readonly property string status: !available ? "unavailable" : (enabled ? "ready" : "off")
     readonly property bool enabled: adapter ? adapter.enabled : false
     readonly property bool discovering: adapter ? adapter.discovering : false
     readonly property var devices: Bluetooth.devices.values.filter(d => d && (d.paired || d.connected || d.name))

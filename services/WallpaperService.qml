@@ -16,9 +16,16 @@ Singleton {
     signal collectionChanged(string key)
     signal wallpaperChanged(string key, string path)
 
+    function loadFailed(key, path) {
+        const list = collections[key] || []
+        if (list.indexOf(path) < 0) return
+        collections = Object.assign({}, collections, { [key]: list.filter(p => p !== path) })
+        ensureOrder(key)
+        collectionChanged(key)
+    }
     function profileFor(key) { return MonitorProfiles.profile(key).wallpaper }
-    function state(key) { return StateStore.get("wallpaper." + key, {}) }
-    function setState(key, patch) { StateStore.set("wallpaper." + key, Object.assign({}, state(key), patch)) }
+    function state(key) { return StateStore.get(["wallpaper", key], {}) }
+    function setState(key, patch) { StateStore.set(["wallpaper", key], Object.assign({}, state(key), patch)) }
 
     function current(key) {
         const s = state(key)
@@ -50,7 +57,7 @@ Singleton {
                 const files = col.text.split("\0").filter(f => f.length > 0).sort()
                 wp.scanning = Object.assign({}, wp.scanning, { [key]: false })
                 wp.collections = Object.assign({}, wp.collections, { [key]: files })
-                if (code !== 0 && files.length === 0) console.warn("[WallpaperService] scan failed for", key)
+                if (code !== 0 && files.length === 0) Log.warn("WallpaperService", "scan failed for", key)
                 wp.ensureOrder(key)
                 wp.collectionChanged(key)
                 destroy()

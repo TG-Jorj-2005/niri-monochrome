@@ -18,14 +18,16 @@ Singleton {
     // Effective profile object for a monitor key.
     function profile(key) {
         const base = { bar: UserConfig.data.bar, dock: UserConfig.data.dock, wallpaper: UserConfig.data.wallpaper }
-        return UserConfig.merge(base, overridesFor(key))
+        if (Object.keys(overridesFor(key)).length === 0) return base
+        const checked = UserConfig.validate(UserConfig.merge(UserConfig.data, overridesFor(key)))
+        return { bar: checked.bar, dock: checked.dock, wallpaper: checked.wallpaper }
     }
 
     function section(key, name) { return profile(key)[name] }
 
     // Set an override "bar.height" for a monitor.
     function setOverride(key, path, value) {
-        UserConfig.set("monitors." + key + "." + path, value)
+        UserConfig.set(["monitors", key].concat(path.split(".")), value)
     }
 
     function clearOverride(key, path) {

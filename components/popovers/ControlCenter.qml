@@ -13,11 +13,12 @@ PopoverFrame {
     icon: "settings"
     implicitWidth: UserConfig.data.controlCenter.width
     property string expanded: initialSection
+    readonly property string monitorKey: MonitorService.keyForName(ShellState.screenName)
     headerExtra: [ IconButton { icon: "settings"; iconSize: 14; implicitWidth: 24; implicitHeight: 24; onClicked: { ShellState.close(); ShellState.settingsOpen = true } } ]
 
     function toggleSection(s) { expanded = (expanded === s ? "" : s) }
-    Component.onCompleted: { SystemService.refreshBrightness(); SystemService.brightnessWatchers++; if (initialSection === "network" && NetworkService.wifiDevice) NetworkService.setScanning(true) }
-    Component.onDestruction: { SystemService.brightnessWatchers--; NetworkService.setScanning(false) }
+    Component.onCompleted: { SystemService.probeNotificationOwner(); NotificationService.refreshMako(); BatteryService.refreshProfiles(); BrightnessService.refresh(); BrightnessService.watchers++; if (initialSection === "network" && NetworkService.wifiDevice) NetworkService.setScanning(true) }
+    Component.onDestruction: { BrightnessService.watchers--; NetworkService.setScanning(false) }
 
     // ---- Quick toggles row ----
     Row {
@@ -34,6 +35,21 @@ PopoverFrame {
             onToggled: { ShellState.close(); ShellState.show("power", ShellState.screenName) } onExpand: { cc.toggleSection("battery") } expanded: cc.expanded === "battery" }
     }
 
+    // ---- Second row: night light · microphone · wallpaper · settings ----
+    Row {
+        width: parent.width
+        spacing: 8
+        readonly property real cell: (width - 24) / 4
+        QuickTile { width: parent.cell; icon: "moon"; label: "Night light"; sub: NightLightService.status === "unavailable" ? "wlsunset missing" : NightLightService.status === "error" ? "error" : NightLightService.enabled ? "On" : "Off"
+            on: NightLightService.enabled; tileEnabled: NightLightService.available; hasExpand: false; onToggled: { NightLightService.toggle() } }
+        QuickTile { width: parent.cell; icon: AudioService.micMuted ? "mic-off" : "mic"; label: "Microphone"; sub: AudioService.source ? (AudioService.micMuted ? "Muted" : Math.round(AudioService.micVolume * 100) + "%") : "none"
+            on: AudioService.source !== null && !AudioService.micMuted; tileEnabled: AudioService.source !== null; hasExpand: false; onToggled: { AudioService.toggleMicMute() } }
+        QuickTile { width: parent.cell; icon: "image"; label: "Wallpaper"; sub: WallpaperService.paused(cc.monitorKey) ? "Paused" : WallpaperService.pinned(cc.monitorKey) ? "Pinned" : "Rotating"
+            on: false; hasExpand: true; onToggled: { WallpaperService.next(cc.monitorKey) } onExpand: { cc.toggleSection("wallpaper") } expanded: cc.expanded === "wallpaper" }
+        QuickTile { width: parent.cell; icon: NetworkService.vpnActive ? "shield" : "lock"; label: "VPN"; sub: NetworkService.vpnActive ? NetworkService.vpnName : "Not connected"
+            on: NetworkService.vpnActive; tileEnabled: NetworkService.available; hasExpand: false; onToggled: { NetworkService.openEditor(); ShellState.close() } }
+    }
+
     // ---- Audio ----
     Column {
         width: parent.width; spacing: 6
@@ -43,10 +59,10 @@ PopoverFrame {
                 onMoved: v => AudioService.setVolume(v) }
             Label { text: Math.round(AudioService.volume * 100) + "%"; mono: true; width: 44; horizontalAlignment: Text.AlignRight; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter; secondary: AudioService.muted }
         }
-        Row { width: parent.width; spacing: 10; visible: SystemService.brightnessAvailable && UserConfig.data.controlCenter.showBrightness
-            IconButton { icon: SystemService.brightness > 0.5 ? "sun" : "sun-dim"; iconSize: 16; implicitWidth: 28; implicitHeight: 28; onClicked: cc.toggleSection("audio") }
-            MonoSlider { width: parent.width - 28 - 10 - 44 - 10; anchors.verticalCenter: parent.verticalCenter; value: SystemService.brightness; onMoved: v => SystemService.setBrightness(v) }
-            Label { text: Math.round(SystemService.brightness * 100) + "%"; mono: true; width: 44; horizontalAlignment: Text.AlignRight; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter }
+        Row { width: parent.width; spacing: 10; visible: BrightnessService.available && UserConfig.data.controlCenter.showBrightness
+            IconButton { icon: BrightnessService.brightness > 0.5 ? "sun" : "sun-dim"; iconSize: 16; implicitWidth: 28; implicitHeight: 28; onClicked: cc.toggleSection("audio") }
+            MonoSlider { width: parent.width - 28 - 10 - 44 - 10; anchors.verticalCenter: parent.verticalCenter; value: BrightnessService.brightness; onMoved: v => BrightnessService.set(v) }
+            Label { text: Math.round(BrightnessService.brightness * 100) + "%"; mono: true; width: 44; horizontalAlignment: Text.AlignRight; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter }
         }
         Row { spacing: 6; Label { text: AudioService.sinkName; secondary: true; font.pixelSize: Theme.fontXs; width: cc.width - 80 }
               MonoButton { text: cc.expanded === "audio" ? "Hide devices" : "Devices"; flat: true; implicitHeight: 22; padding: 6; onClicked: cc.toggleSection("audio") } }
@@ -63,6 +79,7 @@ PopoverFrame {
             case "bluetooth": return btComp
             case "audio": return audioComp
             case "battery": return batComp
+            case "wallpaper": return wallComp
             default: return null
             }
         }
@@ -182,13 +199,43 @@ PopoverFrame {
                     delegate: MonoButton { required property var modelData; text: BatteryService.profileName(modelData); implicitHeight: 26; padding: 8
                         active: BatteryService.profilesAvailable && BatteryService.profile === modelData; enabled: BatteryService.profilesAvailable && (modelData !== PowerProfile.Performance || PowerProfiles.hasPerformanceProfile)
                         onClicked: BatteryService.setProfile(modelData) } } }
-            Label { visible: !BatteryService.profilesAvailable && UserConfig.data.controlCenter.showPowerProfile; text: "Power profiles unavailable (power-profiles-daemon not running)"; secondary: true; font.pixelSize: Theme.fontXs }
+            Label { visible: !BatteryService.profilesAvailable && UserConfig.data.controlCenter.showPowerProfile; text: "Power profile switching unavailable"; secondary: true; font.pixelSize: Theme.fontXs }
             Row { spacing: 6
                 MonoButton { icon: "lock"; text: "Lock"; implicitHeight: 28; onClicked: { ShellState.close(); LockService.lock() } }
                 MonoButton { icon: "moon"; text: "Suspend"; implicitHeight: 28; onClicked: { ShellState.close(); SystemService.suspend() } }
                 MonoButton { icon: "power"; text: "Power menu"; implicitHeight: 28; onClicked: { ShellState.close(); ShellState.show("power", ShellState.screenName) } } }
         }
     }
+
+    Component {
+        id: wallComp
+        Column {
+            spacing: 6
+            readonly property var st: WallpaperService.state(cc.monitorKey)
+            readonly property var list: WallpaperService.collections[cc.monitorKey] || []
+            Divider { width: parent.width }
+            SectionTitle { text: "WALLPAPER · " + ShellState.screenName }
+            Label { text: list.length === 0 ? "No images in the collection" : WallpaperService.fileName(WallpaperService.current(cc.monitorKey)) + "  ·  " + list.length + " images" + (st.paused ? "  ·  paused" : st.pinned ? "  ·  pinned" : "  ·  next in " + WallpaperService.remainingMinutes(cc.monitorKey) + " min"); font.pixelSize: Theme.fontSm; secondary: true; width: parent.width }
+            Row { spacing: 6
+                MonoButton { icon: "chevron-left"; implicitHeight: 28; enabled: list.length > 1; onClicked: WallpaperService.previous(cc.monitorKey) }
+                MonoButton { icon: st.paused ? "play" : "pause"; text: st.paused ? "Resume" : "Pause"; implicitHeight: 28; enabled: list.length > 1; onClicked: WallpaperService.togglePaused(cc.monitorKey) }
+                MonoButton { icon: "chevron-right"; implicitHeight: 28; enabled: list.length > 1; onClicked: WallpaperService.next(cc.monitorKey) }
+                MonoButton { icon: "pin"; text: st.pinned ? "Unpin" : "Pin"; implicitHeight: 28; active: !!st.pinned; enabled: list.length > 0
+                    onClicked: { if (st.pinned) WallpaperService.unpin(cc.monitorKey); else WallpaperService.select(cc.monitorKey, WallpaperService.current(cc.monitorKey), true) } }
+                MonoButton { icon: "settings"; text: "Collection"; implicitHeight: 28; flat: true; onClicked: { ShellState.close(); ShellState.settingsOpen = true } } }
+        }
+    }
+
+    Divider { width: parent.width }
+    SectionTitle { text: "SCREENSHOT" }
+    Row {
+        spacing: 6
+        MonoButton { icon: "image"; text: "Area"; implicitHeight: 28; onClicked: ScreenshotService.take("region") }
+        MonoButton { icon: "monitor"; text: "Screen"; implicitHeight: 28; onClicked: ScreenshotService.take("screen") }
+        MonoButton { icon: "app"; text: "Window"; implicitHeight: 28; onClicked: ScreenshotService.take("window") }
+    }
+    MonoButton { icon: "image"; text: "Annotate clipboard"; enabled: ScreenshotService.editorAvailable; implicitHeight: 28; onClicked: ScreenshotService.editClipboard() }
+    Label { visible: ScreenshotService.lastError !== ""; text: ScreenshotService.lastError; width: parent.width; wrapMode: Text.Wrap; secondary: true; font.pixelSize: Theme.fontXs }
 
     component QuickTile: Rectangle {
         id: tile

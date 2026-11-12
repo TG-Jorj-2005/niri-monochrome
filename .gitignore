@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.phase3-tmp
+*.bak
+*.bak-*
+state.json
+notifications.json
+Screenshots/
+.env
+.env.*

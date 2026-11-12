@@ -66,7 +66,7 @@ Singleton {
         writer.setText(text)
     }
     FileView { id: writer; path: kb.includePath; atomicWrites: true; printErrors: false; blockLoading: true
-        onSaveFailed: err => console.warn("[Keybindings] could not write", kb.includePath, FileViewError.toString(err)) }
+        onSaveFailed: err => Log.warn("Keybindings", "could not write", kb.includePath, FileViewError.toString(err)) }
 
     Connections { target: UserConfig; function onChanged() { if (UserConfig.loaded) kb.write() } }
     Connections { target: UserConfig; function onLoadedChanged() { if (UserConfig.loaded) kb.write() } }

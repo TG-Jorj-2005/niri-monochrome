@@ -1,0 +1,84 @@
+[
+  {
+    "batch": 1,
+    "cycles_per_panel": 10,
+    "start": {
+      "t": 11777.948619225,
+      "ticks": 4363,
+      "rss_kib": 224376,
+      "children": [
+        "60702"
+      ],
+      "fds": 73
+    },
+    "end": {
+      "t": 11795.414804394,
+      "ticks": 4698,
+      "rss_kib": 226488,
+      "children": [
+        "60702"
+      ],
+      "fds": 70
+    },
+    "rss_peak_kib": 235388,
+    "cpu_percent": 19.179918039262592,
+    "status": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "ready",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "overlay": "",
+      "dock": false
+    }
+  },
+  {
+    "batch": 2,
+    "cycles_per_panel": 10,
+    "start": {
+      "t": 11795.454027588,
+      "ticks": 4698,
+      "rss_kib": 226488,
+      "children": [
+        "60702"
+      ],
+      "fds": 70
+    },
+    "end": {
+      "t": 11812.93073171,
+      "ticks": 5028,
+      "rss_kib": 226464,
+      "children": [
+        "60702"
+      ],
+      "fds": 70
+    },
+    "rss_peak_kib": 234676,
+    "cpu_percent": 18.88227881506673,
+    "status": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "ready",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "overlay": "",
+      "dock": false
+    }
+  }
+]

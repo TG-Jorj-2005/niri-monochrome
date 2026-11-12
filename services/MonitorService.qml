@@ -13,7 +13,7 @@ Singleton {
     property var keys: ({})          // connector -> stable key
     // true once niri reported its outputs (or after a fallback timeout) so keys are stable.
     property bool ready: false
-    Timer { id: readyFallback; interval: 4000; running: true; onTriggered: { if (!mon.ready) { console.warn("[MonitorService] niri outputs not received, using connector-based keys"); mon.ready = true } } }
+    Timer { id: readyFallback; interval: 4000; running: true; onTriggered: { if (!mon.ready) { Log.warn("MonitorService", "niri outputs not received, using connector-based keys"); mon.ready = true } } }
 
     function keyFor(screen) {
         if (!screen) return "default"
@@ -21,16 +21,27 @@ Singleton {
     }
     function keyForName(name) { return keys[name] || name }
 
-    function rebuild() {
-        const out = {}
-        const o = NiriService.outputs || {}
-        for (const name in o) {
-            const info = o[name]
-            const parts = [info.make || "", info.model || "", info.serial || ""].map(s => String(s).replace(/[|]/g, "_"))
-            out[name] = parts.join("|").replace(/^\|+|\|+$/g, "") || name
+    // Remember ambiguous EDIDs for this lifetime so unplugging one twin does not rename the other.
+    property var ambiguous: ({})
+    function resolveKeys(outputs, screens) {
+        const result = {}, counts = {}, bases = {}, duplicate = Object.assign({}, ambiguous)
+        for (const s of screens) {
+            const info = outputs[s.name] || {}
+            const parts = [info.make || "", info.model || "", info.serial || ""].map(v => String(v).replace(/\|/g, "_"))
+            const base = parts.join("|").replace(/^\|+|\|+$/g, "")
+            bases[s.name] = { base: base, serial: !!info.serial }
+            if (base) counts[base] = (counts[base] || 0) + 1
         }
-        for (const s of Quickshell.screens) if (!out[s.name]) out[s.name] = (s.model ? (s.model + (s.serialNumber ? "|" + s.serialNumber : "")) : s.name)
-        keys = out
+        for (const base of Object.keys(counts)) if (counts[base] > 1) duplicate[base] = true
+        for (const s of screens) {
+            const b = bases[s.name]
+            result[s.name] = !b.base ? s.name : (!b.serial || duplicate[b.base]) ? b.base + "|" + s.name : b.base
+        }
+        ambiguous = duplicate
+        return result
+    }
+    function rebuild() {
+        keys = resolveKeys(NiriService.outputs || {}, Quickshell.screens)
 
     }
 
@@ -41,7 +52,7 @@ Singleton {
     // Human-readable label for Settings.
     function label(screen) {
         const o = (NiriService.outputs || {})[screen.name]
-        if (o) return screen.name + " · " + [o.make, o.model].filter(x => x).join(" ") + " · " + o.logical.width + "×" + o.logical.height + " @" + o.logical.scale + "x"
+        if (o && o.logical) return screen.name + " · " + [o.make, o.model].filter(x => x).join(" ") + " · " + o.logical.width + "×" + o.logical.height + " @" + o.logical.scale + "x"
         return screen.name + " · " + screen.width + "×" + screen.height
     }
 

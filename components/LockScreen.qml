@@ -10,7 +10,7 @@ import qs.components.ui
 WlSessionLock {
     id: lock
     locked: LockService.locked
-    onSecureChanged: { LockService.secure = secure; if (secure) console.info("[Lock] session lock confirmed by compositor") }
+    onSecureChanged: { LockService.secure = secure; if (secure) Log.info("Lock", "session lock confirmed by compositor") }
     onLockedChanged: if (!locked) PamService.reset()
 
     surface: WlSessionLockSurface {

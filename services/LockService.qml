@@ -29,9 +29,9 @@ Singleton {
         lockRequested()
     }
     function submit() {
-        if (PamService.authenticating || PamService.delayed) return
+        if (!locked || !secure || PamService.authenticating || PamService.delayed) return
         PamService.authenticate(password)
         password = ""
     }
-    Connections { target: PamService; function onUnlocked() { ls.password = ""; ls.locked = false } }
+    Connections { target: PamService; function onUnlocked() { if (ls.locked && ls.secure) { ls.password = ""; ls.locked = false } } }
 }

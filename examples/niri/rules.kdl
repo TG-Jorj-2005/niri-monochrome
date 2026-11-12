@@ -1,0 +1,79 @@
+// ---------- Workspaces numite (există mereu, în ordinea de aici) ----------
+workspace "web"
+workspace "term"
+workspace "chat"
+
+// ---------- Reguli de ferestre ----------
+// Toate ferestrele: colțuri drepte (fără geometry-corner-radius), conținutul tăiat exact pe geometrie.
+window-rule {
+    clip-to-geometry true
+}
+
+// Firefox: pe workspace-ul "web", maximizat.
+window-rule {
+    match app-id=r#"^(firefox|org\.mozilla\.firefox)$"#
+    open-on-workspace "web"
+    open-maximized true
+}
+
+// Terminal: pe "term", ușor transparent.
+window-rule {
+    match app-id=r#"^Alacritty$"#
+    open-on-workspace "term"
+    opacity 0.96
+}
+
+// Firefox Picture-in-Picture: plutitor.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Utilitare mici: plutitoare.
+window-rule {
+    match app-id=r#"^(org\.pulseaudio\.pavucontrol|pavucontrol)$"#
+    match app-id=r#"^\.?blueman-manager(-wrapped)?$"#
+    match app-id=r#"^nm-connection-editor$"#
+    match title=r#"^(Open|Save|Choose|Select) .*"#
+    match app-id=r#"^xdg-desktop-portal-gtk$"#
+    open-floating true
+}
+
+// Dialoguri generale (ferestre cu părinte): plutitoare.
+window-rule {
+    match title=r#"^(Preferences|Settings|Preferințe|Setări)$"#
+    open-floating true
+}
+
+// Parole / keyring: excluse din screenshot-uri și screen sharing.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.Secrets$"#
+    match app-id=r#"^org\.gnome\.seahorse\.Application$"#
+    block-out-from "screen-capture"
+}
+
+// Jocuri / video player: VRR activ când sunt vizibile (completează lista cu app-id-urile tale).
+window-rule {
+    match app-id=r#"^(steam_app_.*|mpv|com\.github\.iwalton3\.jellyfin-media-player)$"#
+    variable-refresh-rate true
+}
+
+// Fereastra Settings a shell-ului NIRI MONOCHROME: plutitoare.
+window-rule {
+    match app-id=r#"^org\.quickshell$"# title=r#"^NIRI MONOCHROME"#
+    open-floating true
+    default-column-width { fixed 960; }
+}
+
+// Bara (nm-bar = NIRI MONOCHROME; waybar păstrat pentru compatibilitate): umbră desenată de niri.
+layer-rule {
+    match namespace="^(waybar|nm-bar)$"
+    shadow {
+        on
+        softness 30
+        spread 3
+        offset x=0 y=5
+        color "#00000099"
+    }
+}

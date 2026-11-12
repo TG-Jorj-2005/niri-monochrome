@@ -73,6 +73,7 @@ Singleton {
         },
         notifications: {
             server: true,
+            shellServerApproved: false,    // explicit migration consent; legacy server:true is insufficient
             toasts: true,
             toastTimeout: 6000,
             criticalTimeout: 0,
@@ -92,6 +93,18 @@ Singleton {
             fillMode: "crop"
         },
         media: { showIndicator: true },
+        osd: {
+            enabled: false,                // off by default: the user's Fn-key scripts show a mako OSD; enable + rebind to use this one
+            timeout: 1500,
+            width: 280
+        },
+        nightLight: {
+            enabled: false,                // owns a wlsunset process while on
+            latitude: 44.4,
+            longitude: 26.1,
+            tempLow: 4000,
+            tempHigh: 6500
+        },
         shortcuts: {
             launcher: "Mod+D",
             dock: "Mod+A",
@@ -116,6 +129,10 @@ Singleton {
         },
         system: {
             brightnessDevice: "",          // empty = first backlight device
+            logLevel: "info",             // debug | info | warn | error
+            batteryLowPercent: 15,
+            batteryCriticalPercent: 5,
+            batteryWarnings: true,
             suspendCommand: ["systemctl", "suspend"],
             rebootCommand: ["systemctl", "reboot"],
             shutdownCommand: ["systemctl", "poweroff"],
@@ -156,7 +173,7 @@ Singleton {
     }
 
     function set(path, value) {
-        const parts = path.split(".")
+        const parts = Array.isArray(path) ? path : path.split(".")
         const next = deepClone(data)
         let cur = next
         for (let i = 0; i < parts.length - 1; i++) {
@@ -184,7 +201,17 @@ Singleton {
         if (!isFinite(n)) return dflt
         return Math.min(hi, Math.max(lo, n))
     }
+    function normalize(template, value) {
+        if (isObject(template)) {
+            const out = isObject(value) ? deepClone(value) : {}
+            for (const k of Object.keys(template)) out[k] = normalize(template[k], out[k])
+            return out
+        }
+        if (Array.isArray(template)) return Array.isArray(value) && value.every(v => typeof v === "string") ? value.slice() : deepClone(template)
+        return typeof value === typeof template && (typeof value !== "number" || isFinite(value)) ? value : deepClone(template)
+    }
     function validate(d) {
+        d = normalize(defaults, d)
         d.bar.height = clamp(d.bar.height, 32, 96, 40)
         d.bar.widthPercent = clamp(d.bar.widthPercent, 30, 100, 92)
         d.bar.radius = clamp(d.bar.radius, 0, 24, 9)
@@ -204,12 +231,23 @@ Singleton {
         d.notifications.maxToasts = clamp(d.notifications.maxToasts, 1, 10, 4)
         d.notifications.historyRetentionDays = clamp(d.notifications.historyRetentionDays, 0, 365, 7)
         d.notifications.historyMax = clamp(d.notifications.historyMax, 10, 2000, 200)
+        d.osd.timeout = clamp(d.osd.timeout, 500, 10000, 1500)
+        d.osd.width = clamp(d.osd.width, 160, 600, 280)
+        d.nightLight.latitude = clamp(d.nightLight.latitude, -90, 90, 44.4)
+        d.nightLight.longitude = clamp(d.nightLight.longitude, -180, 180, 26.1)
+        d.nightLight.tempLow = clamp(d.nightLight.tempLow, 1000, 10000, 4000)
+        d.nightLight.tempHigh = clamp(d.nightLight.tempHigh, 1000, 10000, 6500)
+        d.system.batteryLowPercent = clamp(d.system.batteryLowPercent, 1, 50, 15)
+        d.system.batteryCriticalPercent = clamp(d.system.batteryCriticalPercent, 1, 30, 5)
+        if (["debug","info","warn","error"].indexOf(d.system.logLevel) === -1) d.system.logLevel = "info"
         d.wallpaper.interval = clamp(d.wallpaper.interval, 1, 1440, 30)
         d.wallpaper.fade = clamp(d.wallpaper.fade, 0, 5000, 900)
         d.security.maxFailuresBeforeDelay = clamp(d.security.maxFailuresBeforeDelay, 1, 20, 3)
         d.security.failureDelayMs = clamp(d.security.failureDelayMs, 0, 30000, 2000)
         if (!Array.isArray(d.dock.favorites)) d.dock.favorites = deepClone(defaults.dock.favorites)
         if (!isObject(d.monitors)) d.monitors = {}
+        d.system.batteryCriticalPercent = Math.min(d.system.batteryLowPercent, d.system.batteryCriticalPercent)
+        if (["crop", "fit"].indexOf(d.wallpaper.fillMode) < 0) d.wallpaper.fillMode = "crop"
         return d
     }
 
@@ -237,7 +275,7 @@ Singleton {
             lastError = ""
         } catch (e) {
             lastError = "config.json is not valid JSON: " + e
-            console.warn("[UserConfig]", lastError)
+            Log.warn("UserConfig", "", lastError)
         }
         loaded = true
     }

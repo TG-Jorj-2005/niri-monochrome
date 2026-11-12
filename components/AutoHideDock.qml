@@ -41,7 +41,9 @@ Scope {
     function windowsFor(item) {
         return running.filter(r => (item.entry && r.entry && r.entry.id === item.entry.id) || (!item.entry && r.win.app_id === item.appId))
     }
+    onItemsChanged: selected = Math.max(0, Math.min(selected, items.length - 1))
     function activate(item) {
+        if (!item) return
         const wins = windowsFor(item)
         const focused = wins.find(w => w.win.is_focused)
         if (wins.length > 0 && !focused) NiriService.focusWindow(wins[0].win.id)

@@ -1,5 +1,27 @@
 # Changelog
 
+## Screenshot integration
+
+- Added native Niri capture buttons and screenshot IPC commands, an installed launcher entry, and optional Swappy clipboard annotation. Existing Print bindings remain effective.
+- Swappy 1.5.1 was installed from Fedora repositories; QML loading, shell startup/reloads, desktop entry, ShellCheck and Niri validation passed.
+
+## 2026-11-12 — Phase 3 stabilization
+
+- Fixed the missing ShellRoot brace that caused live reload failures while the old generation kept running; the validator now loads the actual entrypoint and checks three reloads.
+- Hardened Niri event schema validation, synchronization, reconnect lifecycle and cross-output action ordering.
+- Added defensive config/state typing, literal monitor keys, collision fallbacks, wallpaper decoder-error recovery and explicit notification migration consent.
+- Corrected power-backend refresh/AC state, bounded nmcli requests, brightness failure refresh, overlay/dock state and experimental PAM cancellation guards.
+- Final regression: IPC 16/16, core 14/14, image decoder 2/2, component load and shell startup/reloads passed. Live overlays passed 80 open/close cycles; measured idle/resource data and exact limits are in [PHASE3-RELEASE.md](PHASE3-RELEASE.md).
+- No package installs or desktop ownership migration; swaylock remains default.
+
+## 2026-11-12 — Phase 2 reliability follow-up
+
+- Fixed Niri event-stream recovery for Quickshell 0.2.1 peer-close errors that do not reliably emit a connection-state transition. Recovery is idempotent per socket, clears stale workspace/window state, and exposes a lifetime reconnect counter.
+- Corrected the IPC fixture to accept concurrent `EventStream` and `Outputs` connections, matching Niri's socket usage. The reconnect test now verifies that the replacement stream receives initial state.
+- Fixed the validator's empty `scripts/*.sh` glob and made ShellCheck report no findings.
+- Changed the Control Center's unavailable power-profile text so it does not imply that only `power-profiles-daemon` is supported.
+- Verification: IPC test 14/14; validator passed all checks and loaded 17 component groups; `niri validate` and ShellCheck passed. `qmllint` and real hardware/session scenarios remain unverified.
+
 ## 2026-11-12 — Engineering review (takeover)
 
 Backups: `~/.config/quickshell/niri-monochrome.bak-20261112-review/`, `~/.config/niri-monochrome/config.json.bak-20261112-review`,

@@ -8,6 +8,7 @@ Singleton {
     id: audio
 
     readonly property bool ready: Pipewire.ready
+    readonly property string status: !ready ? "initializing" : (sink ? "ready" : "unavailable")
     readonly property PwNode sink: Pipewire.defaultAudioSink
     readonly property PwNode source: Pipewire.defaultAudioSource
     readonly property real volume: sink && sink.audio ? sink.audio.volume : 0

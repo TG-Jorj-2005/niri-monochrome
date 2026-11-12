@@ -1,0 +1,11 @@
+// ---------- Programe pornite la login ----------
+// spawn-at-startup "waybar" // oprit în favoarea noii bare niri-monochrome (Quickshell)
+spawn-at-startup "mako"
+spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
+// spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/Wallpapers/current.png" // oprit în favoarea WallpaperLayer (Quickshell)
+spawn-sh-at-startup "wl-paste --watch cliphist store"      // istoric clipboard
+spawn-at-startup "nm-applet" "--indicator"                  // rețea în tray
+spawn-at-startup "blueman-applet"                           // bluetooth în tray
+// spawn-sh-at-startup "wlsunset -l 44.4 -L 26.1 -t 4000 -T 6500" // lumină caldă seara (dezactivată 2026-11-11; scoate // ca s-o repornești)
+spawn-at-startup "idle-manager" "start"
+spawn-at-startup "qs" "-c" "niri-monochrome" // NIRI MONOCHROME (BottomBar, Dock, Launcher, Wallpaper, PowerMenu)

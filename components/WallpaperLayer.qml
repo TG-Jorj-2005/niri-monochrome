@@ -35,19 +35,30 @@ PanelWindow {
     property int slot: 0
     property string pending: ""
     onCurrentChanged: show(current)
+    function imageUrl(path) { return path ? "file://" + path.split("/").map(encodeURIComponent).join("/") : "" }
     function show(path) {
-        if (!path) return
+        if (!path) { pending = ""; imgA.source = ""; imgB.source = ""; return }
+        const url = imageUrl(path)
+        const shown = slot === 0 ? imgA : imgB
+        if (shown.status === Image.Ready && shown.source == url) { pending = ""; return }
         const target = slot === 0 ? imgB : imgA
-        if (target.source == "file://" + path) return
+        if (target.source == url) { if (target.status === Image.Ready) { pending = path; onReady(target) }; return }
         pending = path
-        target.source = path === "" ? "" : "file://" + path
+        target.source = url
     }
     function onReady(img) {
-        if (img.source != "file://" + pending) return
+        if (img.source != imageUrl(pending)) return
         slot = (img === imgA) ? 0 : 1
         pending = ""
     }
 
+    function failed(img) {
+        if (!pending || img.source != imageUrl(pending)) return
+        const path = pending
+        pending = ""
+        Log.warn("Wallpaper", "image unavailable; trying next collection entry")
+        WallpaperService.loadFailed(monitorKey, path)
+    }
     Item {
         id: stack
         anchors.fill: parent
@@ -56,11 +67,11 @@ PanelWindow {
         Image { id: imgA; anchors.fill: parent; asynchronous: true; cache: false; fillMode: wall.cfg.fillMode === "fit" ? Image.PreserveAspectFit : Image.PreserveAspectCrop
             sourceSize: Qt.size(wall.modelData.width * wall.modelData.devicePixelRatio, wall.modelData.height * wall.modelData.devicePixelRatio)
             opacity: wall.slot === 0 ? 1 : 0; z: wall.slot === 0 ? 1 : 0
-            onStatusChanged: if (status === Image.Ready) wall.onReady(imgA); else if (status === Image.Error) { console.warn("[Wallpaper] cannot load", source); WallpaperService.scan(wall.monitorKey) }
+            onStatusChanged: if (status === Image.Ready) wall.onReady(imgA); else if (status === Image.Error) wall.failed(imgA)
             Behavior on opacity { NumberAnimation { duration: UserConfig.data.appearance.animations ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
         Image { id: imgB; anchors.fill: parent; asynchronous: true; cache: false; fillMode: imgA.fillMode; sourceSize: imgA.sourceSize
             opacity: wall.slot === 1 ? 1 : 0; z: wall.slot === 1 ? 1 : 0
-            onStatusChanged: if (status === Image.Ready) wall.onReady(imgB); else if (status === Image.Error) { console.warn("[Wallpaper] cannot load", source); WallpaperService.scan(wall.monitorKey) }
+            onStatusChanged: if (status === Image.Ready) wall.onReady(imgB); else if (status === Image.Error) wall.failed(imgB)
             Behavior on opacity { NumberAnimation { duration: UserConfig.data.appearance.animations ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
     }
     // Empty state when the collection is empty: keep the plain background + a quiet hint.

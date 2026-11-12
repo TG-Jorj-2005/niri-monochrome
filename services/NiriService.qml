@@ -14,8 +14,13 @@ Singleton {
 
     readonly property string socketPath: Quickshell.env("NIRI_SOCKET") || ""
     property bool connected: false
-    property bool ready: false            // first WorkspacesChanged received
+    property bool haveWorkspaces: false
+    property bool haveWindows: false
+    readonly property bool ready: connected && haveWorkspaces && haveWindows
     property int reconnectDelay: 1000
+    property int reconnectAttempts: 0
+    property int reconnectCount: 0         // total reconnects during this shell lifetime
+    readonly property string status: socketPath === "" ? "unavailable" : ready ? "ready" : connected ? "initializing" : (reconnectAttempts > 0 ? "reconnecting" : "initializing")
 
     // State mirrors of niri_ipc types (unknown fields are kept as-is).
     property var workspaces: []           // [{id, idx, name, output, is_active, is_focused, is_urgent, active_window_id}]
@@ -34,49 +39,110 @@ Singleton {
     signal outputsUpdated()
 
     // ---------------- Event stream ----------------
-    Socket {
-        id: stream
-        path: niri.socketPath
-        connected: false
-        onConnectionStateChanged: {
-            niri.connected = connected
-            if (connected) {
-                niri.reconnectDelay = 1000
-                write('"EventStream"\n')
-                flush()
-                outputsProc.running = true
-            } else {
-                niri.ready = false
-                reconnect.interval = niri.reconnectDelay
-                niri.reconnectDelay = Math.min(niri.reconnectDelay * 2, 10000)
-                reconnect.restart()
+    // A fresh socket/parser owns each connection. Ignore callbacks from obsolete sockets.
+    property var stream: null
+    Component {
+        id: streamComponent
+        Socket {
+            id: eventSocket
+            property bool reconnectScheduled: false
+            path: niri.socketPath
+            onConnectionStateChanged: {
+                if (eventSocket !== niri.stream || reconnectScheduled) return
+                niri.connected = connected
+                if (connected) {
+                    reconnectScheduled = false
+                    reconnect.stop()
+                    syncTimeout.restart()
+                    Log.debug("Niri", "event stream connected")
+                    write('"EventStream"\n')
+                    flush()
+                    outputsProc.running = true
+                } else niri.onStreamClosed(this)
             }
-        }
-        onError: err => console.warn("[NiriService] socket error", err)
-        parser: SplitParser {
-            splitMarker: "\n"
-            onRead: line => niri.handleLine(line)
+            // Some Quickshell 0.2.1 socket failures arrive as an error without a reliable
+            // connection-state transition. Route all errors through the same guarded recovery.
+            onError: err => { Log.debug("Niri", "socket error", err); niri.onStreamClosed(this) }
+            parser: SplitParser { splitMarker: "\n"; onRead: line => niri.handleLine(line) }
         }
     }
-    Timer { id: reconnect; interval: 1000; repeat: false; onTriggered: { if (niri.socketPath !== "") stream.connected = true } }
+    function connectStream() {
+        if (socketPath === "") return
+        reconnect.stop()
+        const old = stream
+        stream = null
+        if (old) { old.connected = false; old.destroy() }
+        stream = streamComponent.createObject(niri)
+        stream.connected = true
+    }
+    function onStreamClosed(sock) {
+        if (sock !== stream || sock.reconnectScheduled) return
+        sock.reconnectScheduled = true
+        Log.debug("Niri", "event stream closed")
+        syncTimeout.stop()
+        outputsProc.running = false
+        connected = false
+        haveWorkspaces = false
+        haveWindows = false
+        focusedOutput = ""
+        outputs = ({})
+        keyboardLayouts = ({ names: [], current_idx: 0 })
+        reconnectAttempts += 1
+        reconnectCount += 1
+        workspaces = []
+        windows = ({})
+        focusedWindowId = -1
+        focusedWindow = null
+        overviewOpen = false
+        workspacesUpdated()
+        refreshWindows()
+        if (reconnectAttempts === 1 || reconnectAttempts % 10 === 0) Log.warn("Niri", "event stream disconnected, reconnecting (attempt", reconnectAttempts + ")")
+        reconnect.interval = reconnectDelay
+        reconnectDelay = Math.min(reconnectDelay * 2, 10000)     // capped exponential backoff, never a tight loop
+        reconnect.restart()
+    }
+    Timer { id: reconnect; interval: 1000; repeat: false; onTriggered: niri.connectStream() }
     Component.onCompleted: {
-        if (socketPath === "") console.warn("[NiriService] NIRI_SOCKET is not set; niri integration disabled")
-        else stream.connected = true
+        if (socketPath === "") Log.warn("Niri", "NIRI_SOCKET is not set; niri integration disabled")
+        else connectStream()
     }
 
+    Timer { id: syncTimeout; interval: 5000; onTriggered: { if (!niri.ready && niri.stream) niri.onStreamClosed(niri.stream) } }
+    onReadyChanged: if (ready) { syncTimeout.stop(); reconnectDelay = 1000; reconnectAttempts = 0 }
+
+    function validId(id) { return Number.isSafeInteger(id) && id >= 0 }
+    function validPayload(kind, p) {
+        if (!p || typeof p !== "object" || Array.isArray(p)) return false
+        switch (kind) {
+        case "WorkspacesChanged": return Array.isArray(p.workspaces) && p.workspaces.every(w => w && validId(w.id) && Number.isInteger(w.idx) && (w.output === null || typeof w.output === "string"))
+        case "WindowsChanged": return Array.isArray(p.windows) && p.windows.every(w => w && validId(w.id) && typeof w.is_focused === "boolean")
+        case "WindowOpenedOrChanged": return p.window && validId(p.window.id) && typeof p.window.is_focused === "boolean"
+        case "WindowFocusChanged": return p.id === null || validId(p.id)
+        case "WindowClosed": return validId(p.id)
+        case "WorkspaceActivated": return validId(p.id) && typeof p.focused === "boolean"
+        case "WorkspaceActiveWindowChanged": return validId(p.workspace_id) && (p.active_window_id === null || validId(p.active_window_id))
+        case "WindowUrgencyChanged":
+        case "WorkspaceUrgencyChanged": return validId(p.id) && typeof p.urgent === "boolean"
+        case "OverviewOpenedOrClosed": return typeof p.is_open === "boolean"
+        case "KeyboardLayoutsChanged": return p.keyboard_layouts && Array.isArray(p.keyboard_layouts.names) && Number.isInteger(p.keyboard_layouts.current_idx)
+        case "KeyboardLayoutSwitched": return Number.isInteger(p.idx) && p.idx >= 0
+        default: return true
+        }
+    }
     function handleLine(line) {
         if (!line || line.trim() === "") return
         let msg
-        try { msg = JSON.parse(line) } catch (e) { console.warn("[NiriService] bad JSON from niri:", line.substring(0, 80)); return }
+        try { msg = JSON.parse(line) } catch (e) { Log.debug("Niri", "invalid JSON event ignored"); return }
         if (typeof msg !== "object" || msg === null) return
-        if ("Ok" in msg || "Err" in msg) { if ("Err" in msg) console.warn("[NiriService] error reply:", msg.Err); return }
+        if ("Ok" in msg || "Err" in msg) { if ("Err" in msg) Log.warn("Niri", "error reply:", msg.Err); return }
         const kind = Object.keys(msg)[0]
         const p = msg[kind]
+        if (!validPayload(kind, p)) { Log.debug("Niri", "invalid event ignored", kind); return }
         switch (kind) {
         case "WorkspacesChanged":
             workspaces = p.workspaces.slice()
             updateFocusedOutput()
-            ready = true
+            haveWorkspaces = true
             workspacesUpdated()
             break
         case "WorkspaceActivated": {
@@ -105,6 +171,7 @@ Singleton {
             const map = {}
             let focused = -1
             for (const w of p.windows) { map[w.id] = w; if (w.is_focused) focused = w.id }
+            haveWindows = true
             windows = map
             focusedWindowId = focused
             refreshWindows()
@@ -152,7 +219,7 @@ Singleton {
             keyboardLayouts = Object.assign({}, keyboardLayouts, { current_idx: p.idx })
             break
         case "ConfigLoaded":
-            if (p.failed) console.warn("[NiriService] niri reported a config load failure")
+            if (p.failed) Log.warn("Niri", "niri reported a config load failure")
             outputsProc.running = true   // output config may have changed
             break
         default:
@@ -173,7 +240,7 @@ Singleton {
     function updateFocusedOutput() {
         const f = workspaces.find(w => w.is_focused)
         if (f && f.output) focusedOutput = f.output
-        else if (workspaces.length > 0 && focusedOutput === "") focusedOutput = workspaces[0].output || ""
+        else focusedOutput = (workspaces.find(w => w.output) || {}).output || ""
     }
 
     // ---------------- Derived queries ----------------
@@ -205,24 +272,25 @@ Singleton {
         id: outputsProc
         command: ["niri", "msg", "--json", "outputs"]
         stdout: StdioCollector { onStreamFinished: {
-            try { niri.outputs = JSON.parse(text); niri.outputsUpdated() }
-            catch (e) { console.warn("[NiriService] cannot parse outputs:", e) }
+            try { const value = JSON.parse(text); if (niri.connected && value && typeof value === "object" && !Array.isArray(value)) { niri.outputs = value; niri.outputsUpdated() } }
+            catch (e) { if (niri.connected) Log.warn("Niri", "cannot parse outputs:", e) }
         } }
     }
     function refreshOutputs() { outputsProc.running = true }
 
     // ---------------- Actions ----------------
     // Arguments are passed as an argv array (never through a shell).
-    function action(args) {
-        for (const a of args) if (typeof a !== "string" && typeof a !== "number") { console.warn("[NiriService] invalid action arg", a); return }
-        const p = actionComponent.createObject(niri, { command: ["niri", "msg", "action"].concat(args.map(String)) })
+    function action(args, after) {
+        for (const a of args) if (typeof a !== "string" && typeof a !== "number") { Log.warn("Niri", "invalid action arg", a); return }
+        const p = actionComponent.createObject(niri, { command: ["niri", "msg", "action"].concat(args.map(String)), after: after || [] })
         p.running = true
     }
     Component {
         id: actionComponent
         Process {
-            stderr: StdioCollector { onStreamFinished: if (text.trim() !== "") console.warn("[NiriService] action stderr:", text.trim()) }
-            onExited: (code) => { if (code !== 0) console.warn("[NiriService] action failed", command.join(" "), "exit", code); destroy() }
+            property var after: []
+            stderr: StdioCollector { onStreamFinished: if (text.trim() !== "") Log.warn("Niri", "action stderr:", text.trim()) }
+            onExited: (code) => { if (code !== 0) Log.warn("Niri", "action failed", "exit", code); else if (after.length) niri.action(after); destroy() }
         }
     }
 
@@ -230,8 +298,8 @@ Singleton {
         const ws = workspaces.find(w => w.id === id)
         if (!ws) return
         // Workspace reference by index is per-output in niri; focusing by name is global when named.
-        if (ws.output && ws.output !== focusedOutput) action(["focus-monitor", ws.output])
-        action(["focus-workspace", String(ws.idx)])
+        if (ws.output && ws.output !== focusedOutput) action(["focus-monitor", ws.output], ["focus-workspace", String(ws.idx)])
+        else action(["focus-workspace", String(ws.idx)])
     }
     function focusWindow(id) { action(["focus-window", "--id", String(id)]) }
     function toggleOverview() { action(["toggle-overview"]) }

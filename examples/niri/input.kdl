@@ -1,0 +1,32 @@
+// ---------- Tastatură, touchpad, mouse ----------
+input {
+    keyboard {
+        xkb {
+            // Două layout-uri; comutare cu Super+Space (vezi binds.kdl).
+            layout "us,ro"
+        }
+        repeat-delay 300
+        repeat-rate 40
+        numlock
+    }
+
+    touchpad {
+        tap                 // tap-to-click
+        natural-scroll
+        dwt                 // dezactivat cât tastezi
+        accel-profile "adaptive"
+        scroll-method "two-finger"
+        click-method "clickfinger"
+    }
+
+    mouse {
+        accel-profile "flat"   // fără accelerație
+        accel-speed 0.0
+    }
+
+    // Focusul urmărește mouse-ul doar pe ferestre complet vizibile.
+    focus-follows-mouse max-scroll-amount="0%"
+
+    // Fereastra nouă primește focus când se deschide.
+    warp-mouse-to-focus mode="center-xy"
+}

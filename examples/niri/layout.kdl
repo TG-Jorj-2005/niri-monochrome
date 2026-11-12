@@ -1,0 +1,53 @@
+// ---------- Aspectul coloanelor ----------
+// Paletă monocrom: fundal #080808 · bordură #292929 · accent (alb) #f5f5f5. Fără colțuri rotunjite.
+layout {
+    gaps 12
+    center-focused-column "never"
+    background-color "#080808"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { proportion 0.5; }
+
+    // Fereastra activă: contur alb de 1px; restul: gri închis.
+    focus-ring {
+        width 1
+        active-color "#f5f5f5"
+        inactive-color "#292929"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        on
+        softness 40
+        spread 4
+        offset x=0 y=6
+        color "#00000080"
+    }
+
+    // Indicatorul coloanelor cu tab-uri (Mod+W): bare drepte.
+    tab-indicator {
+        width 2
+        gap 6
+        length total-proportion=0.5
+        position "left"
+        active-color "#f5f5f5"
+        inactive-color "#292929"
+        gaps-between-tabs 4
+        corner-radius 0
+    }
+
+    // Zona afișată când tragi o fereastră.
+    insert-hint {
+        color "#f5f5f526"
+    }
+
+    struts {
+    }
+}

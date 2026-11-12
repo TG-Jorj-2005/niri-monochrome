@@ -10,15 +10,20 @@ Singleton {
     id: apps
 
     readonly property var entries: DesktopEntries.applications.values
-    property var visible: []        // entries not marked NoDisplay, sorted by name
+    property var visible: []        // entries not marked NoDisplay, sorted by name, unique by id
+    property int rawCount: 0
     property string lastError: ""
 
     function rebuild() {
         const list = []
+        const seen = {}
         for (const e of DesktopEntries.applications.values) {
             if (!e || e.noDisplay) continue
+            if (seen[e.id]) continue          // Quickshell 0.2.1 keeps stale entries across reloads
+            seen[e.id] = true
             list.push(e)
         }
+        rawCount = DesktopEntries.applications.values.length
         list.sort((a, b) => a.name.localeCompare(b.name))
         visible = list
     }
@@ -60,8 +65,21 @@ Singleton {
         return Math.max(1, s)
     }
 
+    // Memoize the last query: the launcher re-evaluates on every keystroke/visible change.
+    property string _lastQuery: "\u0000"
+    property int _lastLimit: 0
+    property var _lastResult: []
+    Connections { target: StateStore; function onDataChanged() { apps._lastQuery = "\u0000" } }
+    Connections { target: UserConfig; function onChanged() { apps._lastQuery = "\u0000" } }
+    onVisibleChanged: _lastQuery = "\u0000"
     function search(query, limit) {
         const q = (query || "").trim()
+        if (q === _lastQuery && limit === _lastLimit) return _lastResult
+        const r = searchUncached(q, limit)
+        _lastQuery = q; _lastLimit = limit; _lastResult = r
+        return r
+    }
+    function searchUncached(q, limit) {
         const out = []
         for (const e of visible) {
             let s = score(q, e.name) * 1.0
@@ -71,13 +89,11 @@ Singleton {
             if (s > 0) out.push({ entry: e, score: s })
         }
         if (q === "") {
-            // No query: recents first, then alphabetical.
+            // No query: dock favorites, then recents, then alphabetical.
+            const fav = (UserConfig.data.dock.favorites || []).map(f => f.replace(/\.desktop$/, ""))
             const recent = StateStore.get("recentApps", [])
-            out.sort((a, b) => {
-                const ra = recent.indexOf(a.entry.id), rb = recent.indexOf(b.entry.id)
-                if (ra !== -1 || rb !== -1) return (ra === -1 ? 999 : ra) - (rb === -1 ? 999 : rb)
-                return a.entry.name.localeCompare(b.entry.name)
-            })
+            const rank = e => { const f = fav.indexOf(e.id); if (f !== -1) return f; const r = recent.indexOf(e.id); return r !== -1 ? 100 + r : 1000 }
+            out.sort((a, b) => (rank(a.entry) - rank(b.entry)) || a.entry.name.localeCompare(b.entry.name))
         } else out.sort((a, b) => b.score - a.score || a.entry.name.localeCompare(b.entry.name))
         return out.slice(0, limit || 8).map(x => x.entry)
     }

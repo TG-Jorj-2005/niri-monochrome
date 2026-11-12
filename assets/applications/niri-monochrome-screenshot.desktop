@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Screenshot
+Comment=Select an area with Niri and copy or save the capture
+Exec=qs -c niri-monochrome ipc call screenshot region
+Icon=applets-screenshooter
+Terminal=false
+Categories=Graphics;
+Keywords=screenshot;capture;screen;

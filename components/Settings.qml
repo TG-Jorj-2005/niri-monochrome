@@ -17,7 +17,8 @@ FloatingWindow {
     color: Theme.background
     onVisibleChanged: if (!visible) ShellState.settingsOpen = false
 
-    property int section: 0
+    property int section: ShellState.settingsSection
+    onSectionChanged: ShellState.settingsSection = section
     property string monitorKey: Quickshell.screens.length > 0 ? MonitorService.keyFor(Quickshell.screens[0]) : "default"
     readonly property var sections: [
         { t: "Appearance", i: "palette" }, { t: "Bottom Bar", i: "bar" }, { t: "Dock", i: "dock" }, { t: "Applications", i: "grid" },
@@ -165,15 +166,24 @@ FloatingWindow {
     Component { id: ccS; Column { spacing: 0
         SectionHeader { title: "Control Center"; subtitle: "Compact popover anchored to the status indicators." }
         NumberSetting { label: "Width"; path: "controlCenter.width"; from: 300; to: 600; step: 10; unit: "px" }
-        ToggleSetting { label: "Brightness slider"; description: SystemService.brightnessAvailable ? "Device: " + SystemService.brightnessDevice : "No backlight device detected"; path: "controlCenter.showBrightness" }
-        ToggleSetting { label: "Power profile selector"; description: BatteryService.profilesAvailable ? "power-profiles-daemon detected" : "power-profiles-daemon not running — shown as unavailable"; path: "controlCenter.showPowerProfile" }
+        ToggleSetting { label: "Brightness slider"; description: BrightnessService.available ? "Device: " + BrightnessService.device : "No backlight device detected"; path: "controlCenter.showBrightness" }
+        ToggleSetting { label: "Power profile selector"; description: BatteryService.profilesAvailable ? "Backend: " + (BatteryService.profilesBackend || "PowerProfiles D-Bus service") : "No power-profile service available"; path: "controlCenter.showPowerProfile" }
         ToggleSetting { label: "Confirm power actions"; description: "Logout, reboot and shutdown ask twice"; path: "controlCenter.confirmPower" }
+        SectionHeader { title: "On-screen display"; subtitle: "Volume / microphone / brightness OSD above the bar, driven by real state changes. Your Fn keys currently show a mako OSD; rebind them to `qs -c niri-monochrome ipc call audio volumeUp|volumeDown|mute|micMute` and `ipc call brightness up|down` to avoid two OSDs (scripts/install.sh --shell-osd does this with a backup)." }
+        ToggleSetting { label: "Shell OSD"; path: "osd.enabled" }
+        NumberSetting { label: "OSD timeout"; path: "osd.timeout"; from: 500; to: 10000; step: 100; unit: "ms" }
+        SectionHeader { title: "Night light"; subtitle: NightLightService.available ? "wlsunset owned by the shell while enabled (status: " + NightLightService.status + ")" : "wlsunset is not installed" }
+        ToggleSetting { label: "Night light"; path: "nightLight.enabled" }
+        NumberSetting { label: "Latitude"; path: "nightLight.latitude"; from: -90; to: 90; step: 0.1 }
+        NumberSetting { label: "Longitude"; path: "nightLight.longitude"; from: -180; to: 180; step: 0.1 }
+        NumberSetting { label: "Night temperature"; path: "nightLight.tempLow"; from: 1000; to: 10000; step: 100; unit: "K" }
+        NumberSetting { label: "Day temperature"; path: "nightLight.tempHigh"; from: 1000; to: 10000; step: 100; unit: "K" }
         SettingRow { label: "Reset control center"; MonoButton { text: "Reset"; onClicked: UserConfig.resetSection("controlCenter") } }
     } }
 
     Component { id: notifS; Column { spacing: 0
         SectionHeader { title: "Notifications"; subtitle: SystemService.notificationOwnedByUs ? "This shell owns org.freedesktop.Notifications." : SystemService.notificationOwnedByOther ? "Another daemon (pid " + SystemService.notificationOwnerPid + ") owns org.freedesktop.Notifications — stop it (e.g. mako) to receive notifications here." : "No notification daemon is registered." }
-        ToggleSetting { label: "Act as notification server"; description: "Requires no other daemon (mako, dunst…) running"; path: "notifications.server" }
+        SettingRow { label: "Notification ownership"; description: "mako remains authoritative. Shell server migration requires explicit approval." }
         ToggleSetting { label: "Show toasts"; path: "notifications.toasts" }
         ToggleSetting { label: "Do Not Disturb"; description: "Critical notifications still show"; path: "notifications.doNotDisturb" }
         NumberSetting { label: "Toast timeout"; path: "notifications.toastTimeout"; from: 1000; to: 60000; step: 500; unit: "ms" }
@@ -293,7 +303,28 @@ FloatingWindow {
         SettingRow { label: "Audio"; Label { text: AudioService.ready ? AudioService.sinkName : "PipeWire not ready"; mono: true; font.pixelSize: Theme.fontSm; secondary: true } }
         SettingRow { label: "Network"; Label { text: NetworkService.statusText(); mono: true; font.pixelSize: Theme.fontSm; secondary: true } }
         SettingRow { label: "Bluetooth"; Label { text: BluetoothService.statusText(); mono: true; font.pixelSize: Theme.fontSm; secondary: true } }
-        SettingRow { label: "Battery"; Label { text: BatteryService.stateText(); mono: true; font.pixelSize: Theme.fontSm; secondary: true } }
+        SettingRow { label: "Battery"; description: BatteryService.profilesAvailable ? "power profiles via " + BatteryService.profilesBackend : "no power-profile backend"; Label { text: BatteryService.stateText(); mono: true; font.pixelSize: Theme.fontSm; secondary: true } }
+        ToggleSetting { label: "Battery warnings"; description: "Low / critical notifications (sent through the active notification daemon)"; path: "system.batteryWarnings" }
+        NumberSetting { label: "Low battery at"; path: "system.batteryLowPercent"; from: 1; to: 50; unit: "%" }
+        NumberSetting { label: "Critical battery at"; path: "system.batteryCriticalPercent"; from: 1; to: 30; unit: "%" }
+        SectionHeader { title: "Service status" }
+        Repeater { model: [
+                { n: "niri IPC", s: NiriService.status }, { n: "Monitors", s: MonitorService.ready ? "ready" : "initializing" }, { n: "Audio (PipeWire)", s: AudioService.status },
+                { n: "Network", s: NetworkService.status }, { n: "Bluetooth", s: BluetoothService.status }, { n: "Battery (UPower)", s: BatteryService.status },
+                { n: "Brightness", s: BrightnessService.status }, { n: "Notifications", s: NotificationService.status }, { n: "Night light", s: NightLightService.status },
+                { n: "Wallpaper", s: Object.keys(WallpaperService.collections).length > 0 ? "ready" : "initializing" } ]
+            delegate: SettingRow { required property var modelData; label: modelData.n; height: 34
+                Label { text: modelData.s; mono: true; font.pixelSize: Theme.fontSm; color: /ready|mako|server|on|off/.test(modelData.s) ? Theme.silver : /unavailable|error|other|reconnecting/.test(modelData.s) ? Theme.silverBright : Theme.silverMuted } } }
+        ChoiceSetting { label: "Log level"; path: "system.logLevel"; options: [{ value: "debug", label: "debug" }, { value: "info", label: "info" }, { value: "warn", label: "warn" }, { value: "error", label: "error" }] }
+        SettingRow { label: "Recent log"; description: Log.warnCount + " warnings · " + Log.errorCount + " errors this session"; MonoButton { text: "Clear"; flat: true; onClicked: Log.clear() } }
+        Rectangle { width: parent.width; height: Math.min(220, logCol.implicitHeight + 16); color: Theme.surface; border.width: 1; border.color: Theme.border; radius: Theme.radiusControl; clip: true
+            Flickable { anchors.fill: parent; anchors.margins: 8; contentHeight: logCol.implicitHeight; clip: true
+                Column { id: logCol; width: parent.width
+                    Repeater { model: Log.entries.slice(-40).reverse()
+                        delegate: Label { required property var modelData; width: parent.width; mono: true; font.pixelSize: 10; wrapMode: Text.Wrap; elide: Text.ElideNone
+                            color: modelData.level === "error" ? Theme.silverBright : modelData.level === "warn" ? Theme.silver : Theme.silverMuted
+                            text: Qt.formatTime(new Date(modelData.t), "HH:mm:ss") + "  " + modelData.level.toUpperCase().padEnd(5) + " " + modelData.tag + ": " + modelData.msg } }
+                    Label { visible: Log.entries.length === 0; text: "no log entries"; secondary: true; font.pixelSize: Theme.fontXs } } } }
         TextSetting { label: "Brightness device"; description: "Empty = first backlight device"; path: "system.brightnessDevice"; fieldWidth: 220 }
         SettingRow { label: "Config file"; description: UserConfig.lastError !== "" ? UserConfig.lastError : "valid"; Label { text: UserConfig.path.replace(Constants.home, "~"); mono: true; font.pixelSize: Theme.fontXs; secondary: true } }
         SettingRow { label: "Reload shell"; MonoButton { icon: "refresh"; text: "Reload"; onClicked: Quickshell.reload(false) } }

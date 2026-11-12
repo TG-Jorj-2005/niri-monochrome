@@ -14,11 +14,11 @@ Singleton {
 
     function get(path, fallback) {
         let cur = data
-        for (const p of path.split(".")) { if (cur === undefined || cur === null || !(p in cur)) return fallback; cur = cur[p] }
+        for (const p of (Array.isArray(path) ? path : path.split("."))) { if (cur === undefined || cur === null || typeof cur !== "object" || !(p in cur)) return fallback; cur = cur[p] }
         return cur
     }
     function set(path, value) {
-        const parts = path.split(".")
+        const parts = (Array.isArray(path) ? path : path.split("."))
         const next = JSON.parse(JSON.stringify(data))
         let cur = next
         for (let i = 0; i < parts.length - 1; i++) { if (typeof cur[parts[i]] !== "object" || cur[parts[i]] === null) cur[parts[i]] = {}; cur = cur[parts[i]] }
@@ -27,14 +27,27 @@ Singleton {
         save()
     }
 
+    function normalize(p) {
+        const out = p && typeof p === "object" && !Array.isArray(p) ? p : {}
+        if (!out.wallpaper || typeof out.wallpaper !== "object" || Array.isArray(out.wallpaper)) out.wallpaper = {}
+        for (const key of Object.keys(out.wallpaper)) {
+            const s = out.wallpaper[key]
+            if (!s || typeof s !== "object" || Array.isArray(s)) { delete out.wallpaper[key]; continue }
+            if (!Array.isArray(s.order)) s.order = []
+            s.order = s.order.filter(v => typeof v === "string")
+            if (typeof s.current !== "string") s.current = ""
+        }
+        out.recentApps = Array.isArray(out.recentApps) ? out.recentApps.filter(v => typeof v === "string").slice(0, 50) : []
+        return out
+    }
     FileView {
         id: file
         path: store.path
         atomicWrites: true
         printErrors: false
         onLoaded: {
-            try { const p = JSON.parse(text()); if (p && typeof p === "object") store.data = Object.assign({ wallpaper: {}, recentApps: [] }, p) }
-            catch (e) { console.warn("[StateStore] state.json invalid, starting fresh") }
+            try { const p = JSON.parse(text()); store.data = store.normalize(p) }
+            catch (e) { Log.warn("StateStore", "state.json invalid, starting fresh") }
             store.loaded = true
         }
         onLoadFailed: { store.loaded = true }

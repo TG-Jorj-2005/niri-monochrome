@@ -1,0 +1,117 @@
+bash -n niri-ipc-test.sh                       ok
+bash -n validate.sh                            ok
+json config.json                               ok
+json state.json                                ok
+desktop entry                                  ok
+niri validate                                  ok
+  INFO: Launching config: "/tmp/nm-phase3-work/selftest-qml.qml"
+  INFO: Shell ID: "e2efdb6c2ac78a9ad8232132ffe250a6" Path ID "e2efdb6c2ac78a9ad8232132ffe250a6"
+  INFO: Saving logs to "/tmp/nm-qml-s4d5p52g/runtime/quickshell/by-id/tka10hrdot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_80 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: QMLCHECK ok BottomBar
+  INFO qml: QMLCHECK ok AutoHideDock
+  INFO qml: QMLCHECK ok OverlayLayer
+  INFO qml: QMLCHECK ok NotificationToasts
+  INFO qml: QMLCHECK ok WallpaperLayer
+  INFO qml: QMLCHECK ok Osd
+  INFO qml: QMLCHECK ok LockScreen
+  INFO qml: QMLCHECK ok Settings
+  WARN scene: QML QQuickItem at @selftest-qml.qml[27:32]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok Launcher
+  WARN scene: QML QQuickItem at @selftest-qml.qml[28:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ControlCenter
+  WARN scene: QML QQuickItem at @selftest-qml.qml[29:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok NotificationCenter
+  WARN scene: QML QQuickItem at @selftest-qml.qml[30:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok MediaControls
+  WARN scene: QML QQuickItem at @selftest-qml.qml[31:27]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok CalendarPopover
+  WARN scene: QML QQuickItem at @selftest-qml.qml[32:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok PowerMenu
+  WARN scene: QML QQuickItem at @selftest-qml.qml[33:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ui primitives
+  WARN scene: QML QQuickItem at @selftest-qml.qml[34:27]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok settings rows
+  INFO qml: QMLCHECK ok services 18
+  INFO qml: QMLCHECK DONE 16 components
+
+selftest-qml.qml                               ok
+  INFO: Launching config: "/tmp/nm-phase3-work/selftest-core.qml"
+  INFO: Shell ID: "97c657fc6cb4fe744448480c303208b4" Path ID "97c657fc6cb4fe744448480c303208b4"
+  INFO: Saving logs to "/tmp/nm-qml-x3zxm0ke/runtime/quickshell/by-id/xla13hrdot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS corrupt section types recover
+  INFO qml: PASS string cannot enable experimental lock
+  INFO qml: PASS legacy server setting is not migration consent
+  WARN qml: [UserConfig]  config.json is not valid JSON: SyntaxError: JSON.parse: Parse error
+  INFO qml: PASS invalid JSON retains last configuration
+  INFO qml: PASS corrupt state types recover
+  INFO qml: PASS monitor key dots preserved in state
+  INFO qml: PASS monitor key dots preserved in config
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: PASS identical monitors do not collide
+  INFO qml: PASS existing monitor identity preserved
+  INFO qml: PASS missing EDID falls back to connector
+  INFO qml: PASS failed wallpaper advances to valid candidate
+  INFO qml: PASS all wallpapers failed gives empty fallback
+  INFO qml: PASS missing NIRI_SOCKET is unavailable
+  INFO qml: PASS overlay clears dock keyboard focus
+  INFO qml: RESULT 14/14 passed
+
+selftest-core.qml                              ok
+  INFO: Launching config: "/tmp/nm-phase3-work/selftest-wallpaper.qml"
+  INFO: Shell ID: "4d8b39379ef766197dfbf41823f011aa" Path ID "4d8b39379ef766197dfbf41823f011aa"
+  INFO: Saving logs to "/tmp/nm-qml-6hv89bu2/runtime/quickshell/by-id/jma15hrdot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN scene: QML Image at @components/WallpaperLayer.qml[72:9]: Error decoding: file:///tmp/nm-qml-6hv89bu2/wallpapers/a-bad.png: Unsupported image format
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  INFO qml: PASS decoder failure skips invalid image
+  WARN scene: QML Image at @components/WallpaperLayer.qml[67:9]: Cannot open: file:///tmp/nm-qml-6hv89bu2/wallpapers/missing.png
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  INFO qml: PASS missing image reaches empty background fallback
+  INFO qml: RESULT 2/2 passed
+
+selftest-wallpaper.qml                         ok
+PASS actual shell entrypoint + 3 isolated reloads
+  INFO: Launching config: "/tmp/nm-phase3-work/shell.qml"
+  INFO: Shell ID: "58316b18680be10a4fbebd0710971cfb" Path ID "58316b18680be10a4fbebd0710971cfb"
+  INFO: Saving logs to "/tmp/nm-qml-b3leaoyh/runtime/quickshell/by-id/1na1chrdot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_117 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_117 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_253 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_253 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_254 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_254 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_117 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_356 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_356 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_357 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_357 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_117 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_459 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_459 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_460 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_460 overrides a member of the base object. Consider renaming it or adding final or override specifier
+
+shell.qml                                      ok

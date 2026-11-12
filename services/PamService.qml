@@ -34,6 +34,7 @@ Singleton {
             }
         }
         onCompleted: result => {
+            if (!pam.authenticating) return
             pam.authenticating = false
             pam.pending = ""
             if (result === PamResult.Success) {
@@ -74,6 +75,6 @@ Singleton {
         }
         return true
     }
-    function abort() { if (authenticating) ctx.abort(); pending = ""; authenticating = false }
-    function reset() { abort(); message = ""; messageIsError = false; failures = 0; delayed = false }
+    function abort() { const wasActive = authenticating; authenticating = false; pending = ""; if (wasActive) ctx.abort() }
+    function reset() { delayTimer.stop(); abort(); message = ""; messageIsError = false; failures = 0; delayed = false }
 }

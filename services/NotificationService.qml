@@ -10,7 +10,8 @@ import qs.services
 Singleton {
     id: ns
 
-    readonly property bool serverEnabled: UserConfig.data.notifications.server
+    readonly property bool serverEnabled: UserConfig.data.notifications.server && UserConfig.data.notifications.shellServerApproved
+    readonly property string status: usingMako ? "mako" : serverStarted ? "server" : SystemService.notificationOwnedByOther ? "other-daemon" : serverEnabled ? "initializing" : "disabled"
     // ---- Mako bridge (active while mako owns the notification service) ----
     property bool makoAvailable: false
     property bool makoDnd: false
@@ -47,9 +48,10 @@ Singleton {
     // later, so the shell cannot silently take over if the other daemon restarts.
     readonly property bool serverActive: serverEnabled && SystemService.notificationProbed && !SystemService.notificationOwnedByOther && !SystemService.notificationOwnerPid
     property bool serverStarted: false
+    onServerEnabledChanged: if (!serverEnabled) serverStarted = false
     onServerActiveChanged: if (serverActive) serverStarted = true
     Loader {
-        active: ns.serverStarted
+        active: ns.serverEnabled && ns.serverStarted
         sourceComponent: NotificationServer {
             keepOnReload: true
             bodySupported: true
@@ -68,7 +70,10 @@ Singleton {
         const critical = n.urgency === NotificationUrgency.Critical
         addHistory(n)
         if (UserConfig.data.notifications.toasts && (!dnd || critical)) {
-            toasts = toasts.concat([n]).slice(-UserConfig.data.notifications.maxToasts)
+            const queued = toasts.filter(t => t !== n).concat([n])
+            const overflow = queued.slice(0, Math.max(0, queued.length - UserConfig.data.notifications.maxToasts))
+            toasts = queued.slice(-UserConfig.data.notifications.maxToasts)
+            for (const old of overflow) old.tracked = false
             toastAdded(n)
         } else {
             // Not shown: keep the object only for history purposes.
@@ -87,6 +92,7 @@ Singleton {
     function timeoutFor(n) {
         const c = UserConfig.data.notifications
         if (n.urgency === NotificationUrgency.Critical) return c.criticalTimeout
+        if (n.expireTimeout === 0) return 0
         if (n.expireTimeout > 0) return Math.max(1500, n.expireTimeout)
         return c.toastTimeout
     }
@@ -100,7 +106,7 @@ Singleton {
         atomicWrites: true
         printErrors: false
         onLoaded: {
-            try { const p = JSON.parse(text()); if (Array.isArray(p)) ns.history = ns.prune(p) } catch (e) { console.warn("[NotificationService] history invalid, resetting") }
+            try { const p = JSON.parse(text()); if (Array.isArray(p)) ns.history = ns.prune(p) } catch (e) { Log.warn("NotificationService", "history invalid, resetting") }
             ns.historyLoaded = true
         }
         onLoadFailed: ns.historyLoaded = true

@@ -1,0 +1,71 @@
+// ============================================================
+//  niri — config principal
+//  Fiecare secțiune stă în fișierul ei (vezi include-urile de mai jos).
+//  Reîncărcare: automată la salvare. Verificare: `niri validate`.
+//  Paletă: strict monocrom (negru / alb / griuri), colțuri drepte peste tot.
+//  Documentație locală: /usr/share/doc/niri/wiki/
+// ============================================================
+
+include "input.kdl"       // tastatură, touchpad, mouse
+include "outputs.kdl"     // monitoare
+include "layout.kdl"      // gaps, focus ring, umbre, tab-uri
+include "animations.kdl"  // animații
+include "rules.kdl"       // workspaces numite + reguli de ferestre
+include "startup.kdl"     // programe pornite la login
+include "binds.kdl"       // scurtături tastatură
+include "niri-monochrome.kdl" // scurtături NIRI MONOCHROME (Mod+D, Mod+A)
+
+// Cere aplicațiilor să nu-și deseneze propriul titlebar.
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"
+
+// Variabile de mediu pentru aplicațiile pornite din niri.
+environment {
+    QT_QPA_PLATFORM "wayland"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORMTHEME "gtk3"       // Qt ia paleta, fontul și iconițele din GTK
+    XCURSOR_THEME "Adwaita"
+    XCURSOR_SIZE "24"
+}
+
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 3000
+}
+
+// Overview (Mod+O sau gest cu 3 degete în sus).
+overview {
+    zoom 0.5
+    backdrop-color "#080808"
+    workspace-shadow {
+        softness 40
+        spread 8
+        offset x=0 y=8
+        color "#00000080"
+    }
+}
+
+// Hot corners oprite: overview-ul se deschide doar din tastă sau gest.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Suport pentru aplicații X11 (niri îl pornește singur la nevoie).
+xwayland-satellite {
+    path "xwayland-satellite"
+}
+
+// Capacul laptopului: logind face suspend; aici doar blocăm înainte.
+switch-events {
+    lid-close { spawn "swaylock" "-f"; }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}

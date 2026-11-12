@@ -14,7 +14,7 @@ PopoverFrame {
         MonoButton { visible: NotificationService.usingMako; text: "Dismiss"; icon: "x"; iconSize: 12; implicitHeight: 22; padding: 6; flat: true; onClicked: NotificationService.dismissAll() },
         MonoButton { text: "Clear all"; icon: "trash"; iconSize: 12; implicitHeight: 22; padding: 6; flat: true; enabled: NotificationService.history.length > 0; onClicked: NotificationService.clearHistory() }
     ]
-    Component.onCompleted: markTimer.start()
+    Component.onCompleted: { SystemService.probeNotificationOwner(); NotificationService.refreshMako(); markTimer.start() }
     Timer { id: markTimer; interval: 1200; onTriggered: NotificationService.markAllRead() }
 
     Flickable {

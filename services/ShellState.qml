@@ -14,12 +14,14 @@ Singleton {
     property bool dockKeyboard: false  // dock opened from the keyboard (per focused screen)
     property string dockScreen: ""
     property bool settingsOpen: false
+    property int settingsSection: 0
 
     signal requestFocusReset()
 
     function isOpen(name, screen) { return open === name && screenName === screen }
 
     function show(name, screen, x, payload) {
+        hideDock()
         open = name
         screenName = screen || (MonitorService.focusedScreen() ? MonitorService.focusedScreen().name : "")
         anchorX = (x === undefined || x === null) ? -1 : x
@@ -38,4 +40,8 @@ Singleton {
         else { dockScreen = target; dockKeyboard = true; close() }
     }
     function hideDock() { dockKeyboard = false }
+    Connections { target: Quickshell; function onScreensChanged() {
+        if (st.open && !MonitorService.screenByName(st.screenName)) st.close()
+        if (st.dockKeyboard && !MonitorService.screenByName(st.dockScreen)) st.hideDock()
+    } }
 }

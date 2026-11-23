@@ -1,0 +1,16 @@
+selftest-glass.qml
+tests/validate.sh
+tests/run-qml.py
+components/Settings.qml
+components/NotificationToasts.qml
+config/Theme.qml
+components/popovers/MediaControls.qml
+components/popovers/Launcher.qml
+components/popovers/ControlCenter.qml
+components/popovers/NotificationCenter.qml
+components/popovers/CalendarPopover.qml
+components/bar/WorkspaceIndicator.qml
+components/bar/FocusedWindow.qml
+components/bar/ClockIndicator.qml
+components/ui/MonoTextField.qml
+components/ui/SectionTitle.qml

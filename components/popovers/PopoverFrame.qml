@@ -9,7 +9,7 @@ Panel {
     property string icon: ""
     default property alias content: body.data
     property alias headerExtra: extra.data
-    property int padding: 14
+    property int padding: 16
     implicitWidth: 360
     implicitHeight: header.height + body.implicitHeight + padding * 2 + (title !== "" ? 6 : 0)
     border.color: Theme.border

@@ -1,0 +1,43 @@
+[
+  {
+    "command": [
+      "sh",
+      "-n",
+      "/home/jorj/.local/bin/niri-lock"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "shellcheck",
+      "-s",
+      "sh",
+      "/home/jorj/.local/bin/niri-lock"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "sh",
+      "-c",
+      "command -v swaylock; command -v niri-lock"
+    ],
+    "exit": 0,
+    "output": "/usr/bin/swaylock\n/home/jorj/.local/bin/niri-lock\n"
+  },
+  {
+    "command": [
+      "qs",
+      "-c",
+      "niri-monochrome",
+      "ipc",
+      "call",
+      "shell",
+      "status"
+    ],
+    "exit": 0,
+    "output": "{\"niri\":true,\"screens\":[\"eDP-1\"],\"notifications\":\"other:12139\",\"locked\":true,\"workspaces\":4,\"apps\":\"80/123\"}\n"
+  }
+]

@@ -1,0 +1,93 @@
+{
+  "before_removal": {
+    "nodes": {
+      "74": {
+        "adapt.follower.spa-node": "",
+        "application.name": "pw-cat",
+        "client.id": 84,
+        "clock.quantum-limit": 8192,
+        "factory.id": 9,
+        "library.name": "audioconvert/libspa-audioconvert",
+        "media.category": "Capture",
+        "media.class": "Stream/Input/Audio",
+        "media.filename": "-",
+        "media.name": "-",
+        "media.role": "Analyzer",
+        "media.type": "Audio",
+        "node.async": true,
+        "node.autoconnect": true,
+        "node.driver-id": 71,
+        "node.loop.class": "main",
+        "node.loop.name": "main-loop",
+        "node.name": "niri-monochrome-visualizer",
+        "node.passive": true,
+        "node.rate": "1/16000",
+        "node.want-driver": true,
+        "object.id": 74,
+        "object.register": false,
+        "object.serial": 646,
+        "port.group": "stream.0",
+        "stream.capture.sink": true,
+        "stream.dont-reconnect": true,
+        "stream.is-live": true,
+        "target.object": "nm_task4_probe"
+      }
+    },
+    "links": [
+      {
+        "from": "nm_task4_probe",
+        "to": 74
+      },
+      {
+        "from": "nm_task4_probe",
+        "to": 74
+      }
+    ]
+  },
+  "after_removal": {
+    "nodes": {
+      "74": {
+        "adapt.follower.spa-node": "",
+        "application.name": "pw-cat",
+        "client.id": 84,
+        "clock.quantum-limit": 8192,
+        "factory.id": 9,
+        "library.name": "audioconvert/libspa-audioconvert",
+        "media.category": "Capture",
+        "media.class": "Stream/Input/Audio",
+        "media.filename": "-",
+        "media.name": "-",
+        "media.role": "Analyzer",
+        "media.type": "Audio",
+        "node.async": true,
+        "node.autoconnect": true,
+        "node.driver-id": 45,
+        "node.loop.class": "main",
+        "node.loop.name": "main-loop",
+        "node.name": "niri-monochrome-visualizer",
+        "node.passive": true,
+        "node.rate": "1/16000",
+        "node.want-driver": true,
+        "object.id": 74,
+        "object.register": false,
+        "object.serial": 646,
+        "port.group": "stream.0",
+        "stream.capture.sink": true,
+        "stream.dont-reconnect": true,
+        "stream.is-live": true,
+        "target.object": "nm_task4_probe"
+      }
+    },
+    "links": [
+      {
+        "from": "alsa_output.pci-0000_00_1f.3.analog-stereo",
+        "to": 74
+      },
+      {
+        "from": "alsa_output.pci-0000_00_1f.3.analog-stereo",
+        "to": 74
+      }
+    ]
+  },
+  "helper_returncode": null
+}

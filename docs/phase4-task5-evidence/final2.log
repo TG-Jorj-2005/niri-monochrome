@@ -1,0 +1,422 @@
+bash -n install-screenshot-entry.sh            ok
+bash -n publish-github.sh                      ok
+bash -n niri-ipc-test.sh                       ok
+bash -n validate.sh                            ok
+json config.json                               ok
+json state.json                                ok
+desktop entry                                  ok
+niri validate                                  ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-qml.qml"
+  INFO: Shell ID: "c712f48e1cbbe011b1a8b24c4502681b" Path ID "c712f48e1cbbe011b1a8b24c4502681b"
+  INFO: Saving logs to "/tmp/nm-qml-rt635aek/runtime/quickshell/by-id/0zd410veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_79 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: QMLCHECK ok BottomBar
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO qml: QMLCHECK ok AutoHideDock
+  INFO qml: QMLCHECK ok OverlayLayer
+  INFO qml: QMLCHECK ok NotificationToasts
+  INFO qml: QMLCHECK ok WallpaperLayer
+  INFO qml: QMLCHECK ok Osd
+  INFO qml: QMLCHECK ok LockScreen
+  INFO qml: QMLCHECK ok Settings
+  WARN scene: QML QQuickItem at @selftest-qml.qml[29:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ShortcutCheatSheet
+  WARN scene: QML QQuickItem at @selftest-qml.qml[27:32]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok Launcher
+  WARN scene: QML QQuickItem at @selftest-qml.qml[28:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ControlCenter
+  WARN scene: QML QQuickItem at @selftest-qml.qml[30:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok NotificationCenter
+  WARN scene: QML QQuickItem at @selftest-qml.qml[31:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok MediaControls
+  WARN scene: QML QQuickItem at @selftest-qml.qml[32:27]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok CalendarPopover
+  WARN scene: QML QQuickItem at @selftest-qml.qml[33:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok PowerMenu
+  WARN scene: QML QQuickItem at @selftest-qml.qml[34:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ui primitives
+  WARN scene: QML QQuickItem at @selftest-qml.qml[35:27]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok settings rows
+  INFO qml: QMLCHECK ok services 18
+  INFO qml: QMLCHECK DONE 17 components
+
+selftest-qml.qml                               ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-core.qml"
+  INFO: Shell ID: "c48d7d6ca14ec06943c58b20eafdf62b" Path ID "c48d7d6ca14ec06943c58b20eafdf62b"
+  INFO: Saving logs to "/tmp/nm-qml-r1ku7m8n/runtime/quickshell/by-id/b0e440veot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS corrupt section types recover
+  INFO qml: PASS string cannot enable experimental lock
+  INFO qml: PASS legacy server setting is not migration consent
+  WARN qml: [UserConfig]  config.json is not valid JSON: SyntaxError: JSON.parse: Parse error
+  INFO qml: PASS invalid JSON retains last configuration
+  INFO qml: PASS corrupt state types recover
+  INFO qml: PASS monitor key dots preserved in state
+  INFO qml: PASS monitor key dots preserved in config
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: PASS identical monitors do not collide
+  INFO qml: PASS existing monitor identity preserved
+  INFO qml: PASS missing EDID falls back to connector
+  INFO qml: PASS failed wallpaper advances to valid candidate
+  INFO qml: PASS all wallpapers failed gives empty fallback
+  INFO qml: PASS missing NIRI_SOCKET is unavailable
+  INFO qml: PASS overlay clears dock keyboard focus
+  INFO qml: RESULT 14/14 passed
+
+selftest-core.qml                              ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-wallpaper.qml"
+  INFO: Shell ID: "dc54cb220caf19a73b4a487c5f55b02d" Path ID "dc54cb220caf19a73b4a487c5f55b02d"
+  INFO: Saving logs to "/tmp/nm-qml-823_9w6z/runtime/quickshell/by-id/l1e460veot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN scene: QML Image at @components/WallpaperLayer.qml[72:9]: Error decoding: file:///tmp/nm-qml-823_9w6z/wallpapers/a-bad.png: Unsupported image format
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  INFO qml: PASS decoder failure skips invalid image
+  WARN scene: QML Image at @components/WallpaperLayer.qml[67:9]: Cannot open: file:///tmp/nm-qml-823_9w6z/wallpapers/missing.png
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  INFO qml: PASS missing image reaches empty background fallback
+  INFO qml: RESULT 2/2 passed
+
+selftest-wallpaper.qml                         ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-phase4.qml"
+  INFO: Shell ID: "238abc3f67db953e06664a13e75ceb98" Path ID "238abc3f67db953e06664a13e75ceb98"
+  INFO: Saving logs to "/tmp/nm-qml-manl4km3/runtime/quickshell/by-id/k3e4d0veot/log.qslog"
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS safe appearance and visualizer ranges
+  INFO qml: PASS reduced motion gates centralized durations
+  INFO qml: PASS later bindings override without duplicate rows
+  INFO qml: PASS occupied native shortcut is retained
+  INFO qml: PASS shortcut action and key filtering
+  INFO qml: PASS missing backend cannot start capture
+  INFO qml: PASS hidden visualizer releases subscription
+  INFO qml: PASS disabled visualizer cannot subscribe
+  INFO qml: PASS invalid audio frames ignored
+  INFO qml: PASS audio history bounded by bar count
+  INFO qml: RESULT 10/10 passed
+
+selftest-phase4.qml                            ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-overlay.qml"
+  INFO: Shell ID: "c643c28817350dca3feb6fe61aba20d2" Path ID "c643c28817350dca3feb6fe61aba20d2"
+  INFO: Saving logs to "/tmp/nm-qml-5b716e6n/runtime/quickshell/by-id/f4e4f0veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_89 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: FAIL shortcut overlay loaded
+  WARN scene: @selftest-overlay.qml[30:-1]: TypeError: Cannot read property 'tooltip' of null
+  WARN scene: @selftest-overlay.qml[37:-1]: TypeError: Cannot read property 'echoMode' of null
+  WARN: "Could not convert argument 1 from undefined to QUrl"
+  WARN: 	 "qtest_fail@qrc:/qt-project.org/imports/QtTest/TestCase.qml:516"
+  WARN: 	 "mouseClick@qrc:/qt-project.org/imports/QtTest/TestCase.qml:1658"
+  WARN: 	 "expression for onTriggered@qs:@/qs/selftest-overlay.qml:48"
+  WARN scene: qrc:/qt-project.org/imports/QtTest/TestCase.qml[516:-1]: TypeError: Passing incompatible arguments to C++ functions from JavaScript is not allowed.
+  WARN qml: [MonitorService] niri outputs not received, using connector-based keys
+
+Traceback (most recent call last):
+  File "/home/jorj/.config/quickshell/niri-monochrome/tests/run-qml.py", line 87, in <module>
+    proc.wait(timeout=20)
+    ~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib64/python3.15/subprocess.py", line 1445, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.15/subprocess.py", line 2310, in _wait
+    if self._wait_pidfd(timeout) or self._wait_kqueue(timeout):
+       ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib64/python3.15/subprocess.py", line 2249, in _wait_pidfd
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['dbus-run-session', '--config-file=/tmp/nm-qml-5b716e6n/bus.conf', '--', 'qs', '-p', '/home/jorj/.config/quickshell/niri-monochrome/selftest-overlay.qml', '--no-color']' timed out after 20 seconds
+selftest-overlay.qml                           FAIL
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-interactions.qml"
+  INFO: Shell ID: "71640f56a871faf756999a70f725cbdd" Path ID "71640f56a871faf756999a70f725cbdd"
+  INFO: Saving logs to "/tmp/nm-qml-46ronxxc/runtime/quickshell/by-id/zae4z0veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_102 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS button hover feedback
+  INFO qml: PASS button click fires exactly once inside overlay
+  INFO qml: PASS press feedback compresses without layout change
+  INFO qml: PASS release returns scale and fires once
+  INFO qml: PASS disabled button rejects pointer action
+  INFO qml: PASS toggle click fires once without dismissal
+  INFO qml: PASS slider drag updates backend without dismissal
+  INFO qml: PASS slider external updates retain binding
+  INFO qml: PASS Tab moves to next button
+  INFO qml: PASS Tab reaches toggle
+  INFO qml: PASS Tab reaches slider
+  INFO qml: PASS Shift Tab restores previous control focus
+  INFO qml: PASS button Space Return Enter fire once each
+  INFO qml: PASS icon button keyboard activation
+  INFO qml: PASS toggle Space and Return activation
+  INFO qml: PASS toggle keypad Enter activation
+  INFO qml: PASS slider Right keyboard step
+  INFO qml: PASS slider Home bound
+  INFO qml: PASS slider End bound
+  INFO qml: PASS disabled toggle rejects input
+  INFO qml: PASS disabled slider rejects input
+  INFO qml: PASS reduced motion applies without reload
+  INFO qml: PASS reduced motion keeps immediate press feedback
+  INFO qml: PASS reduced motion persists as valid config
+  INFO qml: PASS rapid open close keeps latest overlay state
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  WARN scene: QML Loader (parent or ancestor of Component) at @components/OverlayLayer.qml[65:9]: Cannot create delegate
+  WARN scene: @components/popovers/ShortcutCheatSheet.qml[-1:-1]: Object or context destroyed during incubation
+  INFO qml: PASS reduced motion dismissal releases surface
+  INFO qml: RESULT 26/26 passed
+
+selftest-interactions.qml                      ok
+PASS generated glass KDL validation + no rewrite across process restart
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-glass.qml"
+  INFO: Shell ID: "f33eda9d6c0322841219637dbe8bfa73" Path ID "f33eda9d6c0322841219637dbe8bfa73"
+  INFO: Saving logs to "/tmp/nm-qml-wlaxvq35/runtime/quickshell/by-id/1ce431veot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS missing appearance config safely initializes defaults
+  INFO qml: PASS opacity lower and upper bounds
+  INFO qml: PASS invalid opacity types recover to default
+  INFO qml: PASS geometry shadow and glass types bounded
+  INFO qml: CONTRAST 0 secondary=7.848 heading=7.848
+  INFO qml: CONTRAST 1 secondary=7.391 heading=7.391
+  INFO qml: CONTRAST 2 secondary=6.383 heading=6.383
+  INFO qml: CONTRAST 3 secondary=4.704 heading=4.704
+  INFO qml: CONTRAST 4 secondary=4.633 heading=4.633
+  INFO qml: PASS actual Panel alpha composition across five backgrounds
+  INFO qml: PASS secondary text contrast across five rendered backgrounds
+  INFO qml: PASS actual section headings readable over bright glass
+  INFO qml: PASS muted icons contrast over bright glass
+  INFO qml: PASS slider focus outline contrast over bright glass
+  INFO qml: PASS enabled placeholder readable on opaque input
+  INFO qml: PASS glass off renders opaque fallback across backgrounds
+  INFO qml: PASS glass off disables both compositor blur rules
+  INFO qml: PASS generated blur rules anchored to bar and dock only
+  INFO qml: PASS appearance geometry and shadow propagate to generated KDL
+  INFO qml: PASS appearance preferences saved to private JSON
+  INFO qml: PASS file reload restores nondefault appearance and motion
+  WARN qml: [UserConfig]  config.json is not valid JSON: SyntaxError: JSON.parse: Parse error
+  INFO qml: PASS corrupt JSON preserves last valid appearance
+  INFO qml: PASS unchanged appearance does not rewrite KDL
+  INFO qml: RESULT 18/18 passed
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-glass.qml"
+  INFO: Shell ID: "f33eda9d6c0322841219637dbe8bfa73" Path ID "f33eda9d6c0322841219637dbe8bfa73"
+  INFO: Saving logs to "/tmp/nm-qml-wlaxvq35/runtime/quickshell/by-id/kde461veot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS new process restores appearance and generated rules
+  INFO qml: RESULT 1/1 passed
+
+selftest-glass.qml                             ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-visualizer.qml"
+  INFO: Shell ID: "d1c3f0b9d42549c16fb534edf4f28428" Path ID "d1c3f0b9d42549c16fb534edf4f28428"
+  INFO: Saving logs to "/tmp/nm-qml-lgemsqkh/runtime/quickshell/by-id/2ee481veot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS target follows actual default AudioService sink
+  INFO qml: PASS closed visualizer has no subscription
+  INFO qml: PASS visible activation subscribes exactly once
+  INFO qml: PASS repeated sync cannot duplicate subscription
+  INFO qml: PASS ancestor hiding releases subscription
+  INFO qml: PASS hidden reenable cannot capture
+  INFO qml: PASS disable releases visible subscription
+  INFO qml: PASS reenable visible view restores one subscription
+  INFO qml: PASS attack release smoothing deterministic
+  INFO qml: PASS invalid amplitudes do not change history
+  INFO qml: PASS silence reaches exact calm state
+  INFO qml: PASS history and values remain bounded
+  INFO qml: PASS reduced motion renders bounded actual bars
+  INFO qml: PASS destroyed views release all subscriptions
+  INFO qml: RESULT 14/14 passed
+
+selftest-visualizer.qml                        ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-shortcut-data.qml"
+  INFO: Shell ID: "874ca4e946adf5fb92c123a38ddbc6af" Path ID "874ca4e946adf5fb92c123a38ddbc6af"
+  INFO: Saving logs to "/tmp/nm-qml-3rwow32g/runtime/quickshell/by-id/cfe4a1veot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS block comments never invent bindings
+  INFO qml: PASS disabled nodes excluded and multiline action retained
+  INFO qml: PASS quoted braces and same-line nodes preserve structure
+  INFO qml: PASS native modifier aliases accepted
+  INFO qml: PASS canonicalization changes modifiers only
+  INFO qml: PASS hidden later binding cannot resurrect overridden row
+  INFO qml: PASS modifier aliases resolve one effective row
+  INFO qml: PASS escaped title decoded
+  INFO qml: PASS structurally invalid source fails closed
+  INFO qml: PASS multiple keys for one action are retained
+  INFO qml: PASS case insensitive action and description filtering
+  INFO qml: PASS literal special-character search
+  INFO qml: PASS category filtering and empty state
+  INFO qml: PASS same-block duplicates fail closed as native niri requires
+  INFO qml: PASS raw quoted strings and nested comments preserved
+  INFO qml: PASS supported includes follow main file order
+  INFO qml: PASS disabled source include cannot contribute rows
+  INFO qml: PASS main inline binding overrides preceding included source
+  INFO qml: PASS configured native Mod changes modifier normalization
+  INFO qml: PASS unknown actions remain raw informational descriptions
+  INFO qml: PASS empty or invalid supported entries never invent actions
+  INFO qml: FILTER_BENCH 991 ms for 100 queries over 5000 rows
+  INFO qml: PASS large registry filtering remains local and deterministic
+  INFO qml: PASS category uses native action and recognizes configured lock wrapper
+  INFO qml: RESULT 23/23 passed
+
+selftest-shortcut-data.qml                     ok
+PASS private shortcut source configuration validates after process restart
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-shortcut-ui.qml"
+  INFO: Shell ID: "9b79de692c0a182a6f67bded273dcbd2" Path ID "9b79de692c0a182a6f67bded273dcbd2"
+  INFO: Saving logs to "/tmp/nm-qml-3bd74u6v/runtime/quickshell/by-id/gge4c1veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_102 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS actual supported source files loaded without duplicate keys
+  INFO qml: PASS synthetic search focus in pass-through overlay
+  INFO qml: PASS typing retains search focus and filters locally
+  INFO qml: PASS special-character query shows correct row
+  INFO qml: PASS Return and keypad Enter never execute informational rows
+  INFO qml: PASS Tab reaches category controls
+  INFO qml: PASS Shift Tab returns to search
+  INFO qml: PASS pointer category selection filters actual entries
+  INFO qml: PASS category Return Enter Space remain safe
+  INFO qml: PASS pointer click restores search focus
+  INFO qml: PASS empty result navigation remains bounded and legible
+  INFO qml: PASS Down selects next filtered row
+  INFO qml: PASS Up selects previous filtered row
+  INFO qml: PASS long result list scrolls without dismissal
+  INFO qml: PASS inside padding preserves Task 1 shield
+  INFO qml: PASS Escape dismisses actual overlay
+  INFO qml: PASS small viewport keeps keycaps inside panel
+  INFO qml: PASS small viewport footer and list never overlap or escape
+  INFO qml: PASS atomic source update immediately refreshes open sheet
+  WARN qml: [MonitorService] niri outputs not received, using connector-based keys
+  INFO qml: PASS removed source never leaves stale shortcuts
+  INFO qml: PASS recreated source restored on supported refresh
+  INFO qml: PASS generated file change applies effective override once
+  INFO qml: PASS main include order governs effective supported override
+  INFO qml: PASS settings change refreshes actual generated include
+  INFO qml: PASS disabled shell binding disappears after file regeneration
+  INFO qml: PASS actual Settings shortcut button opens overlay and closes Settings state
+  INFO qml: PASS Control Center keyboard button transitions to cheat sheet
+  INFO qml: PASS rapid reduced-motion reopen retains one sheet
+  INFO qml: PASS close button dismisses without opening another overlay
+  INFO qml: PASS outside click dismisses and releases overlay
+  INFO qml: RESULT 30/30 passed
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-shortcut-restore.qml"
+  INFO: Shell ID: "a02fe7edb1e656f8590c9bb4a1424182" Path ID "a02fe7edb1e656f8590c9bb4a1424182"
+  INFO: Saving logs to "/tmp/nm-qml-3bd74u6v/runtime/quickshell/by-id/jke4l1veot/log.qslog"
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS new process restores supported registry after settings/source updates
+  INFO qml: RESULT 1/1 passed
+
+selftest-shortcut-ui.qml                       ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-shortcut-layout.qml"
+  INFO: Shell ID: "9b120de7295b5e21039ffa2c251fcfdb" Path ID "9b120de7295b5e21039ffa2c251fcfdb"
+  INFO: Saving logs to "/tmp/nm-qml-tdtgrbod/runtime/quickshell/by-id/ele4m1veot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS normal keycaps stay within the sheet
+  INFO qml: PASS normal content and footer remain bounded
+  INFO qml: PASS small keycaps stay within the sheet
+  INFO qml: PASS small content and footer remain bounded
+  INFO qml: PASS narrow keycaps stay within the sheet
+  INFO qml: PASS narrow content and footer remain bounded
+  INFO qml: RESULT 6/6 passed
+
+selftest-shortcut-layout.qml                   ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-shortcut-focus.qml"
+  INFO: Shell ID: "66a05626c8b85e8c69a58e18ec8e69fb" Path ID "66a05626c8b85e8c69a58e18ec8e69fb"
+  INFO: Saving logs to "/tmp/nm-qml-j_qxano4/runtime/quickshell/by-id/kme4o1veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_94 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: FOCUS BEFORE true typed=t
+  INFO qml: RESULT 1/1 passed
+
+selftest-shortcut-focus.qml                    ok
+PASS generated appearance KDL validation
+PASS actual shell entrypoint + 3 isolated reloads
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/shell.qml"
+  INFO: Shell ID: "f08b5c29751da3e3208b48a405d30aa6" Path ID "f08b5c29751da3e3208b48a405d30aa6"
+  INFO: Saving logs to "/tmp/nm-qml-j8okre_4/runtime/quickshell/by-id/9ne4q1veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_123 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_123 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_305 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_305 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_307 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_307 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_123 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_430 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_430 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_432 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_432 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_123 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_555 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_555 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_557 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_557 overrides a member of the base object. Consider renaming it or adding final or override specifier
+
+shell.qml                                      ok
+test_amplitude_is_energy_not_signed_average (__main__.AudioHelperTests.test_amplitude_is_energy_not_signed_average) ... ok
+test_fragmented_complete_pcm_frame (__main__.AudioHelperTests.test_fragmented_complete_pcm_frame) ... ok
+test_full_scale_bounded (__main__.AudioHelperTests.test_full_scale_bounded) ... ok
+test_known_sine_rms_and_sign (__main__.AudioHelperTests.test_known_sine_rms_and_sign) ... ok
+test_missing_target_rejected (__main__.AudioHelperTests.test_missing_target_rejected) ... ok
+test_silence_and_noise_floor (__main__.AudioHelperTests.test_silence_and_noise_floor) ... ok
+test_stop_reaps_blocked_capture_child (__main__.AudioHelperTests.test_stop_reaps_blocked_capture_child) ... ok
+test_truncated_pcm_never_emits_activity (__main__.AudioHelperTests.test_truncated_pcm_never_emits_activity) ... ok
+test_unavailable_pipewire_emits_no_fake_level (__main__.AudioHelperTests.test_unavailable_pipewire_emits_no_fake_level) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.535s
+
+OK
+RESULT 9/9 passed
+audio-helper-test.py                           ok
+PASS native modifier aliases
+PASS comments disabled nodes multiline and quoted braces
+PASS same-block duplicates rejected
+PASS duplicate binds node rejected
+PASS positional includes and main override allowed
+PASS hidden title is valid without unbinding action
+RESULT 6/6 passed
+shortcut-native-test.py                        ok

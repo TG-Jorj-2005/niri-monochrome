@@ -1,0 +1,41 @@
+[
+  {
+    "check": "shellcheck",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "check": "niri-validate",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "check": "git-diff-check",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "check": "Python AST tests/shortcut-native-test.py",
+    "exit": 0
+  },
+  {
+    "check": "Python AST tests/visualizer-integration.py",
+    "exit": 0
+  },
+  {
+    "check": "Python AST tests/audio-helper-test.py",
+    "exit": 0
+  },
+  {
+    "check": "Python AST tests/run-qml.py",
+    "exit": 0
+  },
+  {
+    "check": "Python AST tests/fake-niri-server.py",
+    "exit": 0
+  },
+  {
+    "check": "Python AST scripts/audio-levels.py",
+    "exit": 0
+  }
+]

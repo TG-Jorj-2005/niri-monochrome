@@ -1,0 +1,13 @@
+  INFO: Launching config: "/tmp/nm-task1-probe/selftest-task1.qml"
+  INFO: Shell ID: "32aa5b688b155e0119281a73279225e0" Path ID "32aa5b688b155e0119281a73279225e0"
+  INFO: Saving logs to "/tmp/nm-qml-wi6ds68m/runtime/quickshell/by-id/0of25iaeot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS enabled requested visualizer starts real backend
+  INFO qml: PASS disabling active visualizer stops backend
+  INFO qml: PASS re-enable while hidden stays stopped
+  INFO qml: PASS hiding active visualizer stops backend
+  INFO qml: PASS slider writes through backend signal
+  INFO qml: PASS slider retains external backend binding
+  INFO qml: PASS reduce motion and opaque fallback remain connected
+  INFO qml: RESULT 7/7 passed
+

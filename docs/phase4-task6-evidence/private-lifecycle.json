@@ -1,0 +1,882 @@
+[
+  {
+    "name": "private-closed-initial-30s",
+    "seconds": 30.161836794999545,
+    "before": {
+      "t": 64639.616621616,
+      "ticks": 33,
+      "rssKiB": 146648,
+      "privateKiB": 56956,
+      "fds": 46,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "after": {
+      "t": 64669.778458411,
+      "ticks": 45,
+      "rssKiB": 166228,
+      "privateKiB": 76564,
+      "fds": 54,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "cpuPercent": 0.3978537541184975,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "launcher-12-open-close",
+    "seconds": 7.124304349003069,
+    "before": {
+      "t": 64669.851905592,
+      "ticks": 45,
+      "rssKiB": 166388,
+      "privateKiB": 76740,
+      "fds": 54,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "after": {
+      "t": 64676.976209941,
+      "ticks": 94,
+      "rssKiB": 163804,
+      "privateKiB": 72076,
+      "fds": 55,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "cpuPercent": 6.877864504322694,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "settings-12-open-close",
+    "seconds": 7.091903897999146,
+    "before": {
+      "t": 64677.046452937,
+      "ticks": 94,
+      "rssKiB": 163964,
+      "privateKiB": 72256,
+      "fds": 55,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "after": {
+      "t": 64684.138356835,
+      "ticks": 106,
+      "rssKiB": 171328,
+      "privateKiB": 77364,
+      "fds": 56,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "cpuPercent": 1.692070306167796,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "controlcenter-12-open-close",
+    "seconds": 7.099563203999423,
+    "before": {
+      "t": 64684.205558935,
+      "ticks": 106,
+      "rssKiB": 171328,
+      "privateKiB": 77364,
+      "fds": 56,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "after": {
+      "t": 64691.305122139,
+      "ticks": 150,
+      "rssKiB": 174092,
+      "privateKiB": 80076,
+      "fds": 57,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "cpuPercent": 6.197564376244065,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "notifications-12-open-close",
+    "seconds": 7.068957818999479,
+    "before": {
+      "t": 64691.368971676,
+      "ticks": 150,
+      "rssKiB": 174092,
+      "privateKiB": 80096,
+      "fds": 57,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "after": {
+      "t": 64698.437929495,
+      "ticks": 189,
+      "rssKiB": 174456,
+      "privateKiB": 80612,
+      "fds": 57,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "cpuPercent": 5.517079178938991,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "shortcuts-12-open-close",
+    "seconds": 7.04677163100132,
+    "before": {
+      "t": 64698.508609581,
+      "ticks": 190,
+      "rssKiB": 174252,
+      "privateKiB": 80280,
+      "fds": 57,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83
+      }
+    },
+    "after": {
+      "t": 64705.555381212,
+      "ticks": 258,
+      "rssKiB": 187512,
+      "privateKiB": 93224,
+      "fds": 60,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "cpuPercent": 9.649808956606908,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "dock-12-open-close",
+    "seconds": 7.1162013719949755,
+    "before": {
+      "t": 64705.634138631,
+      "ticks": 258,
+      "rssKiB": 186448,
+      "privateKiB": 92160,
+      "fds": 60,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "after": {
+      "t": 64712.750340003,
+      "ticks": 282,
+      "rssKiB": 191280,
+      "privateKiB": 96656,
+      "fds": 58,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "cpuPercent": 3.3725858425605195,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "media-12-open-close",
+    "seconds": 7.117858818004606,
+    "before": {
+      "t": 64712.816214178,
+      "ticks": 282,
+      "rssKiB": 191280,
+      "privateKiB": 96656,
+      "fds": 58,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "after": {
+      "t": 64719.934072996,
+      "ticks": 327,
+      "rssKiB": 184192,
+      "privateKiB": 89396,
+      "fds": 56,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "cpuPercent": 6.322125958184589,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "settings-dock-80-search-assignments",
+    "seconds": 3.8660687590017915,
+    "before": {
+      "t": 64720.012838766,
+      "ticks": 327,
+      "rssKiB": 184192,
+      "privateKiB": 89396,
+      "fds": 56,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "after": {
+      "t": 64723.878907525,
+      "ticks": 365,
+      "rssKiB": 186412,
+      "privateKiB": 92076,
+      "fds": 56,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "cpuPercent": 9.829106094277407,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 2,
+      "locked": false,
+      "playing": false,
+      "query": "settings"
+    }
+  },
+  {
+    "name": "closed-recovery-30s",
+    "seconds": 30.185427655997046,
+    "before": {
+      "t": 64723.956282617,
+      "ticks": 365,
+      "rssKiB": 186412,
+      "privateKiB": 92076,
+      "fds": 56,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "after": {
+      "t": 64754.141710273,
+      "ticks": 371,
+      "rssKiB": 186232,
+      "privateKiB": 91308,
+      "fds": 52,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "cpuPercent": 0.1987714094488888,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 2,
+      "locked": false,
+      "playing": false,
+      "query": "settings"
+    }
+  },
+  {
+    "name": "closed-recovery-next-60s",
+    "seconds": 60.349190815999464,
+    "before": {
+      "t": 64754.209867994,
+      "ticks": 371,
+      "rssKiB": 186392,
+      "privateKiB": 91320,
+      "fds": 52,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "after": {
+      "t": 64814.55905881,
+      "ticks": 382,
+      "rssKiB": 186392,
+      "privateKiB": 91352,
+      "fds": 52,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "cpuPercent": 0.1822725350790244,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 2,
+      "locked": false,
+      "playing": false,
+      "query": "settings"
+    }
+  },
+  {
+    "name": "supported-private-reload",
+    "seconds": 1.7238202630032902,
+    "before": {
+      "t": 64814.634467681,
+      "ticks": 382,
+      "rssKiB": 186392,
+      "privateKiB": 91352,
+      "fds": 52,
+      "children": [
+        "224738"
+      ],
+      "inotify": {
+        "13": 1,
+        "26": 2,
+        "28": 18,
+        "40": 83,
+        "53": 2,
+        "55": 2,
+        "56": 2,
+        "57": 2
+      }
+    },
+    "after": {
+      "t": 64816.358287944,
+      "ticks": 409,
+      "rssKiB": 169632,
+      "privateKiB": 75736,
+      "fds": 51,
+      "children": [
+        "228033"
+      ],
+      "inotify": {
+        "13": 1,
+        "28": 18,
+        "44": 2,
+        "48": 83
+      }
+    },
+    "cpuPercent": 15.662885846903674,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  },
+  {
+    "name": "post-reload-closed-60s",
+    "seconds": 60.33463064600073,
+    "before": {
+      "t": 64816.435846398,
+      "ticks": 409,
+      "rssKiB": 169632,
+      "privateKiB": 75784,
+      "fds": 51,
+      "children": [
+        "228033"
+      ],
+      "inotify": {
+        "13": 1,
+        "28": 18,
+        "44": 2,
+        "48": 83
+      }
+    },
+    "after": {
+      "t": 64876.770477044,
+      "ticks": 427,
+      "rssKiB": 184092,
+      "privateKiB": 90120,
+      "fds": 47,
+      "children": [
+        "228033"
+      ],
+      "inotify": {
+        "13": 1,
+        "28": 18,
+        "44": 2,
+        "48": 83
+      }
+    },
+    "cpuPercent": 0.2983361264878005,
+    "diagnostics": {
+      "niriStatus": "unavailable",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "disabled",
+      "shellServerApproved": false,
+      "shellLock": false,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "info": {
+      "settings": false,
+      "settingsSection": 0,
+      "locked": false,
+      "playing": false,
+      "query": ""
+    }
+  }
+]

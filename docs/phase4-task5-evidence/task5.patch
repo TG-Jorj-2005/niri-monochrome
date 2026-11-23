@@ -1,0 +1,678 @@
+--- before/services/ShortcutParser.js
++++ after/services/ShortcutParser.js
+@@ -0,0 +1,121 @@
++.pragma library
++
++// Structural reader for the registry's bounded KDL subset, not a Niri validator.
++// Quoted/raw strings, comments, slash-dash nodes and braces are read before bindings.
++function nodes(text) {
++    if (text.length > 1024*1024) throw new Error("Source exceeds 1 MiB")
++    const t=[]; let i=0
++    function put(kind,value,start) { t.push({kind:kind,value:value,raw:text.slice(start,i)}) }
++    while(i<text.length) {
++        const start=i, c=text[i]
++        if(c==='\n'||c===';') { i++;put('end',c,start);continue }
++        if(/\s/.test(c)) {i++;continue}
++        if(text.slice(i,i+2)==='//') {while(i<text.length&&text[i]!=='\n')i++;continue}
++        if(text.slice(i,i+2)==='/*') {
++            i+=2;let depth=1
++            while(i<text.length&&depth) {if(text.slice(i,i+2)==='/*'){depth++;i+=2}else if(text.slice(i,i+2)==='*/'){depth--;i+=2}else i++}
++            if(depth)throw new Error('Unterminated comment');continue
++        }
++        if(text.slice(i,i+2)==='/-') {i+=2;put('disabled','/-',start);continue}
++        if(c==='\\') {i++;while(i<text.length&&/[ \t\r]/.test(text[i]))i++;if(text[i]!=='\n')throw new Error('Unsupported continuation');i++;continue}
++        const raw=c==='r'?text.slice(i).match(/^r(#{0,16})"/):null
++        if(raw) {
++            i+=raw[0].length;const stop='"'+raw[1], end=text.indexOf(stop,i)
++            if(end<0)throw new Error('Unterminated raw string')
++            const value=text.slice(i,end);i=end+stop.length;put('string',value,start);continue
++        }
++        if(c==='"') {
++            i++;let value='',closed=false
++            while(i<text.length) {
++                const x=text[i++]
++                if(x==='"'){closed=true;break}
++                if(x!=='\\'){value+=x;continue}
++                const e=text[i++], escapes={'n':'\n','r':'\r','t':'\t','b':'\b','f':'\f','"':'"','\\':'\\','/':'/'}
++                if(e==='u'&&text[i]==='{') {
++                    const end=text.indexOf('}',++i), hex=text.slice(i,end)
++                    if(end<0||! /^[a-fA-F0-9]{1,6}$/.test(hex))throw new Error('Invalid Unicode escape')
++                    value+=String.fromCodePoint(parseInt(hex,16));i=end+1
++                } else if(escapes[e]!==undefined)value+=escapes[e]
++                else throw new Error('Unsupported string escape')
++            }
++            if(!closed)throw new Error('Unterminated string')
++            put('string',value,start);continue
++        }
++        if('{}='.includes(c)){i++;put(c,c,start);continue}
++        while(i<text.length&&!/[\s{}=;]/.test(text[i])&&!['//','/*','/-'].includes(text.slice(i,i+2)))i++
++        if(i===start)throw new Error('Unsupported token')
++        put('word',text.slice(start,i),start)
++    }
++    let at=0
++    function read(nested,depth) {
++        if(depth>64)throw new Error('Nesting limit')
++        const result=[]
++        while(at<t.length) {
++            if(t[at].kind==='end'){at++;continue}
++            if(t[at].kind==='}') {if(!nested)throw new Error('Unexpected brace');at++;return result}
++            const begin=at;let disabled=false
++            if(t[at].kind==='disabled'){disabled=true;at++}
++            const header=[]
++            while(at<t.length&&!['end','{','}'].includes(t[at].kind))header.push(t[at++])
++            if(!header.length)throw new Error('Empty node')
++            let children=[]
++            if(at<t.length&&t[at].kind==='{'){at++;children=read(true,depth+1)}
++            result.push({name:header[0].value,header:header,children:children,disabled:disabled,raw:t.slice(begin,at).map(x=>x.raw).join(' ')})
++        }
++        if(nested)throw new Error('Unclosed brace')
++        return result
++    }
++    return read(false,0)
++}
++function property(node,name) {
++    for(let i=1;i<node.header.length;i++) {
++        if(node.header[i].kind==='disabled') { i++;if(node.header[i+1]&&node.header[i+1].kind==='=')i+=2;continue }
++        if(node.header[i].value===name&&node.header[i+1]&&node.header[i+1].kind==='=')return node.header[i+2]
++    }
++    return undefined
++}
++function argument(node) {
++    for(let i=1;i<node.header.length;i++) {
++        if(node.header[i].kind==='disabled'){i++;if(node.header[i+1]&&node.header[i+1].kind==='=')i+=2;continue}
++        if(node.header[i+1]&&node.header[i+1].kind==='='){i+=2;continue}
++        return node.header[i].value
++    }
++    return ''
++}
++function validKey(key) {return /^(?:(?:Mod|Super|Win|Ctrl|Control|Alt|Shift|Mod5|ISO_Level3_Shift|ISO_Level5_Shift)\+)*[A-Za-z0-9_]+$/.test(key)}
++function canonical(key,mod) {
++    const pieces=key.split('+'), trigger=pieces.pop()
++    const aliases={Mod:mod||'Super',Win:'Super',Control:'Ctrl',Mod5:'ISO_Level3_Shift'}
++    return Array.from(new Set(pieces.map(p=>aliases[p]||p))).sort().concat([trigger]).join('+')
++}
++function bindings(tree,shell,fragments) {
++    const list=[]
++    function add(n) {
++        if(n.disabled||!validKey(n.name))return
++        const actions=n.children.filter(x=>!x.disabled)
++        if(actions.length!==1)return
++        const title=property(n,'hotkey-overlay-title'), command=actions[0].raw.replace(/;\s*$/,'')
++        // Preserve a hidden override as a tombstone until duplicate resolution.
++        const hidden=title&&title.kind==='word'&&['null','#null'].includes(title.value)
++        const label=title&&!hidden?title.value:command.replace(/-/g,' ')
++        const category=shell?'NIRI MONOCHROME':/screenshot|Print/.test(command+' '+n.name)?'Screenshots':/XF86Audio|XF86Mon/.test(n.name)?'Media':/workspace/.test(actions[0].name)?'Workspaces':/monitor|focus-column|focus-window|switch-layout/.test(actions[0].name)?'Navigation':/window|column|fullscreen/.test(actions[0].name)?'Windows':/makoctl|swaylock|niri-lock|power|suspend|quit/.test(command)?'System':/spawn/.test(command)?'Applications':'System'
++        list.push({key:n.name,label:label,category:category,description:command,hidden:!!hidden})
++    }
++    if(tree.filter(n=>!n.disabled&&n.name==='binds').length>1)throw new Error('Duplicate binds node')
++    for(const node of tree) {
++        if(node.disabled)continue
++        if(node.name==='binds') {
++            const seen=new Set()
++            for(const n of node.children) {
++                if(!n.disabled&&validKey(n.name)) {
++                    const key=canonical(n.name,'Mod')
++                    if(seen.has(key))throw new Error('Duplicate binding in one block')
++                    seen.add(key)
++                }
++                add(n)
++            }
++        }
++        else if(fragments)add(node)
++    }
++    return list
++}
+--- before/services/ShortcutService.qml
++++ after/services/ShortcutService.qml
+@@ -3,38 +3,95 @@
+ import Quickshell
+ import Quickshell.Io
+ import qs.config
++import "ShortcutParser.js" as Kdl
+ Singleton {
+     id: shortcuts
+     property var external: []
+     property var generated: []
+-    readonly property var entries: combine(external, generated)
++    property var mainTree: null
++    property var inputTree: []
++    property string externalError: ""
++    property string generatedError: ""
++    property string mainError: ""
++    property string inputError: ""
++    readonly property string modKey: configuredMod()
++    readonly property var entries: effective()
+     readonly property var categories: ["All", "Applications", "Windows", "Workspaces", "Navigation", "System", "Media", "Screenshots", "NIRI MONOCHROME"]
+-    function canonical(key) { return key.replace(/Mod/g,"Super").split("+").sort().join("+") }
+-    function parse(text, shell) {
+-        const list=[]
+-        for (const line of text.split("\n")) {
+-            if (/^\s*\/\//.test(line)) continue
+-            const m=line.match(/^\s*([A-Za-z0-9_+]+)[^{]*\{\s*(.+?)\s*\}/)
+-            if (!m || !Keybindings.valid(m[1])) continue
+-            const title=line.match(/hotkey-overlay-title="([^"]+)"/)
+-            const command=m[2].replace(/;\s*$/,"")
+-            let label=title ? title[1] : command.replace(/-/g," ")
+-            let category=shell ? "NIRI MONOCHROME" : /screenshot|Print/.test(line) ? "Screenshots" : /XF86Audio|XF86Mon/.test(line) ? "Media" : /workspace/.test(command) ? "Workspaces" : /monitor|focus-column|focus-window|switch-layout/.test(command) ? "Navigation" : /window|column|fullscreen/.test(command) ? "Windows" : /makoctl|swaylock|power|suspend|quit/.test(command) ? "System" : /spawn/.test(command) ? "Applications" : "System"
+-            list.push({key:m[1], label:label, category:category, description:command})
++    readonly property string scopeNote: "Mod=" + modKey + ". Source view: config.kdl + direct binds.kdl/shell include; other includes and XKB symbol aliases are not resolved; not a live compositor snapshot. " + (mainTree === null ? "Main source unavailable; file contents only. " : "") + [externalError,generatedError,mainError,inputError].filter(x=>x!=="").join(" · ")
++    function canonical(key) { return Kdl.canonical(key,modKey) }
++    function parse(text,shell,strict) {
++        try { return Kdl.bindings(Kdl.nodes(text),shell,!strict) }
++        catch(e) { return [] }
++    }
++    function includeName(node) {
++        const path=Kdl.argument(node)
++        const prefix=Constants.niriConfigDir+"/"
++        return path.startsWith(prefix)?path.slice(prefix.length):path.replace(/^\.\//,"")
++    }
++    function inputMod(tree,current) {
++        for(const node of tree) if(!node.disabled&&node.name==="input")
++            for(const child of node.children) if(!child.disabled&&child.name==="mod-key") {
++                const value=Kdl.argument(child)
++                if(["Super","Win","Alt","Ctrl","Control","Shift"].includes(value))current=({Win:"Super",Control:"Ctrl"})[value]||value
++            }
++        return current
++    }
++    function configuredMod() {
++        let value="Super" // This project's native TTY session; nested-winit Mod is outside coverage.
++        if(mainTree===null)return inputMod(inputTree,value)
++        for(const node of mainTree) {
++            if(node.disabled)continue
++            if(node.name==="include"&&includeName(node)==="input.kdl")value=inputMod(inputTree,value)
++            if(node.name==="input")value=inputMod([node],value)
+         }
+-        return list
++        return value
+     }
+-    function combine(base, later) {
+-        const map={}
+-        for (const item of base.concat(later)) map[canonical(item.key)]=item
+-        return Object.values(map).sort((a,b)=>a.category.localeCompare(b.category)||a.label.localeCompare(b.label))
++    function combine(base,later) {
++        const map=new Map()
++        for(const item of base.concat(later))map.set(canonical(item.key),item)
++        return Array.from(map.values()).filter(x=>!x.hidden).sort((a,b)=>a.category.localeCompare(b.category)||a.label.localeCompare(b.label))
+     }
+-    function filter(query, category) {
++    function effective() {
++        if(mainTree===null)return combine(external,generated)
++        let all=[]
++        for(const node of mainTree) {
++            if(node.disabled)continue
++            if(node.name==="include") {
++                const name=includeName(node)
++                if(name==="binds.kdl")all=all.concat(external)
++                if(name==="niri-monochrome.kdl")all=all.concat(generated)
++            } else if(node.name==="binds")all=all.concat(Kdl.bindings([node],false,false))
++        }
++        return combine([],all)
++    }
++    function filter(query,category) {
+         const q=query.toLowerCase().trim()
+-        return entries.filter(e=>(category === "All" || e.category === category) && (e.key+" "+e.label+" "+e.category+" "+e.description).toLowerCase().includes(q))
++        return entries.filter(e=>(category==="All"||e.category===category)&&(e.key+" "+e.label+" "+e.category+" "+e.description).toLowerCase().includes(q))
+     }
+-    FileView { path: Constants.niriConfigDir + "/binds.kdl"; watchChanges: true; printErrors: false
+-        onLoaded: shortcuts.external=shortcuts.parse(text(),false); onFileChanged: reload() }
+-    FileView { path: Keybindings.includePath; watchChanges: true; printErrors: false
+-        onLoaded: shortcuts.generated=shortcuts.parse(text(),true); onFileChanged: reload() }
++    function load(text,kind) {
++        try {
++            const tree=Kdl.nodes(text)
++            if(kind==="external")external=Kdl.bindings(tree,false,false)
++            else if(kind==="generated")generated=Kdl.bindings(tree,true,false)
++            else if(kind==="main") { Kdl.bindings(tree,false,false); mainTree=tree }
++            else inputTree=tree
++            shortcuts[kind+"Error"]=""
++        } catch(e) { unavailable(kind,"Unsupported/invalid "+kind+" source") }
++    }
++    function unavailable(kind,message) {
++        if(kind==="external")external=[]
++        else if(kind==="generated")generated=[]
++        else if(kind==="main")mainTree=null
++        else inputTree=[]
++        shortcuts[kind+"Error"]=message
++    }
++    function refresh() { mainFile.reload(); inputFile.reload(); externalFile.reload(); generatedFile.reload() }
++    FileView { id:mainFile; path:Constants.niriConfigDir+"/config.kdl"; watchChanges:true; printErrors:false
++        onLoaded:shortcuts.load(text(),"main");onFileChanged:reload();onLoadFailed:shortcuts.unavailable("main","Main source unavailable") }
++    FileView { id:inputFile; path:Constants.niriConfigDir+"/input.kdl"; watchChanges:true; printErrors:false
++        onLoaded:shortcuts.load(text(),"input");onFileChanged:reload();onLoadFailed:shortcuts.unavailable("input","") }
++    FileView { id:externalFile; path:Constants.niriConfigDir+"/binds.kdl"; watchChanges:true; printErrors:false
++        onLoaded:shortcuts.load(text(),"external");onFileChanged:reload();onLoadFailed:shortcuts.unavailable("external","binds.kdl unavailable") }
++    FileView { id:generatedFile; path:Keybindings.includePath; watchChanges:true; printErrors:false
++        onLoaded:shortcuts.load(text(),"generated");onFileChanged:reload();onLoadFailed:shortcuts.unavailable("generated","Shell include unavailable") }
+ }
+--- before/components/popovers/ShortcutCheatSheet.qml
++++ after/components/popovers/ShortcutCheatSheet.qml
+@@ -10,44 +10,45 @@
+     readonly property var results: ShortcutService.filter(search.text,category)
+     property int selected: 0
+     onResultsChanged: selected=0
+-    function navigate(delta) { selected=Math.max(0,Math.min(results.length-1,selected+delta)); list.positionViewAtIndex(selected,ListView.Contain) }
++    function navigate(delta) { if (!results.length) { selected=0; return }; selected=Math.max(0,Math.min(results.length-1,selected+delta)); list.positionViewAtIndex(selected,ListView.Contain) }
+     onActiveFocusChanged: if (activeFocus) search.input.forceActiveFocus()
+-    Component.onCompleted: search.input.forceActiveFocus()
++    Component.onCompleted: { ShortcutService.refresh(); search.input.forceActiveFocus() }
+     Column {
+         anchors.fill: parent; anchors.margins: 20; spacing: 12
+-        Row { width: parent.width
++        Row { id:heading; width: parent.width
+             Label { width: parent.width-32; text: "Keyboard Shortcuts"; font.pixelSize: Theme.fontXl; font.weight: Font.DemiBold }
+             IconButton { icon:"x"; tooltip:"Close"; onClicked: ShellState.close() }
+         }
+         MonoTextField { id: search; width: parent.width; icon: "search"; placeholder: "Search action, keys or category"
++            input.activeFocusOnTab: true
+             input.Keys.onDownPressed: sheet.navigate(1)
+             input.Keys.onUpPressed: sheet.navigate(-1)
+             input.Keys.onEscapePressed: ShellState.close()
+         }
+-        Flow { width: parent.width; spacing: 5
++        Flow { id:categories; width: parent.width; spacing: 5
+             Repeater { model: ShortcutService.categories
+                 delegate: MonoButton { required property string modelData; text:modelData; implicitHeight:26; padding:8; active:sheet.category===modelData; onClicked:sheet.category=modelData }
+             }
+         }
+         ListView {
+-            id:list; width:parent.width; height:Math.max(80,sheet.height-y-64); clip:true
++            id:list; width:parent.width; height:Math.max(0,sheet.height-40-y-footer.implicitHeight-12); clip:true
+             model:sheet.results; spacing:4; currentIndex:sheet.selected
+             delegate: Rectangle {
+                 required property var modelData
+                 required property int index
+-                width:list.width; height:48; radius:Theme.radiusControl
++                id:row; width:list.width; height:Math.max(description.implicitHeight,caps.implicitHeight)+16; radius:Theme.radiusControl
+                 color:sheet.selected===index ? Theme.elevated : "transparent"
+                 border.width:sheet.selected===index ? 1:0; border.color:Theme.silverMuted
+                 Behavior on color { ColorAnimation { duration:Theme.durFast } }
+                 Row { anchors.fill:parent; anchors.margins:8; spacing:12
+-                    Column { width:Math.max(100,parent.width-250); anchors.verticalCenter:parent.verticalCenter
+-                        Label { text:modelData.label; width:parent.width; font.weight:Font.Medium }
+-                        Label { text:modelData.category; secondary:true; font.pixelSize:Theme.fontXs }
++                    Column { id:description; width:Math.max(40,parent.width-caps.width-12); anchors.verticalCenter:parent.verticalCenter; spacing:2
++                        Label { text:row.modelData.label; width:parent.width; font.weight:Font.Medium; wrapMode:Text.Wrap; elide:Text.ElideNone; textFormat:Text.PlainText }
++                        Label { text:row.modelData.category + " · " + row.modelData.description; width:parent.width; secondary:true; font.pixelSize:Theme.fontXs; wrapMode:Text.WrapAnywhere; elide:Text.ElideNone; textFormat:Text.PlainText }
+                     }
+-                    Row { spacing:4; anchors.verticalCenter:parent.verticalCenter
+-                        Repeater { model:modelData.key.split("+")
+-                            delegate: Rectangle { required property string modelData; width:key.implicitWidth+12; height:26; radius:4; color:Theme.surface2; border.width:1; border.color:Theme.border
+-                                Label { id:key; anchors.centerIn:parent; text:modelData; mono:true; font.pixelSize:Theme.fontSm }
++                    Flow { id:caps; width:Math.max(40,parent.width*0.48); spacing:4; anchors.verticalCenter:parent.verticalCenter
++                        Repeater { model:row.modelData.key.split("+")
++                            delegate: Rectangle { required property string modelData; width:Math.min(key.implicitWidth+12,caps.width); height:Math.max(26,key.implicitHeight+8); radius:4; color:Theme.surface2; border.width:1; border.color:Theme.border
++                                Label { id:key; anchors.centerIn:parent; width:parent.width-12; text:modelData; mono:true; font.pixelSize:Theme.fontSm; wrapMode:Text.WrapAnywhere; elide:Text.ElideNone; textFormat:Text.PlainText }
+                             }
+                         }
+                     }
+@@ -56,6 +57,6 @@
+             }
+             Label { anchors.centerIn:parent; visible:sheet.results.length===0; text:"No matching shortcuts"; secondary:true }
+         }
+-        Label { width:parent.width; text:"Informational • binds.kdl + shell include • other external includes are not listed"; font.pixelSize:Theme.fontXs; secondary:true; wrapMode:Text.Wrap }
++        Label { id:footer; width:parent.width; text:"Informational • " + ShortcutService.scopeNote; font.pixelSize:Theme.fontXs; secondary:true; wrapMode:Text.Wrap }
+     }
+ }
+--- before/selftest-shortcut-data.qml
++++ after/selftest-shortcut-data.qml
+@@ -0,0 +1,60 @@
++import QtQuick
++import Quickshell
++import qs.config
++import qs.services
++ShellRoot {
++ id: root
++ property int passed:0
++ property int failed:0
++ function check(n,ok){if(ok)passed++;else failed++;console.info((ok?"PASS ":"FAIL ")+n)}
++ function rows(s){return ShortcutService.parse(s,false)}
++ Timer { interval:800;running:true;onTriggered:{
++  let r=root.rows('binds {\n/*\nMod+Q { quit; }\n*/\nMod+T { spawn "alacritty"; }\n}')
++  root.check("block comments never invent bindings",r.length===1 && r[0].key==="Mod+T")
++  r=root.rows('binds {\n /- Mod+Q { quit; }\n Mod+T {\n spawn "alacritty";\n }\n}')
++  root.check("disabled nodes excluded and multiline action retained",r.length===1 && r[0].key==="Mod+T")
++  r=root.rows('binds { Mod+T { spawn "sh" "-c" "echo } literal"; }; Mod+E { spawn "nautilus"; }; }')
++  root.check("quoted braces and same-line nodes preserve structure",r.length===2 && r[0].description.includes('echo } literal'))
++  r=root.rows('binds {\n Control+Win+T { spawn "alacritty"; }\n Mod5+guillemotleft { focus-column-left; }\n}')
++  root.check("native modifier aliases accepted",r.length===2)
++  root.check("canonicalization changes modifiers only",ShortcutService.canonical("Mod+Mode_switch")===ShortcutService.canonical("Super+Mode_switch") && ShortcutService.canonical("Mode_switch")==="Mode_switch")
++  const base=root.rows('Mod+T { spawn "alacritty"; }')
++  const hidden=root.rows('Super+T hotkey-overlay-title=null { spawn "foot"; }')
++  root.check("hidden later binding cannot resurrect overridden row",ShortcutService.combine(base,hidden).length===0)
++  root.check("modifier aliases resolve one effective row",ShortcutService.combine(root.rows('Ctrl+Super+T { spawn "a"; }'),root.rows('Win+Control+T { spawn "b"; }'))[0].description.includes('"b"'))
++  r=root.rows('binds {\nMod+T hotkey-overlay-title="A \\"quoted\\" title" { spawn "foo"; }\n}')
++  root.check("escaped title decoded",r.length===1 && r[0].label==='A "quoted" title')
++  r=root.rows('binds {\nMod+T { spawn "x"; }\nMod+E {\n')
++  root.check("structurally invalid source fails closed",r.length===0)
++  const same=root.rows('Mod+T { spawn "alacritty"; }\nMod+Return { spawn "alacritty"; }')
++  root.check("multiple keys for one action are retained",ShortcutService.combine([],same).length===2)
++  ShortcutService.external=root.rows('Mod+T hotkey-overlay-title="Terminal [work]" { spawn "alacritty"; }\nMod+E { spawn "nautilus"; }');ShortcutService.generated=[]
++  root.check("case insensitive action and description filtering",ShortcutService.filter('ALACRITTY','All').length===1 && ShortcutService.filter('terminal','All').length===1)
++  root.check("literal special-character search",ShortcutService.filter('[work]','All').length===1 && ShortcutService.filter('.*','All').length===0)
++  root.check("category filtering and empty state",ShortcutService.filter('','Applications').length===2 && ShortcutService.filter('missing','All').length===0)
++  root.check("same-block duplicates fail closed as native niri requires",root.rows('binds { Mod+T { spawn "a"; }; Mod+T { spawn "b"; }; }').length===0)
++  root.check("raw quoted strings and nested comments preserved",root.rows('/* outer /* nested */ end */ binds { Mod+T hotkey-overlay-title=r#"Raw \"title\""# { spawn "x"; }; }')[0].label==='Raw "title"')
++  ShortcutService.external=root.rows('Mod+T hotkey-overlay-title="Base" { spawn "a"; }')
++  ShortcutService.generated=root.rows('Mod+T hotkey-overlay-title="Later" { spawn "b"; }')
++  ShortcutService.load('include "niri-monochrome.kdl"\ninclude "binds.kdl"\n','main')
++  root.check("supported includes follow main file order",ShortcutService.entries.length===1&&ShortcutService.entries[0].label==='Base')
++  ShortcutService.load('/- include "binds.kdl"\ninclude "niri-monochrome.kdl"\n','main')
++  root.check("disabled source include cannot contribute rows",ShortcutService.entries.length===1&&ShortcutService.entries[0].label==='Later')
++  ShortcutService.load('include "binds.kdl"\nbinds { Mod+T hotkey-overlay-title="Inline" { spawn "c"; }; }\n','main')
++  root.check("main inline binding overrides preceding included source",ShortcutService.entries[0].label==='Inline')
++  ShortcutService.load('input { mod-key "Alt"; }','input')
++  ShortcutService.load('include "input.kdl"\ninclude "binds.kdl"\n','main')
++  root.check("configured native Mod changes modifier normalization",ShortcutService.modKey==='Alt'&&ShortcutService.canonical('Mod+T')===ShortcutService.canonical('Alt+T')&&ShortcutService.canonical('Mod+T')!==ShortcutService.canonical('Super+T'))
++  root.check("unknown actions remain raw informational descriptions",root.rows('Mod+T { unrecognized-action "literal"; }')[0].description==='unrecognized-action "literal"')
++  root.check("empty or invalid supported entries never invent actions",root.rows('binds { Mod++T { quit; }; Mod+Q {}; }').length===0)
++  ShortcutService.mainTree=null;ShortcutService.inputTree=[]
++  ShortcutService.external=[];for(let i=0;i<5000;i++)ShortcutService.external.push({key:'Mod+F'+i,label:'Action '+i,category:'Applications',description:'spawn "application-'+i+'"'})
++  ShortcutService.external=ShortcutService.external.slice();ShortcutService.generated=[]
++  const start=Date.now();let found=0;for(let i=0;i<100;i++)found+=ShortcutService.filter('application-42','All').length
++  console.info('FILTER_BENCH '+(Date.now()-start)+' ms for 100 queries over 5000 rows')
++  root.check("large registry filtering remains local and deterministic",found===11100)
++  const classified=root.rows('binds { Mod+T { spawn "workspace-manager"; }; Mod+L { spawn "niri-lock"; }; }')
++  root.check("category uses native action and recognizes configured lock wrapper",classified.find(e=>e.key==='Mod+T').category==='Applications'&&classified.find(e=>e.key==='Mod+L').category==='System')
++  console.info("RESULT "+root.passed+"/"+(root.passed+root.failed)+" passed");Qt.quit()
++ } }
++}
+--- before/selftest-shortcut-ui.qml
++++ after/selftest-shortcut-ui.qml
+@@ -0,0 +1,123 @@
++import QtQuick
++import QtTest
++import Quickshell
++import Quickshell.Io
++import Quickshell.Wayland
++import qs.config
++import qs.services
++import qs.components
++ShellRoot {
++ id:root
++ property int passed:0
++ property int failed:0
++ function check(n,ok){if(ok)passed++;else failed++;console.info((ok?"PASS ":"FAIL ")+n)}
++ function find(item,test){if(!item)return null;if(test(item))return item;for(const c of item.children||[]){const f=find(c,test);if(f)return f}return null}
++ function all(item,test){let r=[];if(test(item))r.push(item);for(const c of item.children||[])r=r.concat(all(c,test));return r}
++ function pane(){return find(overlay.contentItem,x=>typeof x.navigate==='function'&&x.category!==undefined)}
++ function input(){return find(pane(),x=>x.echoMode!==undefined&&x.cursorPosition!==undefined)}
++ function open(){ShellState.show('shortcuts',Quickshell.screens[0].name)}
++ OverlayLayer {id:overlay;modelData:Quickshell.screens[0];mask:Region {}
++  WlrLayershell.keyboardFocus:WlrKeyboardFocus.None }
++ Settings {id:settings;visible:false}
++ TestCase {id:events;parent:overlay.contentItem;when:false;optional:true}
++ FileView {id:mainFile;path:Constants.niriConfigDir+'/config.kdl';blockAllReads:true;atomicWrites:true;printErrors:false}
++ FileView {id:bindFile;path:Constants.niriConfigDir+'/binds.kdl';blockAllReads:true;atomicWrites:true;printErrors:false}
++ FileView {id:generatedFile;path:Keybindings.includePath;blockAllReads:true;atomicWrites:true;printErrors:false}
++ function source(){let s='binds {\n';for(let i=0;i<90;i++)s+='Mod+Shift+Ctrl+ISO_Level3_Shift+'+(i>=70?'ISO_Level5_Shift+':i>=35?'Alt+':'')+'F'+(i%35+1)+' hotkey-overlay-title="Example '+i+'" { spawn "app-'+i+'"; }\n';return s+'Mod+Return hotkey-overlay-title="Terminal [work]" { spawn "alacritty"; }\n}'}
++ Timer {interval:1100;running:true;onTriggered:{
++  mainFile.setText('include "binds.kdl"\ninclude "niri-monochrome.kdl"\n')
++  bindFile.setText(root.source());generatedFile.setText('binds { Mod+D hotkey-overlay-title="Generated launcher" { spawn "qs"; }; }\n')
++  events.wait(350);ShortcutService.refresh();events.wait(200)
++  root.check('actual supported source files loaded without duplicate keys',ShortcutService.entries.length===92)
++  root.open();events.wait(250)
++  events.mouseClick(root.input(),8,root.input().height/2)
++  root.check('synthetic search focus in pass-through overlay',root.input().activeFocus)
++  events.keyClick(Qt.Key_T);events.wait(20)
++  root.check('typing retains search focus and filters locally',root.input().text==='t'&&root.input().activeFocus&&root.pane().results.length>0)
++  root.input().text='[work]';events.wait(40)
++  root.check('special-character query shows correct row',root.pane().results.length===1&&root.pane().results[0].label==='Terminal [work]')
++  const old=ShellState.open
++  events.keyClick(Qt.Key_Return);events.keyClick(Qt.Key_Enter)
++  root.check('Return and keypad Enter never execute informational rows',ShellState.open===old)
++  root.input().text='';events.keyClick(Qt.Key_Tab);events.wait(40)
++  const cat=root.find(root.pane(),x=>x.text==='All'&&typeof x.clicked==='function')
++  root.check('Tab reaches category controls',cat.activeFocus)
++  events.keyClick(Qt.Key_Backtab,Qt.ShiftModifier)
++  root.check('Shift Tab returns to search',root.input().activeFocus)
++  const apps=root.find(root.pane(),x=>x.text==='Applications'&&typeof x.clicked==='function')
++  events.mouseClick(apps,8,8);events.wait(30)
++  root.check('pointer category selection filters actual entries',root.pane().category==='Applications'&&root.pane().results.every(e=>e.category==='Applications'))
++  apps.forceActiveFocus();events.keyClick(Qt.Key_Return);events.keyClick(Qt.Key_Enter);events.keyClick(Qt.Key_Space)
++  root.check('category Return Enter Space remain safe',ShellState.open==='shortcuts'&&root.pane().category==='Applications')
++  events.mouseClick(root.input(),8,root.input().height/2)
++  root.check('pointer click restores search focus',root.input().activeFocus)
++  root.input().text='nothing matches .*';events.wait(30);events.keyClick(Qt.Key_Down);events.keyClick(Qt.Key_Up)
++  const empty=root.find(root.pane(),x=>x.text==='No matching shortcuts')
++  root.check('empty result navigation remains bounded and legible',root.pane().results.length===0&&root.pane().selected===0&&empty.visible)
++  root.input().text='';root.pane().category='All';events.wait(50)
++  events.keyClick(Qt.Key_Down);root.check('Down selects next filtered row',root.pane().selected===1)
++  events.keyClick(Qt.Key_Up);root.check('Up selects previous filtered row',root.pane().selected===0)
++  const list=root.find(root.pane(),x=>typeof x.positionViewAtIndex==='function')
++  list.forceLayout();events.wait(160)
++  const before=list.contentY;events.mouseWheel(list,list.width/2,list.height/2,0,-720);events.wait(150)
++  root.check('long result list scrolls without dismissal',list.contentY>before&&ShellState.open==='shortcuts')
++  events.mouseClick(root.pane(),8,root.pane().height-8)
++  root.check('inside padding preserves Task 1 shield',ShellState.open==='shortcuts')
++  root.input().forceActiveFocus();events.keyClick(Qt.Key_Escape);events.wait(160)
++  root.check('Escape dismisses actual overlay',ShellState.open==='')
++  root.open();events.wait(250)
++  root.pane().implicitWidth=616;root.pane().implicitHeight=456;events.wait(100)
++  const sheet=root.pane();const smallList=root.find(sheet,x=>typeof x.positionViewAtIndex==='function')
++  smallList.positionViewAtBeginning();events.wait(100)
++  const keys=root.all(smallList,x=>x.mono===true&&x.font&&x.font.pixelSize===Theme.fontSm)
++  root.check('small viewport keeps keycaps inside panel',sheet.width<=616&&keys.length>0&&keys.every(x=>{const p=x.mapToItem(sheet,0,0);return p.x>=0&&p.x+x.width<=sheet.width+1&&x.truncated===false}))
++  const footer=root.find(sheet,x=>typeof x.text==='string'&&x.text.startsWith('Informational'))
++  const fp=footer.mapToItem(sheet,0,0)
++  root.check('small viewport footer and list never overlap or escape',fp.y>=smallList.y+smallList.height-1&&fp.y+footer.height<=sheet.height+1)
++  events.wait(60)
++  root.pane().implicitWidth=820;root.pane().implicitHeight=560;events.wait(100)
++  events.wait(60)
++  // File change and deletion use only this runner's private Niri directory.
++  bindFile.setText('binds { Mod+T hotkey-overlay-title="Updated application" { spawn "changed"; }; }\n');events.wait(450)
++  root.check('atomic source update immediately refreshes open sheet',ShortcutService.entries.some(e=>e.label==='Updated application')&&!ShortcutService.entries.some(e=>e.label==='Terminal [work]'))
++  const remove=Qt.createQmlObject('import Quickshell.Io; Process {}',root)
++  remove.command=['rm','--',Constants.niriConfigDir+'/binds.kdl'];remove.running=true;events.wait(350)
++  root.check('removed source never leaves stale shortcuts',!ShortcutService.entries.some(e=>e.label==='Updated application'))
++  remove.destroy()
++  bindFile.setText('binds { Mod+T hotkey-overlay-title="Restored" { spawn "changed"; }; }\n');events.wait(450)
++  ShortcutService.refresh();events.wait(150)
++  root.check('recreated source restored on supported refresh',ShortcutService.entries.some(e=>e.label==='Restored'))
++  generatedFile.setText('binds { Mod+T hotkey-overlay-title="Override" { spawn "qs"; }; }\n');events.wait(400)
++  root.check('generated file change applies effective override once',ShortcutService.entries.length===1&&ShortcutService.entries[0].label==='Override')
++  mainFile.setText('include "niri-monochrome.kdl"\ninclude "binds.kdl"\n');events.wait(400)
++  root.check('main include order governs effective supported override',ShortcutService.entries.length===1&&ShortcutService.entries[0].label==='Restored')
++  UserConfig.set('shortcuts.writeNiriInclude',true);UserConfig.set('shortcuts.launcher','Mod+F12');events.wait(500)
++  root.check('settings change refreshes actual generated include',ShortcutService.entries.some(e=>e.key==='Mod+F12'&&e.label==='Application launcher'))
++  UserConfig.set('shortcuts.launcher','');events.wait(450)
++  root.check('disabled shell binding disappears after file regeneration',!ShortcutService.entries.some(e=>e.key==='Mod+F12'))
++  ShellState.close();events.wait(200)
++  const index=settings.sections.findIndex(x=>x.t==='Shortcuts');ShellState.settingsSection=index;events.wait(150)
++  const button=root.find(settings.contentItem,x=>x.text==='Open cheat sheet')
++  ShellState.settingsOpen=true;button.clicked();events.wait(200)
++  root.check('actual Settings shortcut button opens overlay and closes Settings state',ShellState.open==='shortcuts'&&!ShellState.settingsOpen)
++  ShellState.show('control',Quickshell.screens[0].name);events.wait(200)
++  const keyboard=root.find(overlay.contentItem,x=>x.tooltip==='Keyboard Shortcuts')
++  events.mouseClick(keyboard,8,8);events.wait(250)
++  root.check('Control Center keyboard button transitions to cheat sheet',ShellState.open==='shortcuts'&&root.input().activeFocus)
++  UserConfig.set('appearance.reduceMotion',true)
++  rapid.start()
++ } }
++ Timer {id:rapid;interval:40;repeat:true;property int remaining:8;onTriggered:{
++  if(remaining>0){ShellState.close();root.open();remaining--;return}
++  stop();finish.start()
++ } }
++ Timer {id:finish;interval:120;onTriggered:{
++  root.check('rapid reduced-motion reopen retains one sheet',ShellState.open==='shortcuts'&&root.all(overlay.contentItem,x=>typeof x.navigate==='function').length===1)
++  const close=root.find(root.pane(),x=>x.tooltip==='Close')
++  events.mouseClick(close,8,8);events.wait(30)
++  root.check('close button dismisses without opening another overlay',ShellState.open==='')
++  root.open();events.wait(100);events.mouseClick(overlay.contentItem,2,2)
++  root.check('outside click dismisses and releases overlay',ShellState.open===''&&!overlay.visible)
++  console.info('RESULT '+root.passed+'/'+(root.passed+root.failed)+' passed');Qt.quit()
++ } }
++}
+--- before/selftest-shortcut-layout.qml
++++ after/selftest-shortcut-layout.qml
+@@ -0,0 +1,42 @@
++import QtQuick
++import QtQuick.Window
++import QtTest
++import Quickshell
++import qs.config
++import qs.services
++import qs.components.popovers
++ShellRoot {
++ id:root
++ property int passed:0
++ property int failed:0
++ function check(n,ok){if(ok)passed++;else failed++;console.info((ok?'PASS ':'FAIL ')+n)}
++ function all(i,p){let r=[];if(p(i))r.push(i);for(const c of i.children||[])r=r.concat(all(c,p));return r}
++ Window {id:window;visible:true;width:860;height:600
++  Rectangle {id:scene;anchors.fill:parent;color:'#808080'
++   ShortcutCheatSheet {id:sheet;anchors.centerIn:parent;width:Math.min(820,parent.width-24);height:Math.min(560,parent.height-24)}
++  }
++ }
++ TestCase{id:events;parent:scene;when:false;optional:true}
++ function examine(name) {
++  events.wait(100)
++  const list=root.all(sheet,x=>typeof x.positionViewAtIndex==='function')[0];list.forceLayout();events.wait(100)
++  const image=events.grabImage(scene)
++  if(Quickshell.env('NM_SHORTCUT_EVIDENCE'))image.save(Quickshell.env('NM_SHORTCUT_EVIDENCE')+'/'+name+'.png')
++  const keys=root.all(list,x=>x.mono===true&&x.font&&x.font.pixelSize===Theme.fontSm)
++  root.check(name+' keycaps stay within the sheet',keys.length>0&&keys.every(x=>{const p=x.mapToItem(sheet,0,0);return p.x>=0&&p.x+x.width<=sheet.width+1&&!x.truncated}))
++  const footer=root.all(sheet,x=>typeof x.text==='string'&&x.text.startsWith('Informational'))[0]
++  const fp=footer.mapToItem(sheet,0,0),lp=list.mapToItem(sheet,0,0)
++  root.check(name+' content and footer remain bounded',fp.y>=lp.y+list.height-1&&fp.y+footer.height<=sheet.height+1&&list.contentHeight>list.height)
++ }
++ Timer{interval:800;running:true;onTriggered:{
++  ShortcutService.mainTree=null;ShortcutService.external=[];ShortcutService.generated=[]
++  for(let i=0;i<60;i++)ShortcutService.external.push({key:'Mod+Ctrl+Alt+Shift+ISO_Level3_Shift+ISO_Level5_Shift+XF86MonBrightnessDown',label:'Long description with an intentionally lengthy application title '+i,category:'Applications',description:'spawn "example application with a long argument"'})
++  // Distinct symbols for the remaining rows; the first long key represents one real combination.
++  ShortcutService.external=ShortcutService.external.map((e,i)=>i===0?e:({key:'Mod+F'+i,label:'Other action '+i,category:'Applications',description:'spawn "example"'}))
++  root.examine('normal');small.start()
++ }}
++ Timer{id:small;interval:100;onTriggered:{window.width=640;window.height=480;smallCheck.start()}}
++ Timer{id:smallCheck;interval:150;onTriggered:{root.examine('small');narrow.start()}}
++ Timer{id:narrow;interval:100;onTriggered:{window.width=384;window.height=480;narrowCheck.start()}}
++ Timer{id:narrowCheck;interval:150;onTriggered:{root.examine('narrow');console.info('RESULT '+root.passed+'/'+(root.passed+root.failed)+' passed');Qt.quit()}}
++}
+--- before/selftest-shortcut-focus.qml
++++ after/selftest-shortcut-focus.qml
+@@ -0,0 +1,25 @@
++import QtQuick
++import QtQuick.Window
++import QtTest
++import Quickshell
++import qs.services
++import qs.components
++ShellRoot {
++ id:root
++ function find(i,p){if(p(i))return i;for(const c of i.children||[]){const x=find(c,p);if(x)return x}return null}
++ OverlayLayer{id:overlay;modelData:Quickshell.screens[0];mask:Region {}}
++ TestCase{id:events;parent:overlay.contentItem;when:false;optional:true}
++ Timer{interval:800;running:true;onTriggered:{ShellState.show('shortcuts',Quickshell.screens[0].name);observe.start()}}
++ Timer{id:observe;interval:50;repeat:true;property int attempts:0;onTriggered:{
++  const input=root.find(overlay.contentItem,x=>x.echoMode!==undefined)
++  const window=input?input.Window.window:null
++  if((!input||!window||!window.active)&&attempts++<60)return
++  stop()
++  const focused=input&&input.activeFocus
++  console.info('NATIVE_FOCUS '+JSON.stringify({windowActive:window?window.active:false,inputFocus:input?input.focus:false,inputActive:!!focused,waitTicks:attempts}))
++  events.keyClick(Qt.Key_T)
++  const ok=!!focused&&input.text==='t'
++  console.info((ok?'PASS ':'FAIL ')+'search focus after native window activation')
++  console.info('RESULT '+(ok?1:0)+'/1 passed');Qt.quit()
++ }}
++}
+--- before/selftest-shortcut-restore.qml
++++ after/selftest-shortcut-restore.qml
+@@ -0,0 +1,12 @@
++import QtQuick
++import Quickshell
++import qs.services
++ShellRoot {
++ Component.onCompleted: ShortcutService.refresh()
++ Timer{interval:1000;running:true;onTriggered:{
++  const rows=ShortcutService.entries
++  const ok=rows.some(e=>e.key==='Mod+T'&&e.label==='Restored')&&!rows.some(e=>e.key==='Mod+F12')&&new Set(rows.map(e=>ShortcutService.canonical(e.key))).size===rows.length
++  console.info((ok?'PASS ':'FAIL ')+'new process restores supported registry after settings/source updates')
++  console.info('RESULT '+(ok?1:0)+'/1 passed');Qt.quit()
++ }}
++}
+--- before/tests/shortcut-native-test.py
++++ after/tests/shortcut-native-test.py
+@@ -0,0 +1,28 @@
++#!/usr/bin/env python3
++"""Niri 26.04 is the oracle for supported fixture syntax and duplicate/include semantics."""
++import shutil
++import subprocess
++import tempfile
++from pathlib import Path
++
++if not shutil.which('niri'):
++    print('SKIP native shortcut fixtures: niri unavailable')
++    raise SystemExit(0)
++with tempfile.TemporaryDirectory(prefix='nm-shortcut-native-') as temp:
++    root=Path(temp)
++    (root/'base.kdl').write_text('binds { Mod+T { spawn "first"; }; }\n')
++    (root/'later.kdl').write_text('binds { Mod+T { spawn "second"; }; }\n')
++    cases=[
++        ('native modifier aliases', 'binds { Control+Win+T { spawn "x"; }; Mod5+guillemotleft { focus-column-left; }; }',True),
++        ('comments disabled nodes multiline and quoted braces', '/* comment */ binds { /- Mod+Q { quit; }; Mod+T {\n spawn "sh" "-c" "echo } literal";\n}; }',True),
++        ('same-block duplicates rejected', 'binds { Mod+T { spawn "a"; }; Mod+T { spawn "b"; }; }',False),
++        ('duplicate binds node rejected', 'binds {}\nbinds {}',False),
++        ('positional includes and main override allowed', 'include "base.kdl"\ninclude "later.kdl"\nbinds { Mod+T { spawn "inline"; }; }',True),
++        ('hidden title is valid without unbinding action', 'binds { Mod+T hotkey-overlay-title=null { spawn "x"; }; }',True),
++    ]
++    for name,content,valid in cases:
++        config=root/'config.kdl';config.write_text(content)
++        p=subprocess.run(['niri','validate','-c',str(config)],capture_output=True,text=True,timeout=5)
++        assert (p.returncode==0)==valid,(name,p.stderr)
++        print('PASS '+name)
++    print(f'RESULT {len(cases)}/{len(cases)} passed')
+--- before/tests/run-qml.py
++++ after/tests/run-qml.py
+@@ -24,7 +24,7 @@
+         png = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', 1, 1, 8, 2, 0, 0, 0)) + chunk(b'IDAT', zlib.compress(b'\0\xff\xff\xff')) + chunk(b'IEND', b'')
+         (base/'wallpapers/a-bad.png').write_text('not an image')
+         (base/'wallpapers/b-good.png').write_bytes(png)
+-    if source.name in ('selftest-overlay.qml', 'selftest-interactions.qml'):
++    if source.name in ('selftest-overlay.qml', 'selftest-interactions.qml', 'selftest-shortcut-ui.qml', 'selftest-shortcut-focus.qml'):
+         (base/'config/niri/binds.kdl').write_text('binds {\n Mod+D hotkey-overlay-title="Launcher" { spawn "fuzzel"; }\n Mod+A hotkey-overlay-title="Dock" { spawn "qs"; }\n}\n')
+     # The glass-only fixture instantiates no desktop services: exercise missing-file recovery.
+     if source.name != 'selftest-glass.qml':
+@@ -46,7 +46,7 @@
+                           '<policy context="default"><allow send_destination="*"/>'
+                           '<allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
+     env['QT_QPA_PLATFORMTHEME'] = ''
+-    if source.name in ('shell.qml', 'selftest-qml.qml', 'selftest-wallpaper.qml', 'selftest-phase4.qml', 'selftest-overlay.qml', 'selftest-interactions.qml'):
++    if source.name in ('shell.qml', 'selftest-qml.qml', 'selftest-wallpaper.qml', 'selftest-phase4.qml', 'selftest-overlay.qml', 'selftest-interactions.qml', 'selftest-shortcut-ui.qml', 'selftest-shortcut-focus.qml'):
+         display = os.environ.get('WAYLAND_DISPLAY', '')
+         if not display:
+             raise SystemExit('Wayland backend required for PanelWindow load validation')
+@@ -87,6 +87,18 @@
+                 proc.wait(timeout=20)
+                 if proc.returncode != 0:
+                     raise RuntimeError('QML process exited ' + str(proc.returncode))
++                if source.name == 'selftest-shortcut-ui.qml':
++                    restore = source.with_name('selftest-shortcut-restore.qml')
++                    proc = subprocess.Popen(['dbus-run-session', '--config-file=' + str(bus_config),
++                                             '--', 'qs', '-p', str(restore), '--no-color'],
++                                            env=env, stdout=log, stderr=subprocess.STDOUT,
++                                            start_new_session=True)
++                    proc.wait(timeout=20)
++                    if proc.returncode != 0:
++                        raise RuntimeError('Shortcut restore process exited ' + str(proc.returncode))
++                    subprocess.run(['niri', 'validate', '-c', str(base/'config/niri/config.kdl')],
++                                   env=env, check=True, capture_output=True)
++                    print('PASS private shortcut source configuration validates after process restart')
+                 if source.name == 'selftest-glass.qml':
+                     appearance_file = base/'config/niri/niri-monochrome-appearance.kdl'
+                     before_restart = appearance_file.stat().st_mtime_ns
+--- before/tests/validate.sh
++++ after/tests/validate.sh
+@@ -30,10 +30,12 @@
+   else say "niri validate" FAIL; fail=1; fi
+ fi
+ # Each load gets a private bus and temporary state; also validate the actual entrypoint.
+-for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml shell.qml; do
++for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml selftest-shortcut-data.qml selftest-shortcut-ui.qml selftest-shortcut-layout.qml selftest-shortcut-focus.qml shell.qml; do
+   if python3 "$here/tests/run-qml.py" "$here/$entry"; then say "$entry" ok
+   else say "$entry" FAIL; fail=1; fi
+ done
+ if python3 "$here/tests/audio-helper-test.py"; then say "audio-helper-test.py" ok
+ else say "audio-helper-test.py" FAIL; fail=1; fi
++if python3 "$here/tests/shortcut-native-test.py"; then say "shortcut-native-test.py" ok
++else say "shortcut-native-test.py" FAIL; fail=1; fi
+ exit "$fail"

@@ -59,6 +59,7 @@ Scope {
     PanelWindow {
         id: trigger
         property bool hovered: false
+        onVisibleChanged: if (!visible) { hovered = false; dock.scheduleHide() }
         screen: dock.modelData
         visible: dock.cfg.enabled && dock.cfg.autoHide && !dock.shown
         anchors { bottom: true; left: true; right: true }
@@ -74,7 +75,9 @@ Scope {
     PanelWindow {
         id: win
         screen: dock.modelData
-        visible: dock.shown
+        property real reveal: dock.shown ? 1 : 0
+        Behavior on reveal { NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
+        visible: dock.shown || reveal > 0.001
         anchors.bottom: true
         margins.bottom: (dock.barCfg.enabled ? dock.barCfg.marginBottom + dock.barCfg.height : 12) + 10
         implicitWidth: body.width + 2
@@ -83,7 +86,7 @@ Scope {
         color: "transparent"
         WlrLayershell.namespace: Constants.nsDock
         WlrLayershell.layer: WlrLayer.Overlay
-        WlrLayershell.keyboardFocus: dock.keyboardMode ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+        WlrLayershell.keyboardFocus: dock.keyboardMode && dock.shown ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
         onVisibleChanged: if (visible) { dock.selected = 0; body.forceActiveFocus() }
 
         Panel {
@@ -99,13 +102,12 @@ Scope {
             Keys.onTabPressed: dock.selected = (dock.selected + 1) % Math.max(1, dock.items.length)
             Keys.onReturnPressed: if (dock.items.length) dock.activate(dock.items[dock.selected])
             Keys.onEnterPressed: if (dock.items.length) dock.activate(dock.items[dock.selected])
-            Keys.onEscapePressed: ShellState.hideDock()
+            Keys.onEscapePressed: { ShellState.hideDock(); dock.hoverShown = false }
             Keys.onPressed: e => { const n = parseInt(e.text); if (n >= 1 && n <= dock.items.length) { dock.activate(dock.items[n - 1]); e.accepted = true } }
             HoverHandler { id: hh; onHoveredChanged: { if (!hovered) dock.scheduleHide(); else hideTimer.stop() } }
             // entrance: slide + fade
-            opacity: 0; transform: Translate { id: tr; y: 10 }
-            Component.onCompleted: { opacity = 1; tr.y = 0 }
-            Behavior on opacity { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
+            opacity: win.reveal; transform: Translate { y: 8 * Theme.motionIntensity * (1-win.reveal) }
+
 
             Row {
                 id: row
@@ -123,17 +125,17 @@ Scope {
                         readonly property bool sel: dock.keyboardMode && dock.selected === index
                         width: dock.cfg.iconSize + 16; height: dock.cfg.iconSize + 16
                         radius: Theme.radiusControl
-                        color: sel ? Theme.silver : isActive ? Theme.elevated : cma.containsMouse ? Theme.hover : "transparent"
-                        border.width: isActive && !sel ? 1 : 0; border.color: Theme.silverMuted
-                        Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
+                        color: sel || cma.containsMouse ? Theme.accentSubtle : isActive ? Theme.elevated : "transparent"
+                        border.width: sel || isActive ? 1 : 0; border.color: Theme.accent
+                        Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
                         scale: cma.containsMouse ? 1.06 : 1.0
-                        Behavior on scale { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
+                        Behavior on scale { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
                         AppIcon { anchors.centerIn: parent; size: dock.cfg.iconSize; icon: cell.modelData.entry ? cell.modelData.entry.icon : ""; fallbackGlyph: "app"
                             dim: cell.modelData.entry ? 1 : 0.7 }
                         // running indicator: 1 dot per window (max 3)
                         Row { anchors.bottom: parent.bottom; anchors.bottomMargin: 3; anchors.horizontalCenter: parent.horizontalCenter; spacing: 3
                             Repeater { model: Math.min(3, cell.wins.length)
-                                delegate: Rectangle { width: cell.isActive ? 10 : 4; height: 2; radius: 1; color: cell.sel ? Theme.inverse : cell.isActive ? Theme.silverBright : Theme.silverMuted } } }
+                                delegate: Rectangle { width: cell.isActive ? 10 : 4; height: 2; radius: 1; color: cell.sel || cell.isActive ? Theme.accent : Theme.silverMuted } } }
                         MouseArea { id: cma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
                             acceptedButtons: Qt.LeftButton | Qt.MiddleButton
                             onClicked: mouse => { if (mouse.button === Qt.MiddleButton && cell.modelData.entry) ApplicationService.launch(cell.modelData.entry); else dock.activate(cell.modelData) } }

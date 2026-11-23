@@ -1,0 +1,59 @@
+[
+  {
+    "name": "shellcheck",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "name": "niri",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "name": "diff-check",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "name": "patch-reverse-check",
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "name": "Python AST tests/fake-niri-server.py",
+    "exit": 0
+  },
+  {
+    "name": "Python AST tests/audio-helper-test.py",
+    "exit": 0
+  },
+  {
+    "name": "Python AST tests/visualizer-integration.py",
+    "exit": 0
+  },
+  {
+    "name": "Python AST tests/shortcut-native-test.py",
+    "exit": 0
+  },
+  {
+    "name": "Python AST tests/run-qml.py",
+    "exit": 0
+  },
+  {
+    "name": "Python AST scripts/audio-levels.py",
+    "exit": 0
+  },
+  {
+    "name": "Python AST docs/phase4-task6-evidence/deployed-lifecycle.py",
+    "exit": 0
+  },
+  {
+    "name": "only intended preexisting source files changed",
+    "changes": [
+      "components/Settings.qml",
+      "tests/run-qml.py",
+      "tests/validate.sh"
+    ],
+    "exit": 0
+  }
+]

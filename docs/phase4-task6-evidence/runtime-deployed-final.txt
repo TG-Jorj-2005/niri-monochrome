@@ -1,0 +1,200 @@
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO qml: [Lock] session lock confirmed by compositor
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN scene: QML Image at @components/WallpaperLayer.qml[72:9]: Cannot open: file:///home/jorj/Pictures/Wallpapers/current.png
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  WARN scene: QML Image at @components/WallpaperLayer.qml[72:9]: Cannot open: file:///home/jorj/Pictures/Wallpapers/estrategy-minimal.png
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  WARN scene: QML Image at @components/Settings.qml[233:21]: Cannot open: file:///home/jorj/Pictures/Wallpapers/venom.jpg
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO qml: [Lock] session lock confirmed by compositor
+  WARN quickshell.service.pipewire.loop: Fatal pipewire error on object 9 with code -14 Received error event
+  WARN quickshell.dbus.properties: Error updating property org.mpris.MediaPlayer2.firefox.instance_1_170/org/mpris/MediaPlayer2/org.mpris.MediaPlayer2.Player:Position
+  WARN quickshell.dbus.properties: QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name is not activatable")
+  INFO qml: [Lock] session lock confirmed by compositor
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_56 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_3430 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_3430 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_3431 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_3431 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_56 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_3556 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_3556 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_3557 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_3557 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO qml: [Lock] session lock confirmed by compositor

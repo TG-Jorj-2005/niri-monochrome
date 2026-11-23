@@ -1,0 +1,48 @@
+PASS private shortcut source configuration validates after process restart
+  INFO: Launching config: "/tmp/nm-task5-probe/selftest-shortcut-ui.qml"
+  INFO: Shell ID: "61d641b91b5e8292b5e1e94c5a5db9da" Path ID "61d641b91b5e8292b5e1e94c5a5db9da"
+  INFO: Saving logs to "/tmp/nm-qml-52egw13_/runtime/quickshell/by-id/uo44k9ueot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_67 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS actual supported source files loaded without duplicate keys
+  INFO qml: PASS synthetic search focus in pass-through overlay
+  INFO qml: PASS typing retains search focus and filters locally
+  INFO qml: PASS special-character query shows correct row
+  INFO qml: PASS Return and keypad Enter never execute informational rows
+  INFO qml: PASS Tab reaches category controls
+  INFO qml: PASS Shift Tab returns to search
+  INFO qml: PASS pointer category selection filters actual entries
+  INFO qml: PASS category Return Enter Space remain safe
+  INFO qml: PASS pointer click restores search focus
+  INFO qml: PASS empty result navigation remains bounded and legible
+  INFO qml: PASS Down selects next filtered row
+  INFO qml: PASS Up selects previous filtered row
+  INFO qml: PASS long result list scrolls without dismissal
+  INFO qml: PASS inside padding preserves Task 1 shield
+  INFO qml: PASS Escape dismisses actual overlay
+  INFO qml: PASS small viewport keeps keycaps inside panel
+  INFO qml: PASS small viewport footer and list never overlap or escape
+  INFO qml: PASS atomic source update immediately refreshes open sheet
+  WARN qml: [MonitorService] niri outputs not received, using connector-based keys
+  INFO qml: PASS removed source never leaves stale shortcuts
+  INFO qml: PASS recreated source restored on supported refresh
+  INFO qml: PASS generated file change applies effective override once
+  INFO qml: PASS main include order governs effective supported override
+  INFO qml: PASS settings change refreshes actual generated include
+  INFO qml: PASS disabled shell binding disappears after file regeneration
+  INFO qml: PASS actual Settings shortcut button opens overlay and closes Settings state
+  INFO qml: PASS Control Center keyboard button transitions to cheat sheet
+  INFO qml: PASS rapid reduced-motion reopen retains one sheet
+  INFO qml: PASS close button dismisses without opening another overlay
+  INFO qml: PASS outside click dismisses and releases overlay
+  INFO qml: RESULT 30/30 passed
+  INFO: Launching config: "/tmp/nm-task5-probe/selftest-shortcut-restore.qml"
+  INFO: Shell ID: "315ffa134a85429fcfd6ab6e9e36f462" Path ID "315ffa134a85429fcfd6ab6e9e36f462"
+  INFO: Saving logs to "/tmp/nm-qml-52egw13_/runtime/quickshell/by-id/qs44t9ueot/log.qslog"
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS new process restores supported registry after settings/source updates
+  INFO qml: RESULT 1/1 passed
+

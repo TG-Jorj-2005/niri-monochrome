@@ -1,0 +1,12 @@
+  INFO: Launching config: "/tmp/nm-task5-probe/selftest-shortcut-layout.qml"
+  INFO: Shell ID: "a39efb36b5080b7c8ac398abec188965" Path ID "a39efb36b5080b7c8ac398abec188965"
+  INFO: Saving logs to "/tmp/nm-qml-cg5pqsif/runtime/quickshell/by-id/6cz33tteot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: FAIL normal keycaps stay within the sheet
+  INFO qml: PASS normal content and footer remain bounded
+  INFO qml: FAIL small keycaps stay within the sheet
+  INFO qml: PASS small content and footer remain bounded
+  INFO qml: FAIL narrow keycaps stay within the sheet
+  INFO qml: PASS narrow content and footer remain bounded
+  INFO qml: RESULT 3/6 passed
+

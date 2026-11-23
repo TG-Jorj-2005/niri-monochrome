@@ -1,0 +1,18 @@
+Output "eDP-1":
+  Background layer:
+    Surface:
+      Namespace: "nm-wallpaper"
+      Keyboard interactivity: none
+
+  Bottom layer: (empty)
+
+  Top layer:
+    Surface:
+      Namespace: "nm-bar"
+      Keyboard interactivity: none
+
+  Overlay layer:
+    Surface:
+      Namespace: "nm-dock-trigger"
+      Keyboard interactivity: none
+

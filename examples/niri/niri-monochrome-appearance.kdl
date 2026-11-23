@@ -1,0 +1,33 @@
+// Generated bounded effects; no full-screen overlay blur.
+layer-rule {
+    match namespace="^nm-bar$"
+    geometry-corner-radius 9
+    background-effect {
+        blur true
+        saturation 0
+        noise 0.01
+    }
+    shadow {
+        on
+        softness 12
+        spread 1
+        offset x=0 y=3
+        color "#00000059"
+    }
+}
+layer-rule {
+    match namespace="^nm-dock$"
+    geometry-corner-radius 12
+    background-effect {
+        blur true
+        saturation 0
+        noise 0.01
+    }
+    shadow {
+        on
+        softness 12
+        spread 1
+        offset x=0 y=3
+        color "#00000059"
+    }
+}

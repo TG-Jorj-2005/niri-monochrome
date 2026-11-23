@@ -1,0 +1,31 @@
+{
+  "status": "Name:\tqs\nUmask:\t0022\nState:\tS (sleeping)\nTgid:\t12157\nNgid:\t0\nPid:\t12157\nPPid:\t3590\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t256\nGroups:\t10 1000 \nNStgid:\t12157\nNSpid:\t12157\nNSpgid:\t12079\nNSsid:\t12079\nKthread:\t0\nVmPeak:\t 2003956 kB\nVmSize:\t 1991432 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t  344020 kB\nVmRSS:\t  230416 kB\nRssAnon:\t  120500 kB\nRssFile:\t  109892 kB\nRssShmem:\t      24 kB\nVmData:\t 1303748 kB\nVmStk:\t     132 kB\nVmExe:\t    3448 kB\nVmLib:\t  210564 kB\nVmPTE:\t    2076 kB\nVmSwap:\t   20988 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t31\nSigQ:\t0/62039\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000000001000\nSigCgt:\t0000000100000000\nCapInh:\t0000000800000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\tfffff\nCpus_allowed_list:\t0-19\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t1244369\nnonvoluntary_ctxt_switches:\t22691\nx86_Thread_features:\t\nx86_Thread_features_locked:\t\n",
+  "inotify": {
+    "29": 1,
+    "36": 2,
+    "39": 12,
+    "54": 2,
+    "66": 2,
+    "70": 82,
+    "74": 2,
+    "76": 2
+  },
+  "sockets": {
+    "5": "socket:[23452]",
+    "9": "socket:[57971]",
+    "10": "socket:[23454]",
+    "12": "socket:[57991]",
+    "13": "socket:[57989]",
+    "16": "socket:[67922]",
+    "17": "socket:[57992]",
+    "27": "socket:[45551]",
+    "40": "socket:[58078]",
+    "45": "socket:[818562]",
+    "51": "socket:[820572]",
+    "67": "socket:[751188]"
+  },
+  "children": [
+    "197630"
+  ],
+  "fds": 70
+}

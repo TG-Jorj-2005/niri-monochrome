@@ -51,7 +51,7 @@ PopoverFrame {
                             width: group.width; height: body.implicitHeight + 20
                             radius: Theme.radiusControl
                             color: cma.containsMouse ? Theme.hover : Theme.surface2
-                            border.width: 1; border.color: card.modelData.read ? Theme.border : Theme.silverMuted
+                            border.width: 1; border.color: card.modelData.read ? Theme.border : Theme.accent
                             Column { id: body; anchors { left: parent.left; right: parent.right; top: parent.top; margins: 10; rightMargin: 34 } spacing: 2
                                 Row { width: parent.width; spacing: 8
                                     Label { text: card.modelData.summary; font.pixelSize: Theme.fontSm; font.weight: Font.Medium; width: parent.width - 60 }
@@ -65,5 +65,5 @@ PopoverFrame {
             }
         }
     }
-    Label { text: "History: " + NotificationService.history.length + " · kept " + UserConfig.data.notifications.historyRetentionDays + " days"; font.pixelSize: Theme.fontXs; mono: true; color: Theme.textDisabled }
+    Label { text: "History: " + NotificationService.history.length + " · kept " + UserConfig.data.notifications.historyRetentionDays + " days"; font.pixelSize: Theme.fontXs; mono: true; color: Theme.textSecondary }
 }

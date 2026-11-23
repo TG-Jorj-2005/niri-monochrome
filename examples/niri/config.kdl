@@ -16,6 +16,8 @@ include "binds.kdl"       // scurtături tastatură
 include "niri-monochrome.kdl" // scurtături NIRI MONOCHROME (Mod+D, Mod+A)
 
 // Cere aplicațiilor să nu-și deseneze propriul titlebar.
+include "niri-monochrome-appearance.kdl" // bounded shell glass and shadows
+
 prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"

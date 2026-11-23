@@ -1,0 +1,35 @@
+PASS closed MediaControls starts no capture
+MEASURE {"name": "closed-idle", "seconds": 31.798627434996888, "qs_pid": 168355, "cpu_percent": 0.03144789824794203, "group_cpu_percent": 0.03144789824794203, "rss_start_mib": 68.66796875, "rss_end_mib": 68.85546875, "fds_start": 15, "fds_end": 14}
+PASS open starts exactly one real capture
+PASS real graph links only selected sink monitor
+MEASURE {"name": "open-no-playback", "seconds": 31.800781082994945, "qs_pid": 168355, "cpu_percent": 0.03144576849826928, "group_cpu_percent": 0.03144576849826928, "rss_start_mib": 86.9296875, "rss_end_mib": 87.0859375, "fds_start": 24, "fds_end": 21}
+PASS real virtual-sink PCM produces amplitude
+MEASURE {"name": "open-real-playback", "seconds": 31.846382490002725, "qs_pid": 168355, "cpu_percent": 9.012012591700033, "group_cpu_percent": 9.640027406452647, "rss_start_mib": 87.0859375, "rss_end_mib": 89.25, "fds_start": 21, "fds_end": 29}
+PASS appearance changes do not restart capture
+PASS actual silent PCM returns calm state
+PASS two visible views share a single capture
+PASS disable stops capture with views open
+PASS reenable while hidden stays stopped
+PASS output selection change replaces obsolete monitor
+PASS backend unavailable stops capture
+PASS backend reconnection resumes one capture
+PASS removed target never falls back to hardware
+PASS all test capture helpers stopped
+Traceback (most recent call last):
+  File "/tmp/nm-task4-probe/tests/visualizer-integration.py", line 244, in <module>
+    sink(names[1]);ipc('select',names[0]);wait_for(lambda s:s['running'] and s['target']==names[0] and s['status'] in ['listening','ready'], timeout=5)
+    ~~~~^^^^^^^^^^
+  File "/tmp/nm-task4-probe/tests/visualizer-integration.py", line 161, in sink
+    assert run('pactl', 'get-default-sink') == original_sink
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/nm-task4-probe/tests/visualizer-integration.py", line 285, in <module>
+    check('default output and input preserved', run('pactl','get-default-sink')==original_sink and run('pactl','get-default-source')==original_source)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/nm-task4-probe/tests/visualizer-integration.py", line 41, in check
+    raise AssertionError(name + ': ' + str(detail))
+AssertionError: default output and input preserved: None

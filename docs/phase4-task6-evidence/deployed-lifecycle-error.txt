@@ -1,0 +1,1 @@
+Natural lock during quiet interval; keep lock intact

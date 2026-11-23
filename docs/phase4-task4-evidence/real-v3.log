@@ -1,0 +1,23 @@
+PASS closed MediaControls starts no capture
+PASS open starts exactly one real capture
+PASS real graph links only selected sink monitor
+PASS real virtual-sink PCM produces amplitude
+PASS appearance changes do not restart capture
+PASS actual silent PCM returns calm state
+PASS two visible views share a single capture
+PASS disable stops capture with views open
+PASS reenable while hidden stays stopped
+PASS output selection change replaces obsolete monitor
+PASS backend unavailable stops capture
+PASS backend reconnection resumes one capture
+PASS removed target never falls back to hardware
+PASS reconnected output can be selected again
+PASS unexpected exits stop after three bounded retries
+PASS close after exhausted retries cleans state
+PASS close stops real backend
+PASS rapid media cycles leave no duplicate or orphan
+PASS isolated shell exit terminates active capture tree
+PASS all test capture helpers stopped
+PASS default output and input preserved
+PASS preexisting playback routes unchanged
+RESULT 22/22 passed

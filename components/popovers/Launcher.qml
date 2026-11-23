@@ -55,10 +55,16 @@ Panel {
         Rectangle { visible: launcher.egg; width: parent.width; height: 44; radius: Theme.radiusControl; color: Theme.silver
             Label { anchors.centerIn: parent; text: "Petru și Ardei sunt șmecheri."; color: Theme.inverse; font.weight: Font.Bold; font.letterSpacing: 0.5 } }
 
-        Column {
+        Item {
             width: parent.width
-            spacing: 2
+            implicitHeight: resultRows.implicitHeight
             visible: !launcher.egg
+            Rectangle { width: parent.width; height: 44; radius: Theme.radiusControl; color: Theme.accentSubtle; visible: launcher.results.length > 0
+                border.width: 1; border.color: Theme.accent
+                y: Math.max(0, launcher.selected) * 46
+                Behavior on y { NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
+            }
+            Column { id: resultRows; width: parent.width; spacing: 2
             Repeater {
                 model: launcher.results
                 delegate: Rectangle {
@@ -68,16 +74,16 @@ Panel {
                     readonly property bool sel: launcher.selected === index
                     width: parent.width; height: 44
                     radius: Theme.radiusControl
-                    color: sel ? Theme.silver : ma.containsMouse ? Theme.hover : "transparent"
+                    color: sel ? "transparent" : ma.containsMouse ? Theme.hover : "transparent"
                     Row {
                         anchors.left: parent.left; anchors.leftMargin: 10; anchors.verticalCenter: parent.verticalCenter; spacing: 12
-                        AppIcon { icon: row.modelData.icon; size: 26; anchors.verticalCenter: parent.verticalCenter; dim: row.sel ? 0.2 : 1 }
+                        AppIcon { icon: row.modelData.icon; size: 26; anchors.verticalCenter: parent.verticalCenter }
                         Column { anchors.verticalCenter: parent.verticalCenter; spacing: 1
-                            Label { text: row.modelData.name; color: row.sel ? Theme.inverse : Theme.text; font.weight: Font.Medium; width: launcher.width - 120 }
+                            Label { text: row.modelData.name; color: Theme.text; font.weight: Font.Medium; width: launcher.width - 120 }
                             Label { visible: launcher.cfg.showDescriptions && text !== ""; text: row.modelData.comment || row.modelData.genericName || ""; font.pixelSize: Theme.fontXs
-                                color: row.sel ? Qt.rgba(0,0,0,0.6) : Theme.silverMuted; width: launcher.width - 120 } }
+                                color: Theme.textSecondary; width: launcher.width - 120 } }
                     }
-                    Label { visible: row.sel; text: "↵"; mono: true; anchors.right: parent.right; anchors.rightMargin: 12; anchors.verticalCenter: parent.verticalCenter; color: Theme.inverse; font.pixelSize: Theme.fontSm }
+                    Label { visible: row.sel; text: "↵"; mono: true; anchors.right: parent.right; anchors.rightMargin: 12; anchors.verticalCenter: parent.verticalCenter; color: Theme.accent; font.pixelSize: Theme.fontSm }
                     MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
                         onEntered: launcher.selected = row.index
                         onClicked: { launcher.selected = row.index; launcher.launchSelected() } }
@@ -89,9 +95,10 @@ Panel {
                     MonoIcon { name: "inbox"; size: 20; color: Theme.textDisabled; anchors.horizontalCenter: parent.horizontalCenter }
                     Label { text: ApplicationService.visible.length === 0 ? "No applications found on this system" : "No application matches “" + field.text + "”"; secondary: true; font.pixelSize: Theme.fontSm; anchors.horizontalCenter: parent.horizontalCenter } } }
         }
+        }
         Label { visible: launcher.error !== ""; text: launcher.error; color: Theme.silverBright; font.pixelSize: Theme.fontSm; width: parent.width; wrapMode: Text.Wrap }
         Row { spacing: 14
-            Label { text: launcher.results.length + " / " + ApplicationService.visible.length; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textDisabled }
-            Label { text: "↑↓ navigate · ↵ launch · esc close"; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textDisabled } }
+            Label { text: launcher.results.length + " / " + ApplicationService.visible.length; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary }
+            Label { text: "↑↓ navigate · ↵ launch · esc close"; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary } }
     }
 }

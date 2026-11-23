@@ -1,0 +1,727 @@
+[
+  {
+    "name": "launcher-4-open-close",
+    "seconds": 2.84022406800068,
+    "before": {
+      "t": 94373.005156949,
+      "ticks": 56206,
+      "rssKiB": 199204,
+      "privateKiB": 124340,
+      "fds": 64,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1910995,
+        "nonvoluntary_ctxt_switches": 32031
+      }
+    },
+    "after": {
+      "t": 94375.845381017,
+      "ticks": 56253,
+      "rssKiB": 202136,
+      "privateKiB": 127620,
+      "fds": 66,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1911943,
+        "nonvoluntary_ctxt_switches": 32056
+      }
+    },
+    "cpuPercent": 16.547990184832397,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "settings-4-open-close",
+    "seconds": 2.943062624995946,
+    "before": {
+      "t": 94375.922654915,
+      "ticks": 56254,
+      "rssKiB": 202136,
+      "privateKiB": 127620,
+      "fds": 66,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1911945,
+        "nonvoluntary_ctxt_switches": 32056
+      }
+    },
+    "after": {
+      "t": 94378.86571754,
+      "ticks": 56266,
+      "rssKiB": 209992,
+      "privateKiB": 133852,
+      "fds": 67,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1912129,
+        "nonvoluntary_ctxt_switches": 32066
+      }
+    },
+    "cpuPercent": 4.077385203455034,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "controlcenter-4-open-close",
+    "seconds": 2.8614304450020427,
+    "before": {
+      "t": 94378.944322931,
+      "ticks": 56267,
+      "rssKiB": 209992,
+      "privateKiB": 133852,
+      "fds": 67,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1912131,
+        "nonvoluntary_ctxt_switches": 32067
+      }
+    },
+    "after": {
+      "t": 94381.805753376,
+      "ticks": 56316,
+      "rssKiB": 211608,
+      "privateKiB": 134856,
+      "fds": 67,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1913049,
+        "nonvoluntary_ctxt_switches": 32091
+      }
+    },
+    "cpuPercent": 17.124302317250635,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "notifications-4-open-close",
+    "seconds": 2.9145278740033973,
+    "before": {
+      "t": 94381.893210283,
+      "ticks": 56316,
+      "rssKiB": 211608,
+      "privateKiB": 134856,
+      "fds": 67,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1913051,
+        "nonvoluntary_ctxt_switches": 32091
+      }
+    },
+    "after": {
+      "t": 94384.807738157,
+      "ticks": 56361,
+      "rssKiB": 211352,
+      "privateKiB": 135448,
+      "fds": 67,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1914252,
+        "nonvoluntary_ctxt_switches": 32113
+      }
+    },
+    "cpuPercent": 15.439893507756361,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "shortcuts-4-open-close",
+    "seconds": 2.921297273001983,
+    "before": {
+      "t": 94384.895438154,
+      "ticks": 56361,
+      "rssKiB": 211352,
+      "privateKiB": 135448,
+      "fds": 67,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "62": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1914254,
+        "nonvoluntary_ctxt_switches": 32113
+      }
+    },
+    "after": {
+      "t": 94387.816735427,
+      "ticks": 56426,
+      "rssKiB": 220944,
+      "privateKiB": 144556,
+      "fds": 75,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1915544,
+        "nonvoluntary_ctxt_switches": 32149
+      }
+    },
+    "cpuPercent": 22.250388757322433,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "dock-4-open-close",
+    "seconds": 2.853767970998888,
+    "before": {
+      "t": 94387.894552154,
+      "ticks": 56426,
+      "rssKiB": 220944,
+      "privateKiB": 144556,
+      "fds": 75,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1915546,
+        "nonvoluntary_ctxt_switches": 32149
+      }
+    },
+    "after": {
+      "t": 94390.748320125,
+      "ticks": 56463,
+      "rssKiB": 219596,
+      "privateKiB": 143184,
+      "fds": 76,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1916533,
+        "nonvoluntary_ctxt_switches": 32171
+      }
+    },
+    "cpuPercent": 12.965314761399155,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "media-4-open-close",
+    "seconds": 2.9208385450037895,
+    "before": {
+      "t": 94390.825515851,
+      "ticks": 56463,
+      "rssKiB": 219596,
+      "privateKiB": 143184,
+      "fds": 76,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1916535,
+        "nonvoluntary_ctxt_switches": 32171
+      }
+    },
+    "after": {
+      "t": 94393.746354396,
+      "ticks": 56507,
+      "rssKiB": 219060,
+      "privateKiB": 143196,
+      "fds": 75,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1917681,
+        "nonvoluntary_ctxt_switches": 32200
+      }
+    },
+    "cpuPercent": 15.064167129423758,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "closed-recovery-30s-before-reload",
+    "seconds": 30.286171512998408,
+    "before": {
+      "t": 94393.834428509,
+      "ticks": 56507,
+      "rssKiB": 219060,
+      "privateKiB": 143196,
+      "fds": 75,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1917683,
+        "nonvoluntary_ctxt_switches": 32200
+      }
+    },
+    "after": {
+      "t": 94424.120600022,
+      "ticks": 56509,
+      "rssKiB": 216196,
+      "privateKiB": 139752,
+      "fds": 69,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1917845,
+        "nonvoluntary_ctxt_switches": 32202
+      }
+    },
+    "cpuPercent": 0.0660367388840028,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  },
+  {
+    "name": "supported-live-reload",
+    "seconds": 1.8813067260052776,
+    "before": {
+      "t": 94424.211458587,
+      "ticks": 56509,
+      "rssKiB": 216196,
+      "privateKiB": 139752,
+      "fds": 69,
+      "children": [
+        "424110"
+      ],
+      "inotify": {
+        "29": 1,
+        "37": 2,
+        "39": 12,
+        "54": 2,
+        "60": 2,
+        "62": 83,
+        "63": 2,
+        "64": 2
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1917847,
+        "nonvoluntary_ctxt_switches": 32202
+      }
+    },
+    "after": {
+      "t": 94426.092765313,
+      "ticks": 56583,
+      "rssKiB": 193388,
+      "privateKiB": 117728,
+      "fds": 74,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919037,
+        "nonvoluntary_ctxt_switches": 32218
+      }
+    },
+    "cpuPercent": 39.33436210964379,
+    "focusBefore": 75,
+    "focusAfter": 75,
+    "diagnostics": {
+      "niriStatus": "ready",
+      "reconnects": 0,
+      "profileAvailable": true,
+      "profileBackend": "tuned-ppd",
+      "profile": 1,
+      "audio": "ready",
+      "network": "ready",
+      "bluetooth": "off",
+      "brightness": "ready",
+      "brightnessWatchers": 0,
+      "notifications": "mako",
+      "shellServerApproved": false,
+      "shellLock": true,
+      "visualizerStatus": "idle",
+      "visualizer": false,
+      "visualizerWatchers": 0,
+      "overlay": "",
+      "dock": false
+    },
+    "state": {
+      "niri": true,
+      "screens": [
+        "eDP-1"
+      ],
+      "notifications": "other:12139",
+      "locked": false,
+      "workspaces": 4,
+      "apps": "80/123"
+    }
+  }
+]

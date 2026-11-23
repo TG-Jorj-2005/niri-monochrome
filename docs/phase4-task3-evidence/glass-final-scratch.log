@@ -1,0 +1,37 @@
+PASS generated glass KDL validation + no rewrite across process restart
+  INFO: Launching config: "/tmp/nm-task3-probe/selftest-glass.qml"
+  INFO: Shell ID: "4e2d48cdcc550152b89f677afce6be17" Path ID "4e2d48cdcc550152b89f677afce6be17"
+  INFO: Saving logs to "/tmp/nm-qml-e3k4ta27/runtime/quickshell/by-id/ydo25cceot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS missing appearance config safely initializes defaults
+  INFO qml: PASS opacity lower and upper bounds
+  INFO qml: PASS invalid opacity types recover to default
+  INFO qml: PASS geometry shadow and glass types bounded
+  INFO qml: CONTRAST 0 secondary=7.848 heading=7.848
+  INFO qml: CONTRAST 1 secondary=7.391 heading=7.391
+  INFO qml: CONTRAST 2 secondary=6.383 heading=6.383
+  INFO qml: CONTRAST 3 secondary=4.704 heading=4.704
+  INFO qml: CONTRAST 4 secondary=4.633 heading=4.633
+  INFO qml: PASS actual Panel alpha composition across five backgrounds
+  INFO qml: PASS secondary text contrast across five rendered backgrounds
+  INFO qml: PASS actual section headings readable over bright glass
+  INFO qml: PASS muted icons contrast over bright glass
+  INFO qml: PASS slider focus outline contrast over bright glass
+  INFO qml: PASS enabled placeholder readable on opaque input
+  INFO qml: PASS glass off renders opaque fallback across backgrounds
+  INFO qml: PASS glass off disables both compositor blur rules
+  INFO qml: PASS generated blur rules anchored to bar and dock only
+  INFO qml: PASS appearance geometry and shadow propagate to generated KDL
+  INFO qml: PASS appearance preferences saved to private JSON
+  INFO qml: PASS file reload restores nondefault appearance and motion
+  WARN qml: [UserConfig]  config.json is not valid JSON: SyntaxError: JSON.parse: Parse error
+  INFO qml: PASS corrupt JSON preserves last valid appearance
+  INFO qml: PASS unchanged appearance does not rewrite KDL
+  INFO qml: RESULT 18/18 passed
+  INFO: Launching config: "/tmp/nm-task3-probe/selftest-glass.qml"
+  INFO: Shell ID: "4e2d48cdcc550152b89f677afce6be17" Path ID "4e2d48cdcc550152b89f677afce6be17"
+  INFO: Saving logs to "/tmp/nm-qml-e3k4ta27/runtime/quickshell/by-id/neo28cceot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS new process restores appearance and generated rules
+  INFO qml: RESULT 1/1 passed
+

@@ -1,0 +1,20 @@
+  INFO: Launching config: "/tmp/nm-task4-probe/selftest-visualizer.qml"
+  INFO: Shell ID: "4a301b3f786ea24af5e701683628bcba" Path ID "4a301b3f786ea24af5e701683628bcba"
+  INFO: Saving logs to "/tmp/nm-qml-axg16_qx/runtime/quickshell/by-id/vml3gtreot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS target follows actual default AudioService sink
+  INFO qml: PASS closed visualizer has no subscription
+  INFO qml: PASS visible activation subscribes exactly once
+  INFO qml: PASS repeated sync cannot duplicate subscription
+  INFO qml: PASS ancestor hiding releases subscription
+  INFO qml: PASS hidden reenable cannot capture
+  INFO qml: PASS disable releases visible subscription
+  INFO qml: PASS reenable visible view restores one subscription
+  INFO qml: PASS attack release smoothing deterministic
+  INFO qml: PASS invalid amplitudes do not change history
+  INFO qml: PASS silence reaches exact calm state
+  INFO qml: PASS history and values remain bounded
+  INFO qml: PASS reduced motion renders bounded actual bars
+  INFO qml: PASS destroyed views release all subscriptions
+  INFO qml: RESULT 14/14 passed
+

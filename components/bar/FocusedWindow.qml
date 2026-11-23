@@ -38,7 +38,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             width: Math.min(implicitWidth, root.maxWidth - 40)
             text: root.win ? root.display : (root.isFocusedOutput ? "Desktop" : "Inactive display")
-            color: root.win ? (root.isFocusedOutput ? Theme.text : Theme.textDisabled) : Theme.textDisabled
+            color: root.win ? (root.isFocusedOutput ? Theme.text : Theme.textSecondary) : Theme.textSecondary
             font.pixelSize: Theme.fontSm
             font.weight: root.isFocusedOutput && root.win ? Font.Medium : Font.Normal
             horizontalAlignment: Text.AlignHCenter

@@ -43,3 +43,11 @@ niri validate
 ```
 
 Tests isolate configuration/state and the session bus. UI loading requires an existing Wayland backend. Experimental shell locking remains opt-in and needs manual PAM verification; mako remains the notification server.
+
+## Phase 4 appearance and media
+
+Settings → Appearance controls reduced motion, monochrome glass, opacity, radius, shadow strength, motion intensity and the real output-level visualizer. Media shows amplitude history or a level meter; it does not invent frequency bands. Only the open Media panel owns a capture helper. No additional package is required beyond the existing `pw-cat` and Python 3.
+
+Open Keyboard Shortcuts from Settings → Shortcuts or the keyboard button in Control Center. Terminal: `qs -c niri-monochrome ipc call shortcuts toggle`. The native `Mod+Shift+Slash` binding is preserved. The list covers `binds.kdl` and the generated shell include.
+
+For a new installation, once the shell has generated `niri-monochrome-appearance.kdl`, add `include "niri-monochrome-appearance.kdl"` to the main Niri config. This enables native blur/shadows only for the bounded bar/dock surfaces on Niri 26.04; full-screen popover layers are not blurred. See [docs/PHASE4-REPORT.md](docs/PHASE4-REPORT.md).

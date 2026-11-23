@@ -1,0 +1,66 @@
+[
+  {
+    "pid": 12157,
+    "ppid": 3590,
+    "args": [
+      "qs",
+      "-c",
+      "niri-monochrome"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-niri-qs-12157.scope"
+  },
+  {
+    "pid": 183864,
+    "ppid": 3590,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-com.microsoft.VSCode-161300.scope"
+  },
+  {
+    "pid": 184135,
+    "ppid": 3590,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-com.microsoft.VSCode-161300.scope"
+  },
+  {
+    "pid": 184377,
+    "ppid": 3590,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-com.microsoft.VSCode-161300.scope"
+  },
+  {
+    "pid": 184879,
+    "ppid": 3590,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-com.microsoft.VSCode-161300.scope"
+  },
+  {
+    "pid": 185161,
+    "ppid": 3590,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-com.microsoft.VSCode-161300.scope"
+  },
+  {
+    "pid": 427171,
+    "ppid": 12157,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ],
+    "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-niri-qs-12157.scope"
+  }
+]

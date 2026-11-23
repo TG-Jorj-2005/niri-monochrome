@@ -32,6 +32,11 @@ Singleton {
     readonly property string user: Quickshell.env("USER") || "user"
     property string hostname: ""
     Process { command: ["hostname"]; running: true; stdout: StdioCollector { onStreamFinished: sys.hostname = text.trim() } }
+    // Full name (GECOS) and AccountsService avatar, used by the lock screen.
+    property string realName: ""
+    readonly property string avatarPath: "/var/lib/AccountsService/icons/" + user
+    Process { command: ["getent", "passwd", sys.user]; running: true
+        stdout: StdioCollector { onStreamFinished: { const f = text.trim().split(":"); sys.realName = f.length > 4 ? f[4].split(",")[0].trim() : "" } } }
 
     // Notification daemon owner (to detect a competing server).
     property string notificationOwnerPid: ""

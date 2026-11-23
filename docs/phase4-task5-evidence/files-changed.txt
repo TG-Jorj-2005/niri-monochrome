@@ -1,0 +1,11 @@
+services/ShortcutParser.js
+services/ShortcutService.qml
+components/popovers/ShortcutCheatSheet.qml
+selftest-shortcut-data.qml
+selftest-shortcut-ui.qml
+selftest-shortcut-layout.qml
+selftest-shortcut-focus.qml
+selftest-shortcut-restore.qml
+tests/shortcut-native-test.py
+tests/run-qml.py
+tests/validate.sh

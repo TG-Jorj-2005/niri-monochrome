@@ -1,0 +1,29 @@
+  INFO: Launching config: "/tmp/nm-task5-probe/selftest-shortcut-data.qml"
+  INFO: Shell ID: "f0d5ba360d1e7df9112b9b1d5ff1bddb" Path ID "f0d5ba360d1e7df9112b9b1d5ff1bddb"
+  INFO: Saving logs to "/tmp/nm-qml-4yyyc7v1/runtime/quickshell/by-id/6e143zteot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS block comments never invent bindings
+  INFO qml: PASS disabled nodes excluded and multiline action retained
+  INFO qml: PASS quoted braces and same-line nodes preserve structure
+  INFO qml: PASS native modifier aliases accepted
+  INFO qml: PASS canonicalization changes modifiers only
+  INFO qml: PASS hidden later binding cannot resurrect overridden row
+  INFO qml: PASS modifier aliases resolve one effective row
+  INFO qml: PASS escaped title decoded
+  INFO qml: PASS structurally invalid source fails closed
+  INFO qml: PASS multiple keys for one action are retained
+  INFO qml: PASS case insensitive action and description filtering
+  INFO qml: PASS literal special-character search
+  INFO qml: PASS category filtering and empty state
+  INFO qml: PASS same-block duplicates fail closed as native niri requires
+  INFO qml: PASS raw quoted strings and nested comments preserved
+  INFO qml: PASS supported includes follow main file order
+  INFO qml: PASS disabled source include cannot contribute rows
+  INFO qml: PASS main inline binding overrides preceding included source
+  INFO qml: PASS configured native Mod changes modifier normalization
+  INFO qml: PASS unknown actions remain raw informational descriptions
+  INFO qml: PASS empty or invalid supported entries never invent actions
+  INFO qml: FILTER_BENCH 1108 ms for 100 queries over 5000 rows
+  INFO qml: PASS large registry filtering remains local and deterministic
+  INFO qml: RESULT 22/22 passed
+

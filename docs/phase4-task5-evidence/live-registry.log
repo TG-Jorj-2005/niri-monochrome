@@ -1,0 +1,7 @@
+  INFO: Launching config: "/tmp/nm-task5-probe/selftest-shortcut-live.qml"
+  INFO: Shell ID: "ca260c8f4c4f244d5ca046c9e61ccbd2" Path ID "ca260c8f4c4f244d5ca046c9e61ccbd2"
+  INFO: Saving logs to "/tmp/nm-qml-gybcf4bm/runtime/quickshell/by-id/v734p5ueot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: LIVE_REGISTRY {"total":136,"unique":136,"categories":{"Applications":6,"Media":10,"NIRI MONOCHROME":6,"Navigation":32,"Screenshots":4,"System":8,"Windows":35,"Workspaces":35},"mod":"Super","comma":{"key":"Mod+Comma","label":"Settings","category":"NIRI MONOCHROME","description":"spawn \"qs\" \"-c\" \"niri-monochrome\" \"ipc\" \"call\" \"settings\" \"toggle\"","hidden":false},"scope":"Mod=Super. Source view: config.kdl + direct binds.kdl/shell include; other includes and XKB symbol aliases are not resolved; not a live compositor snapshot. "}
+  INFO qml: QMLCHECK DONE
+

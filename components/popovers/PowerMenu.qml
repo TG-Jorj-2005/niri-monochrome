@@ -57,9 +57,9 @@ Panel {
                     readonly property bool confirming: menu.confirm === modelData.id
                     width: (col.width - 40) / 5; height: 84
                     radius: Theme.radiusPanel
-                    color: confirming ? Theme.silver : sel || ma.containsMouse ? Theme.elevated : Theme.surface2
-                    border.width: 1; border.color: confirming ? Theme.silverBright : sel ? Theme.silver : Theme.border
-                    Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
+                    color: confirming ? Theme.silver : sel ? Theme.accentSubtle : ma.containsMouse ? Theme.elevated : Theme.surface2
+                    border.width: 1; border.color: confirming ? Theme.silverBright : sel ? Theme.accent : Theme.border
+                    Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
                     Column { anchors.centerIn: parent; spacing: 8
                         MonoIcon { name: parent.parent.modelData.icon; size: 22; anchors.horizontalCenter: parent.horizontalCenter; color: parent.parent.confirming ? Theme.inverse : Theme.silver }
                         Label { text: parent.parent.confirming ? "Confirm?" : parent.parent.modelData.label; font.pixelSize: Theme.fontSm; anchors.horizontalCenter: parent.horizontalCenter

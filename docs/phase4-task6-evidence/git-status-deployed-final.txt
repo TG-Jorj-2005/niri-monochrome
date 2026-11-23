@@ -1,0 +1,72 @@
+ M README.md
+ M components/AutoHideDock.qml
+ M components/LockScreen.qml
+ M components/NotificationToasts.qml
+ M components/Osd.qml
+ M components/OverlayLayer.qml
+ M components/Settings.qml
+ M components/WallpaperLayer.qml
+ M components/bar/ClockIndicator.qml
+ M components/bar/FocusedWindow.qml
+ M components/bar/WorkspaceIndicator.qml
+ M components/popovers/CalendarPopover.qml
+ M components/popovers/ControlCenter.qml
+ M components/popovers/Launcher.qml
+ M components/popovers/MediaControls.qml
+ M components/popovers/NotificationCenter.qml
+ M components/popovers/PopoverFrame.qml
+ M components/popovers/PowerMenu.qml
+ M components/ui/IconButton.qml
+ M components/ui/MonoButton.qml
+ M components/ui/MonoSlider.qml
+ M components/ui/MonoTextField.qml
+ M components/ui/MonoToggle.qml
+ M components/ui/Panel.qml
+ M components/ui/SectionTitle.qml
+ M config/Theme.qml
+ M config/UserConfig.qml
+ M docs/CHANGELOG.md
+ M examples/niri/config.kdl
+ M selftest-qml.qml
+ M services/SystemService.qml
+ M shell.qml
+ M tests/run-qml.py
+ M tests/validate.sh
+?? components/lock/
+?? components/popovers/ShortcutCheatSheet.qml
+?? components/ui/AudioVisualizer.qml
+?? docs/PHASE4-FINAL-REPORT.md
+?? docs/PHASE4-REPORT.md
+?? docs/PHASE4-TASK1-REPORT.md
+?? docs/PHASE4-TASK2-REPORT.md
+?? docs/PHASE4-TASK3-REPORT.md
+?? docs/PHASE4-TASK4-REPORT.md
+?? docs/PHASE4-TASK5-REPORT.md
+?? docs/phase4-evidence/
+?? docs/phase4-task1-evidence/
+?? docs/phase4-task2-evidence/
+?? docs/phase4-task3-evidence/
+?? docs/phase4-task4-evidence/
+?? docs/phase4-task5-evidence/
+?? docs/phase4-task6-evidence/
+?? examples/niri/niri-monochrome-appearance.kdl
+?? scripts/audio-levels.py
+?? selftest-glass.qml
+?? selftest-interactions.qml
+?? selftest-overlay.qml
+?? selftest-phase4.qml
+?? selftest-settings-search.qml
+?? selftest-shortcut-data.qml
+?? selftest-shortcut-focus.qml
+?? selftest-shortcut-layout.qml
+?? selftest-shortcut-restore.qml
+?? selftest-shortcut-ui.qml
+?? selftest-visualizer.qml
+?? services/AppearanceService.qml
+?? services/ShortcutParser.js
+?? services/ShortcutService.qml
+?? services/VisualizerService.qml
+?? tests/audio-helper-test.py
+?? tests/fixtures/
+?? tests/shortcut-native-test.py
+?? tests/visualizer-integration.py

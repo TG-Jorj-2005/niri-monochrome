@@ -1,0 +1,13 @@
+PASS closed MediaControls starts no capture
+PASS open starts exactly one real capture
+PASS real graph links only selected sink monitor
+PASS real virtual-sink PCM produces amplitude
+PASS all test capture helpers stopped
+PASS default output and input preserved
+PASS preexisting playback routes unchanged
+Traceback (most recent call last):
+  File "/tmp/nm-task4-probe/tests/visualizer-integration.py", line 225, in <module>
+    paused=wait_for(lambda s:s['amplitude']==0 and s['status']=='listening', timeout=4)
+  File "/tmp/nm-task4-probe/tests/visualizer-integration.py", line 91, in wait_for
+    raise AssertionError('Timed out waiting for fixture: '+str(last))
+AssertionError: Timed out waiting for fixture: {'watchers': 1, 'running': True, 'desired': True, 'target': 'nm_task4_a_169552', 'status': 'ready', 'amplitude': 0.401895, 'levels': [0, 0, 0.401895], 'attempts': 0, 'frames': 3, 'open': True}

@@ -1,0 +1,28 @@
+  INFO: Launching config: "/tmp/nm-task2-probe/selftest-dock.qml"
+  INFO: Shell ID: "39762398ccad55edbee78a35b4e8b5c0" Path ID "39762398ccad55edbee78a35b4e8b5c0"
+  INFO: Saving logs to "/tmp/nm-qml-d0bb81_e/runtime/quickshell/by-id/8ok29kbeot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN scene: @selftest-dock.qml[21:-1]: TypeError: List doesn't define a Count function
+  WARN qml: [MonitorService] niri outputs not received, using connector-based keys
+
+Traceback (most recent call last):
+  File "/tmp/nm-task2-probe/tests/run-qml.py", line 84, in <module>
+    proc.wait(timeout=20)
+    ~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib64/python3.15/subprocess.py", line 1445, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.15/subprocess.py", line 2310, in _wait
+    if self._wait_pidfd(timeout) or self._wait_kqueue(timeout):
+       ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib64/python3.15/subprocess.py", line 2249, in _wait_pidfd
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['dbus-run-session', '--config-file=/tmp/nm-qml-d0bb81_e/bus.conf', '--', 'qs', '-p', '/tmp/nm-task2-probe/selftest-dock.qml', '--no-color']' timed out after 20 seconds

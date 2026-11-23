@@ -14,7 +14,7 @@ PopoverFrame {
     implicitWidth: UserConfig.data.controlCenter.width
     property string expanded: initialSection
     readonly property string monitorKey: MonitorService.keyForName(ShellState.screenName)
-    headerExtra: [ IconButton { icon: "settings"; iconSize: 14; implicitWidth: 24; implicitHeight: 24; onClicked: { ShellState.close(); ShellState.settingsOpen = true } } ]
+    headerExtra: [ IconButton { icon: "keyboard"; tooltip: "Keyboard Shortcuts"; implicitWidth: 24; implicitHeight: 24; onClicked: ShellState.show("shortcuts") }, IconButton { icon: "settings"; iconSize: 14; implicitWidth: 24; implicitHeight: 24; onClicked: { ShellState.close(); ShellState.settingsOpen = true } } ]
 
     function toggleSection(s) { expanded = (expanded === s ? "" : s) }
     Component.onCompleted: { SystemService.probeNotificationOwner(); NotificationService.refreshMako(); BatteryService.refreshProfiles(); BrightnessService.refresh(); BrightnessService.watchers++; if (initialSection === "network" && NetworkService.wifiDevice) NetworkService.setScanning(true) }
@@ -109,7 +109,7 @@ PopoverFrame {
                         width: parent.width; height: 32; radius: Theme.radiusControl
                         color: ma.containsMouse ? Theme.hover : "transparent"
                         Row { anchors.left: parent.left; anchors.leftMargin: 6; anchors.verticalCenter: parent.verticalCenter; spacing: 8
-                            MonoIcon { name: nrow.modelData.signalStrength > 0.66 ? "wifi" : nrow.modelData.signalStrength > 0.33 ? "wifi-medium" : "wifi-low"; size: 14; color: nrow.modelData.connected ? Theme.silverBright : Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter }
+                            MonoIcon { name: nrow.modelData.signalStrength > 0.66 ? "wifi" : nrow.modelData.signalStrength > 0.33 ? "wifi-medium" : "wifi-low"; size: 14; color: nrow.modelData.connected ? Theme.accent : Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter }
                             Label { text: nrow.modelData.name; font.pixelSize: Theme.fontSm; width: cc.width - 150; font.weight: nrow.modelData.connected ? Font.DemiBold : Font.Normal; anchors.verticalCenter: parent.verticalCenter }
                             MonoIcon { visible: nrow.modelData.security !== 0 && !nrow.modelData.connected; name: "lock"; size: 11; color: Theme.textDisabled; anchors.verticalCenter: parent.verticalCenter } }
                         Label { anchors.right: parent.right; anchors.rightMargin: 8; anchors.verticalCenter: parent.verticalCenter; font.pixelSize: Theme.fontXs; secondary: true
@@ -152,7 +152,7 @@ PopoverFrame {
                     width: parent.width; height: 32; radius: Theme.radiusControl
                     color: ma.containsMouse ? Theme.hover : "transparent"
                     Row { anchors.left: parent.left; anchors.leftMargin: 6; anchors.verticalCenter: parent.verticalCenter; spacing: 8
-                        MonoIcon { name: brow.modelData.connected ? "bluetooth-connected" : "bluetooth"; size: 14; color: brow.modelData.connected ? Theme.silverBright : Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter }
+                        MonoIcon { name: brow.modelData.connected ? "bluetooth-connected" : "bluetooth"; size: 14; color: brow.modelData.connected ? Theme.accent : Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter }
                         Label { text: brow.modelData.name || brow.modelData.address; font.pixelSize: Theme.fontSm; width: cc.width - 170; font.weight: brow.modelData.connected ? Font.DemiBold : Font.Normal; anchors.verticalCenter: parent.verticalCenter } }
                     Row { anchors.right: parent.right; anchors.rightMargin: 4; anchors.verticalCenter: parent.verticalCenter; spacing: 4
                         Label { visible: brow.modelData.batteryAvailable; text: Math.round(brow.modelData.battery * 100) + "%"; mono: true; font.pixelSize: Theme.fontXs; secondary: true; anchors.verticalCenter: parent.verticalCenter }
@@ -250,18 +250,19 @@ PopoverFrame {
         signal expand()
         height: 66
         radius: Theme.radiusControl
-        color: on ? Theme.silver : tma.containsMouse ? Theme.hover : Theme.surface2
-        border.width: 1; border.color: expanded ? Theme.silver : on ? Theme.silver : Theme.border
+        color: on ? Theme.accentFill(tma.containsMouse, tma.pressed)
+                  : tma.containsMouse ? Theme.accentSubtle : Theme.surface2
+        border.width: 1; border.color: expanded || on ? Theme.accent : Theme.border
         opacity: tileEnabled ? 1 : 0.45
-        Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
+        Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
         Column { anchors.left: parent.left; anchors.leftMargin: 10; anchors.verticalCenter: parent.verticalCenter; spacing: 4
-            MonoIcon { name: tile.icon; size: 16; color: tile.on ? Theme.inverse : Theme.silver }
-            Label { text: tile.label; font.pixelSize: Theme.fontXs; font.weight: Font.DemiBold; color: tile.on ? Theme.inverse : Theme.text; width: tile.width - 30; elide: Text.ElideNone; wrapMode: Text.NoWrap; fontSizeMode: Text.HorizontalFit; minimumPixelSize: 9 }
-            Label { text: tile.sub; font.pixelSize: Theme.fontXs; color: tile.on ? Qt.rgba(0,0,0,0.6) : Theme.silverMuted; width: tile.width - 36 } }
+            MonoIcon { name: tile.icon; size: 16; color: tile.on ? Theme.textOnAccent(tile.color) : Theme.silver }
+            Label { text: tile.label; font.pixelSize: Theme.fontXs; font.weight: Font.DemiBold; color: tile.on ? Theme.textOnAccent(tile.color) : Theme.text; width: tile.width - 30; elide: Text.ElideNone; wrapMode: Text.NoWrap; fontSizeMode: Text.HorizontalFit; minimumPixelSize: 9 }
+            Label { text: tile.sub; font.pixelSize: Theme.fontXs; color: tile.on ? Theme.textOnAccent(tile.color) : Theme.textSecondary; width: tile.width - 36 } }
         MouseArea { id: tma; anchors.fill: parent; hoverEnabled: true; enabled: tile.tileEnabled; cursorShape: Qt.PointingHandCursor; onClicked: tile.toggled() }
         Rectangle { visible: tile.hasExpand; width: 18; height: 18; radius: 3; anchors.right: parent.right; anchors.top: parent.top; anchors.margins: 4
             color: ema.containsMouse ? (tile.on ? Qt.rgba(0,0,0,0.15) : Theme.pressed) : "transparent"
-            MonoIcon { anchors.centerIn: parent; name: tile.expanded ? "chevron-down" : "chevron-up"; size: 12; color: tile.on ? Theme.inverse : Theme.silverMuted }
+            MonoIcon { anchors.centerIn: parent; name: tile.expanded ? "chevron-down" : "chevron-up"; size: 12; color: tile.on ? Theme.textOnAccent(tile.color) : Theme.silverMuted }
             MouseArea { id: ema; anchors.fill: parent; hoverEnabled: true; enabled: tile.tileEnabled; onClicked: tile.expand() } }
     }
     component DeviceRow: Rectangle {
@@ -269,9 +270,9 @@ PopoverFrame {
         property bool current: false
         signal picked()
         width: parent.width; height: 28; radius: Theme.radiusControl
-        color: current ? Theme.elevated : dma.containsMouse ? Theme.hover : "transparent"
+        color: current ? Theme.accentSubtle : dma.containsMouse ? Theme.hover : "transparent"
         Row { anchors.left: parent.left; anchors.leftMargin: 8; anchors.verticalCenter: parent.verticalCenter; spacing: 8
-            MonoIcon { name: current ? "check" : "dot"; size: 12; color: current ? Theme.silverBright : Theme.textDisabled; anchors.verticalCenter: parent.verticalCenter }
+            MonoIcon { name: current ? "check" : "dot"; size: 12; color: current ? Theme.accent : Theme.textDisabled; anchors.verticalCenter: parent.verticalCenter }
             Label { text: AudioService.label(node); font.pixelSize: Theme.fontSm; width: cc.width - 80; anchors.verticalCenter: parent.verticalCenter; color: current ? Theme.text : Theme.textSecondary } }
         MouseArea { id: dma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: picked() }
     }

@@ -1,0 +1,15 @@
+test_amplitude_is_energy_not_signed_average (__main__.AudioHelperTests.test_amplitude_is_energy_not_signed_average) ... ok
+test_fragmented_complete_pcm_frame (__main__.AudioHelperTests.test_fragmented_complete_pcm_frame) ... ok
+test_full_scale_bounded (__main__.AudioHelperTests.test_full_scale_bounded) ... ok
+test_known_sine_rms_and_sign (__main__.AudioHelperTests.test_known_sine_rms_and_sign) ... ok
+test_missing_target_rejected (__main__.AudioHelperTests.test_missing_target_rejected) ... ok
+test_silence_and_noise_floor (__main__.AudioHelperTests.test_silence_and_noise_floor) ... ok
+test_stop_reaps_blocked_capture_child (__main__.AudioHelperTests.test_stop_reaps_blocked_capture_child) ... ok
+test_truncated_pcm_never_emits_activity (__main__.AudioHelperTests.test_truncated_pcm_never_emits_activity) ... ok
+test_unavailable_pipewire_emits_no_fake_level (__main__.AudioHelperTests.test_unavailable_pipewire_emits_no_fake_level) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.509s
+
+OK
+RESULT 9/9 passed

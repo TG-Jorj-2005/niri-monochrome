@@ -1,0 +1,415 @@
+  INFO: Launching config: "/tmp/nm-task6-probe/selftest-settings-bench.qml"
+  INFO: Shell ID: "31a7e3bc0a20b3dac83242917ec874a2" Path ID "31a7e3bc0a20b3dac83242917ec874a2"
+  INFO: Saving logs to "/tmp/nm-qml-psclscb8/runtime/quickshell/by-id/4ar486weot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN qml: [MonitorService] niri outputs not received, using connector-based keys
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  INFO qml: BENCH {"queries":200,"visibleApps":80,"before":{"t":1794524769657,"ticks":21,"rssKiB":94384,"privateKiB":43852},"after":{"t":1794524775049,"ticks":163,"rssKiB":95320,"privateKiB":44388},"cpuPercent":26.3353115727003,"cpuSeconds":1.42}
+  INFO qml: RESULT 1/1 passed
+

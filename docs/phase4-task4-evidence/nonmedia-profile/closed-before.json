@@ -1,0 +1,4878 @@
+{
+  "pid": 12157,
+  "seconds": 30.002872838995245,
+  "cpu_percent": 2.966382602012871,
+  "rss_start_mib": 244.62890625,
+  "rss_end_mib": 244.54296875,
+  "fds_start": 65,
+  "fds_end": 66,
+  "common_thread_cpu_percent": {
+    "qs": 1.0665645310608076,
+    "QThread": 0.19998084957390136,
+    "QDBusConnection": 0.0,
+    "[pango] fontcon": 0.0,
+    "pool-spawner": 0.0,
+    "gmain": 0.0,
+    "gdbus": 0.0,
+    "dconf worker": 0.0,
+    "WaylandEventThr": 0.13332056638260095,
+    "qs:disk$0": 0.0,
+    "qs:sh0": 0.0,
+    "qs:disk$1": 0.0,
+    "QQmlThread": 0.0,
+    "QQuickPixmapRea": 0.0,
+    "QSGRenderThread": 0.2999712743608521,
+    "qs:traceq0": 0.0,
+    "qs:gdrv0": 0.0,
+    "module-rt": 0.0
+  },
+  "samples": [
+    {
+      "process": {
+        "ticks": 29625,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9474,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1752,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59289.68220551
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29627,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9476,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1753,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59290.683533255
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29628,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9476,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1753,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59291.683393852
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29628,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9477,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59292.684209682
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29630,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9478,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59293.683720357
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29631,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9479,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59294.683506388
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29631,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9479,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59295.682306947
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29631,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9479,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59296.683911422
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29631,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9479,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59297.683773231
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29632,
+        "rss_kib": 250500,
+        "fds": 65,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9479,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 676,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59298.683853005
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29636,
+        "rss_kib": 249956,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9480,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 677,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1586,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 1,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59299.681904514
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29637,
+        "rss_kib": 249956,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9482,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 677,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1587,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 1,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59300.683211463
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29638,
+        "rss_kib": 249956,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9482,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 677,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1587,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 1,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59301.683524784
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29639,
+        "rss_kib": 249956,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9483,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 677,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1587,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 1,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59302.683613632
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29641,
+        "rss_kib": 249956,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9484,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 677,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1587,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 1,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59303.684289373
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29642,
+        "rss_kib": 249956,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9485,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 677,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2016,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1587,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 1,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59304.683089697
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29660,
+        "rss_kib": 249856,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9491,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 679,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2017,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1589,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 12,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59305.682711767
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29673,
+        "rss_kib": 250016,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9494,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 680,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2017,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1589,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 17,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59306.683508601
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29675,
+        "rss_kib": 250016,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9495,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 680,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2017,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1590,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 17,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59307.683620771
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29677,
+        "rss_kib": 250016,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9497,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 680,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2017,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1590,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 17,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59308.683696468
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29678,
+        "rss_kib": 250016,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9498,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 680,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1590,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 17,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59309.681751321
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29687,
+        "rss_kib": 250168,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9500,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 681,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 23,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59310.683841322
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29692,
+        "rss_kib": 250168,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9501,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 26,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59311.683739108
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29695,
+        "rss_kib": 250004,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9502,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59312.683669557
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger",
+          "nm-overlay"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29706,
+        "rss_kib": 255892,
+        "fds": 67,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9504,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1593,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          },
+          "173163": {
+            "ticks": 5,
+            "name": "QSGRenderThread"
+          },
+          "173164": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "173165": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59313.684726848
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "power",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger",
+          "nm-overlay"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29706,
+        "rss_kib": 255892,
+        "fds": 67,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9504,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1593,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          },
+          "173163": {
+            "ticks": 5,
+            "name": "QSGRenderThread"
+          },
+          "173164": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "173165": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59314.683836867
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "power",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger",
+          "nm-overlay"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29713,
+        "rss_kib": 250412,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9506,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1594,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59315.683565168
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29713,
+        "rss_kib": 250412,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9506,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1594,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59316.683209558
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29713,
+        "rss_kib": 250412,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9506,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1594,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59317.683648647
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    },
+    {
+      "process": {
+        "ticks": 29713,
+        "rss_kib": 250412,
+        "fds": 66,
+        "name": "qs",
+        "threads": {
+          "12157": {
+            "ticks": 9506,
+            "name": "qs"
+          },
+          "12218": {
+            "ticks": 682,
+            "name": "QThread"
+          },
+          "12219": {
+            "ticks": 308,
+            "name": "QDBusConnection"
+          },
+          "12232": {
+            "ticks": 0,
+            "name": "[pango] fontcon"
+          },
+          "12233": {
+            "ticks": 0,
+            "name": "pool-spawner"
+          },
+          "12234": {
+            "ticks": 0,
+            "name": "gmain"
+          },
+          "12236": {
+            "ticks": 0,
+            "name": "gdbus"
+          },
+          "12239": {
+            "ticks": 0,
+            "name": "dconf worker"
+          },
+          "12283": {
+            "ticks": 1754,
+            "name": "WaylandEventThr"
+          },
+          "12284": {
+            "ticks": 2018,
+            "name": "WaylandEventThr"
+          },
+          "12319": {
+            "ticks": 0,
+            "name": "qs:disk$0"
+          },
+          "12320": {
+            "ticks": 1,
+            "name": "qs:sh0"
+          },
+          "97635": {
+            "ticks": 0,
+            "name": "qs:disk$1"
+          },
+          "127612": {
+            "ticks": 8,
+            "name": "QQmlThread"
+          },
+          "127614": {
+            "ticks": 93,
+            "name": "QQuickPixmapRea"
+          },
+          "127642": {
+            "ticks": 1591,
+            "name": "QSGRenderThread"
+          },
+          "127643": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127644": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "127648": {
+            "ticks": 1594,
+            "name": "QSGRenderThread"
+          },
+          "127649": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "127650": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "160531": {
+            "ticks": 55,
+            "name": "QSGRenderThread"
+          },
+          "160532": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "160533": {
+            "ticks": 7,
+            "name": "qs:gdrv0"
+          },
+          "169685": {
+            "ticks": 0,
+            "name": "module-rt"
+          },
+          "172457": {
+            "ticks": 0,
+            "name": "QSGRenderThread"
+          },
+          "172458": {
+            "ticks": 0,
+            "name": "qs:traceq0"
+          },
+          "172459": {
+            "ticks": 0,
+            "name": "qs:gdrv0"
+          },
+          "172607": {
+            "ticks": 28,
+            "name": "Thread (pooled)"
+          }
+        },
+        "children": {
+          "127621": {
+            "ticks": 75,
+            "rss_kib": 11712,
+            "fds": 9,
+            "name": "nmcli"
+          }
+        },
+        "t": 59318.682712885
+      },
+      "context": {
+        "diagnostics": {
+          "niriStatus": "ready",
+          "reconnects": 0,
+          "profileAvailable": true,
+          "profileBackend": "tuned-ppd",
+          "profile": 1,
+          "audio": "ready",
+          "network": "ready",
+          "bluetooth": "ready",
+          "brightness": "ready",
+          "brightnessWatchers": 0,
+          "notifications": "mako",
+          "shellServerApproved": false,
+          "shellLock": false,
+          "visualizerStatus": "idle",
+          "visualizer": false,
+          "visualizerWatchers": 0,
+          "overlay": "",
+          "dock": false
+        },
+        "namespaces": [
+          "nm-wallpaper",
+          "nm-bar",
+          "nm-dock-trigger"
+        ]
+      }
+    }
+  ]
+}

@@ -37,22 +37,24 @@ FloatingWindow {
             spacing: 2
             Column { spacing: 2; bottomPadding: 16
                 Label { text: "NIRI MONOCHROME"; font.weight: Font.Bold; font.letterSpacing: 2; font.pixelSize: Theme.fontSm; color: Theme.silver }
-                Label { text: "Designed for Focus."; font.pixelSize: Theme.fontXs; color: Theme.silverMuted } }
+                Label { text: "Designed for Focus."; font.pixelSize: Theme.fontXs; color: Theme.textSecondary } }
             Repeater {
                 model: win.sections
                 delegate: Rectangle {
                     required property var modelData
                     required property int index
                     width: parent.width; height: 32; radius: Theme.radiusControl
-                    color: win.section === index ? Theme.silver : sma.containsMouse ? Theme.hover : "transparent"
+                    color: win.section === index ? Theme.accentSubtle : sma.containsMouse ? Theme.hover : "transparent"
+                    border.width: win.section === index ? 1 : 0
+                    border.color: Theme.accent
                     Row { anchors.left: parent.left; anchors.leftMargin: 10; anchors.verticalCenter: parent.verticalCenter; spacing: 10
-                        MonoIcon { name: parent.parent.modelData.i; size: 14; color: win.section === parent.parent.index ? Theme.inverse : Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter }
-                        Label { text: parent.parent.modelData.t; font.pixelSize: Theme.fontSm; font.weight: Font.Medium; color: win.section === parent.parent.index ? Theme.inverse : Theme.text; anchors.verticalCenter: parent.verticalCenter } }
+                        MonoIcon { name: parent.parent.modelData.i; size: 14; color: win.section === parent.parent.index ? Theme.accent : Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter }
+                        Label { text: parent.parent.modelData.t; font.pixelSize: Theme.fontSm; font.weight: Font.Medium; color: Theme.text; anchors.verticalCenter: parent.verticalCenter } }
                     MouseArea { id: sma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: win.section = parent.index }
                 }
             }
         }
-        Label { anchors { bottom: parent.bottom; left: parent.left; margins: 14 } text: "v" + Constants.version + " · " + UserConfig.path.replace(Constants.home, "~"); font.pixelSize: Theme.fontXs; color: Theme.textDisabled; mono: true; width: parent.width - 28; wrapMode: Text.Wrap }
+        Label { anchors { bottom: parent.bottom; left: parent.left; margins: 14 } text: "v" + Constants.version + " · " + UserConfig.path.replace(Constants.home, "~"); font.pixelSize: Theme.fontXs; color: Theme.textSecondary; mono: true; width: parent.width - 28; wrapMode: Text.Wrap }
     }
 
     // ---- Content ----
@@ -70,15 +72,24 @@ FloatingWindow {
 
     // ================= Sections =================
     Component { id: appearance; Column { spacing: 0
-        SectionHeader { title: "Appearance"; subtitle: "Dark monochrome · silver accent · brutalist geometry. Tokens live in config/Theme.qml." }
+        SectionHeader { title: "Appearance"; subtitle: "Obsidian Mist · appearance.accentColor in config.json." }
         Row { spacing: 6; bottomPadding: 14
-            Repeater { model: [Theme.background, Theme.surface, Theme.surface2, Theme.elevated, Theme.border, Theme.silverMuted, Theme.silver, Theme.silverBright, Theme.text]
+            Repeater { model: [Theme.background, Theme.surface, Theme.surface2, Theme.elevated, Theme.border, Theme.silverMuted, Theme.accent, Theme.accentHover, Theme.text]
                 delegate: Rectangle { required property var modelData; width: 44; height: 28; color: modelData; border.width: 1; border.color: Theme.border; radius: 3
-                    Label { anchors.centerIn: parent; text: String(parent.modelData).toUpperCase().substring(1); font.pixelSize: 8; mono: true; color: Qt.lighter(parent.modelData, 1.0).hslLightness > 0.5 ? Theme.inverse : Theme.silverMuted } } } }
+                    Label { anchors.centerIn: parent; text: String(parent.modelData).toUpperCase().substring(1); font.pixelSize: 8; mono: true; color: parent.modelData.hslLightness > 0.45 ? Theme.inverse : Theme.text } } } }
         ToggleSetting { label: "Grayscale application icons"; description: "Desaturate app icons in the dock, launcher and bar"; path: "appearance.grayscaleAppIcons" }
         ToggleSetting { label: "Grayscale wallpaper"; description: "Force black-and-white rendering of wallpapers"; path: "appearance.grayscaleWallpaper" }
         ToggleSetting { label: "Grayscale album artwork"; path: "appearance.grayscaleArtwork" }
         ToggleSetting { label: "Animations"; description: "Subtle 140–180 ms ease-out transitions"; path: "appearance.animations" }
+        ToggleSetting { label: "Reduced motion"; description: "Immediate state changes; decorative movement disabled"; path: "appearance.reduceMotion" }
+        ToggleSetting { label: "Monochrome glass"; description: "Translucent panels; compositor blur limited to bar and dock"; path: "appearance.glassEnabled" }
+        NumberSetting { label: "Panel opacity"; path: "appearance.panelOpacity"; from: 0.82; to: 1; step: 0.01 }
+        NumberSetting { label: "Panel radius"; path: "appearance.panelRadius"; from: 0; to: 24; unit: "px" }
+        NumberSetting { label: "Shadow strength"; path: "appearance.shadowStrength"; from: 0; to: 0.65; step: 0.05 }
+        NumberSetting { label: "Animation intensity"; path: "appearance.animationIntensity"; from: 0; to: 1.5; step: 0.1 }
+        ToggleSetting { label: "Audio visualizer"; description: "Real output amplitude; backend runs only while Media is open"; path: "media.visualizerEnabled" }
+        ChoiceSetting { label: "Visualizer style"; path: "media.visualizerStyle"; options: [{value:"history",label:"Level history"},{value:"meter",label:"Level meter"}] }
+        NumberSetting { label: "Visualizer bars"; path: "media.visualizerBarCount"; from: 16; to: 32; step: 1 }
         SettingRow { label: "Typography"; description: Theme.fontSans + " · " + Theme.fontMono; Label { text: "Aa 01"; mono: true; secondary: true } }
         SettingRow { label: "Reset appearance"; MonoButton { text: "Reset"; onClicked: UserConfig.resetSection("appearance") } }
     } }
@@ -121,20 +132,25 @@ FloatingWindow {
                     Row { anchors.left: parent.left; anchors.leftMargin: 8; anchors.verticalCenter: parent.verticalCenter; spacing: 10
                         AppIcon { icon: e ? e.icon : ""; size: 20; anchors.verticalCenter: parent.verticalCenter }
                         Label { text: e ? e.name : modelData + "  (not installed)"; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter; color: e ? Theme.text : Theme.textDisabled }
-                        Label { text: modelData; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textDisabled; anchors.verticalCenter: parent.verticalCenter } }
+                        Label { text: modelData; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary; anchors.verticalCenter: parent.verticalCenter } }
                     Row { anchors.right: parent.right; anchors.rightMargin: 4; anchors.verticalCenter: parent.verticalCenter; spacing: 2
                         IconButton { icon: "chevron-up"; iconSize: 12; implicitWidth: 24; implicitHeight: 24; enabled: index > 0; onClicked: win.moveFav(index, -1) }
                         IconButton { icon: "chevron-down"; iconSize: 12; implicitWidth: 24; implicitHeight: 24; enabled: index < UserConfig.data.dock.favorites.length - 1; onClicked: win.moveFav(index, 1) }
                         IconButton { icon: "x"; iconSize: 12; implicitWidth: 24; implicitHeight: 24; onClicked: win.removeFav(index) } } } } }
         Item { height: 10; width: 1 }
-        MonoTextField { id: favSearch; width: parent.width; icon: "plus"; placeholder: "Add application…"; implicitHeight: 34 }
+        MonoTextField {
+            id: favSearch; width: parent.width; icon: "plus"; placeholder: "Add application…"; implicitHeight: 34
+            // Clearing/rebuilding results destroys the clicked delegate's QML context.
+            function selectFavorite(id) { text = ""; win.addFav(id) }
+        }
         Column { width: parent.width; spacing: 2; visible: favSearch.text.length > 0
-            Repeater { model: favSearch.text.length > 0 ? ApplicationService.search(favSearch.text, 6).filter(e => UserConfig.data.dock.favorites.indexOf(e.id) === -1) : []
+            // A model binding must not mutate the launcher's reactive memoization cache.
+            Repeater { model: favSearch.text.length > 0 ? ApplicationService.searchUncached(favSearch.text.trim(), 6).filter(e => UserConfig.data.dock.favorites.indexOf(e.id) === -1) : []
                 delegate: Rectangle { required property var modelData; width: parent.width; height: 32; radius: Theme.radiusControl; color: ama.containsMouse ? Theme.hover : "transparent"
                     Row { anchors.left: parent.left; anchors.leftMargin: 8; anchors.verticalCenter: parent.verticalCenter; spacing: 10
                         AppIcon { icon: modelData.icon; size: 18; anchors.verticalCenter: parent.verticalCenter }
                         Label { text: modelData.name; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter } }
-                    MouseArea { id: ama; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: { win.addFav(modelData.id); favSearch.text = "" } } } } }
+                    MouseArea { id: ama; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: favSearch.selectFavorite(modelData.id) } } } }
         SettingRow { label: "Reset dock"; MonoButton { text: "Reset"; onClicked: UserConfig.resetSection("dock") } }
     } }
     function moveFav(i, d) { const f = UserConfig.data.dock.favorites.slice(); const j = i + d; if (j < 0 || j >= f.length) return; const t = f[i]; f[i] = f[j]; f[j] = t; UserConfig.set("dock.favorites", f) }
@@ -220,7 +236,7 @@ FloatingWindow {
             Repeater { model: list
                 delegate: Rectangle { required property string modelData
                     readonly property bool cur: WallpaperService.current(win.monitorKey) === modelData
-                    width: 150; height: 100; color: Theme.surface2; radius: Theme.radiusControl; border.width: cur ? 2 : 1; border.color: cur ? Theme.silver : Theme.border; clip: true
+                    width: 150; height: 100; color: Theme.surface2; radius: Theme.radiusControl; border.width: cur ? 2 : 1; border.color: cur ? Theme.accent : Theme.border; clip: true
                     Image { anchors.fill: parent; anchors.margins: 2; source: "file://" + modelData; asynchronous: true; sourceSize: Qt.size(300, 200); fillMode: Image.PreserveAspectCrop }
                     Rectangle { anchors.bottom: parent.bottom; width: parent.width; height: 20; color: Qt.rgba(0,0,0,0.7)
                         Label { anchors.left: parent.left; anchors.leftMargin: 6; anchors.verticalCenter: parent.verticalCenter; text: WallpaperService.fileName(modelData); font.pixelSize: 10; width: parent.width - 36; mono: true } }
@@ -237,7 +253,7 @@ FloatingWindow {
                 delegate: Rectangle { required property string modelData
                     readonly property bool connected: MonitorService.isConnected(modelData)
                     readonly property var scr: Quickshell.screens.find(s => MonitorService.keyFor(s) === modelData) || null
-                    width: parent.width; height: 48; radius: Theme.radiusControl; color: win.monitorKey === modelData ? Theme.elevated : Theme.surface2; border.width: 1; border.color: win.monitorKey === modelData ? Theme.silver : Theme.border
+                    width: parent.width; height: 48; radius: Theme.radiusControl; color: win.monitorKey === modelData ? Theme.accentSubtle : Theme.surface2; border.width: 1; border.color: win.monitorKey === modelData ? Theme.accent : Theme.border
                     Row { anchors.left: parent.left; anchors.leftMargin: 10; anchors.verticalCenter: parent.verticalCenter; spacing: 10
                         MonoIcon { name: "monitor"; size: 16; color: connected ? Theme.silver : Theme.textDisabled; anchors.verticalCenter: parent.verticalCenter }
                         Column { anchors.verticalCenter: parent.verticalCenter
@@ -273,6 +289,7 @@ FloatingWindow {
 
     Component { id: keysS; Column { spacing: 0
         SectionHeader { title: "Shortcuts"; subtitle: "Written to " + Keybindings.includePath.replace(Constants.home, "~") + " (included from config.kdl; niri reloads it live). Empty = not bound." }
+        SettingRow { label: "Keyboard Shortcuts"; description: "Search current bindings without executing actions"; MonoButton { text: "Open cheat sheet"; icon: "keyboard"; onClicked: { ShellState.settingsOpen = false; ShellState.show("shortcuts") } } }
         ToggleSetting { label: "Write niri include file"; description: "Disable if you manage binds yourself"; path: "shortcuts.writeNiriInclude" }
         Repeater { model: Keybindings.actions
             delegate: TextSetting { required property var modelData; label: modelData.label; description: "qs ipc call " + modelData.target + " " + modelData.fn; path: "shortcuts." + modelData.id; fieldWidth: 180
@@ -285,7 +302,7 @@ FloatingWindow {
 
     Component { id: secS; Column { spacing: 0
         SectionHeader { title: "Security"; subtitle: "Lock screen uses the Wayland session-lock protocol (WlSessionLock) and PAM (/etc/pam.d/login). Passwords are never stored or logged." }
-        ToggleSetting { label: "Use the shell lock screen"; description: "Off = Lock in the power menu, control center and `qs ipc call lock lock` run swaylock. Super+Alt+L, lid-close and swayidle keep using swaylock either way until you rebind them."; path: "security.useShellLock" }
+        ToggleSetting { label: "Use the shell lock screen"; description: "On = every lock (power menu, control center, Super+Alt+L, lid-close, swayidle via ~/.local/bin/niri-lock) uses this screen, with swaylock as fallback if the shell does not answer. Off = swaylock everywhere."; path: "security.useShellLock" }
         SettingRow { label: "Test lock now"; description: "Always uses the shell lock (WlSessionLock + PAM) regardless of the toggle above; unlock with your password"; MonoButton { icon: "lock"; text: "Test shell lock"; onClicked: LockService.lockShell() } }
         TextSetting { label: "Clock format"; path: "security.lockClockFormat"; fieldWidth: 140 }
         TextSetting { label: "Date format"; path: "security.lockDateFormat"; fieldWidth: 220 }
@@ -314,7 +331,7 @@ FloatingWindow {
                 { n: "Brightness", s: BrightnessService.status }, { n: "Notifications", s: NotificationService.status }, { n: "Night light", s: NightLightService.status },
                 { n: "Wallpaper", s: Object.keys(WallpaperService.collections).length > 0 ? "ready" : "initializing" } ]
             delegate: SettingRow { required property var modelData; label: modelData.n; height: 34
-                Label { text: modelData.s; mono: true; font.pixelSize: Theme.fontSm; color: /ready|mako|server|on|off/.test(modelData.s) ? Theme.silver : /unavailable|error|other|reconnecting/.test(modelData.s) ? Theme.silverBright : Theme.silverMuted } } }
+                Label { text: modelData.s; mono: true; font.pixelSize: Theme.fontSm; color: /ready|mako|server|on|off/.test(modelData.s) ? Theme.silver : /unavailable|error|other|reconnecting/.test(modelData.s) ? Theme.silverBright : Theme.textSecondary } } }
         ChoiceSetting { label: "Log level"; path: "system.logLevel"; options: [{ value: "debug", label: "debug" }, { value: "info", label: "info" }, { value: "warn", label: "warn" }, { value: "error", label: "error" }] }
         SettingRow { label: "Recent log"; description: Log.warnCount + " warnings · " + Log.errorCount + " errors this session"; MonoButton { text: "Clear"; flat: true; onClicked: Log.clear() } }
         Rectangle { width: parent.width; height: Math.min(220, logCol.implicitHeight + 16); color: Theme.surface; border.width: 1; border.color: Theme.border; radius: Theme.radiusControl; clip: true
@@ -322,7 +339,7 @@ FloatingWindow {
                 Column { id: logCol; width: parent.width
                     Repeater { model: Log.entries.slice(-40).reverse()
                         delegate: Label { required property var modelData; width: parent.width; mono: true; font.pixelSize: 10; wrapMode: Text.Wrap; elide: Text.ElideNone
-                            color: modelData.level === "error" ? Theme.silverBright : modelData.level === "warn" ? Theme.silver : Theme.silverMuted
+                            color: modelData.level === "error" ? Theme.silverBright : modelData.level === "warn" ? Theme.silver : Theme.textSecondary
                             text: Qt.formatTime(new Date(modelData.t), "HH:mm:ss") + "  " + modelData.level.toUpperCase().padEnd(5) + " " + modelData.tag + ": " + modelData.msg } }
                     Label { visible: Log.entries.length === 0; text: "no log entries"; secondary: true; font.pixelSize: Theme.fontXs } } } }
         TextSetting { label: "Brightness device"; description: "Empty = first backlight device"; path: "system.brightnessDevice"; fieldWidth: 220 }

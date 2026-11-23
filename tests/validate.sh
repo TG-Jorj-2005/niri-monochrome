@@ -30,8 +30,12 @@ if command -v niri >/dev/null; then
   else say "niri validate" FAIL; fail=1; fi
 fi
 # Each load gets a private bus and temporary state; also validate the actual entrypoint.
-for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml shell.qml; do
+for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml selftest-shortcut-data.qml selftest-shortcut-ui.qml selftest-shortcut-layout.qml selftest-shortcut-focus.qml selftest-settings-search.qml shell.qml; do
   if python3 "$here/tests/run-qml.py" "$here/$entry"; then say "$entry" ok
   else say "$entry" FAIL; fail=1; fi
 done
+if python3 "$here/tests/audio-helper-test.py"; then say "audio-helper-test.py" ok
+else say "audio-helper-test.py" FAIL; fail=1; fi
+if python3 "$here/tests/shortcut-native-test.py"; then say "shortcut-native-test.py" ok
+else say "shortcut-native-test.py" FAIL; fail=1; fi
 exit "$fail"

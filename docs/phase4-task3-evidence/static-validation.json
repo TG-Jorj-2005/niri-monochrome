@@ -1,0 +1,49 @@
+[
+  {
+    "command": [
+      "bash",
+      "-c",
+      "shellcheck scripts/*.sh tests/*.sh"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "niri",
+      "validate"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "qs",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "quickshell 0.2.1, revision dacfa9de829ac7cb173825f593236bf2c21f637e, distributed by: Fedora Project\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "niri",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "niri 26.04\n",
+    "stderr": ""
+  }
+]

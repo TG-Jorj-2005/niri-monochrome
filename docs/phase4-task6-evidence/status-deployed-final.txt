@@ -1,0 +1,1 @@
+{"niri":true,"screens":["eDP-1"],"notifications":"other:12139","locked":true,"workspaces":4,"apps":"80/123"}

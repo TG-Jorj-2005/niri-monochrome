@@ -1,0 +1,26 @@
+PASS closed MediaControls starts no capture
+PASS open starts exactly one real capture
+PASS real graph links only selected sink monitor
+PASS real virtual-sink PCM produces amplitude
+PASS suspended sink clears stale amplitude without fabricated PCM
+PASS appearance changes do not restart capture
+PASS actual silent PCM returns calm state
+PASS two visible views share a single capture
+PASS disable stops capture with views open
+PASS reenable while hidden stays stopped
+PASS output selection change replaces obsolete monitor
+PASS backend unavailable stops capture
+PASS backend reconnection resumes one capture
+PASS removed target never falls back to hardware
+PASS same-name output reconnection restores its monitor
+PASS helper crash terminates pw-cat through parent-death guard
+PASS all test capture helpers stopped
+PASS default output and input preserved
+PASS preexisting playback routes unchanged
+Traceback (most recent call last):
+  File "/home/jorj/.config/quickshell/niri-monochrome/tests/visualizer-integration.py", line 259, in <module>
+    wait_for(lambda s:s['running'] and s['status'] in ['listening','ready'], timeout=4)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jorj/.config/quickshell/niri-monochrome/tests/visualizer-integration.py", line 91, in wait_for
+    raise AssertionError('Timed out waiting for fixture: '+str(last))
+AssertionError: Timed out waiting for fixture: {'watchers': 1, 'running': False, 'desired': True, 'target': 'nm_task4_b_175753', 'status': 'unavailable', 'amplitude': 0, 'levels': [], 'attempts': 4, 'frames': 50, 'open': True}

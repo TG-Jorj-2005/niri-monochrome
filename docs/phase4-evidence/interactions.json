@@ -1,0 +1,45 @@
+{
+  "panel_cycles": 20,
+  "audio_open_close_cycles": 5,
+  "reload_with_active_capture": true,
+  "old_capture_pids": [
+    "100233"
+  ],
+  "remaining_capture_pids": [],
+  "rss_after_each_cycle_kib": [
+    229564,
+    229512,
+    229768,
+    225628,
+    227584
+  ],
+  "start": {
+    "rss_kib": 226056,
+    "ticks": 14481
+  },
+  "end": {
+    "rss_kib": 232144,
+    "ticks": 14786
+  },
+  "cpu_percent": 25.194425139249173,
+  "diagnostics": {
+    "niriStatus": "ready",
+    "reconnects": 0,
+    "profileAvailable": true,
+    "profileBackend": "tuned-ppd",
+    "profile": 1,
+    "audio": "ready",
+    "network": "ready",
+    "bluetooth": "ready",
+    "brightness": "ready",
+    "brightnessWatchers": 0,
+    "notifications": "mako",
+    "shellServerApproved": false,
+    "shellLock": false,
+    "visualizerStatus": "initializing",
+    "visualizer": false,
+    "visualizerWatchers": 0,
+    "overlay": "",
+    "dock": false
+  }
+}

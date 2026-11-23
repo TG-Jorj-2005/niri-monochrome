@@ -1,0 +1,15 @@
+  INFO: Launching config: "/tmp/nm-task6-probe/selftest-settings-bench.qml"
+  INFO: Shell ID: "31a7e3bc0a20b3dac83242917ec874a2" Path ID "31a7e3bc0a20b3dac83242917ec874a2"
+  INFO: Saving logs to "/tmp/nm-qml-052_895f/runtime/quickshell/by-id/cdr4f6weot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN qml: [MonitorService] niri outputs not received, using connector-based keys
+  INFO qml: BENCH {"queries":200,"visibleApps":80,"before":{"t":1794524776457,"ticks":22,"rssKiB":95196,"privateKiB":44108},"after":{"t":1794524781836,"ticks":159,"rssKiB":96084,"privateKiB":44636},"cpuPercent":25.469418107454917,"cpuSeconds":1.37}
+  INFO qml: RESULT 1/1 passed
+

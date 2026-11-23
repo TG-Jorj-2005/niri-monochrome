@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Color picker: click pe un pixel → hex în clipboard + notificare.
+set -e
+geom=$(slurp -p) || exit 0
+hex=$(grim -g "$geom" -t ppm - | magick - -format '%[hex:p{0,0}]' info:)
+hex="#${hex,,}"
+printf '%s' "$hex" | wl-copy
+notify-send -a color-pick -h string:x-canonical-private-synchronous:osd "Culoare copiată" "$hex"

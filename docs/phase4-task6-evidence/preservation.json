@@ -1,0 +1,11 @@
+{
+  "checkpoint": "/home/jorj/.config/niri-monochrome-phase4-task6-backups/20261113-005808",
+  "live_preexisting_changes": [],
+  "pending_files": [
+    "components/Settings.qml",
+    "selftest-settings-search.qml",
+    "tests/run-qml.py",
+    "tests/validate.sh"
+  ],
+  "patch_applies": true
+}

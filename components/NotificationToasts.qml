@@ -42,8 +42,8 @@ PanelWindow {
                 opacity: 0
                 transform: Translate { id: tr; x: 24 }
                 Component.onCompleted: { opacity = 1; tr.x = 0 }
-                Behavior on opacity { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
-                Behavior on x { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
+                Behavior on opacity { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
+                Behavior on x { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
 
                 Timer { interval: card.timeout; running: card.timeout > 0 && !hover.hovered; onTriggered: card.n.expire() }
                 HoverHandler { id: hover }
@@ -54,7 +54,7 @@ PanelWindow {
                     spacing: 6
                     Row { width: parent.width; spacing: 8
                         AppIcon { icon: card.n.appIcon || card.n.desktopEntry; size: 16; anchors.verticalCenter: parent.verticalCenter; fallbackGlyph: "bell" }
-                        Label { text: (card.n.appName || card.n.desktopEntry || "Notification").toUpperCase(); font.pixelSize: Theme.fontXs; font.letterSpacing: 1; color: Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter; width: parent.width - 110 }
+                        Label { text: (card.n.appName || card.n.desktopEntry || "Notification").toUpperCase(); font.pixelSize: Theme.fontXs; font.letterSpacing: 1; color: Theme.textSecondary; anchors.verticalCenter: parent.verticalCenter; width: parent.width - 110 }
                         Label { text: Qt.formatTime(new Date(), "HH:mm"); mono: true; font.pixelSize: Theme.fontXs; secondary: true; anchors.verticalCenter: parent.verticalCenter }
                         IconButton { icon: "x"; iconSize: 12; implicitWidth: 22; implicitHeight: 22; anchors.verticalCenter: parent.verticalCenter; onClicked: card.n.dismiss() } }
                     Row { width: parent.width; spacing: 10
@@ -67,7 +67,7 @@ PanelWindow {
                             delegate: MonoButton { required property var modelData; text: modelData.text; implicitHeight: 26; padding: 10; onClicked: { modelData.invoke(); card.n.dismiss() } } } }
                 }
                 // timeout progress line
-                Rectangle { visible: card.timeout > 0; anchors.bottom: parent.bottom; anchors.left: parent.left; anchors.margins: 1; height: 2; radius: 1; color: Theme.silverMuted
+                Rectangle { visible: card.timeout > 0; anchors.bottom: parent.bottom; anchors.left: parent.left; anchors.margins: 1; height: 2; radius: 1; color: Theme.accent
                     width: parent.width - 2
                     NumberAnimation on width { from: card.width - 2; to: 0; duration: card.timeout; running: card.timeout > 0 && !hover.hovered } }
             }

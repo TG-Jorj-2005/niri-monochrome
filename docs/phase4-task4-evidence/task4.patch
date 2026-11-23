@@ -1,0 +1,610 @@
+--- before/scripts/audio-levels.py
++++ after/scripts/audio-levels.py
+@@ -27,7 +27,7 @@
+     signal.signal(signal.SIGTERM,stop)
+     command=['pw-cat','--record','--raw','--target',sys.argv[1],
+              '--rate','16000','--channels','1','--format','s16',
+-             '--properties','{"stream.capture.sink":true,"stream.dont-reconnect":true,"node.passive":true,"media.role":"Analyzer","node.name":"niri-monochrome-visualizer"}','-']
++             '--properties','{"stream.capture.sink":true,"node.dont-reconnect":true,"node.dont-fallback":true,"node.passive":true,"media.role":"Analyzer","node.name":"niri-monochrome-visualizer"}','-']
+     child=None
+     try:
+         child=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,preexec_fn=parent_guard)
+--- before/services/VisualizerService.qml
++++ after/services/VisualizerService.qml
+@@ -26,8 +26,10 @@
+         amplitude = v === 0 && amplitude < 0.01 ? 0 : amplitude + (v-amplitude)*(v>amplitude?0.65:0.25)
+         levels=levels.concat([amplitude]).slice(-UserConfig.data.media.visualizerBarCount)
+         status="ready"
++        if (recorder.running) freshness.restart()
+     }
+     onDesiredChanged: {
++        freshness.stop()
+         if (!desired && recorder.running) stopExpected=true
+         retry.stop(); cooling=false; attempts=0
+         if (!desired) { levels=[]; amplitude=0; status=installed?"idle":"unavailable" }
+@@ -41,6 +43,7 @@
+         onStarted: spectrum.status="listening"
+         stdout:SplitParser { onRead: line => spectrum.consume(line) }
+         onExited: {
++            freshness.stop()
+             if (spectrum.stopExpected) {
+                 spectrum.stopExpected=false
+                 spectrum.cooling=true
+@@ -54,5 +57,12 @@
+             }
+         }
+     }
++    // Passive/suspended sinks can stop producing PCM without closing the stream.
++    // Expire stale display state once; never manufacture samples or poll while idle.
++    Timer { id:freshness; interval:750; onTriggered: {
++        if (spectrum.desired && recorder.running) {
++            spectrum.amplitude=0; spectrum.levels=[]; spectrum.status="listening"
++        }
++    } }
+     Timer { id:retry; interval:2000; onTriggered: if(spectrum.desired) spectrum.cooling=false }
+ }
+--- before/selftest-visualizer.qml
++++ after/selftest-visualizer.qml
+@@ -0,0 +1,77 @@
++import QtQuick
++import QtQuick.Window
++import QtTest
++import Quickshell
++import Quickshell.Io
++import qs.config
++import qs.services
++import qs.components.ui
++
++// Deterministic actual-component tests. Real transport/reload uses visualizer-live.qml.
++ShellRoot {
++    id: root
++    property int passed: 0
++    property int failed: 0
++    property var fixture: null
++    function check(name, ok) { if (ok) passed++; else failed++; console.info((ok ? "PASS " : "FAIL ") + name) }
++    Window {
++        id: window
++        visible: true; width: 420; height: 420
++        color: Theme.background
++    }
++    Component { id: basic; Item {
++        width: 340; height: 68
++        property alias viz: viz
++        AudioVisualizer { id: viz; anchors.fill: parent }
++    } }
++    TestCase { id: events; parent: window.contentItem; when: false; optional: true }
++    Timer { interval: 1100; running: true; onTriggered: {
++        // Prevent actual hardware capture in deterministic tests. Real transport is tested separately.
++        VisualizerService.installed = false
++        root.check("target follows actual default AudioService sink", VisualizerService.target === (AudioService.sink ? AudioService.sink.name : ""))
++        root.fixture = basic.createObject(window.contentItem)
++        const v = root.fixture.viz
++        root.check("closed visualizer has no subscription", VisualizerService.watchers === 0 && !VisualizerService.running)
++        v.active = true
++        root.check("visible activation subscribes exactly once", VisualizerService.watchers === 1 && v.subscribed)
++        v.sync(); v.sync()
++        root.check("repeated sync cannot duplicate subscription", VisualizerService.watchers === 1)
++        root.fixture.visible = false
++        root.check("ancestor hiding releases subscription", VisualizerService.watchers === 0 && !v.wanted)
++        UserConfig.set("media.visualizerEnabled", false)
++        UserConfig.set("media.visualizerEnabled", true)
++        root.check("hidden reenable cannot capture", VisualizerService.watchers === 0 && !VisualizerService.running)
++        root.fixture.visible = true
++        UserConfig.set("media.visualizerEnabled", false)
++        root.check("disable releases visible subscription", VisualizerService.watchers === 0)
++        UserConfig.set("media.visualizerEnabled", true)
++        root.check("reenable visible view restores one subscription", VisualizerService.watchers === 1)
++        VisualizerService.amplitude = 0; VisualizerService.levels = []
++        VisualizerService.consume("0.5"); VisualizerService.consume("0.5"); VisualizerService.consume("0")
++        root.check("attack release smoothing deterministic", Math.abs(VisualizerService.amplitude - 0.3290625) < 0.000001)
++        const previous = JSON.stringify(VisualizerService.levels)
++        for (const line of ["", " ", "NaN", "Infinity", "-0.1", "1.1", "garbage", "9".repeat(100)]) VisualizerService.consume(line)
++        root.check("invalid amplitudes do not change history", JSON.stringify(VisualizerService.levels) === previous)
++        for (let i = 0; i < 80; i++) VisualizerService.consume("0")
++        root.check("silence reaches exact calm state", VisualizerService.amplitude === 0 && VisualizerService.levels.every(x => x === 0))
++        for (let i = 0; i < 200; i++) VisualizerService.consume(i % 2 ? "1" : "0")
++        root.check("history and values remain bounded", VisualizerService.levels.length === v.count && VisualizerService.levels.every(x => x >= 0 && x <= 1))
++        UserConfig.set("appearance.reduceMotion", true); events.wait(80)
++        const row = v.children.find(c => c.spacing === 3)
++        const bars = row.children.filter(c => c.amount !== undefined)
++        root.check("reduced motion renders bounded actual bars", !Theme.motionEnabled && bars.length === v.count && bars.every(c => c.children[0].height >= 2 && c.children[0].height <= c.height))
++        v.active = false
++        root.fixture.destroy(); events.wait(30)
++        for (let i = 0; i < 20; i++) {
++            const item = basic.createObject(window.contentItem)
++            item.viz.active = true; item.destroy(); events.wait(1)
++        }
++        // QObject.destroy() is deferred until the current event handler returns.
++        finish.start()
++    } }
++    Timer { id: finish; interval: 100; onTriggered: {
++        root.check("destroyed views release all subscriptions", VisualizerService.watchers === 0 && !VisualizerService.running)
++        console.info("RESULT " + root.passed + "/" + (root.passed + root.failed) + " passed")
++        Qt.quit()
++    } }
++}
+--- before/tests/audio-helper-test.py
++++ after/tests/audio-helper-test.py
+@@ -0,0 +1,124 @@
++#!/usr/bin/env python3
++"""Deterministic PCM/helper regression. The pw-cat transport here is explicitly simulated."""
++import array
++import importlib.util
++import json
++import math
++import os
++from pathlib import Path
++import signal
++import subprocess
++import sys
++import tempfile
++import time
++import unittest
++
++sys.dont_write_bytecode = True
++helper = Path(__file__).resolve().parents[1]/'scripts/audio-levels.py'
++spec = importlib.util.spec_from_file_location('audio_levels', helper)
++audio = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(audio)
++
++class AudioHelperTests(unittest.TestCase):
++    def test_silence_and_noise_floor(self):
++        self.assertEqual(audio.level([]), 0)
++        self.assertEqual(audio.level(array.array('h', [0]*533)), 0)
++        self.assertEqual(audio.level(array.array('h', [1]*533)), 0)
++
++    def test_known_sine_rms_and_sign(self):
++        samples = array.array('h', (round(5000*math.sin(2*math.pi*440*i/16000)) for i in range(16000)))
++        expected = (20*math.log10((5000/math.sqrt(2))/32768)+60)/60
++        self.assertAlmostEqual(audio.level(samples), expected, places=4)
++        self.assertAlmostEqual(audio.level(samples), audio.level(array.array('h', (-x for x in samples))))
++
++    def test_full_scale_bounded(self):
++        for value in [-32768, 32767]:
++            result = audio.level(array.array('h', [value]*533))
++            self.assertGreater(result, .99)
++            self.assertLessEqual(result, 1)
++
++    def test_amplitude_is_energy_not_signed_average(self):
++        self.assertEqual(audio.level(array.array('h', [-5000, 5000]*266)), audio.level(array.array('h', [5000]*532)))
++
++    def fixture(self, payload, block=False):
++        temp = tempfile.TemporaryDirectory(prefix='nm-pcm-')
++        self.addCleanup(temp.cleanup)
++        base = Path(temp.name)
++        (base/'pcm').write_bytes(payload)
++        fake = base/'pw-cat'
++        fake.write_text('#!' + sys.executable + '\n' + '''import os,sys,time,json
++from pathlib import Path
++p=Path(os.environ['NM_PCM_DIR'])
++(p/'argv').write_text(json.dumps(sys.argv[1:]))
++(p/'pid').write_text(str(os.getpid()))
++b=(p/'pcm').read_bytes()
++for n in [1,4,17,len(b)]:
++ sys.stdout.buffer.write(b[:n]);sys.stdout.buffer.flush();b=b[n:];time.sleep(.002)
++if os.environ.get('NM_PCM_BLOCK')=='1':
++ while True: time.sleep(1)
++''')
++        fake.chmod(0o700)
++        env = dict(os.environ, PATH=str(base)+os.pathsep+os.environ['PATH'], NM_PCM_DIR=str(base), NM_PCM_BLOCK='1' if block else '0')
++        proc = subprocess.Popen([sys.executable, str(helper), 'private-test-sink'], env=env,
++                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
++        self.addCleanup(lambda: self.stop(proc))
++        return base, proc
++
++    @staticmethod
++    def stop(proc):
++        if proc.poll() is None:
++            proc.terminate()
++            try: proc.wait(timeout=3)
++            except subprocess.TimeoutExpired: proc.kill(); proc.wait()
++        if proc.stdout: proc.stdout.close()
++        if proc.stderr: proc.stderr.close()
++
++    def test_fragmented_complete_pcm_frame(self):
++        base, proc = self.fixture(array.array('h', [5000]*533).tobytes())
++        stdout, stderr = proc.communicate(timeout=4)
++        self.assertEqual(proc.returncode, 3) # complete frame followed by EOF
++        self.assertEqual(stdout.splitlines(), [f'{audio.level([5000]*533):.4f}'])
++        args = json.loads((base/'argv').read_text())
++        self.assertEqual(args[args.index('--target')+1], 'private-test-sink')
++        props = json.loads(args[args.index('--properties')+1])
++        self.assertTrue(props['stream.capture.sink'])
++        self.assertTrue(props['node.dont-reconnect'])
++        self.assertTrue(props['node.dont-fallback'])
++        self.assertEqual(args[args.index('--format')+1], 's16')
++        self.assertEqual(args[args.index('--channels')+1], '1')
++        self.assertFalse(stderr)
++
++    def test_truncated_pcm_never_emits_activity(self):
++        for payload in [b'', b'\xff', b'\x7f'*1065]:
++            _, proc = self.fixture(payload)
++            stdout, _ = proc.communicate(timeout=4)
++            self.assertEqual(proc.returncode, 3)
++            self.assertEqual(stdout, '')
++
++    def test_stop_reaps_blocked_capture_child(self):
++        base, proc = self.fixture(b'', block=True)
++        until = time.monotonic()+3
++        while not (base/'pid').exists() and time.monotonic()<until: time.sleep(.02)
++        child = int((base/'pid').read_text())
++        proc.terminate(); proc.wait(timeout=3)
++        self.assertEqual(proc.returncode, 0)
++        self.assertFalse(Path(f'/proc/{child}').exists())
++
++    def test_unavailable_pipewire_emits_no_fake_level(self):
++        with tempfile.TemporaryDirectory(prefix='nm-no-pipewire-') as directory:
++            env = dict(os.environ, PIPEWIRE_RUNTIME_DIR=directory, PIPEWIRE_REMOTE='missing-server')
++            proc = subprocess.run([sys.executable, str(helper), 'missing-sink'], env=env,
++                                  capture_output=True, timeout=4)
++            self.assertEqual(proc.returncode, 3)
++            self.assertEqual(proc.stdout, b'')
++
++    def test_missing_target_rejected(self):
++        proc = subprocess.run([sys.executable, str(helper)], capture_output=True, timeout=3)
++        self.assertEqual(proc.returncode, 2)
++        self.assertEqual(proc.stdout, b'')
++
++if __name__ == '__main__':
++    suite = unittest.defaultTestLoader.loadTestsFromTestCase(AudioHelperTests)
++    result = unittest.TextTestRunner(verbosity=2).run(suite)
++    print(f'RESULT {result.testsRun-len(result.failures)-len(result.errors)}/{result.testsRun} passed')
++    raise SystemExit(0 if result.wasSuccessful() else 1)
+--- before/tests/visualizer-integration.py
++++ after/tests/visualizer-integration.py
+@@ -0,0 +1,301 @@
++#!/usr/bin/env python3
++"""Opt-in real PipeWire/Quickshell lifecycle test using temporary null sinks.
++Only AudioService's selection/availability is simulated in a private project copy.
++The actual MediaControls, visualizer service, PCM helper and pw-cat are exercised.
++Never changes the user's default output or routes playback to hardware.
++"""
++import argparse
++import array
++import json
++import math
++import os
++from pathlib import Path
++import shutil
++import signal
++import subprocess
++import tempfile
++import time
++
++parser = argparse.ArgumentParser(description=__doc__)
++parser.add_argument('--profile', action='store_true', help='Add 30-second workloads and 60-second recovery')
++parser.add_argument('--evidence', type=Path, required=True)
++args = parser.parse_args()
++def interrupted(*_):
++    raise KeyboardInterrupt
++signal.signal(signal.SIGTERM, interrupted)
++args.evidence.mkdir(parents=True, exist_ok=True)
++source = Path(__file__).resolve().parents[1]
++passed = 0
++records = []
++modules = {}
++playback = None
++proc = None
++qs_pid = None
++seen_capture_pids = set()
++hz = os.sysconf('SC_CLK_TCK')
++page = os.sysconf('SC_PAGE_SIZE')
++
++def check(name, ok, detail=None):
++    global passed
++    if not ok:
++        raise AssertionError(name + ': ' + str(detail))
++    passed += 1
++    print('PASS ' + name, flush=True)
++    records.append(dict(check=name, detail=detail))
++
++def run(*cmd):
++    return subprocess.check_output(cmd, text=True, timeout=8).strip()
++
++def children(pid):
++    try: return [int(x) for x in Path(f'/proc/{pid}/task/{pid}/children').read_text().split()]
++    except FileNotFoundError: return []
++
++def descendants(pid):
++    result = []
++    for child in children(pid):
++        result.append(child)
++        result.extend(descendants(child))
++    return result
++
++def command(pid):
++    try: return Path(f'/proc/{pid}/cmdline').read_bytes().split(b'\0')
++    except FileNotFoundError: return []
++
++def captures():
++    found = [p for p in descendants(qs_pid) if str(root/'scripts/audio-levels.py').encode() in command(p)]
++    seen_capture_pids.update(found)
++    return found
++
++def alive(pid):
++    try: return Path(f'/proc/{pid}/stat').read_text().split(') ', 1)[1][0] != 'Z'
++    except FileNotFoundError: return False
++
++def ipc(action, *values):
++    result = subprocess.run(['qs', '-p', str(root/'selftest-visualizer.qml'), 'ipc', 'call', 'audioTest', action, *map(str, values)],
++                            env=env, capture_output=True, text=True, timeout=4)
++    result.check_returncode()
++    return result.stdout.strip()
++
++def state(): return json.loads(ipc('state'))
++
++def wait_for(predicate, timeout=4):
++    until = time.monotonic()+timeout
++    last = None
++    while time.monotonic()<until:
++        try:
++            last = state()
++            if predicate(last): return last
++        except (ValueError, subprocess.CalledProcessError):
++            if proc.poll() is not None: raise RuntimeError('Fixture exited')
++        time.sleep(.05)
++    raise AssertionError('Timed out waiting for fixture: '+str(last))
++
++def stopped():
++    wait_for(lambda s: not s['running'] and s['watchers']==0)
++    until = time.monotonic()+3
++    while captures() and time.monotonic()<until: time.sleep(.03)
++    return not captures()
++
++def graph():
++    data = json.loads(run('pw-dump'))
++    nodes = {x['id']:x.get('info', {}).get('props', {}) for x in data if x['type'].endswith(':Node')}
++    owned = {i:p for i,p in nodes.items() if p.get('node.name')=='niri-monochrome-visualizer' and p.get('target.object') in names}
++    links = []
++    for item in data:
++        if item['type'].endswith(':Link'):
++            info = item.get('info', {})
++            if info.get('input-node-id') in owned:
++                links.append(nodes.get(info.get('output-node-id'), {}).get('node.name'))
++    return dict(nodes=owned, sources=links)
++
++def stop_playback():
++    global playback
++    if playback and playback.poll() is None:
++        playback.terminate()
++        try: playback.wait(timeout=3)
++        except subprocess.TimeoutExpired: playback.kill(); playback.wait()
++    playback = None
++
++def play(target, silent=False):
++    global playback
++    stop_playback()
++    playback = subprocess.Popen(['pw-cat', '--playback', '--raw', '--target', target, '--rate', '16000',
++                                 '--channels', '1', '--format', 's16', str(base/('silence.raw' if silent else 'tone.raw'))],
++                                stdout=subprocess.DEVNULL, stderr=playback_log)
++
++def snapshot(pid):
++    result = {}
++    for current in [pid]+descendants(pid):
++        try:
++            p = Path('/proc')/str(current)
++            st = (p/'stat').read_text().split(') ', 1)[1].split()
++            result[current] = dict(ticks=int(st[11])+int(st[12]), rss_kib=int(st[21])*page//1024,
++                                   fds=len(list((p/'fd').iterdir())), command=(p/'comm').read_text().strip())
++        except FileNotFoundError: pass
++    return result
++
++def measure(name, duration):
++    start = time.monotonic(); samples = []
++    first = snapshot(qs_pid)
++    for _ in range(duration):
++        time.sleep(1)
++        samples.append(dict(t=time.monotonic()-start, processes=snapshot(qs_pid), state=state()))
++    elapsed = time.monotonic()-start
++    last = samples[-1]['processes']
++    result = dict(name=name, seconds=elapsed, qs_pid=qs_pid,
++                  cpu_percent=(last[qs_pid]['ticks']-first[qs_pid]['ticks'])/hz/elapsed*100,
++                  group_cpu_percent=sum(last[p]['ticks']-first[p]['ticks'] for p in first.keys() & last.keys())/hz/elapsed*100,
++                  rss_start_mib=first[qs_pid]['rss_kib']/1024, rss_end_mib=last[qs_pid]['rss_kib']/1024,
++                  fds_start=first[qs_pid]['fds'], fds_end=last[qs_pid]['fds'], samples=samples)
++    (args.evidence/(name+'.json')).write_text(json.dumps(result, indent=2))
++    print('MEASURE '+json.dumps({k:v for k,v in result.items() if k!='samples'}), flush=True)
++
++original_sink = run('pactl', 'get-default-sink')
++original_source = run('pactl', 'get-default-source')
++original_streams = json.loads(run('pactl', '-f', 'json', 'list', 'sink-inputs'))
++original_routes = {x['index']:x['sink'] for x in original_streams}
++
++def sink(name):
++    modules[name] = run('pactl', 'load-module', 'module-null-sink', 'sink_name='+name,
++                        'sink_properties=device.description=NMTask4Virtual')
++    assert run('pactl', 'get-default-sink') == original_sink
++
++def remove(name):
++    run('pactl', 'unload-module', modules.pop(name))
++
++try:
++    with tempfile.TemporaryDirectory(prefix='nm-audio-live-') as temp:
++        base = Path(temp); root = base/'project'; root.mkdir()
++        for directory in ['components', 'services', 'config', 'scripts']:
++            shutil.copytree(source/directory, root/directory, ignore=shutil.ignore_patterns('__pycache__'))
++        shutil.copy2(source/'tests/fixtures/visualizer-live.qml', root/'selftest-visualizer.qml')
++        (root/'services/AudioService.qml').write_text('''pragma Singleton
++import QtQuick
++import Quickshell
++Singleton {
++    // Selection simulation only; actual PCM transport remains unchanged.
++    property string testTarget: Quickshell.env("NM_TEST_TARGET")
++    property bool ready: true
++    readonly property var sink: testTarget ? ({name:testTarget}) : null
++}
++''')
++        for sub in ['config/niri-monochrome', 'config/niri', 'state', 'runtime']:
++            (base/sub).mkdir(parents=True, exist_ok=True)
++        (base/'runtime').chmod(0o700)
++        (base/'config/niri-monochrome/config.json').write_text(json.dumps({
++            'notifications':{'server':False}, 'shortcuts':{'writeNiriInclude':False},
++            'wallpaper':{'enabled':False}, 'security':{'useShellLock':False}}))
++        bus_config = base/'bus.conf'
++        bus_config.write_text('<busconfig><type>session</type><listen>unix:tmpdir=/tmp</listen><policy context="default">'
++                              '<allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
++        names = ['nm_task4_a_'+str(os.getpid()), 'nm_task4_b_'+str(os.getpid())]
++        for name in names: sink(name)
++        # Test tones exist only in a temporary directory and target only the null sink.
++        tone = array.array('h', (round(5000*math.sin(2*math.pi*440*i/16000)) for i in range(16000)))
++        (base/'tone.raw').write_bytes(tone.tobytes()*40)
++        (base/'silence.raw').write_bytes(b'\0'*(16000*2*40))
++        env = dict(os.environ, XDG_CONFIG_HOME=str(base/'config'), XDG_STATE_HOME=str(base/'state'),
++                   XDG_RUNTIME_DIR=str(base/'runtime'), PIPEWIRE_RUNTIME_DIR=os.environ['XDG_RUNTIME_DIR'],
++                   QT_QPA_PLATFORM='offscreen', QT_QPA_PLATFORMTHEME='', NIRI_SOCKET='',
++                   NM_AUDIO_LIFECYCLE='1', NM_TEST_TARGET=names[0])
++        env.pop('WAYLAND_DISPLAY', None)
++        with (args.evidence/'qml.log').open('w+') as log, (args.evidence/'playback.log').open('w') as playback_log:
++            proc = subprocess.Popen(['dbus-run-session', '--config-file='+str(bus_config), '--', 'qs', '-p',
++                                     str(root/'selftest-visualizer.qml'), '--no-color'], env=env, stdout=log,
++                                    stderr=subprocess.STDOUT, start_new_session=True)
++            try:
++                for _ in range(60):
++                    found = [p for p in descendants(proc.pid) if Path(f'/proc/{p}/comm').exists() and Path(f'/proc/{p}/comm').read_text().strip()=='qs']
++                    if found: qs_pid=found[0]; break
++                    time.sleep(.05)
++                assert qs_pid is not None
++                wait_for(lambda s: s['status']=='idle')
++                check('closed MediaControls starts no capture', stopped())
++                if args.profile: measure('closed-idle', 30)
++                ipc('open'); wait_for(lambda s:s['running'] and s['watchers']==1)
++                time.sleep(.4)
++                first_capture = captures()
++                check('open starts exactly one real capture', len(first_capture)==1, first_capture)
++                g=graph(); check('real graph links only selected sink monitor', bool(g['sources']) and set(g['sources'])=={names[0]}, g)
++                if args.profile: measure('open-no-playback', 30)
++                play(names[0]); observed=wait_for(lambda s:s['amplitude']>.1)
++                check('real virtual-sink PCM produces amplitude', observed['amplitude']>.1, observed)
++                if args.profile: measure('open-real-playback', 30)
++                stop_playback()
++                paused=wait_for(lambda s:s['amplitude']==0 and s['status']=='listening', timeout=4)
++                check('suspended sink clears stale amplitude without fabricated PCM', paused['amplitude']==0 and not paused['levels'])
++                play(names[0]);wait_for(lambda s:s['amplitude']>.1)
++
++                ipc('appearance'); time.sleep(.4)
++                check('appearance changes do not restart capture', captures()==first_capture)
++                play(names[0], silent=True); calm=wait_for(lambda s:s['amplitude']==0, timeout=5)
++                check('actual silent PCM returns calm state', calm['amplitude']==0)
++                stop_playback(); ipc('duplicate','true');wait_for(lambda s:s['watchers']==2)
++                check('two visible views share a single capture', len(captures())==1)
++                ipc('enabled','false');check('disable stops capture with views open', stopped())
++                ipc('close');ipc('enabled','true');time.sleep(.3)
++                check('reenable while hidden stays stopped', stopped())
++                ipc('open');wait_for(lambda s:s['running']);time.sleep(.2)
++                ipc('select',names[1]);wait_for(lambda s:s['running'] and s['target']==names[1] and s['status'] in ['listening','ready'], timeout=5)
++                time.sleep(.4);g=graph()
++                check('output selection change replaces obsolete monitor', bool(g['sources']) and set(g['sources'])=={names[1]} and len(captures())==1, g)
++                ipc('available','false');wait_for(lambda s:not s['running']);time.sleep(.2)
++                check('backend unavailable stops capture', not captures())
++                ipc('available','true');wait_for(lambda s:s['running']);time.sleep(.2)
++                check('backend reconnection resumes one capture', len(captures())==1)
++                # Real target removal: must never relink to the user's hardware output.
++                remove(names[1]);time.sleep(.6);g=graph()
++                check('removed target never falls back to hardware', not g['sources'], g)
++                sink(names[1]);wait_for(lambda s:s['running'] and s['target']==names[1] and s['status'] in ['listening','ready'], timeout=5)
++                time.sleep(.3);g=graph()
++                check('same-name output reconnection restores its monitor', bool(g['sources']) and set(g['sources'])=={names[1]}, g)
++                # Each visibility activation owns a bounded retry budget. Isolate this
++                # failure sequence from the earlier real target-removal retry.
++                ipc('close'); assert stopped()
++                ipc('open'); wait_for(lambda s:s['running'] and s['attempts']==0); time.sleep(.2)
++                # Kill only the helper owned by this private test shell; never an audio daemon.
++                for attempt in range(4):
++                    owned=captures();assert len(owned)==1
++                    crashed_children=descendants(owned[0]) if attempt==0 else []
++                    os.kill(owned[0], signal.SIGKILL if attempt==0 else signal.SIGTERM)
++                    wait_for(lambda s:s['attempts']>=attempt+1)
++                    if attempt<3:
++                        wait_for(lambda s:s['running'] and s['status'] in ['listening','ready'], timeout=4)
++                        time.sleep(.1)
++                    if attempt==0:
++                        check('helper crash terminates pw-cat through parent-death guard', all(not alive(p) for p in crashed_children))
++                exhausted=wait_for(lambda s:s['attempts']==4 and not s['running'])
++                time.sleep(2.3)
++                check('unexpected exits stop after three bounded retries', not captures() and state()['attempts']==4, exhausted)
++                ipc('close');check('close after exhausted retries cleans state', stopped())
++                ipc('open');wait_for(lambda s:s['running']);time.sleep(.3)
++                ipc('close');check('close stops real backend', stopped())
++                if args.profile: measure('closed-after-playback', 30)
++                for _ in range(12):
++                    ipc('open');time.sleep(.08);assert len(captures())<=1
++                    ipc('close');time.sleep(.08)
++                check('rapid media cycles leave no duplicate or orphan', stopped())
++                if args.profile: measure('media-recovery-60s', 60)
++                ipc('open');wait_for(lambda s:s['running']);time.sleep(.2)
++                exit_children=captures()+[p for c in captures() for p in descendants(c)]
++                ipc('quit');proc.wait(timeout=4);time.sleep(.3)
++                check('isolated shell exit terminates active capture tree', all(not alive(p) for p in exit_children))
++            finally:
++                stop_playback()
++                if proc.poll() is None:
++                    os.killpg(proc.pid, signal.SIGTERM)
++                    try:proc.wait(timeout=4)
++                    except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGKILL);proc.wait()
++                log.flush();log.seek(0);output=log.read()
++                assert not any(x in output for x in ['ReferenceError','TypeError','Binding loop','SyntaxError','ERROR']), output
++finally:
++    stop_playback()
++    for module in list(modules.values()):
++        subprocess.run(['pactl','unload-module',module],check=True,capture_output=True)
++    remaining = [p for p in seen_capture_pids if alive(p)]
++    check('all test capture helpers stopped', not remaining, remaining)
++    check('default output and input preserved', run('pactl','get-default-sink')==original_sink and run('pactl','get-default-source')==original_source)
++    current = {x['index']:x['sink'] for x in json.loads(run('pactl','-f','json','list','sink-inputs'))}
++    check('preexisting playback routes unchanged', all(current[i]==sink_id for i,sink_id in original_routes.items() if i in current))
++    (args.evidence/'results.json').write_text(json.dumps(dict(passed=passed,checks=records),indent=2))
++print(f'RESULT {passed}/{passed} passed', flush=True)
+--- before/tests/fixtures/visualizer-live.qml
++++ after/tests/fixtures/visualizer-live.qml
+@@ -0,0 +1,37 @@
++import QtQuick
++import QtQuick.Window
++import Quickshell
++import Quickshell.Io
++import qs.config
++import qs.services
++import qs.components.ui
++import qs.components.popovers
++
++// Real backend/lifecycle fixture. AudioService selection is replaced only in its private copy.
++ShellRoot {
++    id: root
++    readonly property bool lifecycle: true
++    property bool opened: false
++    property bool extra: false
++    property int frames: 0
++    Connections { target: VisualizerService; function onLevelsChanged() { root.frames++ } }
++    Window {
++        visible: true; width: 420; height: 420; color: Theme.background
++        Loader { active: root.opened; sourceComponent: Component { MediaControls { width: 380 } } }
++        AudioVisualizer { visible: root.extra; active: root.extra; width: 340 }
++    }
++    IpcHandler {
++        target: "audioTest"
++        function state(): string { return JSON.stringify({watchers:VisualizerService.watchers, running:VisualizerService.running, desired:VisualizerService.desired, target:VisualizerService.target, status:VisualizerService.status, amplitude:VisualizerService.amplitude, levels:VisualizerService.levels, attempts:VisualizerService.attempts, frames:root.frames, open:root.opened}) }
++        function open(): void { ShellState.open = "media"; root.opened = true }
++        function close(): void { ShellState.open = ""; root.opened = false; root.extra = false }
++        function enabled(on: bool): void { UserConfig.set("media.visualizerEnabled", on) }
++        // Only the private lifecycle fixture has this test replacement of AudioService.
++        function select(name: string): void { if (root.lifecycle) AudioService.testTarget = name }
++        function available(on: bool): void { if (root.lifecycle) AudioService.ready = on }
++        function duplicate(on: bool): void { root.extra = on }
++        function appearance(): void { UserConfig.set("appearance.panelOpacity", 0.88); UserConfig.set("appearance.reduceMotion", true) }
++        function reload(): void { Quickshell.reload(false) }
++        function quit(): void { Qt.quit() }
++    }
++}
+--- before/tests/validate.sh
++++ after/tests/validate.sh
+@@ -30,8 +30,10 @@
+   else say "niri validate" FAIL; fail=1; fi
+ fi
+ # Each load gets a private bus and temporary state; also validate the actual entrypoint.
+-for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml shell.qml; do
++for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml shell.qml; do
+   if python3 "$here/tests/run-qml.py" "$here/$entry"; then say "$entry" ok
+   else say "$entry" FAIL; fail=1; fi
+ done
++if python3 "$here/tests/audio-helper-test.py"; then say "audio-helper-test.py" ok
++else say "audio-helper-test.py" FAIL; fail=1; fi
+ exit "$fail"

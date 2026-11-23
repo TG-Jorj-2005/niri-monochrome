@@ -28,7 +28,7 @@ PopoverFrame {
                     color: ma.containsMouse && modelData.enabled ? Theme.hover : "transparent"
                     opacity: modelData.enabled ? 1 : 0.4
                     Row { anchors.left: parent.left; anchors.leftMargin: 8; anchors.verticalCenter: parent.verticalCenter; spacing: 8
-                        MonoIcon { visible: modelData.buttonType !== QsMenuButtonType.None; name: modelData.checkState === Qt.Checked ? "check" : "minus"; size: 12; color: Theme.silver; anchors.verticalCenter: parent.verticalCenter; opacity: modelData.checkState === Qt.Checked ? 1 : 0.25 }
+                        MonoIcon { visible: modelData.buttonType !== QsMenuButtonType.None; name: modelData.checkState === Qt.Checked ? "check" : "minus"; size: 12; color: modelData.checkState === Qt.Checked ? Theme.accent : Theme.silver; anchors.verticalCenter: parent.verticalCenter; opacity: modelData.checkState === Qt.Checked ? 1 : 0.25 }
                         Label { text: modelData.text; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter } }
                     MonoIcon { visible: modelData.hasChildren; name: "chevron-right"; size: 12; anchors.right: parent.right; anchors.rightMargin: 8; anchors.verticalCenter: parent.verticalCenter; color: Theme.silverMuted }
                     MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; enabled: modelData.enabled

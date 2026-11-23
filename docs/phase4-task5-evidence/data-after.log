@@ -1,0 +1,19 @@
+  INFO: Launching config: "/tmp/nm-task5-probe/selftest-shortcut-data.qml"
+  INFO: Shell ID: "f0d5ba360d1e7df9112b9b1d5ff1bddb" Path ID "f0d5ba360d1e7df9112b9b1d5ff1bddb"
+  INFO: Saving logs to "/tmp/nm-qml-fur2lj2h/runtime/quickshell/by-id/7pv3t7teot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS block comments never invent bindings
+  INFO qml: PASS disabled nodes excluded and multiline action retained
+  INFO qml: PASS quoted braces and same-line nodes preserve structure
+  INFO qml: PASS native modifier aliases accepted
+  INFO qml: PASS canonicalization changes modifiers only
+  INFO qml: PASS hidden later binding cannot resurrect overridden row
+  INFO qml: PASS modifier aliases resolve one effective row
+  INFO qml: PASS escaped title decoded
+  INFO qml: PASS structurally invalid source fails closed
+  INFO qml: PASS multiple keys for one action are retained
+  INFO qml: PASS case insensitive action and description filtering
+  INFO qml: PASS literal special-character search
+  INFO qml: PASS category filtering and empty state
+  INFO qml: RESULT 13/13 passed
+

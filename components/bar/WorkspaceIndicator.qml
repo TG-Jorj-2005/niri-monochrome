@@ -20,17 +20,17 @@ Row {
             readonly property bool urgent: modelData.is_urgent
             width: 22; height: 22
             radius: Theme.radiusControl
-            color: active ? (ma.containsMouse ? Theme.silverBright : Theme.silver) : ma.containsMouse ? Theme.hover : "transparent"
+            color: active ? Theme.accentFill(ma.containsMouse, ma.pressed) : ma.containsMouse ? Theme.accentSubtle : "transparent"
             border.width: urgent && !active ? 1 : 0
             border.color: Theme.silverBright
-            Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
+            Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
             Label {
                 anchors.centerIn: parent
                 text: String(index + 1)
                 mono: true
                 font.pixelSize: Theme.fontSm
                 font.weight: pill.active ? Font.Bold : Font.Medium
-                color: pill.active ? Theme.inverse : pill.urgent ? Theme.silverBright : (ma.containsMouse ? Theme.text : Theme.silverMuted)
+                color: pill.active ? Theme.textOnAccent(pill.color) : pill.urgent ? Theme.silverBright : (ma.containsMouse ? Theme.text : Theme.textSecondary)
             }
             MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
                 onClicked: NiriService.focusWorkspaceById(pill.modelData.id)

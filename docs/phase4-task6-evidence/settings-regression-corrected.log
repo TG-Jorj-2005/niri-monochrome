@@ -1,0 +1,55 @@
+  INFO: Launching config: "/tmp/nm-task6-probe/selftest-settings-search.qml"
+  INFO: Shell ID: "b77b522c61602e7875e9530a4147bfea" Path ID "b77b522c61602e7875e9530a4147bfea"
+  INFO: Saving logs to "/tmp/nm-qml-ybdrw069/runtime/quickshell/by-id/p4q4w2weot/log.qslog"
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  INFO qml: PASS actual Dock search controls loaded
+  INFO qml: PASS real private desktop entries loaded
+  INFO qml: PASS empty Dock query has no results
+  INFO qml: PASS launcher memoization reuses the same result
+  INFO qml: PASS first query returns matching installed application
+  INFO qml: PASS Settings query does not mutate launcher cache
+  INFO qml: PASS different query and surrounding whitespace produce correct result
+  INFO qml: PASS missing query produces empty results
+  INFO qml: PASS clearing query clears and hides result rows
+  INFO qml: PASS rapid distinct queries settle to latest results
+  INFO qml: PASS rapid Settings queries preserve useful memoization
+  INFO qml: PASS recent-app changes invalidate memoized launcher search
+  INFO qml: PASS configuration changes invalidate cache
+  INFO qml: PASS not-yet-installed application is absent
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO qml: PASS supported DesktopEntries file watcher refreshes actual Settings results
+  INFO qml: PASS installed-app update invalidates launcher cache
+  INFO qml: PASS visible application IDs stay unique
+  INFO qml: PASS actual favorite selection adds once and clears query
+  INFO qml: PASS existing favorite is excluded reactively
+  INFO qml: PASS favorite is persisted in private configuration
+  INFO qml: PASS search and favorite selection never launch applications
+  INFO qml: RESULT 21/21 passed
+  INFO: Launching config: "/tmp/nm-task6-probe/selftest-settings-search.qml"
+  INFO: Shell ID: "b77b522c61602e7875e9530a4147bfea" Path ID "b77b522c61602e7875e9530a4147bfea"
+  INFO: Saving logs to "/tmp/nm-qml-ybdrw069/runtime/quickshell/by-id/r5q4y2weot/log.qslog"
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  INFO qml: PASS actual Dock search controls loaded
+  INFO qml: PASS real private desktop entries loaded
+  INFO qml: PASS fresh process restores favorite and filters actual Settings results
+  INFO qml: RESULT 3/3 passed
+

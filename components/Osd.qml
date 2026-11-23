@@ -31,8 +31,8 @@ PanelWindow {
             Item { width: parent.width - 18 - 12 - 44 - 12; height: parent.height
                 Rectangle { anchors.verticalCenter: parent.verticalCenter; width: parent.width; height: 3; radius: 1; color: Theme.border }
                 Rectangle { anchors.verticalCenter: parent.verticalCenter; width: parent.width * Math.max(0, Math.min(1, OsdService.value)); height: 3; radius: 1
-                    color: OsdService.muted ? Theme.silverMuted : Theme.silverBright
-                    Behavior on width { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } } } }
+                    color: OsdService.muted ? Theme.silverMuted : Theme.accent
+                    Behavior on width { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } } } }
             Label { text: OsdService.muted ? "MUTE" : Math.round(OsdService.value * 100) + "%"; mono: true; width: 44; horizontalAlignment: Text.AlignRight; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter }
         }
     }

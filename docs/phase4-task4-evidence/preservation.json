@@ -1,0 +1,39 @@
+{
+  "changed_existing_project_files": [
+    "services/VisualizerService.qml",
+    "scripts/audio-levels.py",
+    "tests/validate.sh"
+  ],
+  "all_other_existing_project_files_preserved": true,
+  "user_files_byte_identical": {
+    "/home/jorj/.config/niri/input.kdl": true,
+    "/home/jorj/.config/niri/outputs.kdl": true,
+    "/home/jorj/.config/niri/animations.kdl": true,
+    "/home/jorj/.config/niri/rules.kdl.bak-float": true,
+    "/home/jorj/.config/niri/README.md": true,
+    "/home/jorj/.config/niri/layout.kdl.bak-palette": true,
+    "/home/jorj/.config/niri/config.kdl.bak-palette": true,
+    "/home/jorj/.config/niri/layout.kdl": true,
+    "/home/jorj/.config/niri/config.kdl.bak-mono": true,
+    "/home/jorj/.config/niri/layout.kdl.bak-mono": true,
+    "/home/jorj/.config/niri/rules.kdl.bak-mono": true,
+    "/home/jorj/.config/niri/binds.kdl.bak-mono": true,
+    "/home/jorj/.config/niri/README.md.bak-mono": true,
+    "/home/jorj/.config/niri/binds.kdl.bak-core": true,
+    "/home/jorj/.config/niri/config.kdl.bak-core": true,
+    "/home/jorj/.config/niri/startup.kdl": true,
+    "/home/jorj/.config/niri/binds.kdl": true,
+    "/home/jorj/.config/niri/rules.kdl.bak-20261112-review": true,
+    "/home/jorj/.config/niri/rules.kdl": true,
+    "/home/jorj/.config/niri/niri-monochrome.kdl": true,
+    "/home/jorj/.config/niri/config.kdl": true,
+    "/home/jorj/.config/niri/niri-monochrome-appearance.kdl": true,
+    "/home/jorj/.config/niri-monochrome/config.json.bak-20261112-bar": true,
+    "/home/jorj/.config/niri-monochrome/config.json.bak-20261112-bar-wider": true,
+    "/home/jorj/.config/niri-monochrome/config.json.bak-20261112-bar-wider-2": true,
+    "/home/jorj/.config/niri-monochrome/config.json.bak-20261112-bar-wider-3": true,
+    "/home/jorj/.config/niri-monochrome/config.json.bak-20261112-bar-final": true,
+    "/home/jorj/.config/niri-monochrome/config.json.bak-20261112-review": true,
+    "/home/jorj/.config/niri-monochrome/config.json": false
+  }
+}

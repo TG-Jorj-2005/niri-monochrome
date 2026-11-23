@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Toggle înregistrare ecran cu wf-recorder: prima apăsare alege zona și pornește, a doua oprește.
+dir="$HOME/Videos/Recordings"; mkdir -p "$dir"
+if pgrep -x wf-recorder >/dev/null; then
+  pkill -INT -x wf-recorder
+  notify-send -a screen-record "Înregistrare oprită" "Salvat în $dir"
+  exit 0
+fi
+geom=$(slurp) || exit 0
+file="$dir/rec-$(date +%Y-%m-%d_%H-%M-%S).mp4"
+notify-send -a screen-record "Înregistrare pornită" "Mod+Shift+Print ca să oprești"
+exec wf-recorder -g "$geom" -f "$file"

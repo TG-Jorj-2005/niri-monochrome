@@ -1,0 +1,19 @@
+  INFO: Launching config: "/tmp/nm-task6-probe/selftest-settings-warning.qml"
+  INFO: Shell ID: "85741069d58ba97d4a1c5c8b9b0c464f" Path ID "85741069d58ba97d4a1c5c8b9b0c464f"
+  INFO: Saving logs to "/tmp/nm-qml-ltvpejp6/runtime/quickshell/by-id/8lo4xxveot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  WARN scene: QML Repeater at @components/Settings.qml[141:13]: Binding loop detected for property "model":
+qs:@/qs/components/Settings.qml:141:24
+  INFO qml: PROBE completed three dock search assignments, no config setter or app launch
+

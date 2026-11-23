@@ -26,6 +26,7 @@ ShellRoot {
     Component { id: cSettings; Settings { visible: false } }
     Component { id: cLauncher; Item { width: 600; height: 400; Launcher {} } }
     Component { id: cCC; Item { width: 400; height: 600; ControlCenter { initialSection: "battery" } } }
+    Component { id: cCheat; Item { width: 820; height: 560; ShortcutCheatSheet {} } }
     Component { id: cNC; Item { width: 400; height: 600; NotificationCenter {} } }
     Component { id: cMedia; Item { width: 400; height: 300; MediaControls {} } }
     Component { id: cCal; Item { width: 400; height: 400; CalendarPopover {} } }
@@ -36,7 +37,7 @@ ShellRoot {
         const s = { modelData: root.screen0 }
         make("BottomBar", cBar, s); make("AutoHideDock", cDock, s); make("OverlayLayer", cOverlay, s); make("NotificationToasts", cToasts, s)
         make("WallpaperLayer", cWall, s); make("Osd", cOsd, s); make("LockScreen", cLock); make("Settings", cSettings)
-        make("Launcher", cLauncher); make("ControlCenter", cCC); make("NotificationCenter", cNC); make("MediaControls", cMedia)
+        make("ShortcutCheatSheet", cCheat); make("Launcher", cLauncher); make("ControlCenter", cCC); make("NotificationCenter", cNC); make("MediaControls", cMedia)
         make("CalendarPopover", cCal); make("PowerMenu", cPower); make("ui primitives", cUi); make("settings rows", cSet)
         const services = [NiriService, MonitorService, AudioService, NetworkService, BluetoothService, BatteryService, BrightnessService, MediaService, NotificationService, WallpaperService, PamService, LockService, SystemService, NightLightService, OsdService, ShellState, StateStore, ApplicationService]
         console.info("QMLCHECK ok services", services.length)

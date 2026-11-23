@@ -1,0 +1,32 @@
+{
+  "checkpoint": "/home/jorj/.config/niri-monochrome-phase4-task6-backups/20261113-092209-preapply",
+  "user_confirmed_authentication": true,
+  "unlocked_before_apply": true,
+  "applied_files": [
+    "components/Settings.qml",
+    "tests/run-qml.py",
+    "tests/validate.sh",
+    "selftest-settings-search.qml"
+  ],
+  "diagnostics_after_apply": {
+    "niriStatus": "ready",
+    "reconnects": 0,
+    "profileAvailable": true,
+    "profileBackend": "tuned-ppd",
+    "profile": 1,
+    "audio": "ready",
+    "network": "ready",
+    "bluetooth": "off",
+    "brightness": "ready",
+    "brightnessWatchers": 0,
+    "notifications": "mako",
+    "shellServerApproved": false,
+    "shellLock": true,
+    "visualizerStatus": "initializing",
+    "visualizer": false,
+    "visualizerWatchers": 0,
+    "overlay": "",
+    "dock": false
+  },
+  "time": "2026-11-13 09:23:12 +0200"
+}

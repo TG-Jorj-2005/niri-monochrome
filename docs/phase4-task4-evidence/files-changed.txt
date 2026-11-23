@@ -1,0 +1,7 @@
+scripts/audio-levels.py
+services/VisualizerService.qml
+selftest-visualizer.qml
+tests/audio-helper-test.py
+tests/visualizer-integration.py
+tests/fixtures/visualizer-live.qml
+tests/validate.sh

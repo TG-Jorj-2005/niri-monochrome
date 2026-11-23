@@ -1,0 +1,30 @@
+PASS closed MediaControls starts no capture
+MEASURE {"name": "closed-idle", "seconds": 31.788827145006508, "qs_pid": 169812, "cpu_percent": 0.03145759343175652, "group_cpu_percent": 0.03145759343175652, "rss_start_mib": 67.92578125, "rss_end_mib": 68.11328125, "fds_start": 15, "fds_end": 14}
+PASS open starts exactly one real capture
+PASS real graph links only selected sink monitor
+MEASURE {"name": "open-no-playback", "seconds": 31.925573594002344, "qs_pid": 169812, "cpu_percent": 0.06264570295381404, "group_cpu_percent": 0.06264570295381404, "rss_start_mib": 86.453125, "rss_end_mib": 86.453125, "fds_start": 24, "fds_end": 21}
+PASS real virtual-sink PCM produces amplitude
+MEASURE {"name": "open-real-playback", "seconds": 32.1891863560013, "qs_pid": 169812, "cpu_percent": 9.319900064639828, "group_cpu_percent": 9.910160402067017, "rss_start_mib": 86.66796875, "rss_end_mib": 89.3671875, "fds_start": 21, "fds_end": 29}
+PASS suspended sink clears stale amplitude without fabricated PCM
+PASS appearance changes do not restart capture
+PASS actual silent PCM returns calm state
+PASS two visible views share a single capture
+PASS disable stops capture with views open
+PASS reenable while hidden stays stopped
+PASS output selection change replaces obsolete monitor
+PASS backend unavailable stops capture
+PASS backend reconnection resumes one capture
+PASS removed target never falls back to hardware
+PASS reconnected output can be selected again
+PASS helper crash terminates pw-cat through parent-death guard
+PASS unexpected exits stop after three bounded retries
+PASS close after exhausted retries cleans state
+PASS close stops real backend
+MEASURE {"name": "closed-after-playback", "seconds": 32.03701249299775, "qs_pid": 169812, "cpu_percent": 0.0, "group_cpu_percent": 0.0, "rss_start_mib": 89.48828125, "rss_end_mib": 89.48828125, "fds_start": 26, "fds_end": 17}
+PASS rapid media cycles leave no duplicate or orphan
+MEASURE {"name": "media-recovery-60s", "seconds": 64.09804028999497, "qs_pid": 169812, "cpu_percent": 0.031202201985451015, "group_cpu_percent": 0.031202201985451015, "rss_start_mib": 89.48828125, "rss_end_mib": 89.28125, "fds_start": 22, "fds_end": 17}
+PASS isolated shell exit terminates active capture tree
+PASS all test capture helpers stopped
+PASS default output and input preserved
+PASS preexisting playback routes unchanged
+RESULT 24/24 passed

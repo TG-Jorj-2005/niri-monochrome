@@ -1,0 +1,749 @@
+diff --git a/README.md b/README.md
+index 631476b..9a1e016 100644
+--- a/README.md
++++ b/README.md
+@@ -37,3 +37,11 @@ niri validate
+ ```
+ 
+ Tests isolate configuration/state and the session bus. UI loading requires an existing Wayland backend. Experimental shell locking remains opt-in and needs manual PAM verification; mako remains the notification server.
++
++## Phase 4 appearance and media
++
++Settings → Appearance controls reduced motion, monochrome glass, opacity, radius, shadow strength, motion intensity and the real output-level visualizer. Media shows amplitude history or a level meter; it does not invent frequency bands. Only the open Media panel owns a capture helper. No additional package is required beyond the existing `pw-cat` and Python 3.
++
++Open Keyboard Shortcuts from Settings → Shortcuts or the keyboard button in Control Center. Terminal: `qs -c niri-monochrome ipc call shortcuts toggle`. The native `Mod+Shift+Slash` binding is preserved. The list covers `binds.kdl` and the generated shell include.
++
++For a new installation, once the shell has generated `niri-monochrome-appearance.kdl`, add `include "niri-monochrome-appearance.kdl"` to the main Niri config. This enables native blur/shadows only for the bounded bar/dock surfaces on Niri 26.04; full-screen popover layers are not blurred. See [docs/PHASE4-REPORT.md](docs/PHASE4-REPORT.md).
+diff --git a/components/AutoHideDock.qml b/components/AutoHideDock.qml
+index bf092f9..ff60cb2 100644
+--- a/components/AutoHideDock.qml
++++ b/components/AutoHideDock.qml
+@@ -59,6 +59,7 @@ Scope {
+     PanelWindow {
+         id: trigger
+         property bool hovered: false
++        onVisibleChanged: if (!visible) { hovered = false; dock.scheduleHide() }
+         screen: dock.modelData
+         visible: dock.cfg.enabled && dock.cfg.autoHide && !dock.shown
+         anchors { bottom: true; left: true; right: true }
+@@ -74,7 +75,9 @@ Scope {
+     PanelWindow {
+         id: win
+         screen: dock.modelData
+-        visible: dock.shown
++        property real reveal: dock.shown ? 1 : 0
++        Behavior on reveal { NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
++        visible: dock.shown || reveal > 0.001
+         anchors.bottom: true
+         margins.bottom: (dock.barCfg.enabled ? dock.barCfg.marginBottom + dock.barCfg.height : 12) + 10
+         implicitWidth: body.width + 2
+@@ -83,7 +86,7 @@ Scope {
+         color: "transparent"
+         WlrLayershell.namespace: Constants.nsDock
+         WlrLayershell.layer: WlrLayer.Overlay
+-        WlrLayershell.keyboardFocus: dock.keyboardMode ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
++        WlrLayershell.keyboardFocus: dock.keyboardMode && dock.shown ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
+         onVisibleChanged: if (visible) { dock.selected = 0; body.forceActiveFocus() }
+ 
+         Panel {
+@@ -99,13 +102,12 @@ Scope {
+             Keys.onTabPressed: dock.selected = (dock.selected + 1) % Math.max(1, dock.items.length)
+             Keys.onReturnPressed: if (dock.items.length) dock.activate(dock.items[dock.selected])
+             Keys.onEnterPressed: if (dock.items.length) dock.activate(dock.items[dock.selected])
+-            Keys.onEscapePressed: ShellState.hideDock()
++            Keys.onEscapePressed: { ShellState.hideDock(); dock.hoverShown = false }
+             Keys.onPressed: e => { const n = parseInt(e.text); if (n >= 1 && n <= dock.items.length) { dock.activate(dock.items[n - 1]); e.accepted = true } }
+             HoverHandler { id: hh; onHoveredChanged: { if (!hovered) dock.scheduleHide(); else hideTimer.stop() } }
+             // entrance: slide + fade
+-            opacity: 0; transform: Translate { id: tr; y: 10 }
+-            Component.onCompleted: { opacity = 1; tr.y = 0 }
+-            Behavior on opacity { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
++            opacity: win.reveal; transform: Translate { y: 8 * Theme.motionIntensity * (1-win.reveal) }
++
+ 
+             Row {
+                 id: row
+@@ -125,9 +127,9 @@ Scope {
+                         radius: Theme.radiusControl
+                         color: sel ? Theme.silver : isActive ? Theme.elevated : cma.containsMouse ? Theme.hover : "transparent"
+                         border.width: isActive && !sel ? 1 : 0; border.color: Theme.silverMuted
+-                        Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++                        Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+                         scale: cma.containsMouse ? 1.06 : 1.0
+-                        Behavior on scale { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
++                        Behavior on scale { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
+                         AppIcon { anchors.centerIn: parent; size: dock.cfg.iconSize; icon: cell.modelData.entry ? cell.modelData.entry.icon : ""; fallbackGlyph: "app"
+                             dim: cell.modelData.entry ? 1 : 0.7 }
+                         // running indicator: 1 dot per window (max 3)
+diff --git a/components/NotificationToasts.qml b/components/NotificationToasts.qml
+index bb47853..fc61531 100644
+--- a/components/NotificationToasts.qml
++++ b/components/NotificationToasts.qml
+@@ -42,8 +42,8 @@ PanelWindow {
+                 opacity: 0
+                 transform: Translate { id: tr; x: 24 }
+                 Component.onCompleted: { opacity = 1; tr.x = 0 }
+-                Behavior on opacity { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
+-                Behavior on x { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
++                Behavior on opacity { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
++                Behavior on x { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durNormal; easing.type: Theme.easing } }
+ 
+                 Timer { interval: card.timeout; running: card.timeout > 0 && !hover.hovered; onTriggered: card.n.expire() }
+                 HoverHandler { id: hover }
+@@ -54,7 +54,7 @@ PanelWindow {
+                     spacing: 6
+                     Row { width: parent.width; spacing: 8
+                         AppIcon { icon: card.n.appIcon || card.n.desktopEntry; size: 16; anchors.verticalCenter: parent.verticalCenter; fallbackGlyph: "bell" }
+-                        Label { text: (card.n.appName || card.n.desktopEntry || "Notification").toUpperCase(); font.pixelSize: Theme.fontXs; font.letterSpacing: 1; color: Theme.silverMuted; anchors.verticalCenter: parent.verticalCenter; width: parent.width - 110 }
++                        Label { text: (card.n.appName || card.n.desktopEntry || "Notification").toUpperCase(); font.pixelSize: Theme.fontXs; font.letterSpacing: 1; color: Theme.textSecondary; anchors.verticalCenter: parent.verticalCenter; width: parent.width - 110 }
+                         Label { text: Qt.formatTime(new Date(), "HH:mm"); mono: true; font.pixelSize: Theme.fontXs; secondary: true; anchors.verticalCenter: parent.verticalCenter }
+                         IconButton { icon: "x"; iconSize: 12; implicitWidth: 22; implicitHeight: 22; anchors.verticalCenter: parent.verticalCenter; onClicked: card.n.dismiss() } }
+                     Row { width: parent.width; spacing: 10
+diff --git a/components/Osd.qml b/components/Osd.qml
+index f22d6ad..6795123 100644
+--- a/components/Osd.qml
++++ b/components/Osd.qml
+@@ -32,7 +32,7 @@ PanelWindow {
+                 Rectangle { anchors.verticalCenter: parent.verticalCenter; width: parent.width; height: 3; radius: 1; color: Theme.border }
+                 Rectangle { anchors.verticalCenter: parent.verticalCenter; width: parent.width * Math.max(0, Math.min(1, OsdService.value)); height: 3; radius: 1
+                     color: OsdService.muted ? Theme.silverMuted : Theme.silverBright
+-                    Behavior on width { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } } } }
++                    Behavior on width { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } } } }
+             Label { text: OsdService.muted ? "MUTE" : Math.round(OsdService.value * 100) + "%"; mono: true; width: 44; horizontalAlignment: Text.AlignRight; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter }
+         }
+     }
+diff --git a/components/OverlayLayer.qml b/components/OverlayLayer.qml
+index 3b780a6..162551c 100644
+--- a/components/OverlayLayer.qml
++++ b/components/OverlayLayer.qml
+@@ -17,7 +17,12 @@ PanelWindow {
+     readonly property real barTop: modelData.height - (barProfile.enabled ? barProfile.marginBottom + barProfile.height : 0)
+ 
+     screen: modelData
+-    visible: active
++    property string displayed: ""
++    property real reveal: active ? 1 : 0
++    onActiveChanged: if (active) displayed = ShellState.open
++    Connections { target: ShellState; function onOpenChanged() { if (overlay.active) overlay.displayed = ShellState.open } }
++    Behavior on reveal { NumberAnimation { duration: overlay.active ? Theme.durNormal : Theme.durFast; easing.type: Theme.easing } }
++    visible: active || reveal > 0.001
+     anchors { top: true; bottom: true; left: true; right: true }
+     exclusionMode: ExclusionMode.Ignore
+     color: "transparent"
+@@ -28,10 +33,11 @@ PanelWindow {
+     // Backdrop: click anywhere outside closes.
+     MouseArea {
+         anchors.fill: parent
++        enabled: overlay.active
+         acceptedButtons: Qt.AllButtons
+         onPressed: ShellState.close()
+-        Rectangle { anchors.fill: parent; color: Theme.scrim; opacity: (ShellState.open === "launcher" || ShellState.open === "power") ? 1 : 0
+-            Behavior on opacity { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal } } }
++        Rectangle { anchors.fill: parent; color: Theme.scrim; opacity: overlay.reveal * (overlay.displayed === "launcher" || overlay.displayed === "power" || overlay.displayed === "shortcuts" ? 1 : 0)
++ }
+     }
+ 
+     FocusScope {
+@@ -47,11 +53,20 @@ PanelWindow {
+             return Math.round(Math.max(margin, Math.min(overlay.width - w - margin, anchorX - w / 2)))
+         }
+ 
++        // Consume presses in panel padding after child controls have had first chance.
++        // This sits below the Loader, so outside clicks still reach the backdrop.
++        MouseArea {
++            x: content.x; y: content.y
++            width: content.width; height: content.height
++            enabled: overlay.active
++            acceptedButtons: Qt.AllButtons
++        }
++
+         Loader {
+             id: content
+-            active: overlay.active
++            active: overlay.active || overlay.reveal > 0.001
+             sourceComponent: {
+-                switch (ShellState.open) {
++                switch (overlay.displayed) {
+                 case "launcher": return launcherComp
+                 case "control": return controlComp
+                 case "notifications": return notifComp
+@@ -59,20 +74,19 @@ PanelWindow {
+                 case "calendar": return calendarComp
+                 case "power": return powerComp
+                 case "tray": return trayComp
++                case "shortcuts": return shortcutsComp
+                 default: return null
+                 }
+             }
+             onLoaded: { item.forceActiveFocus() }
+-            readonly property bool centered: ShellState.open === "launcher" || ShellState.open === "power"
++            readonly property bool centered: overlay.displayed === "launcher" || overlay.displayed === "power" || overlay.displayed === "shortcuts"
+             x: centered ? Math.round((overlay.width - width) / 2) : scope.placeX(width, ShellState.anchorX)
+-            y: centered ? Math.round(overlay.height * 0.30) : Math.round(overlay.barTop - 10 - height)
+-            // entrance animation
+-            opacity: 0
+-            transform: Translate { id: tr; y: 8 }
+-            onActiveChanged: if (active) { opacity = 0; tr.y = 8; anim.restart() }
+-            ParallelAnimation { id: anim
+-                NumberAnimation { target: content; property: "opacity"; to: 1; duration: UserConfig.data.appearance.animations ? Theme.durNormal : 0; easing.type: Theme.easing }
+-                NumberAnimation { target: tr; property: "y"; to: 0; duration: UserConfig.data.appearance.animations ? Theme.durNormal : 0; easing.type: Theme.easing } }
++            width: Math.min(item ? item.implicitWidth : 380, overlay.width-24)
++            height: Math.min(item ? item.implicitHeight : 1, overlay.height-24)
++            y: Math.max(12, Math.min(overlay.height-height-12, centered ? Math.round((overlay.height-height)/2) : Math.round(overlay.barTop-10-height)))
++            opacity: overlay.reveal
++            transform: Translate { y: 8 * Theme.motionIntensity * (1-overlay.reveal) }
++
+         }
+     }
+ 
+@@ -82,5 +96,6 @@ PanelWindow {
+     Component { id: mediaComp; MediaControls {} }
+     Component { id: calendarComp; CalendarPopover {} }
+     Component { id: powerComp; PowerMenu {} }
++    Component { id: shortcutsComp; ShortcutCheatSheet {} }
+     Component { id: trayComp; TrayMenu { item: ShellState.anchorPayload } }
+ }
+diff --git a/components/WallpaperLayer.qml b/components/WallpaperLayer.qml
+index 1993d7c..87ec5c5 100644
+--- a/components/WallpaperLayer.qml
++++ b/components/WallpaperLayer.qml
+@@ -68,11 +68,11 @@ PanelWindow {
+             sourceSize: Qt.size(wall.modelData.width * wall.modelData.devicePixelRatio, wall.modelData.height * wall.modelData.devicePixelRatio)
+             opacity: wall.slot === 0 ? 1 : 0; z: wall.slot === 0 ? 1 : 0
+             onStatusChanged: if (status === Image.Ready) wall.onReady(imgA); else if (status === Image.Error) wall.failed(imgA)
+-            Behavior on opacity { NumberAnimation { duration: UserConfig.data.appearance.animations ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
++            Behavior on opacity { NumberAnimation { duration: Theme.motionEnabled ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
+         Image { id: imgB; anchors.fill: parent; asynchronous: true; cache: false; fillMode: imgA.fillMode; sourceSize: imgA.sourceSize
+             opacity: wall.slot === 1 ? 1 : 0; z: wall.slot === 1 ? 1 : 0
+             onStatusChanged: if (status === Image.Ready) wall.onReady(imgB); else if (status === Image.Error) wall.failed(imgB)
+-            Behavior on opacity { NumberAnimation { duration: UserConfig.data.appearance.animations ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
++            Behavior on opacity { NumberAnimation { duration: Theme.motionEnabled ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
+     }
+     // Empty state when the collection is empty: keep the plain background + a quiet hint.
+     Text { visible: wall.current === "" && WallpaperService.collections[wall.monitorKey] !== undefined; anchors.centerIn: parent
+diff --git a/components/bar/ClockIndicator.qml b/components/bar/ClockIndicator.qml
+index 4b52c3c..8c72926 100644
+--- a/components/bar/ClockIndicator.qml
++++ b/components/bar/ClockIndicator.qml
+@@ -24,7 +24,7 @@ Rectangle {
+         Label { text: Qt.formatDateTime(clock.date, root.showSeconds && root.clockFormat === "HH:mm" ? "HH:mm:ss" : root.clockFormat); mono: true; font.pixelSize: Theme.fontSm; font.weight: Font.DemiBold
+             anchors.verticalCenter: parent.verticalCenter; color: root.active ? Theme.inverse : Theme.text }
+         Label { visible: root.showDate; text: Qt.formatDateTime(clock.date, root.dateFormat); font.pixelSize: Theme.fontXs
+-            anchors.verticalCenter: parent.verticalCenter; color: root.active ? Theme.inverse : Theme.silverMuted }
++            anchors.verticalCenter: parent.verticalCenter; color: root.active ? Theme.inverse : Theme.textSecondary }
+     }
+     MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: root.clicked() }
+ }
+diff --git a/components/bar/FocusedWindow.qml b/components/bar/FocusedWindow.qml
+index 84d8080..ca63a6f 100644
+--- a/components/bar/FocusedWindow.qml
++++ b/components/bar/FocusedWindow.qml
+@@ -38,7 +38,7 @@ Item {
+             anchors.verticalCenter: parent.verticalCenter
+             width: Math.min(implicitWidth, root.maxWidth - 40)
+             text: root.win ? root.display : (root.isFocusedOutput ? "Desktop" : "Inactive display")
+-            color: root.win ? (root.isFocusedOutput ? Theme.text : Theme.textDisabled) : Theme.textDisabled
++            color: root.win ? (root.isFocusedOutput ? Theme.text : Theme.textSecondary) : Theme.textSecondary
+             font.pixelSize: Theme.fontSm
+             font.weight: root.isFocusedOutput && root.win ? Font.Medium : Font.Normal
+             horizontalAlignment: Text.AlignHCenter
+diff --git a/components/bar/WorkspaceIndicator.qml b/components/bar/WorkspaceIndicator.qml
+index 8ba2b4f..6e88f26 100644
+--- a/components/bar/WorkspaceIndicator.qml
++++ b/components/bar/WorkspaceIndicator.qml
+@@ -23,14 +23,14 @@ Row {
+             color: active ? (ma.containsMouse ? Theme.silverBright : Theme.silver) : ma.containsMouse ? Theme.hover : "transparent"
+             border.width: urgent && !active ? 1 : 0
+             border.color: Theme.silverBright
+-            Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++            Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+             Label {
+                 anchors.centerIn: parent
+                 text: String(index + 1)
+                 mono: true
+                 font.pixelSize: Theme.fontSm
+                 font.weight: pill.active ? Font.Bold : Font.Medium
+-                color: pill.active ? Theme.inverse : pill.urgent ? Theme.silverBright : (ma.containsMouse ? Theme.text : Theme.silverMuted)
++                color: pill.active ? Theme.inverse : pill.urgent ? Theme.silverBright : (ma.containsMouse ? Theme.text : Theme.textSecondary)
+             }
+             MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
+                 onClicked: NiriService.focusWorkspaceById(pill.modelData.id)
+diff --git a/components/popovers/CalendarPopover.qml b/components/popovers/CalendarPopover.qml
+index ee4e36e..511a52b 100644
+--- a/components/popovers/CalendarPopover.qml
++++ b/components/popovers/CalendarPopover.qml
+@@ -22,7 +22,7 @@ PopoverFrame {
+     Grid {
+         columns: 7; width: parent.width
+         Repeater { model: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+-            delegate: Label { required property string modelData; width: cal.width / 7 - 4; height: 22; text: modelData; mono: true; font.pixelSize: Theme.fontXs; color: Theme.silverMuted; horizontalAlignment: Text.AlignHCenter } }
++            delegate: Label { required property string modelData; width: cal.width / 7 - 4; height: 22; text: modelData; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary; horizontalAlignment: Text.AlignHCenter } }
+     }
+     Grid {
+         id: days
+diff --git a/components/popovers/ControlCenter.qml b/components/popovers/ControlCenter.qml
+index acc3627..3915371 100644
+--- a/components/popovers/ControlCenter.qml
++++ b/components/popovers/ControlCenter.qml
+@@ -14,7 +14,7 @@ PopoverFrame {
+     implicitWidth: UserConfig.data.controlCenter.width
+     property string expanded: initialSection
+     readonly property string monitorKey: MonitorService.keyForName(ShellState.screenName)
+-    headerExtra: [ IconButton { icon: "settings"; iconSize: 14; implicitWidth: 24; implicitHeight: 24; onClicked: { ShellState.close(); ShellState.settingsOpen = true } } ]
++    headerExtra: [ IconButton { icon: "keyboard"; tooltip: "Keyboard Shortcuts"; implicitWidth: 24; implicitHeight: 24; onClicked: ShellState.show("shortcuts") }, IconButton { icon: "settings"; iconSize: 14; implicitWidth: 24; implicitHeight: 24; onClicked: { ShellState.close(); ShellState.settingsOpen = true } } ]
+ 
+     function toggleSection(s) { expanded = (expanded === s ? "" : s) }
+     Component.onCompleted: { SystemService.probeNotificationOwner(); NotificationService.refreshMako(); BatteryService.refreshProfiles(); BrightnessService.refresh(); BrightnessService.watchers++; if (initialSection === "network" && NetworkService.wifiDevice) NetworkService.setScanning(true) }
+@@ -253,11 +253,11 @@ PopoverFrame {
+         color: on ? Theme.silver : tma.containsMouse ? Theme.hover : Theme.surface2
+         border.width: 1; border.color: expanded ? Theme.silver : on ? Theme.silver : Theme.border
+         opacity: tileEnabled ? 1 : 0.45
+-        Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++        Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+         Column { anchors.left: parent.left; anchors.leftMargin: 10; anchors.verticalCenter: parent.verticalCenter; spacing: 4
+             MonoIcon { name: tile.icon; size: 16; color: tile.on ? Theme.inverse : Theme.silver }
+             Label { text: tile.label; font.pixelSize: Theme.fontXs; font.weight: Font.DemiBold; color: tile.on ? Theme.inverse : Theme.text; width: tile.width - 30; elide: Text.ElideNone; wrapMode: Text.NoWrap; fontSizeMode: Text.HorizontalFit; minimumPixelSize: 9 }
+-            Label { text: tile.sub; font.pixelSize: Theme.fontXs; color: tile.on ? Qt.rgba(0,0,0,0.6) : Theme.silverMuted; width: tile.width - 36 } }
++            Label { text: tile.sub; font.pixelSize: Theme.fontXs; color: tile.on ? Qt.rgba(0,0,0,0.6) : Theme.textSecondary; width: tile.width - 36 } }
+         MouseArea { id: tma; anchors.fill: parent; hoverEnabled: true; enabled: tile.tileEnabled; cursorShape: Qt.PointingHandCursor; onClicked: tile.toggled() }
+         Rectangle { visible: tile.hasExpand; width: 18; height: 18; radius: 3; anchors.right: parent.right; anchors.top: parent.top; anchors.margins: 4
+             color: ema.containsMouse ? (tile.on ? Qt.rgba(0,0,0,0.15) : Theme.pressed) : "transparent"
+diff --git a/components/popovers/Launcher.qml b/components/popovers/Launcher.qml
+index c3d98d9..2288300 100644
+--- a/components/popovers/Launcher.qml
++++ b/components/popovers/Launcher.qml
+@@ -55,10 +55,15 @@ Panel {
+         Rectangle { visible: launcher.egg; width: parent.width; height: 44; radius: Theme.radiusControl; color: Theme.silver
+             Label { anchors.centerIn: parent; text: "Petru și Ardei sunt șmecheri."; color: Theme.inverse; font.weight: Font.Bold; font.letterSpacing: 0.5 } }
+ 
+-        Column {
++        Item {
+             width: parent.width
+-            spacing: 2
++            implicitHeight: resultRows.implicitHeight
+             visible: !launcher.egg
++            Rectangle { width: parent.width; height: 44; radius: Theme.radiusControl; color: Theme.silver; visible: launcher.results.length > 0
++                y: Math.max(0, launcher.selected) * 46
++                Behavior on y { NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
++            }
++            Column { id: resultRows; width: parent.width; spacing: 2
+             Repeater {
+                 model: launcher.results
+                 delegate: Rectangle {
+@@ -68,14 +73,14 @@ Panel {
+                     readonly property bool sel: launcher.selected === index
+                     width: parent.width; height: 44
+                     radius: Theme.radiusControl
+-                    color: sel ? Theme.silver : ma.containsMouse ? Theme.hover : "transparent"
++                    color: sel ? "transparent" : ma.containsMouse ? Theme.hover : "transparent"
+                     Row {
+                         anchors.left: parent.left; anchors.leftMargin: 10; anchors.verticalCenter: parent.verticalCenter; spacing: 12
+                         AppIcon { icon: row.modelData.icon; size: 26; anchors.verticalCenter: parent.verticalCenter; dim: row.sel ? 0.2 : 1 }
+                         Column { anchors.verticalCenter: parent.verticalCenter; spacing: 1
+                             Label { text: row.modelData.name; color: row.sel ? Theme.inverse : Theme.text; font.weight: Font.Medium; width: launcher.width - 120 }
+                             Label { visible: launcher.cfg.showDescriptions && text !== ""; text: row.modelData.comment || row.modelData.genericName || ""; font.pixelSize: Theme.fontXs
+-                                color: row.sel ? Qt.rgba(0,0,0,0.6) : Theme.silverMuted; width: launcher.width - 120 } }
++                                color: row.sel ? Qt.rgba(0,0,0,0.6) : Theme.textSecondary; width: launcher.width - 120 } }
+                     }
+                     Label { visible: row.sel; text: "↵"; mono: true; anchors.right: parent.right; anchors.rightMargin: 12; anchors.verticalCenter: parent.verticalCenter; color: Theme.inverse; font.pixelSize: Theme.fontSm }
+                     MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
+@@ -89,9 +94,10 @@ Panel {
+                     MonoIcon { name: "inbox"; size: 20; color: Theme.textDisabled; anchors.horizontalCenter: parent.horizontalCenter }
+                     Label { text: ApplicationService.visible.length === 0 ? "No applications found on this system" : "No application matches “" + field.text + "”"; secondary: true; font.pixelSize: Theme.fontSm; anchors.horizontalCenter: parent.horizontalCenter } } }
+         }
++        }
+         Label { visible: launcher.error !== ""; text: launcher.error; color: Theme.silverBright; font.pixelSize: Theme.fontSm; width: parent.width; wrapMode: Text.Wrap }
+         Row { spacing: 14
+-            Label { text: launcher.results.length + " / " + ApplicationService.visible.length; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textDisabled }
+-            Label { text: "↑↓ navigate · ↵ launch · esc close"; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textDisabled } }
++            Label { text: launcher.results.length + " / " + ApplicationService.visible.length; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary }
++            Label { text: "↑↓ navigate · ↵ launch · esc close"; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary } }
+     }
+ }
+diff --git a/components/popovers/NotificationCenter.qml b/components/popovers/NotificationCenter.qml
+index c9b1730..e05b30b 100644
+--- a/components/popovers/NotificationCenter.qml
++++ b/components/popovers/NotificationCenter.qml
+@@ -65,5 +65,5 @@ PopoverFrame {
+             }
+         }
+     }
+-    Label { text: "History: " + NotificationService.history.length + " · kept " + UserConfig.data.notifications.historyRetentionDays + " days"; font.pixelSize: Theme.fontXs; mono: true; color: Theme.textDisabled }
++    Label { text: "History: " + NotificationService.history.length + " · kept " + UserConfig.data.notifications.historyRetentionDays + " days"; font.pixelSize: Theme.fontXs; mono: true; color: Theme.textSecondary }
+ }
+diff --git a/components/popovers/PopoverFrame.qml b/components/popovers/PopoverFrame.qml
+index 88ed7ab..e1a519f 100644
+--- a/components/popovers/PopoverFrame.qml
++++ b/components/popovers/PopoverFrame.qml
+@@ -9,7 +9,7 @@ Panel {
+     property string icon: ""
+     default property alias content: body.data
+     property alias headerExtra: extra.data
+-    property int padding: 14
++    property int padding: 16
+     implicitWidth: 360
+     implicitHeight: header.height + body.implicitHeight + padding * 2 + (title !== "" ? 6 : 0)
+     border.color: Theme.border
+diff --git a/components/popovers/PowerMenu.qml b/components/popovers/PowerMenu.qml
+index 9f44a8a..67bd568 100644
+--- a/components/popovers/PowerMenu.qml
++++ b/components/popovers/PowerMenu.qml
+@@ -59,7 +59,7 @@ Panel {
+                     radius: Theme.radiusPanel
+                     color: confirming ? Theme.silver : sel || ma.containsMouse ? Theme.elevated : Theme.surface2
+                     border.width: 1; border.color: confirming ? Theme.silverBright : sel ? Theme.silver : Theme.border
+-                    Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++                    Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+                     Column { anchors.centerIn: parent; spacing: 8
+                         MonoIcon { name: parent.parent.modelData.icon; size: 22; anchors.horizontalCenter: parent.horizontalCenter; color: parent.parent.confirming ? Theme.inverse : Theme.silver }
+                         Label { text: parent.parent.confirming ? "Confirm?" : parent.parent.modelData.label; font.pixelSize: Theme.fontSm; anchors.horizontalCenter: parent.horizontalCenter
+diff --git a/components/ui/IconButton.qml b/components/ui/IconButton.qml
+index 1c0d41d..d1c0070 100644
+--- a/components/ui/IconButton.qml
++++ b/components/ui/IconButton.qml
+@@ -14,11 +14,19 @@ Rectangle {
+     signal middleClicked()
+     signal wheel(int delta)
+     implicitWidth: 30
++    activeFocusOnTab: true
++    property bool keyPressed: false
++    scale: (ma.pressed || keyPressed) && Theme.motionEnabled ? 1 - 0.035 * Theme.motionIntensity : 1
++    Behavior on scale { NumberAnimation { duration: Theme.motionEnabled ? 100 : 0; easing.type: Theme.easing } }
++    Keys.onPressed: e => { if ((e.key === Qt.Key_Space || e.key === Qt.Key_Return || e.key === Qt.Key_Enter) && !e.isAutoRepeat) { keyPressed = true; e.accepted = true } }
++    Keys.onReleased: e => { if (keyPressed && (e.key === Qt.Key_Space || e.key === Qt.Key_Return || e.key === Qt.Key_Enter)) { keyPressed = false; if (enabled) clicked(); e.accepted = true } }
++    onActiveFocusChanged: if (!activeFocus) keyPressed = false
++    Rectangle { anchors.fill: parent; anchors.margins: -2; radius: parent.radius + 2; color: "transparent"; border.width: 1; border.color: Theme.silverBright; visible: parent.activeFocus }
+     implicitHeight: 30
+     radius: Theme.radiusControl
+     color: active ? Theme.silver : ma.pressed ? Theme.pressed : ma.containsMouse ? Theme.hover : "transparent"
+     opacity: enabled ? 1 : 0.4
+-    Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++    Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+     MonoIcon { anchors.centerIn: parent; name: root.icon; size: root.iconSize
+         color: root.active ? Theme.inverse : (ma.containsMouse ? Theme.silverBright : Theme.silver) }
+     MouseArea {
+@@ -28,6 +36,7 @@ Rectangle {
+         enabled: root.enabled
+         acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+         cursorShape: Qt.PointingHandCursor
++        onPressed: root.forceActiveFocus(Qt.MouseFocusReason)
+         onClicked: mouse => { if (mouse.button === Qt.RightButton) root.rightClicked(); else if (mouse.button === Qt.MiddleButton) root.middleClicked(); else root.clicked() }
+         onWheel: w => root.wheel(w.angleDelta.y)
+     }
+diff --git a/components/ui/MonoButton.qml b/components/ui/MonoButton.qml
+index c6bb8d0..452eb86 100644
+--- a/components/ui/MonoButton.qml
++++ b/components/ui/MonoButton.qml
+@@ -16,6 +16,14 @@ Rectangle {
+     signal rightClicked()
+     signal wheel(int delta)
+ 
++    activeFocusOnTab: true
++    property bool keyPressed: false
++    scale: (ma.pressed || keyPressed) && Theme.motionEnabled ? 1 - 0.035 * Theme.motionIntensity : 1
++    Behavior on scale { NumberAnimation { duration: Theme.motionEnabled ? 100 : 0; easing.type: Theme.easing } }
++    Keys.onPressed: e => { if ((e.key === Qt.Key_Space || e.key === Qt.Key_Return || e.key === Qt.Key_Enter) && !e.isAutoRepeat) { keyPressed = true; e.accepted = true } }
++    Keys.onReleased: e => { if (keyPressed && (e.key === Qt.Key_Space || e.key === Qt.Key_Return || e.key === Qt.Key_Enter)) { keyPressed = false; if (enabled) clicked(); e.accepted = true } }
++    onActiveFocusChanged: if (!activeFocus) keyPressed = false
++    Rectangle { anchors.fill: parent; anchors.margins: -2; radius: parent.radius + 2; color: "transparent"; border.width: 1; border.color: Theme.silverBright; visible: parent.activeFocus }
+     implicitHeight: 32
+     implicitWidth: row.implicitWidth + padding * 2
+     radius: Theme.radiusControl
+@@ -23,7 +31,7 @@ Rectangle {
+     border.width: flat || active ? 0 : 1
+     border.color: ma.containsMouse ? Theme.silverMuted : Theme.border
+     opacity: enabled ? 1 : 0.45
+-    Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++    Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+ 
+     Row {
+         id: row
+@@ -41,6 +49,7 @@ Rectangle {
+         enabled: root.enabled
+         acceptedButtons: Qt.LeftButton | Qt.RightButton
+         cursorShape: Qt.PointingHandCursor
++        onPressed: root.forceActiveFocus(Qt.MouseFocusReason)
+         onClicked: mouse => { if (mouse.button === Qt.RightButton) root.rightClicked(); else root.clicked() }
+         onWheel: w => root.wheel(w.angleDelta.y)
+     }
+diff --git a/components/ui/MonoSlider.qml b/components/ui/MonoSlider.qml
+index 26f3468..6fd08cf 100644
+--- a/components/ui/MonoSlider.qml
++++ b/components/ui/MonoSlider.qml
+@@ -11,10 +11,24 @@ Item {
+     signal moved(real value)
+     implicitHeight: 24
+     implicitWidth: 160
+-    readonly property real frac: Math.max(0, Math.min(1, (value - from) / (to - from)))
++    activeFocusOnTab: true
++    property real dragValue: value
++    function commit(v) { moved(Math.max(from, Math.min(to, v))) }
++    Keys.onPressed: e => {
++        let v = value
++        if (e.key === Qt.Key_Left || e.key === Qt.Key_Down) v -= (to-from)*0.05
++        else if (e.key === Qt.Key_Right || e.key === Qt.Key_Up) v += (to-from)*0.05
++        else if (e.key === Qt.Key_Home) v = from
++        else if (e.key === Qt.Key_End) v = to
++        else return
++        commit(v); e.accepted = true
++    }
++    Rectangle { anchors.fill: parent; radius: Theme.radiusControl; color: "transparent"; border.width: 1; border.color: Theme.silverMuted; visible: root.activeFocus }
++    property real frac: Math.max(0, Math.min(1, ((ma.pressed ? dragValue : value) - from) / Math.max(0.00001, to - from)))
++    Behavior on frac { enabled: Theme.motionEnabled && !ma.pressed; NumberAnimation { duration: 90; easing.type: Theme.easing } }
+     opacity: enabled ? 1 : 0.4
+ 
+-    Rectangle { id: track; anchors.verticalCenter: parent.verticalCenter; width: parent.width; height: 3; radius: 1; color: Theme.border }
++    Rectangle { id: track; anchors.verticalCenter: parent.verticalCenter; width: parent.width; height: 3; radius: 1; color: ma.containsMouse ? Theme.silverMuted : Theme.border }
+     Rectangle { anchors.verticalCenter: parent.verticalCenter; width: root.frac * parent.width; height: 3; radius: 1; color: ma.containsMouse || ma.pressed ? Theme.silverBright : Theme.silver }
+     Rectangle {
+         x: root.frac * (parent.width - width); anchors.verticalCenter: parent.verticalCenter
+@@ -28,9 +42,9 @@ Item {
+         hoverEnabled: true
+         enabled: root.enabled
+         preventStealing: true
+-        function update(mx) { const f = Math.max(0, Math.min(1, mx / width)); root.value = root.from + f * (root.to - root.from); root.moved(root.value) }
+-        onPressed: mouse => update(mouse.x)
++        function update(mx) { const f = Math.max(0, Math.min(1, mx / width)); root.dragValue = root.from + f * (root.to - root.from); root.commit(root.dragValue) }
++        onPressed: mouse => { root.forceActiveFocus(Qt.MouseFocusReason); update(mouse.x) }
+         onPositionChanged: mouse => { if (pressed) update(mouse.x) }
+-        onWheel: w => { const step = (root.to - root.from) * 0.05; root.value = Math.max(root.from, Math.min(root.to, root.value + (w.angleDelta.y > 0 ? step : -step))); root.moved(root.value) }
++        onWheel: w => { const step = (root.to - root.from) * 0.05; root.commit(root.value + (w.angleDelta.y > 0 ? step : -step)) }
+     }
+ }
+diff --git a/components/ui/MonoTextField.qml b/components/ui/MonoTextField.qml
+index 309cbc0..241194d 100644
+--- a/components/ui/MonoTextField.qml
++++ b/components/ui/MonoTextField.qml
+@@ -16,7 +16,7 @@ Rectangle {
+     color: Theme.surface2
+     border.width: 1
+     border.color: input.activeFocus ? Theme.silver : Theme.border
+-    Behavior on border.color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++    Behavior on border.color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.durFast } }
+     MonoIcon { id: ico; visible: root.icon !== ""; name: root.icon; size: 16; anchors.left: parent.left; anchors.leftMargin: 12; anchors.verticalCenter: parent.verticalCenter; color: Theme.silverMuted }
+     TextInput {
+         id: input
+@@ -35,6 +35,6 @@ Rectangle {
+         passwordCharacter: "•"
+         renderType: Text.NativeRendering
+         onAccepted: root.accepted()
+-        Text { visible: input.text === ""; text: root.placeholder; color: Theme.textDisabled; font: input.font; anchors.verticalCenter: parent.verticalCenter; renderType: Text.NativeRendering }
++        Text { visible: input.text === ""; text: root.placeholder; color: Theme.textSecondary; font: input.font; anchors.verticalCenter: parent.verticalCenter; renderType: Text.NativeRendering }
+     }
+ }
+diff --git a/components/ui/MonoToggle.qml b/components/ui/MonoToggle.qml
+index 5ee1947..ea4b910 100644
+--- a/components/ui/MonoToggle.qml
++++ b/components/ui/MonoToggle.qml
+@@ -6,20 +6,23 @@ Rectangle {
+     id: root
+     property bool checked: false
+     signal toggled(bool checked)
++    activeFocusOnTab: true
++    Keys.onPressed: e => { if ((e.key === Qt.Key_Space || e.key === Qt.Key_Return || e.key === Qt.Key_Enter) && !e.isAutoRepeat) { toggled(!checked); e.accepted = true } }
++    Rectangle { anchors.fill: parent; anchors.margins: -3; radius: height / 2; color: "transparent"; border.width: 1; border.color: Theme.silverBright; visible: root.activeFocus }
+     implicitWidth: 38
+     implicitHeight: 20
+-    radius: Theme.radiusControl
++    radius: height / 2
+     color: checked ? Theme.silver : Theme.surface2
+     border.width: 1
+     border.color: checked ? Theme.silver : (ma.containsMouse ? Theme.silverMuted : Theme.border)
+     opacity: enabled ? 1 : 0.4
+-    Behavior on color { enabled: UserConfig.data.appearance.animations; ColorAnimation { duration: Theme.durFast } }
++    Behavior on color { enabled: Theme.motionEnabled; ColorAnimation { duration: Theme.motionEnabled ? 180 : 0 } }
+     Rectangle {
+-        width: 14; height: 14; radius: 3
++        width: 14; height: 14; radius: 7
+         y: 3
+         x: root.checked ? root.width - width - 3 : 3
+         color: root.checked ? Theme.inverse : Theme.silverMuted
+-        Behavior on x { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durFast; easing.type: Theme.easing } }
++        Behavior on x { enabled: Theme.motionEnabled; NumberAnimation { duration: Theme.motionEnabled ? 180 : 0; easing.type: Theme.easing } }
+     }
+-    MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; enabled: root.enabled; cursorShape: Qt.PointingHandCursor; onClicked: root.toggled(!root.checked) }
++    MouseArea { id: ma; anchors.fill: parent; hoverEnabled: true; enabled: root.enabled; cursorShape: Qt.PointingHandCursor; onClicked: { root.forceActiveFocus(Qt.MouseFocusReason); root.toggled(!root.checked) } }
+ }
+diff --git a/components/ui/Panel.qml b/components/ui/Panel.qml
+index b5e0655..128947a 100644
+--- a/components/ui/Panel.qml
++++ b/components/ui/Panel.qml
+@@ -9,4 +9,6 @@ Rectangle {
+     border.width: Theme.borderWidth
+     border.color: Theme.border
+     antialiasing: true
++    Rectangle { anchors.fill: parent; anchors.margins: -1; z: -1; radius: parent.radius + 1; color: "transparent"; border.width: 1; border.color: Qt.rgba(0,0,0,UserConfig.data.appearance.shadowStrength) }
++    Rectangle { x: parent.radius; y: 1; width: Math.max(0, parent.width-parent.radius*2); height: 1; color: Qt.rgba(1,1,1,0.055); visible: UserConfig.data.appearance.glassEnabled }
+ }
+diff --git a/components/ui/SectionTitle.qml b/components/ui/SectionTitle.qml
+index 089026e..9b5b61f 100644
+--- a/components/ui/SectionTitle.qml
++++ b/components/ui/SectionTitle.qml
+@@ -1,4 +1,4 @@
+ import QtQuick
+ import qs.config
+ // Uppercase tracked label for section headers (industrial feel).
+-Label { font.pixelSize: Theme.fontXs; font.letterSpacing: 1.2; font.weight: Font.DemiBold; color: Theme.silverMuted; text: ""; }
++Label { font.pixelSize: Theme.fontXs; font.letterSpacing: 1.2; font.weight: Font.DemiBold; color: Theme.textSecondary; text: ""; }
+diff --git a/examples/niri/config.kdl b/examples/niri/config.kdl
+index 5ced705..28a2af9 100644
+--- a/examples/niri/config.kdl
++++ b/examples/niri/config.kdl
+@@ -16,6 +16,8 @@ include "binds.kdl"       // scurtături tastatură
+ include "niri-monochrome.kdl" // scurtături NIRI MONOCHROME (Mod+D, Mod+A)
+ 
+ // Cere aplicațiilor să nu-și deseneze propriul titlebar.
++include "niri-monochrome-appearance.kdl" // bounded shell glass and shadows
++
+ prefer-no-csd
+ 
+ screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"
+diff --git a/selftest-qml.qml b/selftest-qml.qml
+index 62562fa..c8d386e 100644
+--- a/selftest-qml.qml
++++ b/selftest-qml.qml
+@@ -26,6 +26,7 @@ ShellRoot {
+     Component { id: cSettings; Settings { visible: false } }
+     Component { id: cLauncher; Item { width: 600; height: 400; Launcher {} } }
+     Component { id: cCC; Item { width: 400; height: 600; ControlCenter { initialSection: "battery" } } }
++    Component { id: cCheat; Item { width: 820; height: 560; ShortcutCheatSheet {} } }
+     Component { id: cNC; Item { width: 400; height: 600; NotificationCenter {} } }
+     Component { id: cMedia; Item { width: 400; height: 300; MediaControls {} } }
+     Component { id: cCal; Item { width: 400; height: 400; CalendarPopover {} } }
+@@ -36,7 +37,7 @@ ShellRoot {
+         const s = { modelData: root.screen0 }
+         make("BottomBar", cBar, s); make("AutoHideDock", cDock, s); make("OverlayLayer", cOverlay, s); make("NotificationToasts", cToasts, s)
+         make("WallpaperLayer", cWall, s); make("Osd", cOsd, s); make("LockScreen", cLock); make("Settings", cSettings)
+-        make("Launcher", cLauncher); make("ControlCenter", cCC); make("NotificationCenter", cNC); make("MediaControls", cMedia)
++        make("ShortcutCheatSheet", cCheat); make("Launcher", cLauncher); make("ControlCenter", cCC); make("NotificationCenter", cNC); make("MediaControls", cMedia)
+         make("CalendarPopover", cCal); make("PowerMenu", cPower); make("ui primitives", cUi); make("settings rows", cSet)
+         const services = [NiriService, MonitorService, AudioService, NetworkService, BluetoothService, BatteryService, BrightnessService, MediaService, NotificationService, WallpaperService, PamService, LockService, SystemService, NightLightService, OsdService, ShellState, StateStore, ApplicationService]
+         console.info("QMLCHECK ok services", services.length)
+diff --git a/tests/run-qml.py b/tests/run-qml.py
+index 6f7f651..4cef85e 100644
+--- a/tests/run-qml.py
++++ b/tests/run-qml.py
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python3
+ """Isolated QML tests: private session bus, runtime/config/state; UI surfaces are disabled."""
+ import json
++import re
+ import struct
+ import zlib
+ import os
+@@ -14,7 +15,7 @@ import time
+ source = Path(sys.argv[1]).resolve()
+ with tempfile.TemporaryDirectory(prefix='nm-qml-') as temp:
+     base = Path(temp)
+-    for sub in ('config/niri-monochrome', 'state', 'runtime', 'wallpapers'):
++    for sub in ('config/niri-monochrome', 'config/niri', 'state', 'runtime', 'wallpapers'):
+         (base/sub).mkdir(parents=True, exist_ok=True)
+     (base/'runtime').chmod(0o700)
+     if source.name == 'selftest-wallpaper.qml':
+@@ -23,14 +24,19 @@ with tempfile.TemporaryDirectory(prefix='nm-qml-') as temp:
+         png = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', 1, 1, 8, 2, 0, 0, 0)) + chunk(b'IDAT', zlib.compress(b'\0\xff\xff\xff')) + chunk(b'IEND', b'')
+         (base/'wallpapers/a-bad.png').write_text('not an image')
+         (base/'wallpapers/b-good.png').write_bytes(png)
+-    (base/'config/niri-monochrome/config.json').write_text(json.dumps({
+-        'shortcuts': {'writeNiriInclude': False}, 'notifications': {'server': False},
+-        'bar': {'enabled': False}, 'dock': {'enabled': False},
+-        'wallpaper': {'enabled': False, 'shuffle': False, 'directory': str(base/'wallpapers')},
+-        'system': {'batteryWarnings': False}, 'nightLight': {'enabled': False},
+-        'security': {'useShellLock': False}}))
++    if source.name in ('selftest-overlay.qml', 'selftest-interactions.qml', 'selftest-shortcut-ui.qml', 'selftest-shortcut-focus.qml'):
++        (base/'config/niri/binds.kdl').write_text('binds {\n Mod+D hotkey-overlay-title="Launcher" { spawn "fuzzel"; }\n Mod+A hotkey-overlay-title="Dock" { spawn "qs"; }\n}\n')
++    # The glass-only fixture instantiates no desktop services: exercise missing-file recovery.
++    if source.name != 'selftest-glass.qml':
++        (base/'config/niri-monochrome/config.json').write_text(json.dumps({
++            'shortcuts': {'writeNiriInclude': False}, 'notifications': {'server': False},
++            'bar': {'enabled': False}, 'dock': {'enabled': False},
++            'wallpaper': {'enabled': False, 'shuffle': False, 'directory': str(base/'wallpapers')},
++            'system': {'batteryWarnings': False}, 'nightLight': {'enabled': False},
++            'security': {'useShellLock': False}}))
+     env = dict(os.environ, QT_QPA_PLATFORM='offscreen', XDG_CONFIG_HOME=str(base/'config'),
+                XDG_STATE_HOME=str(base/'state'), XDG_RUNTIME_DIR=str(base/'runtime'))
++    env.pop('NM_GLASS_RESTORE', None)
+     env['PIPEWIRE_RUNTIME_DIR'] = os.environ.get('PIPEWIRE_RUNTIME_DIR', os.environ.get('XDG_RUNTIME_DIR', ''))
+     if source.name != 'selftest-niri.qml':
+         env['NIRI_SOCKET'] = ''
+@@ -40,7 +46,7 @@ with tempfile.TemporaryDirectory(prefix='nm-qml-') as temp:
+                           '<policy context="default"><allow send_destination="*"/>'
+                           '<allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
+     env['QT_QPA_PLATFORMTHEME'] = ''
+-    if source.name in ('shell.qml', 'selftest-qml.qml', 'selftest-wallpaper.qml'):
++    if source.name in ('shell.qml', 'selftest-qml.qml', 'selftest-wallpaper.qml', 'selftest-phase4.qml', 'selftest-overlay.qml', 'selftest-interactions.qml', 'selftest-shortcut-ui.qml', 'selftest-shortcut-focus.qml'):
+         display = os.environ.get('WAYLAND_DISPLAY', '')
+         if not display:
+             raise SystemExit('Wayland backend required for PanelWindow load validation')
+@@ -72,11 +78,43 @@ with tempfile.TemporaryDirectory(prefix='nm-qml-') as temp:
+                     assert ipc('reload').returncode == 0
+                     time.sleep(.5)
+                     ready()
++                appearance_file = base/'config/niri/niri-monochrome-appearance.kdl'
++                if appearance_file.exists():
++                    subprocess.run(['niri','validate','-c',str(appearance_file)],env=env,check=True,capture_output=True)
++                    print('PASS generated appearance KDL validation')
+                 print('PASS actual shell entrypoint + 3 isolated reloads')
+             else:
+                 proc.wait(timeout=20)
+                 if proc.returncode != 0:
+                     raise RuntimeError('QML process exited ' + str(proc.returncode))
++                if source.name == 'selftest-shortcut-ui.qml':
++                    restore = source.with_name('selftest-shortcut-restore.qml')
++                    proc = subprocess.Popen(['dbus-run-session', '--config-file=' + str(bus_config),
++                                             '--', 'qs', '-p', str(restore), '--no-color'],
++                                            env=env, stdout=log, stderr=subprocess.STDOUT,
++                                            start_new_session=True)
++                    proc.wait(timeout=20)
++                    if proc.returncode != 0:
++                        raise RuntimeError('Shortcut restore process exited ' + str(proc.returncode))
++                    subprocess.run(['niri', 'validate', '-c', str(base/'config/niri/config.kdl')],
++                                   env=env, check=True, capture_output=True)
++                    print('PASS private shortcut source configuration validates after process restart')
++                if source.name == 'selftest-glass.qml':
++                    appearance_file = base/'config/niri/niri-monochrome-appearance.kdl'
++                    before_restart = appearance_file.stat().st_mtime_ns
++                    subprocess.run(['niri', 'validate', '-c', str(appearance_file)], env=env,
++                                   check=True, capture_output=True)
++                    # Restart the actual singleton with the same private persisted settings.
++                    restart_env = dict(env, NM_GLASS_RESTORE='1')
++                    proc = subprocess.Popen(['dbus-run-session', '--config-file=' + str(bus_config),
++                                             '--', 'qs', '-p', str(source), '--no-color'],
++                                            env=restart_env, stdout=log, stderr=subprocess.STDOUT,
++                                            start_new_session=True)
++                    proc.wait(timeout=20)
++                    if proc.returncode != 0:
++                        raise RuntimeError('QML restore process exited ' + str(proc.returncode))
++                    assert appearance_file.stat().st_mtime_ns == before_restart, 'Appearance rewritten on restart'
++                    print('PASS generated glass KDL validation + no rewrite across process restart')
+         finally:
+             try:
+                 os.killpg(proc.pid, signal.SIGTERM)
+@@ -92,5 +130,8 @@ with tempfile.TemporaryDirectory(prefix='nm-qml-') as temp:
+     checked_output = '\n'.join(line for line in output.splitlines() if '[UserConfig]  config.json is not valid JSON:' not in line)
+     if any(token in checked_output for token in ('ERROR', 'FAIL', 'ReferenceError', 'TypeError', 'SyntaxError', 'Binding loop')):
+         raise SystemExit(1)
+-    if source.name != 'shell.qml' and 'QMLCHECK DONE' not in output and 'RESULT' not in output:
++    for passed, total in re.findall(r'RESULT (\d+)/(\d+) passed', output):
++        if passed != total:
++            raise SystemExit('Incomplete or failed assertion count')
++    if source.name != 'shell.qml' and 'QMLCHECK DONE'  not in output and 'RESULT' not in output:
+         raise SystemExit('QML test did not reach its result marker')
+diff --git a/tests/validate.sh b/tests/validate.sh
+index 0800092..f8f64aa 100755
+--- a/tests/validate.sh
++++ b/tests/validate.sh
+@@ -30,8 +30,12 @@ if command -v niri >/dev/null; then
+   else say "niri validate" FAIL; fail=1; fi
+ fi
+ # Each load gets a private bus and temporary state; also validate the actual entrypoint.
+-for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml shell.qml; do
++for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml selftest-shortcut-data.qml selftest-shortcut-ui.qml selftest-shortcut-layout.qml selftest-shortcut-focus.qml shell.qml; do
+   if python3 "$here/tests/run-qml.py" "$here/$entry"; then say "$entry" ok
+   else say "$entry" FAIL; fail=1; fi
+ done
++if python3 "$here/tests/audio-helper-test.py"; then say "audio-helper-test.py" ok
++else say "audio-helper-test.py" FAIL; fail=1; fi
++if python3 "$here/tests/shortcut-native-test.py"; then say "shortcut-native-test.py" ok
++else say "shortcut-native-test.py" FAIL; fail=1; fi
+ exit "$fail"

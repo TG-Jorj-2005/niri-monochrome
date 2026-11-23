@@ -17,7 +17,12 @@ PanelWindow {
     readonly property real barTop: modelData.height - (barProfile.enabled ? barProfile.marginBottom + barProfile.height : 0)
 
     screen: modelData
-    visible: active
+    property string displayed: ""
+    property real reveal: active ? 1 : 0
+    onActiveChanged: if (active) displayed = ShellState.open
+    Connections { target: ShellState; function onOpenChanged() { if (overlay.active) overlay.displayed = ShellState.open } }
+    Behavior on reveal { NumberAnimation { duration: overlay.active ? Theme.durNormal : Theme.durFast; easing.type: Theme.easing } }
+    visible: active || reveal > 0.001
     anchors { top: true; bottom: true; left: true; right: true }
     exclusionMode: ExclusionMode.Ignore
     color: "transparent"
@@ -28,10 +33,11 @@ PanelWindow {
     // Backdrop: click anywhere outside closes.
     MouseArea {
         anchors.fill: parent
+        enabled: overlay.active
         acceptedButtons: Qt.AllButtons
         onPressed: ShellState.close()
-        Rectangle { anchors.fill: parent; color: Theme.scrim; opacity: (ShellState.open === "launcher" || ShellState.open === "power") ? 1 : 0
-            Behavior on opacity { enabled: UserConfig.data.appearance.animations; NumberAnimation { duration: Theme.durNormal } } }
+        Rectangle { anchors.fill: parent; color: Theme.scrim; opacity: overlay.reveal * (overlay.displayed === "launcher" || overlay.displayed === "power" || overlay.displayed === "shortcuts" ? 1 : 0)
+ }
     }
 
     FocusScope {
@@ -47,11 +53,20 @@ PanelWindow {
             return Math.round(Math.max(margin, Math.min(overlay.width - w - margin, anchorX - w / 2)))
         }
 
+        // Consume presses in panel padding after child controls have had first chance.
+        // This sits below the Loader, so outside clicks still reach the backdrop.
+        MouseArea {
+            x: content.x; y: content.y
+            width: content.width; height: content.height
+            enabled: overlay.active
+            acceptedButtons: Qt.AllButtons
+        }
+
         Loader {
             id: content
-            active: overlay.active
+            active: overlay.active || overlay.reveal > 0.001
             sourceComponent: {
-                switch (ShellState.open) {
+                switch (overlay.displayed) {
                 case "launcher": return launcherComp
                 case "control": return controlComp
                 case "notifications": return notifComp
@@ -59,20 +74,19 @@ PanelWindow {
                 case "calendar": return calendarComp
                 case "power": return powerComp
                 case "tray": return trayComp
+                case "shortcuts": return shortcutsComp
                 default: return null
                 }
             }
             onLoaded: { item.forceActiveFocus() }
-            readonly property bool centered: ShellState.open === "launcher" || ShellState.open === "power"
+            readonly property bool centered: overlay.displayed === "launcher" || overlay.displayed === "power" || overlay.displayed === "shortcuts"
             x: centered ? Math.round((overlay.width - width) / 2) : scope.placeX(width, ShellState.anchorX)
-            y: centered ? Math.round(overlay.height * 0.30) : Math.round(overlay.barTop - 10 - height)
-            // entrance animation
-            opacity: 0
-            transform: Translate { id: tr; y: 8 }
-            onActiveChanged: if (active) { opacity = 0; tr.y = 8; anim.restart() }
-            ParallelAnimation { id: anim
-                NumberAnimation { target: content; property: "opacity"; to: 1; duration: UserConfig.data.appearance.animations ? Theme.durNormal : 0; easing.type: Theme.easing }
-                NumberAnimation { target: tr; property: "y"; to: 0; duration: UserConfig.data.appearance.animations ? Theme.durNormal : 0; easing.type: Theme.easing } }
+            width: Math.min(item ? item.implicitWidth : 380, overlay.width-24)
+            height: Math.min(item ? item.implicitHeight : 1, overlay.height-24)
+            y: Math.max(12, Math.min(overlay.height-height-12, centered ? Math.round((overlay.height-height)/2) : Math.round(overlay.barTop-10-height)))
+            opacity: overlay.reveal
+            transform: Translate { y: 8 * Theme.motionIntensity * (1-overlay.reveal) }
+
         }
     }
 
@@ -82,5 +96,6 @@ PanelWindow {
     Component { id: mediaComp; MediaControls {} }
     Component { id: calendarComp; CalendarPopover {} }
     Component { id: powerComp; PowerMenu {} }
+    Component { id: shortcutsComp; ShortcutCheatSheet {} }
     Component { id: trayComp; TrayMenu { item: ShellState.anchorPayload } }
 }

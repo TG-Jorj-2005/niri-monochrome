@@ -14,7 +14,7 @@ ShellRoot {
     // Touch singletons early so services connect at startup.
     Component.onCompleted: {
         Log.info("shell", "NIRI MONOCHROME", Constants.version, "· fonts:", Theme.fontSans, "/", Theme.fontMono)
-        NiriService.connected; ApplicationService.visible; OsdService.enabled; NightLightService.status; BrightnessService.status; NotificationService.serverEnabled; WallpaperService.collections; Keybindings.includePath; MediaService.hasPlayer
+        AppearanceService.path; NiriService.connected; ApplicationService.visible; OsdService.enabled; NightLightService.status; BrightnessService.status; NotificationService.serverEnabled; WallpaperService.collections; Keybindings.includePath; MediaService.hasPlayer
     }
 
     Variants {
@@ -35,6 +35,10 @@ ShellRoot {
     Settings {}
 
     // ---- IPC: `qs -c niri-monochrome ipc call <target> <function>` ----
+    IpcHandler { target: "shortcuts"
+        function toggle(): void { ShellState.toggle("shortcuts") }
+        function open(): void { ShellState.show("shortcuts") }
+        function close(): void { ShellState.close() } }
     IpcHandler { target: "launcher"
         function toggle(): void { ShellState.toggle("launcher") }
         function open(): void { ShellState.show("launcher") }
@@ -64,7 +68,8 @@ ShellRoot {
     IpcHandler { target: "lock"
         function lock(): void { LockService.lock() }
         function lockShell(): void { LockService.lockShell() }
-        function isLocked(): bool { return LockService.locked } }
+        function isLocked(): bool { return LockService.locked }
+        function isSecure(): bool { return LockService.secure } }
     IpcHandler { target: "wallpaper"
         function next(): void { WallpaperService.nextAllFocused() }
         function previous(): void { const s = MonitorService.focusedScreen(); if (s) WallpaperService.previous(MonitorService.keyFor(s)) }
@@ -91,7 +96,7 @@ ShellRoot {
     IpcHandler { target: "shell"
         function version(): string { return Constants.version }
         function status(): string { return JSON.stringify({ niri: NiriService.connected, screens: Quickshell.screens.map(s => s.name), notifications: SystemService.notificationOwnedByUs ? "owned" : (SystemService.notificationOwnedByOther ? "other:" + SystemService.notificationOwnerPid : "none"), locked: LockService.locked, workspaces: NiriService.workspaces.length, apps: ApplicationService.visible.length + "/" + ApplicationService.rawCount }) }
-        function diagnostics(): string { return JSON.stringify({ niriStatus: NiriService.status, reconnects: NiriService.reconnectCount, profileAvailable: BatteryService.profilesAvailable, profileBackend: BatteryService.profilesBackend, profile: BatteryService.profile, audio: AudioService.status, network: NetworkService.status, bluetooth: BluetoothService.status, brightness: BrightnessService.status, brightnessWatchers: BrightnessService.watchers, notifications: NotificationService.status, shellServerApproved: UserConfig.data.notifications.shellServerApproved, shellLock: LockService.useShellLock, overlay: ShellState.open, dock: ShellState.dockKeyboard }) }
+        function diagnostics(): string { return JSON.stringify({ niriStatus: NiriService.status, reconnects: NiriService.reconnectCount, profileAvailable: BatteryService.profilesAvailable, profileBackend: BatteryService.profilesBackend, profile: BatteryService.profile, audio: AudioService.status, network: NetworkService.status, bluetooth: BluetoothService.status, brightness: BrightnessService.status, brightnessWatchers: BrightnessService.watchers, notifications: NotificationService.status, shellServerApproved: UserConfig.data.notifications.shellServerApproved, shellLock: LockService.useShellLock, visualizerStatus: VisualizerService.status, visualizer: VisualizerService.running, visualizerWatchers: VisualizerService.watchers, overlay: ShellState.open, dock: ShellState.dockKeyboard }) }
         function reload(): void { Quickshell.reload(false) }
 }
 }

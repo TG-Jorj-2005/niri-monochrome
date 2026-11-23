@@ -1,0 +1,25 @@
+{
+  "capture_processes": [],
+  "temporary_sinks": [],
+  "private_test_processes": [],
+  "diagnostics": {
+    "niriStatus": "ready",
+    "reconnects": 0,
+    "profileAvailable": true,
+    "profileBackend": "tuned-ppd",
+    "profile": 1,
+    "audio": "ready",
+    "network": "ready",
+    "bluetooth": "ready",
+    "brightness": "ready",
+    "brightnessWatchers": 0,
+    "notifications": "mako",
+    "shellServerApproved": false,
+    "shellLock": false,
+    "visualizerStatus": "idle",
+    "visualizer": false,
+    "visualizerWatchers": 0,
+    "overlay": "",
+    "dock": false
+  }
+}

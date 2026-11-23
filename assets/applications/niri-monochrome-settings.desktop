@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=NIRI MONOCHROME Settings
+GenericName=Shell settings
+Comment=Configure the NIRI MONOCHROME desktop shell
+Exec=qs -c niri-monochrome ipc call settings open
+Icon=preferences-desktop
+Terminal=false
+Categories=Settings;DesktopSettings;
+Keywords=niri;shell;bar;dock;wallpaper;monochrome;
+StartupNotify=false

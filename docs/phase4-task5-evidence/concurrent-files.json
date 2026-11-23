@@ -1,0 +1,10 @@
+{
+  "files_changed_outside_task5": [
+    "shell.qml",
+    "components/LockScreen.qml",
+    "components/Settings.qml",
+    "services/SystemService.qml",
+    "docs/CHANGELOG.md"
+  ],
+  "task5_files_match_tested_scratch": true
+}

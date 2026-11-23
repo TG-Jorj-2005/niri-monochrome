@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-13 — lock screen redesign
+
+- New `components/lock/LockContent.qml`: blurred greyscale wallpaper, large clock and date, account avatar and full name, password field with shake on failure, network/Bluetooth/battery status, now-playing controls and key hints. `LockScreen.qml` keeps the same WlSessionLock + PAM logic.
+- `security.useShellLock` is now on. Super+Alt+L, lid-close and swayidle call `~/.local/bin/niri-lock`, which locks through the shell and falls back to `swaylock -f` if the shell does not confirm the lock within 3 s. New IPC `lock isSecure`.
+- Recovery if the shell ever dies while locked: Ctrl+Alt+F3, log in, run `WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/$(id -u) swaylock`, return with Ctrl+Alt+F2 and unlock in swaylock. Revert: set `security.useShellLock` to false.
+
+## Phase 4 — monochrome UI polish
+
+- Added shared motion/reduced-motion controls, glass panels and bounded native Niri bar/dock blur.
+- Added a searchable informational shortcut overlay and real PipeWire output-level history/meter with visibility-scoped capture.
+- Passed IPC 16/16, core 14/14, image fallback 2/2, Phase 4 10/10 and live lifecycle/reload checks. Measurements and manual limits: [PHASE4-REPORT.md](PHASE4-REPORT.md).
+
 ## Screenshot integration
 
 - Added native Niri capture buttons and screenshot IPC commands, an installed launcher entry, and optional Swappy clipboard annotation. Existing Print bindings remain effective.

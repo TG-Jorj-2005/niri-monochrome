@@ -18,10 +18,17 @@ Singleton {
     readonly property var defaults: ({
         version: 2,
         appearance: {
+            accentColor: "#829DA3",
             grayscaleAppIcons: true,
             grayscaleWallpaper: true,
             grayscaleArtwork: true,
             animations: true,
+            reduceMotion: false,
+            glassEnabled: true,
+            panelOpacity: 0.92,
+            panelRadius: 12,
+            shadowStrength: 0.35,
+            animationIntensity: 1.0,
             barShadow: true
         },
         bar: {
@@ -92,7 +99,7 @@ Singleton {
             fade: 900,
             fillMode: "crop"
         },
-        media: { showIndicator: true },
+        media: { showIndicator: true, visualizerEnabled: true, visualizerStyle: "history", visualizerBarCount: 24 },
         osd: {
             enabled: false,                // off by default: the user's Fn-key scripts show a mako OSD; enable + rebind to use this one
             timeout: 1500,
@@ -212,6 +219,13 @@ Singleton {
     }
     function validate(d) {
         d = normalize(defaults, d)
+        if (!/^#[0-9a-f]{6}$/i.test(d.appearance.accentColor)) d.appearance.accentColor = defaults.appearance.accentColor
+        d.appearance.panelOpacity = clamp(d.appearance.panelOpacity, 0.82, 1, 0.92)
+        d.appearance.panelRadius = clamp(d.appearance.panelRadius, 0, 24, 12)
+        d.appearance.shadowStrength = clamp(d.appearance.shadowStrength, 0, 0.65, 0.35)
+        d.appearance.animationIntensity = clamp(d.appearance.animationIntensity, 0, 1.5, 1)
+        d.media.visualizerBarCount = Math.round(clamp(d.media.visualizerBarCount, 16, 32, 24))
+        if (["history", "meter"].indexOf(d.media.visualizerStyle) < 0) d.media.visualizerStyle = "history"
         d.bar.height = clamp(d.bar.height, 32, 96, 40)
         d.bar.widthPercent = clamp(d.bar.widthPercent, 30, 100, 92)
         d.bar.radius = clamp(d.bar.radius, 0, 24, 9)

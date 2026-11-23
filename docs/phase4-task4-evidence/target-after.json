@@ -1,0 +1,53 @@
+{
+  "before_removal": {
+    "nodes": {
+      "90": {
+        "adapt.follower.spa-node": "",
+        "application.name": "pw-cat",
+        "client.id": 85,
+        "clock.quantum-limit": 8192,
+        "factory.id": 9,
+        "library.name": "audioconvert/libspa-audioconvert",
+        "media.category": "Capture",
+        "media.class": "Stream/Input/Audio",
+        "media.filename": "-",
+        "media.name": "-",
+        "media.role": "Analyzer",
+        "media.type": "Audio",
+        "node.async": true,
+        "node.autoconnect": true,
+        "node.dont-fallback": true,
+        "node.dont-reconnect": true,
+        "node.driver-id": 91,
+        "node.loop.class": "main",
+        "node.loop.name": "main-loop",
+        "node.name": "niri-monochrome-visualizer",
+        "node.passive": true,
+        "node.rate": "1/16000",
+        "node.want-driver": true,
+        "object.id": 90,
+        "object.register": false,
+        "object.serial": 668,
+        "port.group": "stream.0",
+        "stream.capture.sink": true,
+        "stream.is-live": true,
+        "target.object": "nm_task4_probe"
+      }
+    },
+    "links": [
+      {
+        "from": "nm_task4_probe",
+        "to": 90
+      },
+      {
+        "from": "nm_task4_probe",
+        "to": 90
+      }
+    ]
+  },
+  "after_removal": {
+    "nodes": {},
+    "links": []
+  },
+  "helper_returncode": 3
+}

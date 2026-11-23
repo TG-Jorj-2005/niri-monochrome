@@ -1,0 +1,556 @@
+{
+  "post_reload_first30": {
+    "seconds": 30.276661021998734,
+    "cpuPercent": 0.1321149646288155,
+    "before": {
+      "t": 94426.092765313,
+      "ticks": 56583,
+      "rssKiB": 193388,
+      "privateKiB": 117728,
+      "fds": 74,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919037,
+        "nonvoluntary_ctxt_switches": 32218
+      }
+    },
+    "after": {
+      "t": 94456.369426335,
+      "ticks": 56587,
+      "rssKiB": 187912,
+      "privateKiB": 112924,
+      "fds": 65,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919228,
+        "nonvoluntary_ctxt_switches": 32220
+      }
+    }
+  },
+  "post_reload_first60": {
+    "seconds": 60.56333356400137,
+    "cpuPercent": 0.09906984386286125,
+    "before": {
+      "t": 94426.092765313,
+      "ticks": 56583,
+      "rssKiB": 193388,
+      "privateKiB": 117728,
+      "fds": 74,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919037,
+        "nonvoluntary_ctxt_switches": 32218
+      }
+    },
+    "after": {
+      "t": 94486.656098877,
+      "ticks": 56589,
+      "rssKiB": 187912,
+      "privateKiB": 112928,
+      "fds": 65,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919347,
+        "nonvoluntary_ctxt_switches": 32222
+      }
+    }
+  },
+  "last_observed_unlocked": {
+    "seconds": 272.36587378699915,
+    "cpuPercent": 0.06608757459121589,
+    "before": {
+      "t": 94426.092765313,
+      "ticks": 56583,
+      "rssKiB": 193388,
+      "privateKiB": 117728,
+      "fds": 74,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919037,
+        "nonvoluntary_ctxt_switches": 32218
+      }
+    },
+    "after": {
+      "t": 94698.4586391,
+      "ticks": 56601,
+      "rssKiB": 187044,
+      "privateKiB": 112096,
+      "fds": 65,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1920489,
+        "nonvoluntary_ctxt_switches": 32233
+      }
+    }
+  },
+  "full_quiet_attempt": {
+    "seconds": 302.63703828399593,
+    "cpuPercent": 0.22799588705745294,
+    "before": {
+      "t": 94426.092765313,
+      "ticks": 56583,
+      "rssKiB": 193388,
+      "privateKiB": 117728,
+      "fds": 74,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1919037,
+        "nonvoluntary_ctxt_switches": 32218
+      }
+    },
+    "after": {
+      "t": 94728.729803597,
+      "ticks": 56652,
+      "rssKiB": 203936,
+      "privateKiB": 127300,
+      "fds": 73,
+      "children": [
+        "427171"
+      ],
+      "inotify": {
+        "29": 1,
+        "39": 12,
+        "50": 2,
+        "69": 83
+      },
+      "contexts": {
+        "voluntary_ctxt_switches": 1921245,
+        "nonvoluntary_ctxt_switches": 32245
+      }
+    }
+  },
+  "guard_exit": 1,
+  "guard_reason": "Natural lock during quiet interval; keep lock intact",
+  "state_samples": [
+    {
+      "t": 94424.028409719,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94456.369491335,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94486.656186321,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94516.915429561,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94547.18059845,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94577.432199608,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94607.688345527,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94637.949015149,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94668.197686609,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94698.4587147,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": false,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": 75
+    },
+    {
+      "t": 94728.729897021,
+      "state": {
+        "niri": true,
+        "screens": [
+          "eDP-1"
+        ],
+        "notifications": "other:12139",
+        "locked": true,
+        "workspaces": 4,
+        "apps": "80/123"
+      },
+      "diagnostics": {
+        "niriStatus": "ready",
+        "reconnects": 0,
+        "profileAvailable": true,
+        "profileBackend": "tuned-ppd",
+        "profile": 1,
+        "audio": "ready",
+        "network": "ready",
+        "bluetooth": "off",
+        "brightness": "ready",
+        "brightnessWatchers": 0,
+        "notifications": "mako",
+        "shellServerApproved": false,
+        "shellLock": true,
+        "visualizerStatus": "idle",
+        "visualizer": false,
+        "visualizerWatchers": 0,
+        "overlay": "",
+        "dock": false
+      },
+      "focus": null
+    }
+  ]
+}

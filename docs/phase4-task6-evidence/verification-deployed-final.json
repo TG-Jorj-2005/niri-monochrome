@@ -1,0 +1,45 @@
+[
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "git",
+      "apply",
+      "--reverse",
+      "--check",
+      "docs/phase4-task6-evidence/task6.patch"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "niri",
+      "validate"
+    ],
+    "exit": 0
+  },
+  {
+    "check": "deployed files match tested patch; unrelated source preserved",
+    "exit": 0,
+    "files_changed": [
+      "components/Settings.qml",
+      "tests/run-qml.py",
+      "tests/validate.sh"
+    ],
+    "new_test": "selftest-settings-search.qml"
+  },
+  {
+    "check": "real config and niri directory preserved",
+    "exit": 0,
+    "state_changes": [
+      "wallpaper.AU Optronics|0x7EAD|0x00007EAD.current",
+      "wallpaper.AU Optronics|0x7EAD|0x00007EAD.nextAt"
+    ]
+  }
+]

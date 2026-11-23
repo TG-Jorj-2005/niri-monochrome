@@ -1,0 +1,17 @@
+PASS connected
+PASS ready after WorkspacesChanged
+PASS workspaces parsed  (n=3)
+PASS per-output ordering
+PASS focused output  (eDP-1)
+PASS windows parsed  (n=2 focused=7 fid=7)
+PASS overview state
+PASS unknown event ignored
+PASS workspace activation  (active id=2)
+PASS focus change  (id=9)
+PASS window closed
+PASS malformed JSON and malformed payloads survived
+PASS disconnect clears models and focus
+PASS duplicate disconnect suppressed
+PASS reconnect attempted  (count=1)
+PASS reconnected + resynced  (ws=1 status=ready)
+RESULT 16/16 passed

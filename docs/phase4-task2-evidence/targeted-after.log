@@ -1,0 +1,35 @@
+  INFO: Launching config: "/tmp/nm-task2-probe/selftest-interactions.qml"
+  INFO: Shell ID: "75d60e73d951bfb1a843b94369330f2e" Path ID "75d60e73d951bfb1a843b94369330f2e"
+  INFO: Saving logs to "/tmp/nm-qml-lsbv6c3s/runtime/quickshell/by-id/xfk2ohbeot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_86 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS button hover feedback
+  INFO qml: PASS button click fires exactly once inside overlay
+  INFO qml: PASS press feedback compresses without layout change
+  INFO qml: PASS release returns scale and fires once
+  INFO qml: PASS disabled button rejects pointer action
+  INFO qml: PASS toggle click fires once without dismissal
+  INFO qml: PASS slider drag updates backend without dismissal
+  INFO qml: PASS slider external updates retain binding
+  INFO qml: PASS Tab moves to next button
+  INFO qml: PASS Tab reaches toggle
+  INFO qml: PASS Tab reaches slider
+  INFO qml: PASS Shift Tab restores previous control focus
+  INFO qml: PASS button Space Return Enter fire once each
+  INFO qml: PASS icon button keyboard activation
+  INFO qml: PASS toggle Space and Return activation
+  INFO qml: PASS toggle keypad Enter activation
+  INFO qml: PASS slider Right keyboard step
+  INFO qml: PASS slider Home bound
+  INFO qml: PASS slider End bound
+  INFO qml: PASS disabled toggle rejects input
+  INFO qml: PASS disabled slider rejects input
+  INFO qml: PASS reduced motion applies without reload
+  INFO qml: PASS reduced motion keeps immediate press feedback
+  INFO qml: PASS reduced motion persists as valid config
+  INFO qml: PASS rapid open close keeps latest overlay state
+  INFO qml: PASS reduced motion dismissal releases surface
+  INFO qml: RESULT 26/26 passed
+

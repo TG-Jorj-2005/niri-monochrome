@@ -1,0 +1,229 @@
+{
+  "passed": 19,
+  "checks": [
+    {
+      "check": "closed MediaControls starts no capture",
+      "detail": null
+    },
+    {
+      "check": "open starts exactly one real capture",
+      "detail": [
+        165531
+      ]
+    },
+    {
+      "check": "real graph links only selected sink monitor",
+      "detail": {
+        "nodes": {
+          "87": {
+            "adapt.follower.spa-node": "",
+            "application.name": "pw-cat",
+            "client.id": 88,
+            "clock.quantum-limit": 8192,
+            "factory.id": 9,
+            "library.name": "audioconvert/libspa-audioconvert",
+            "media.category": "Capture",
+            "media.class": "Stream/Input/Audio",
+            "media.filename": "-",
+            "media.name": "-",
+            "media.role": "Analyzer",
+            "media.type": "Audio",
+            "node.async": true,
+            "node.autoconnect": true,
+            "node.dont-fallback": true,
+            "node.dont-reconnect": true,
+            "node.driver-id": 83,
+            "node.loop.class": "main",
+            "node.loop.name": "main-loop",
+            "node.name": "niri-monochrome-visualizer",
+            "node.passive": true,
+            "node.rate": "1/16000",
+            "node.want-driver": true,
+            "object.id": 87,
+            "object.register": false,
+            "object.serial": 700,
+            "port.group": "stream.0",
+            "stream.capture.sink": true,
+            "stream.is-live": true,
+            "target.object": "nm_task4_a_165496"
+          }
+        },
+        "sources": [
+          "nm_task4_a_165496",
+          "nm_task4_a_165496"
+        ]
+      }
+    },
+    {
+      "check": "real virtual-sink PCM produces amplitude",
+      "detail": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_165496",
+        "status": "ready",
+        "amplitude": 0.401895,
+        "levels": [
+          0,
+          0,
+          0.401895
+        ],
+        "attempts": 0,
+        "frames": 3,
+        "open": true
+      }
+    },
+    {
+      "check": "appearance changes do not restart capture",
+      "detail": null
+    },
+    {
+      "check": "actual silent PCM returns calm state",
+      "detail": null
+    },
+    {
+      "check": "two visible views share a single capture",
+      "detail": null
+    },
+    {
+      "check": "disable stops capture with views open",
+      "detail": null
+    },
+    {
+      "check": "reenable while hidden stays stopped",
+      "detail": null
+    },
+    {
+      "check": "output selection change replaces obsolete monitor",
+      "detail": {
+        "nodes": {
+          "87": {
+            "adapt.follower.spa-node": "",
+            "application.name": "pw-cat",
+            "client.id": 88,
+            "clock.quantum-limit": 8192,
+            "factory.id": 9,
+            "library.name": "audioconvert/libspa-audioconvert",
+            "media.category": "Capture",
+            "media.class": "Stream/Input/Audio",
+            "media.filename": "-",
+            "media.name": "-",
+            "media.role": "Analyzer",
+            "media.type": "Audio",
+            "node.async": true,
+            "node.autoconnect": true,
+            "node.dont-fallback": true,
+            "node.dont-reconnect": true,
+            "node.driver-id": 91,
+            "node.loop.class": "main",
+            "node.loop.name": "main-loop",
+            "node.name": "niri-monochrome-visualizer",
+            "node.passive": true,
+            "node.rate": "1/16000",
+            "node.want-driver": true,
+            "object.id": 87,
+            "object.register": false,
+            "object.serial": 729,
+            "port.group": "stream.0",
+            "stream.capture.sink": true,
+            "stream.is-live": true,
+            "target.object": "nm_task4_b_165496"
+          }
+        },
+        "sources": [
+          "nm_task4_b_165496",
+          "nm_task4_b_165496"
+        ]
+      }
+    },
+    {
+      "check": "backend unavailable stops capture",
+      "detail": null
+    },
+    {
+      "check": "backend reconnection resumes one capture",
+      "detail": null
+    },
+    {
+      "check": "removed target never falls back to hardware",
+      "detail": {
+        "nodes": {},
+        "sources": []
+      }
+    },
+    {
+      "check": "reconnected output can be selected again",
+      "detail": {
+        "nodes": {
+          "74": {
+            "adapt.follower.spa-node": "",
+            "application.name": "pw-cat",
+            "client.id": 93,
+            "clock.quantum-limit": 8192,
+            "factory.id": 9,
+            "library.name": "audioconvert/libspa-audioconvert",
+            "media.category": "Capture",
+            "media.class": "Stream/Input/Audio",
+            "media.filename": "-",
+            "media.name": "-",
+            "media.role": "Analyzer",
+            "media.type": "Audio",
+            "node.async": true,
+            "node.autoconnect": true,
+            "node.dont-fallback": true,
+            "node.dont-reconnect": true,
+            "node.driver-id": 83,
+            "node.loop.class": "main",
+            "node.loop.name": "main-loop",
+            "node.name": "niri-monochrome-visualizer",
+            "node.passive": true,
+            "node.rate": "1/16000",
+            "node.want-driver": true,
+            "object.id": 74,
+            "object.register": false,
+            "object.serial": 756,
+            "port.group": "stream.0",
+            "stream.capture.sink": true,
+            "stream.is-live": true,
+            "target.object": "nm_task4_a_165496"
+          }
+        },
+        "sources": [
+          "nm_task4_a_165496",
+          "nm_task4_a_165496"
+        ]
+      }
+    },
+    {
+      "check": "unexpected exits stop after three bounded retries",
+      "detail": {
+        "watchers": 1,
+        "running": false,
+        "desired": true,
+        "target": "nm_task4_a_165496",
+        "status": "unavailable",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 4,
+        "frames": 46,
+        "open": true
+      }
+    },
+    {
+      "check": "close after exhausted retries cleans state",
+      "detail": null
+    },
+    {
+      "check": "all test capture helpers stopped",
+      "detail": []
+    },
+    {
+      "check": "default output and input preserved",
+      "detail": null
+    },
+    {
+      "check": "preexisting playback routes unchanged",
+      "detail": null
+    }
+  ]
+}

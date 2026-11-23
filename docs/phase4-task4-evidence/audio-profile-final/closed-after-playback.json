@@ -1,0 +1,703 @@
+{
+  "name": "closed-after-playback",
+  "seconds": 32.03701249299775,
+  "qs_pid": 169812,
+  "cpu_percent": 0.0,
+  "group_cpu_percent": 0.0,
+  "rss_start_mib": 89.48828125,
+  "rss_end_mib": 89.48828125,
+  "fds_start": 26,
+  "fds_end": 17,
+  "samples": [
+    {
+      "t": 1.0004026899987366,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 2.0516541760007385,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 3.109779960999731,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 4.181198163001682,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 5.25409787499666,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 6.305258025000512,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 7.358447469996463,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 8.419302103000518,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 9.490114046995586,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 10.5474909379991,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 11.598348209001415,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 26,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 12.650287796001066,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 13.70314867900015,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 14.790827847995388,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 15.868296050000936,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 16.95808198099985,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 18.03527330399811,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 19.08863334399939,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 20.15395581699704,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 21.223949688996072,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 22.310727778,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 23.3669324529983,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 24.41949214899796,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 25.477975164998497,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 26.55837275999511,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 27.643467859998054,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 28.739413737996074,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 25,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 29.793008474996896,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 17,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 30.887341137000476,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 17,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    },
+    {
+      "t": 31.944092690995603,
+      "processes": {
+        "169812": {
+          "ticks": 352,
+          "rss_kib": 91636,
+          "fds": 17,
+          "command": "qs"
+        }
+      },
+      "state": {
+        "watchers": 0,
+        "running": false,
+        "desired": false,
+        "target": "nm_task4_a_169802",
+        "status": "idle",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 1017,
+        "open": false
+      }
+    }
+  ]
+}

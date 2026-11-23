@@ -11,7 +11,7 @@ binds {
     Ctrl+Shift+E hotkey-overlay-title="Istoric clipboard" { spawn "clip-menu"; }
     Mod+Shift+C                                          { spawn "clip-menu"; }
     Mod+Shift+P hotkey-overlay-title="Color picker"      { spawn "color-pick"; }
-    Super+Alt+L hotkey-overlay-title="Blochează ecranul"  { spawn "swaylock" "-f"; }
+    Super+Alt+L hotkey-overlay-title="Blochează ecranul"  { spawn "sh" "-c" "exec ~/.local/bin/niri-lock"; }
 
     // --- Notificări (mako) ---
     Mod+N hotkey-overlay-title="Închide notificările"      { spawn "makoctl" "dismiss" "--all"; }

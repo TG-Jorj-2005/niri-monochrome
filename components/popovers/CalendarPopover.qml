@@ -22,7 +22,7 @@ PopoverFrame {
     Grid {
         columns: 7; width: parent.width
         Repeater { model: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
-            delegate: Label { required property string modelData; width: cal.width / 7 - 4; height: 22; text: modelData; mono: true; font.pixelSize: Theme.fontXs; color: Theme.silverMuted; horizontalAlignment: Text.AlignHCenter } }
+            delegate: Label { required property string modelData; width: cal.width / 7 - 4; height: 22; text: modelData; mono: true; font.pixelSize: Theme.fontXs; color: Theme.textSecondary; horizontalAlignment: Text.AlignHCenter } }
     }
     Grid {
         id: days
@@ -38,9 +38,9 @@ PopoverFrame {
                 readonly property bool isToday: inMonth && day === cal.today.getDate() && cal.shown.getMonth() === cal.today.getMonth() && cal.shown.getFullYear() === cal.today.getFullYear()
                 width: cal.width / 7 - 4; height: 30
                 radius: Theme.radiusControl
-                color: isToday ? Theme.silver : "transparent"
+                color: isToday ? Theme.accent : "transparent"
                 Label { anchors.centerIn: parent; text: parent.inMonth ? String(parent.day) : ""; mono: true; font.pixelSize: Theme.fontSm
-                    color: parent.isToday ? Theme.inverse : Theme.text; font.weight: parent.isToday ? Font.Bold : Font.Normal }
+                    color: parent.isToday ? Theme.textOnAccent(parent.color) : Theme.text; font.weight: parent.isToday ? Font.Bold : Font.Normal }
             }
         }
     }

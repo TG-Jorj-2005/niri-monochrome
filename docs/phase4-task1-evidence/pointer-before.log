@@ -1,0 +1,11 @@
+  INFO: Launching config: "/tmp/nm-task1-probe/selftest-task1-pointer.qml"
+  INFO: Shell ID: "285cbc4dbf78a19af0c698784cbabfdc" Path ID "285cbc4dbf78a19af0c698784cbabfdc"
+  INFO: Saving logs to "/tmp/nm-qml-e92y5vpo/runtime/quickshell/by-id/d5g2blaeot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_69 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: FAIL click inside panel padding keeps overlay open
+  INFO qml: PASS click outside dismisses overlay
+  INFO qml: RESULT pointer probe complete
+

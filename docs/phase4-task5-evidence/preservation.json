@@ -1,0 +1,31 @@
+{
+  "protected_previous_task_files": {
+    "components/OverlayLayer.qml": true,
+    "components/ui/MonoToggle.qml": true,
+    "config/Theme.qml": true,
+    "config/UserConfig.qml": true,
+    "config/Keybindings.qml": true,
+    "services/AppearanceService.qml": true,
+    "services/VisualizerService.qml": true,
+    "scripts/audio-levels.py": true,
+    "components/ui/AudioVisualizer.qml": true,
+    "selftest-overlay.qml": true,
+    "selftest-interactions.qml": true,
+    "selftest-glass.qml": true,
+    "selftest-visualizer.qml": true,
+    "selftest-phase4.qml": true,
+    "tests/audio-helper-test.py": true,
+    "tests/visualizer-integration.py": true
+  },
+  "current_niri_files_preserved_during_final_verification": true,
+  "concurrent_changes": {
+    "files_changed_outside_task5": [
+      "shell.qml",
+      "components/LockScreen.qml",
+      "components/Settings.qml",
+      "services/SystemService.qml",
+      "docs/CHANGELOG.md"
+    ],
+    "task5_files_match_tested_scratch": true
+  }
+}

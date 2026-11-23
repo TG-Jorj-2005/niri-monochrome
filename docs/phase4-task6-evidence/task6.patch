@@ -1,0 +1,161 @@
+--- a/components/Settings.qml
++++ b/components/Settings.qml
+@@ -136,14 +136,19 @@
+                         IconButton { icon: "chevron-down"; iconSize: 12; implicitWidth: 24; implicitHeight: 24; enabled: index < UserConfig.data.dock.favorites.length - 1; onClicked: win.moveFav(index, 1) }
+                         IconButton { icon: "x"; iconSize: 12; implicitWidth: 24; implicitHeight: 24; onClicked: win.removeFav(index) } } } } }
+         Item { height: 10; width: 1 }
+-        MonoTextField { id: favSearch; width: parent.width; icon: "plus"; placeholder: "Add application…"; implicitHeight: 34 }
++        MonoTextField {
++            id: favSearch; width: parent.width; icon: "plus"; placeholder: "Add application…"; implicitHeight: 34
++            // Clearing/rebuilding results destroys the clicked delegate's QML context.
++            function selectFavorite(id) { text = ""; win.addFav(id) }
++        }
+         Column { width: parent.width; spacing: 2; visible: favSearch.text.length > 0
+-            Repeater { model: favSearch.text.length > 0 ? ApplicationService.search(favSearch.text, 6).filter(e => UserConfig.data.dock.favorites.indexOf(e.id) === -1) : []
++            // A model binding must not mutate the launcher's reactive memoization cache.
++            Repeater { model: favSearch.text.length > 0 ? ApplicationService.searchUncached(favSearch.text.trim(), 6).filter(e => UserConfig.data.dock.favorites.indexOf(e.id) === -1) : []
+                 delegate: Rectangle { required property var modelData; width: parent.width; height: 32; radius: Theme.radiusControl; color: ama.containsMouse ? Theme.hover : "transparent"
+                     Row { anchors.left: parent.left; anchors.leftMargin: 8; anchors.verticalCenter: parent.verticalCenter; spacing: 10
+                         AppIcon { icon: modelData.icon; size: 18; anchors.verticalCenter: parent.verticalCenter }
+                         Label { text: modelData.name; font.pixelSize: Theme.fontSm; anchors.verticalCenter: parent.verticalCenter } }
+-                    MouseArea { id: ama; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: { win.addFav(modelData.id); favSearch.text = "" } } } } }
++                    MouseArea { id: ama; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: favSearch.selectFavorite(modelData.id) } } } }
+         SettingRow { label: "Reset dock"; MonoButton { text: "Reset"; onClicked: UserConfig.resetSection("dock") } }
+     } }
+     function moveFav(i, d) { const f = UserConfig.data.dock.favorites.slice(); const j = i + d; if (j < 0 || j >= f.length) return; const t = f[i]; f[i] = f[j]; f[j] = t; UserConfig.set("dock.favorites", f) }
+--- /dev/null
++++ b/selftest-settings-search.qml
+@@ -0,0 +1,83 @@
++import QtQuick
++import QtTest
++import Quickshell
++import Quickshell.Io
++import qs.config
++import qs.services
++import qs.components
++
++// Actual Settings/Dock binding, private installed desktop entries and persisted config.
++ShellRoot {
++    id: root
++    property int passed: 0
++    property int failed: 0
++    property int launches: 0
++    function check(name, ok) { if (ok) passed++; else failed++; console.info((ok ? "PASS " : "FAIL ") + name) }
++    function find(item, predicate) {
++        if (predicate(item)) return item
++        for (const child of item.children || []) { const found = find(child, predicate); if (found) return found }
++        return null
++    }
++    function until(predicate) { for (let i = 0; i < 80 && !predicate(); i++) events.wait(50); return predicate() }
++    function ids(rows) { return rows.map(e => e.id).join(",") }
++    Settings { id: settings; visible: false }
++    TestCase { id: events; parent: settings.contentItem; when: false; optional: true }
++    Connections { target: ApplicationService; function onLaunched(name) { root.launches++ } }
++    FileView { id: installed; path: Quickshell.env("XDG_DATA_HOME") + "/applications/nm-task6-gamma.desktop"; printErrors: false }
++    FileView { id: saved; path: UserConfig.path; blockAllReads: true; printErrors: false }
++    Timer { interval: 800; running: true; onTriggered: {
++        ShellState.settingsSection = settings.sections.findIndex(x => x.t === "Dock")
++        events.wait(100)
++        const field = root.find(settings.contentItem, x => x.placeholder === "Add application…")
++        // The results column follows the field; the earlier column contains saved favorites.
++        const resultColumn = field.parent.children[field.parent.children.indexOf(field) + 1]
++        const repeater = resultColumn.children.find(x => typeof x.itemAt === "function")
++        root.check("actual Dock search controls loaded", !!field && !!repeater)
++        root.check("real private desktop entries loaded", root.until(() => ApplicationService.visible.some(e => e.id === "nm-task6-alpha") && ApplicationService.visible.some(e => e.id === "nm-task6-beta")))
++        if (Quickshell.env("NM_SETTINGS_RESTORE") === "1") {
++            field.text = "NM Task6 Alpha"; events.wait(50)
++            root.check("fresh process restores favorite and filters actual Settings results", UserConfig.data.dock.favorites.indexOf("nm-task6-alpha") >= 0 && repeater.count === 0)
++            console.info("RESULT " + root.passed + "/" + (root.passed + root.failed) + " passed"); Qt.quit(); return
++        }
++        root.check("empty Dock query has no results", field.text === "" && repeater.count === 0 && !resultColumn.visible)
++        const cached = ApplicationService.search("NM Task6 Beta", 6)
++        root.check("launcher memoization reuses the same result", ApplicationService.search("NM Task6 Beta", 6) === cached)
++        field.text = "NM Task6 Alpha"; events.wait(40)
++        root.check("first query returns matching installed application", repeater.count === 1 && repeater.itemAt(0).modelData.id === "nm-task6-alpha")
++        root.check("Settings query does not mutate launcher cache", ApplicationService._lastQuery === "NM Task6 Beta" && ApplicationService._lastResult === cached)
++        field.text = "  NM Task6 Beta  "; events.wait(40)
++        root.check("different query and surrounding whitespace produce correct result", repeater.count === 1 && repeater.itemAt(0).modelData.id === "nm-task6-beta")
++        field.text = "no matching nm task6 xyz"; events.wait(20)
++        root.check("missing query produces empty results", repeater.count === 0)
++        field.text = ""; events.wait(20)
++        root.check("clearing query clears and hides result rows", repeater.count === 0 && !resultColumn.visible)
++        for (let i = 0; i < 80; i++) field.text = i % 2 ? "NM Task6 Alpha" : "NM Task6 Beta"
++        events.wait(40)
++        root.check("rapid distinct queries settle to latest results", repeater.count === 1 && repeater.itemAt(0).modelData.id === "nm-task6-alpha")
++        root.check("rapid Settings queries preserve useful memoization", ApplicationService._lastResult === cached && ApplicationService._lastQuery === "NM Task6 Beta")
++        ApplicationService.search("", 8)
++        StateStore.set("recentApps", ["nm-task6-beta"])
++        root.check("recent-app changes invalidate memoized launcher search", ApplicationService._lastQuery === "\u0000" && ApplicationService.search("", 8)[0].id === "nm-task6-beta")
++        ApplicationService.search("NM Task6 Alpha", 6)
++        UserConfig.set("launcher.showDescriptions", !UserConfig.data.launcher.showDescriptions)
++        root.check("configuration changes invalidate cache", ApplicationService._lastQuery === "\u0000")
++        field.text = "NM Task6 Gamma"; events.wait(30)
++        root.check("not-yet-installed application is absent", repeater.count === 0)
++        ApplicationService.search("NM Task6 Gamma", 6)
++        installed.setText("[Desktop Entry]\nType=Application\nName=NM Task6 Gamma\nExec=true\nIcon=application-x-executable\n")
++        root.check("supported DesktopEntries file watcher refreshes actual Settings results", root.until(() => repeater.count === 1 && repeater.itemAt(0).modelData.id === "nm-task6-gamma"))
++        root.check("installed-app update invalidates launcher cache", ApplicationService._lastQuery === "\u0000" && ApplicationService.search("NM Task6 Gamma", 6)[0].id === "nm-task6-gamma")
++        root.check("visible application IDs stay unique", new Set(ApplicationService.visible.map(e => e.id)).size === ApplicationService.visible.length)
++        field.text = "NM Task6 Alpha"; events.wait(30)
++        const row = repeater.itemAt(0)
++        const click = row.children.find(x => typeof x.clicked === "function" && x.acceptedButtons !== undefined)
++        click.clicked(null); events.wait(350)
++        root.check("actual favorite selection adds once and clears query", UserConfig.data.dock.favorites.filter(x => x === "nm-task6-alpha").length === 1 && field.text === "" && repeater.count === 0)
++        field.text = "NM Task6 Alpha"; events.wait(30)
++        root.check("existing favorite is excluded reactively", repeater.count === 0)
++        saved.reload()
++        root.check("favorite is persisted in private configuration", JSON.parse(saved.text()).dock.favorites.indexOf("nm-task6-alpha") >= 0)
++        root.check("search and favorite selection never launch applications", root.launches === 0)
++        console.info("RESULT " + root.passed + "/" + (root.passed + root.failed) + " passed"); Qt.quit()
++    } }
++}
+--- a/tests/run-qml.py
++++ b/tests/run-qml.py
+@@ -37,6 +37,20 @@
+     env = dict(os.environ, QT_QPA_PLATFORM='offscreen', XDG_CONFIG_HOME=str(base/'config'),
+                XDG_STATE_HOME=str(base/'state'), XDG_RUNTIME_DIR=str(base/'runtime'))
+     env.pop('NM_GLASS_RESTORE', None)
++    env.pop('NM_SETTINGS_RESTORE', None)
++    if source.name == 'selftest-settings-search.qml':
++        # DesktopEntries watches only this private writable application directory.
++        apps = base/'data/applications'
++        apps.mkdir(parents=True)
++        env['XDG_DATA_HOME'] = str(base/'data')
++        for suffix in ('alpha', 'beta'):
++            (apps/('nm-task6-' + suffix + '.desktop')).write_text(
++                '[Desktop Entry]\nType=Application\nName=NM Task6 ' + suffix.title() +
++                '\nExec=true\nIcon=application-x-executable\n')
++        config_file = base/'config/niri-monochrome/config.json'
++        config = json.loads(config_file.read_text())
++        config['dock']['favorites'] = []
++        config_file.write_text(json.dumps(config))
+     env['PIPEWIRE_RUNTIME_DIR'] = os.environ.get('PIPEWIRE_RUNTIME_DIR', os.environ.get('XDG_RUNTIME_DIR', ''))
+     if source.name != 'selftest-niri.qml':
+         env['NIRI_SOCKET'] = ''
+@@ -87,6 +101,15 @@
+                 proc.wait(timeout=20)
+                 if proc.returncode != 0:
+                     raise RuntimeError('QML process exited ' + str(proc.returncode))
++                if source.name == 'selftest-settings-search.qml':
++                    restore_env = dict(env, NM_SETTINGS_RESTORE='1')
++                    proc = subprocess.Popen(['dbus-run-session', '--config-file=' + str(bus_config),
++                                             '--', 'qs', '-p', str(source), '--no-color'],
++                                            env=restore_env, stdout=log, stderr=subprocess.STDOUT,
++                                            start_new_session=True)
++                    proc.wait(timeout=20)
++                    if proc.returncode != 0:
++                        raise RuntimeError('Settings restore process exited ' + str(proc.returncode))
+                 if source.name == 'selftest-shortcut-ui.qml':
+                     restore = source.with_name('selftest-shortcut-restore.qml')
+                     proc = subprocess.Popen(['dbus-run-session', '--config-file=' + str(bus_config),
+--- a/tests/validate.sh
++++ b/tests/validate.sh
+@@ -30,7 +30,7 @@
+   else say "niri validate" FAIL; fail=1; fi
+ fi
+ # Each load gets a private bus and temporary state; also validate the actual entrypoint.
+-for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml selftest-shortcut-data.qml selftest-shortcut-ui.qml selftest-shortcut-layout.qml selftest-shortcut-focus.qml shell.qml; do
++for entry in selftest-qml.qml selftest-core.qml selftest-wallpaper.qml selftest-phase4.qml selftest-overlay.qml selftest-interactions.qml selftest-glass.qml selftest-visualizer.qml selftest-shortcut-data.qml selftest-shortcut-ui.qml selftest-shortcut-layout.qml selftest-shortcut-focus.qml selftest-settings-search.qml shell.qml; do
+   if python3 "$here/tests/run-qml.py" "$here/$entry"; then say "$entry" ok
+   else say "$entry" FAIL; fail=1; fi
+ done

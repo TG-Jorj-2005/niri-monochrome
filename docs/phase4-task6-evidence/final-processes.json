@@ -1,0 +1,52 @@
+[
+  {
+    "pid": 12157,
+    "args": [
+      "qs",
+      "-c",
+      "niri-monochrome"
+    ]
+  },
+  {
+    "pid": 183864,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ]
+  },
+  {
+    "pid": 184135,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ]
+  },
+  {
+    "pid": 184377,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ]
+  },
+  {
+    "pid": 184879,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ]
+  },
+  {
+    "pid": 185161,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ]
+  },
+  {
+    "pid": 197630,
+    "args": [
+      "/usr/bin/nmcli",
+      "monitor"
+    ]
+  }
+]

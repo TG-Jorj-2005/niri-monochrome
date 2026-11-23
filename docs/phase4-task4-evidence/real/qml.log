@@ -1,0 +1,16 @@
+  INFO: Launching config: "/tmp/nm-audio-live-5g0twdiu/project/selftest-visualizer.qml"
+  INFO: Shell ID: "feb3f6d5d4636ed2e6c54eeb9855a481" Path ID "feb3f6d5d4636ed2e6c54eeb9855a481"
+  INFO: Saving logs to "/tmp/nm-audio-live-5g0twdiu/runtime/quickshell/by-id/epj3umreot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_57 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Configuration Loaded
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_57 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN scene: [-1:-1]: qmlRegisterSingletonType(): "QTestRootObject" is not available because the callback function returns a null pointer.
+  WARN scene: qrc:/qt-project.org/imports/QtTest/TestCase.qml[478:-1]: TypeError: Cannot read property 'windowShown' of null
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_98 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_98 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_102 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_102 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN: QQmlComponent: Component is not ready
+ ERROR: Failed to open reload popup: "qrc:/qt/qml/Quickshell/_InternalUi/ReloadPopup.qml:8:1: No PanelWindow backend loaded.\n"

@@ -1,0 +1,32 @@
+# Swaylock — ecran de blocare pe wallpaper-ul curent. Strict monocrom.
+# Inel: gri la repaus, gri deschis la verificare, alb la tastă, alb plin la parolă greșită.
+ignore-empty-password
+show-failed-attempts
+indicator-caps-lock
+indicator-radius=90
+indicator-thickness=4
+font=Adwaita Sans
+# Optional background image; swaylock falls back to the solid color below.
+# image=~/Pictures/Wallpapers/current.png
+scaling=fill
+color=080808
+inside-color=080808d9
+inside-ver-color=080808d9
+inside-wrong-color=f5f5f5
+inside-clear-color=080808d9
+ring-color=292929
+ring-ver-color=999999
+ring-wrong-color=ffffff
+ring-clear-color=555555
+key-hl-color=ffffff
+bs-hl-color=999999
+line-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+line-clear-color=00000000
+separator-color=00000000
+text-color=ffffff
+text-ver-color=999999
+text-wrong-color=080808
+text-clear-color=ffffff
+text-caps-lock-color=ffffff

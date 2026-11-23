@@ -1,0 +1,90 @@
+[
+  {
+    "mode": "before",
+    "exit": 1,
+    "warnings": 200,
+    "log": "settings-bench-before-0.log",
+    "queries": 200,
+    "visibleApps": 80,
+    "before": {
+      "t": 1794524756068,
+      "ticks": 23,
+      "rssKiB": 94224,
+      "privateKiB": 44068
+    },
+    "after": {
+      "t": 1794524761482,
+      "ticks": 168,
+      "rssKiB": 95696,
+      "privateKiB": 44672
+    },
+    "cpuPercent": 26.782415958625784,
+    "cpuSeconds": 1.45
+  },
+  {
+    "mode": "after",
+    "exit": 0,
+    "warnings": 0,
+    "log": "settings-bench-after-1.log",
+    "queries": 200,
+    "visibleApps": 80,
+    "before": {
+      "t": 1794524762900,
+      "ticks": 22,
+      "rssKiB": 94704,
+      "privateKiB": 43940
+    },
+    "after": {
+      "t": 1794524768272,
+      "ticks": 159,
+      "rssKiB": 95912,
+      "privateKiB": 44396
+    },
+    "cpuPercent": 25.502606105733435,
+    "cpuSeconds": 1.37
+  },
+  {
+    "mode": "before",
+    "exit": 1,
+    "warnings": 200,
+    "log": "settings-bench-before-2.log",
+    "queries": 200,
+    "visibleApps": 80,
+    "before": {
+      "t": 1794524769657,
+      "ticks": 21,
+      "rssKiB": 94384,
+      "privateKiB": 43852
+    },
+    "after": {
+      "t": 1794524775049,
+      "ticks": 163,
+      "rssKiB": 95320,
+      "privateKiB": 44388
+    },
+    "cpuPercent": 26.3353115727003,
+    "cpuSeconds": 1.42
+  },
+  {
+    "mode": "after",
+    "exit": 0,
+    "warnings": 0,
+    "log": "settings-bench-after-3.log",
+    "queries": 200,
+    "visibleApps": 80,
+    "before": {
+      "t": 1794524776457,
+      "ticks": 22,
+      "rssKiB": 95196,
+      "privateKiB": 44108
+    },
+    "after": {
+      "t": 1794524781836,
+      "ticks": 159,
+      "rssKiB": 96084,
+      "privateKiB": 44636
+    },
+    "cpuPercent": 25.469418107454917,
+    "cpuSeconds": 1.37
+  }
+]

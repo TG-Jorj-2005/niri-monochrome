@@ -1,0 +1,30 @@
+  INFO: Launching config: "/tmp/nm-task3-probe/selftest-glass.qml"
+  INFO: Shell ID: "4e2d48cdcc550152b89f677afce6be17" Path ID "4e2d48cdcc550152b89f677afce6be17"
+  INFO: Saving logs to "/tmp/nm-qml-6t1g9v6o/runtime/quickshell/by-id/43o2o9ceot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS appearance config loaded
+  INFO qml: PASS opacity lower and upper bounds
+  INFO qml: PASS invalid opacity types recover to default
+  INFO qml: PASS geometry shadow and glass types bounded
+  INFO qml: CONTRAST 0 secondary=7.481 heading=4.368
+  INFO qml: CONTRAST 1 secondary=7.045 heading=4.114
+  INFO qml: CONTRAST 2 secondary=6.084 heading=3.553
+  INFO qml: CONTRAST 3 secondary=4.484 heading=2.618
+  INFO qml: CONTRAST 4 secondary=4.417 heading=2.579
+  INFO qml: PASS actual Panel alpha composition across five backgrounds
+  INFO qml: FAIL secondary text contrast across five rendered backgrounds
+  INFO qml: FAIL actual section headings readable over bright glass
+  INFO qml: FAIL muted icons contrast over bright glass
+  INFO qml: FAIL slider focus outline contrast over bright glass
+  INFO qml: FAIL enabled placeholder readable on opaque input
+  INFO qml: PASS glass off renders opaque fallback across backgrounds
+  INFO qml: PASS glass off disables both compositor blur rules
+  INFO qml: PASS generated blur rules anchored to bar and dock only
+  INFO qml: PASS appearance geometry and shadow propagate to generated KDL
+  INFO qml: PASS appearance preferences saved to private JSON
+  INFO qml: PASS file reload restores nondefault appearance and motion
+  WARN qml: [UserConfig]  config.json is not valid JSON: SyntaxError: JSON.parse: Parse error
+  INFO qml: PASS corrupt JSON preserves last valid appearance
+  INFO qml: PASS unchanged appearance does not rewrite KDL
+  INFO qml: RESULT 13/18 passed
+

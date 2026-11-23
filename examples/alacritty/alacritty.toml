@@ -1,0 +1,155 @@
+# Alacritty — JetBrains Mono, Obsidian Mist.
+# Paletă: fundal #1b1d1f · bordură #303336 · secundar #9ba1a4 · principal #dadde0 · accent #829da3
+
+[general]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[terminal.shell]
+program = "/usr/bin/zsh"
+args = ["-l"]
+
+[window]
+padding = { x = 14, y = 12 }
+dynamic_padding = true
+decorations = "None"
+opacity = 1.0
+dimensions = { columns = 120, lines = 34 }
+title = "Terminal"
+dynamic_title = true
+
+[window.class]
+instance = "Alacritty"
+general = "Alacritty"
+
+[scrolling]
+history = 20000
+multiplier = 3
+
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold   = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "Italic" }
+bold_italic = { family = "JetBrains Mono", style = "Bold Italic" }
+size = 11.5
+offset = { x = 0, y = 1 }
+builtin_box_drawing = true
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+vi_mode_style = { shape = "Underline", blinking = "Off" }
+blink_interval = 600
+blink_timeout = 10
+unfocused_hollow = true
+thickness = 0.15
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[mouse]
+hide_when_typing = true
+
+[bell]
+animation = "EaseOut"
+duration = 80
+color = "#303336"
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#1b1d1f"
+foreground = "#dadde0"
+dim_foreground = "#9ba1a4"
+bright_foreground = "#dadde0"
+
+# Cursorul, selecția și țintele din căutare folosesc accentul Obsidian Mist.
+[colors.cursor]
+text   = "#111214"
+cursor = "#829da3"
+
+[colors.vi_mode_cursor]
+text   = "#111214"
+cursor = "#9eb3b8"
+
+[colors.selection]
+text       = "#111214"
+background = "#829da3"
+
+[colors.search.matches]
+foreground = "#111214"
+background = "#9ba1a4"
+
+[colors.search.focused_match]
+foreground = "#111214"
+background = "#829da3"
+
+[colors.footer_bar]
+foreground = "#dadde0"
+background = "#25282a"
+
+[colors.hints.start]
+foreground = "#111214"
+background = "#829da3"
+
+[colors.hints.end]
+foreground = "#111214"
+background = "#9ba1a4"
+
+[colors.line_indicator]
+foreground = "#9ba1a4"
+background = "#25282a"
+
+# Cele 16 culori ANSI: doar griuri, cu trepte distincte ca să rămână lizibile (ls, git, erori).
+[colors.normal]
+black   = "#141414"
+red     = "#8c8c8c"
+green   = "#b3b3b3"
+yellow  = "#d1d1d1"
+blue    = "#a1a1a1"
+magenta = "#bdbdbd"
+cyan    = "#c7c7c7"
+white   = "#e0e0e0"
+
+[colors.bright]
+black   = "#555555"
+red     = "#a6a6a6"
+green   = "#cfcfcf"
+yellow  = "#e8e8e8"
+blue    = "#bcbcbc"
+magenta = "#d6d6d6"
+cyan    = "#dedede"
+white   = "#ffffff"
+
+# Deschide URL-uri cu Ctrl+click sau prin Ctrl+Shift+O.
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse = { enabled = true, mods = "Control" }
+binding = { key = "O", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https:|http:|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[keyboard]
+bindings = [
+  { key = "C",        mods = "Control|Shift", action = "Copy" },
+  { key = "V",        mods = "Control|Shift", action = "Paste" },
+  { key = "Insert",   mods = "Shift",         action = "PasteSelection" },
+  { key = "F",        mods = "Control|Shift", action = "SearchForward" },
+  { key = "B",        mods = "Control|Shift", action = "SearchBackward" },
+  { key = "Space",    mods = "Control|Shift", action = "ToggleViMode" },
+  { key = "N",        mods = "Control|Shift", action = "CreateNewWindow" },
+  { key = "L",        mods = "Control|Shift", action = "ClearHistory" },
+  { key = "Plus",     mods = "Control",       action = "IncreaseFontSize" },
+  { key = "Equals",   mods = "Control",       action = "IncreaseFontSize" },
+  { key = "Minus",    mods = "Control",       action = "DecreaseFontSize" },
+  { key = "Key0",     mods = "Control",       action = "ResetFontSize" },
+  { key = "PageUp",   mods = "Shift",         action = "ScrollPageUp" },
+  { key = "PageDown", mods = "Shift",         action = "ScrollPageDown" },
+  { key = "Home",     mods = "Shift",         action = "ScrollToTop" },
+  { key = "End",      mods = "Shift",         action = "ScrollToBottom" },
+]

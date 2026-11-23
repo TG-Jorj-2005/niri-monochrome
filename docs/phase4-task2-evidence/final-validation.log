@@ -1,0 +1,204 @@
+bash -n install-screenshot-entry.sh            ok
+bash -n publish-github.sh                      ok
+bash -n niri-ipc-test.sh                       ok
+bash -n validate.sh                            ok
+json config.json                               ok
+json state.json                                ok
+desktop entry                                  ok
+niri validate                                  ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-qml.qml"
+  INFO: Shell ID: "c712f48e1cbbe011b1a8b24c4502681b" Path ID "c712f48e1cbbe011b1a8b24c4502681b"
+  INFO: Saving logs to "/tmp/nm-qml-th9l4wds/runtime/quickshell/by-id/e0l2smbeot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_105 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: QMLCHECK ok BottomBar
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO qml: QMLCHECK ok AutoHideDock
+  INFO qml: QMLCHECK ok OverlayLayer
+  INFO qml: QMLCHECK ok NotificationToasts
+  INFO qml: QMLCHECK ok WallpaperLayer
+  INFO qml: QMLCHECK ok Osd
+  INFO qml: QMLCHECK ok LockScreen
+  INFO qml: QMLCHECK ok Settings
+  WARN scene: QML QQuickItem at @selftest-qml.qml[29:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ShortcutCheatSheet
+  WARN scene: QML QQuickItem at @selftest-qml.qml[27:32]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok Launcher
+  WARN scene: QML QQuickItem at @selftest-qml.qml[28:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ControlCenter
+  WARN scene: QML QQuickItem at @selftest-qml.qml[30:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok NotificationCenter
+  WARN scene: QML QQuickItem at @selftest-qml.qml[31:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok MediaControls
+  WARN scene: QML QQuickItem at @selftest-qml.qml[32:27]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok CalendarPopover
+  WARN scene: QML QQuickItem at @selftest-qml.qml[33:29]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok PowerMenu
+  WARN scene: QML QQuickItem at @selftest-qml.qml[34:26]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok ui primitives
+  WARN scene: QML QQuickItem at @selftest-qml.qml[35:27]: Created graphical object was not placed in the graphics scene.
+  INFO qml: QMLCHECK ok settings rows
+  INFO qml: QMLCHECK ok services 18
+  INFO qml: QMLCHECK DONE 17 components
+
+selftest-qml.qml                               ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-core.qml"
+  INFO: Shell ID: "c48d7d6ca14ec06943c58b20eafdf62b" Path ID "c48d7d6ca14ec06943c58b20eafdf62b"
+  INFO: Saving logs to "/tmp/nm-qml-6j0t6mti/runtime/quickshell/by-id/k1l2vmbeot/log.qslog"
+  INFO: Configuration Loaded
+  INFO qml: PASS corrupt section types recover
+  INFO qml: PASS string cannot enable experimental lock
+  INFO qml: PASS legacy server setting is not migration consent
+  WARN qml: [UserConfig]  config.json is not valid JSON: SyntaxError: JSON.parse: Parse error
+  INFO qml: PASS invalid JSON retains last configuration
+  INFO qml: PASS corrupt state types recover
+  INFO qml: PASS monitor key dots preserved in state
+  INFO qml: PASS monitor key dots preserved in config
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: PASS identical monitors do not collide
+  INFO qml: PASS existing monitor identity preserved
+  INFO qml: PASS missing EDID falls back to connector
+  INFO qml: PASS failed wallpaper advances to valid candidate
+  INFO qml: PASS all wallpapers failed gives empty fallback
+  INFO qml: PASS missing NIRI_SOCKET is unavailable
+  INFO qml: PASS overlay clears dock keyboard focus
+  INFO qml: RESULT 14/14 passed
+
+selftest-core.qml                              ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-wallpaper.qml"
+  INFO: Shell ID: "dc54cb220caf19a73b4a487c5f55b02d" Path ID "dc54cb220caf19a73b4a487c5f55b02d"
+  INFO: Saving logs to "/tmp/nm-qml-va0ttp_f/runtime/quickshell/by-id/72l2xmbeot/log.qslog"
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  WARN scene: QML Image at @components/WallpaperLayer.qml[72:9]: Error decoding: file:///tmp/nm-qml-va0ttp_f/wallpapers/a-bad.png: Unsupported image format
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  INFO qml: PASS decoder failure skips invalid image
+  WARN scene: QML Image at @components/WallpaperLayer.qml[67:9]: Cannot open: file:///tmp/nm-qml-va0ttp_f/wallpapers/missing.png
+  WARN qml: [Wallpaper] image unavailable; trying next collection entry
+  INFO qml: PASS missing image reaches empty background fallback
+  INFO qml: RESULT 2/2 passed
+
+selftest-wallpaper.qml                         ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-phase4.qml"
+  INFO: Shell ID: "238abc3f67db953e06664a13e75ceb98" Path ID "238abc3f67db953e06664a13e75ceb98"
+  INFO: Saving logs to "/tmp/nm-qml-8ouu_in2/runtime/quickshell/by-id/b3l24nbeot/log.qslog"
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS safe appearance and visualizer ranges
+  INFO qml: PASS reduced motion gates centralized durations
+  INFO qml: PASS later bindings override without duplicate rows
+  INFO qml: PASS occupied native shortcut is retained
+  INFO qml: PASS shortcut action and key filtering
+  INFO qml: PASS missing backend cannot start capture
+  INFO qml: PASS hidden visualizer releases subscription
+  INFO qml: PASS disabled visualizer cannot subscribe
+  INFO qml: PASS invalid audio frames ignored
+  INFO qml: PASS audio history bounded by bar count
+  INFO qml: RESULT 10/10 passed
+
+selftest-phase4.qml                            ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-overlay.qml"
+  INFO: Shell ID: "c643c28817350dca3feb6fe61aba20d2" Path ID "c643c28817350dca3feb6fe61aba20d2"
+  INFO: Saving logs to "/tmp/nm-qml-1_xm7oau/runtime/quickshell/by-id/u3l26nbeot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_93 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS inside padding preserves overlay
+  INFO qml: PASS child close button remains clickable
+  INFO qml: PASS Down navigates shortcut rows
+  INFO qml: PASS Up navigates shortcut rows
+  INFO qml: PASS Escape dismisses overlay
+  INFO qml: PASS outside click dismisses overlay
+  INFO qml: RESULT 6/6 passed
+
+selftest-overlay.qml                           ok
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-interactions.qml"
+  INFO: Shell ID: "71640f56a871faf756999a70f725cbdd" Path ID "71640f56a871faf756999a70f725cbdd"
+  INFO: Saving logs to "/tmp/nm-qml-1stcu6ti/runtime/quickshell/by-id/t4l2anbeot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_96 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS button hover feedback
+  INFO qml: PASS button click fires exactly once inside overlay
+  INFO qml: PASS press feedback compresses without layout change
+  INFO qml: PASS release returns scale and fires once
+  INFO qml: PASS disabled button rejects pointer action
+  INFO qml: PASS toggle click fires once without dismissal
+  INFO qml: PASS slider drag updates backend without dismissal
+  INFO qml: PASS slider external updates retain binding
+  INFO qml: PASS Tab moves to next button
+  INFO qml: PASS Tab reaches toggle
+  INFO qml: PASS Tab reaches slider
+  INFO qml: PASS Shift Tab restores previous control focus
+  INFO qml: PASS button Space Return Enter fire once each
+  INFO qml: PASS icon button keyboard activation
+  INFO qml: PASS toggle Space and Return activation
+  INFO qml: PASS toggle keypad Enter activation
+  INFO qml: PASS slider Right keyboard step
+  INFO qml: PASS slider Home bound
+  INFO qml: PASS slider End bound
+  INFO qml: PASS disabled toggle rejects input
+  INFO qml: PASS disabled slider rejects input
+  INFO qml: PASS reduced motion applies without reload
+  INFO qml: PASS reduced motion keeps immediate press feedback
+  INFO qml: PASS reduced motion persists as valid config
+  INFO qml: PASS rapid open close keeps latest overlay state
+  INFO qml: PASS reduced motion dismissal releases surface
+  INFO qml: RESULT 26/26 passed
+
+selftest-interactions.qml                      ok
+PASS generated appearance KDL validation
+PASS actual shell entrypoint + 3 isolated reloads
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/shell.qml"
+  INFO: Shell ID: "f08b5c29751da3e3208b48a405d30aa6" Path ID "f08b5c29751da3e3208b48a405d30aa6"
+  INFO: Saving logs to "/tmp/nm-qml-8jj5vtqc/runtime/quickshell/by-id/j5l2enbeot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_122 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  WARN quickshell.desktopentry: Illegal escape sequence in desktop entry exec string: sh -c "if [ -n \"\\$*\" ]; then exec swappy -f \"\\$@\"; else grim -g \"\\$(slurp)\" - | swappy -f -; fi" placeholder %F
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_122 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_280 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_280 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_282 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_282 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_122 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_393 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_393 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_395 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_395 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Reloading configuration...
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_122 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO qml: [shell] NIRI MONOCHROME 2.0.0 · fonts: Inter / JetBrains Mono
+  INFO: Configuration Loaded
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperRectangle_QMLTYPE_506 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperRectangle_QMLTYPE_506 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitWidth of the object WrapperMouseArea_QMLTYPE_508 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qt.qml.propertyCache.append: Member implicitHeight of the object WrapperMouseArea_QMLTYPE_508 overrides a member of the base object. Consider renaming it or adding final or override specifier
+
+shell.qml                                      ok

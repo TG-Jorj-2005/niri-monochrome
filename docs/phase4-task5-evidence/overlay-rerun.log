@@ -1,0 +1,15 @@
+  INFO: Launching config: "/home/jorj/.config/quickshell/niri-monochrome/selftest-overlay.qml"
+  INFO: Shell ID: "c643c28817350dca3feb6fe61aba20d2" Path ID "c643c28817350dca3feb6fe61aba20d2"
+  INFO: Saving logs to "/tmp/nm-qml-jh4_8gxo/runtime/quickshell/by-id/7qf4a5veot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_100 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  WARN qml: [Niri] NIRI_SOCKET is not set; niri integration disabled
+  INFO: Configuration Loaded
+  WARN qt.qpa.services: Failed to register with host portal QDBusError("org.freedesktop.DBus.Error.ServiceUnknown", "The name org.freedesktop.portal.Desktop was not provided by any .service files")
+  INFO qml: PASS inside padding preserves overlay
+  INFO qml: PASS child close button remains clickable
+  INFO qml: PASS Down navigates shortcut rows
+  INFO qml: PASS Up navigates shortcut rows
+  INFO qml: PASS Escape dismisses overlay
+  INFO qml: PASS outside click dismisses overlay
+  INFO qml: RESULT 6/6 passed
+

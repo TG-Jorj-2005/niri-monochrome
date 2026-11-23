@@ -68,11 +68,11 @@ PanelWindow {
             sourceSize: Qt.size(wall.modelData.width * wall.modelData.devicePixelRatio, wall.modelData.height * wall.modelData.devicePixelRatio)
             opacity: wall.slot === 0 ? 1 : 0; z: wall.slot === 0 ? 1 : 0
             onStatusChanged: if (status === Image.Ready) wall.onReady(imgA); else if (status === Image.Error) wall.failed(imgA)
-            Behavior on opacity { NumberAnimation { duration: UserConfig.data.appearance.animations ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
+            Behavior on opacity { NumberAnimation { duration: Theme.motionEnabled ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
         Image { id: imgB; anchors.fill: parent; asynchronous: true; cache: false; fillMode: imgA.fillMode; sourceSize: imgA.sourceSize
             opacity: wall.slot === 1 ? 1 : 0; z: wall.slot === 1 ? 1 : 0
             onStatusChanged: if (status === Image.Ready) wall.onReady(imgB); else if (status === Image.Error) wall.failed(imgB)
-            Behavior on opacity { NumberAnimation { duration: UserConfig.data.appearance.animations ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
+            Behavior on opacity { NumberAnimation { duration: Theme.motionEnabled ? wall.cfg.fade : 0; easing.type: Easing.InOutQuad } } }
     }
     // Empty state when the collection is empty: keep the plain background + a quiet hint.
     Text { visible: wall.current === "" && WallpaperService.collections[wall.monitorKey] !== undefined; anchors.centerIn: parent

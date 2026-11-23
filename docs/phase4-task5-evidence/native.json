@@ -1,0 +1,22 @@
+{
+  "duplicate-same-block": {
+    "exit": 1,
+    "stderr": "Error:   \u00d7 error loading config\n  \u251c\u2500\u25b6 error parsing\n  \u2570\u2500\u25b6 error parsing KDL\n\nError:   \u00d7 keybind first defined here\n   \u256d\u2500[config.kdl:1:1]\n 1 \u2502 binds { Mod+T {spawn \"a\";}; Mod+T {spawn \"b\";}; }\n   \u00b7         \u2500\u2500\u252c\u2500\u2500\n   \u00b7           \u2570\u2500\u2500 node starts here\n   \u2570\u2500\u2500\u2500\u2500\nError:   \u00d7 duplicate keybind later defined here\n   \u256d\u2500[config.kdl:1:1]\n 1 \u2502 binds { Mod+T {spawn \"a\";}; Mod+T {spawn \"b\";}; }\n   \u00b7                             \u2500\u2500\u252c\u2500\u2500\n   \u00b7                               \u2570\u2500\u2500 unexpected keybind\n   \u2570\u2500\u2500\u2500\u2500\n\n"
+  },
+  "duplicate-separate-blocks": {
+    "exit": 1,
+    "stderr": "Error:   \u00d7 error loading config\n  \u251c\u2500\u25b6 error parsing\n  \u2570\u2500\u25b6 error parsing KDL\n\nError:   \u00d7 duplicate node `binds`, single node expected\n   \u256d\u2500[config.kdl:1:1]\n 1 \u2502 binds { Mod+T {spawn \"a\";}; }\n 2 \u2502 binds { Super+T {spawn \"b\";}; }\n   \u00b7 \u2500\u2500\u252c\u2500\u2500\n   \u00b7   \u2570\u2500\u2500 unexpected node\n   \u2570\u2500\u2500\u2500\u2500\n\n"
+  },
+  "aliases": {
+    "exit": 0,
+    "stderr": ""
+  },
+  "disabled": {
+    "exit": 0,
+    "stderr": ""
+  },
+  "hidden": {
+    "exit": 0,
+    "stderr": ""
+  }
+}

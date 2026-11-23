@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "passed": 180,
+    "total": 183,
+    "validate_exit": 1
+  },
+  "private_final": {
+    "passed": 206,
+    "total": 207,
+    "validate_exit": 1
+  },
+  "pipewire": {
+    "passed": 24,
+    "total": 24
+  },
+  "settings_targeted": {
+    "passed": 24,
+    "total": 24
+  }
+}

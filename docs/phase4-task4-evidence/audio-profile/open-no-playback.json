@@ -1,0 +1,1063 @@
+{
+  "name": "open-no-playback",
+  "seconds": 31.800781082994945,
+  "qs_pid": 168355,
+  "cpu_percent": 0.03144576849826928,
+  "group_cpu_percent": 0.03144576849826928,
+  "rss_start_mib": 86.9296875,
+  "rss_end_mib": 87.0859375,
+  "fds_start": 24,
+  "fds_end": 21,
+  "samples": [
+    {
+      "t": 1.000775230997533,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 2.0729697089991532,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 3.125571257995034,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 4.183943670999724,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 5.238434396997036,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 6.2918889059947105,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 7.351352500998473,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 8.408929705998162,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 9.470171992994437,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 10.523425505998603,
+      "processes": {
+        "168355": {
+          "ticks": 30,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 11.592608860999462,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 12.647339520000969,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 13.706478685999173,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 14.77971078200062,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 15.84526268299669,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 16.907952292000118,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 17.971797184000025,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 19.032978005001496,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 20.091487776997383,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 21.171001401999092,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 22.224866938995547,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 23.28023823699914,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89016,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 24.337459113994555,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 25.408879173999594,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 26.462137500995595,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 27.513994255001307,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 28.572085218998836,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 24,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 29.627986933999637,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 21,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 30.690396576996136,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 21,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    },
+    {
+      "t": 31.74399507799535,
+      "processes": {
+        "168355": {
+          "ticks": 31,
+          "rss_kib": 89176,
+          "fds": 21,
+          "command": "qs"
+        },
+        "168511": {
+          "ticks": 3,
+          "rss_kib": 13040,
+          "fds": 5,
+          "command": "python3"
+        },
+        "168517": {
+          "ticks": 0,
+          "rss_kib": 8204,
+          "fds": 23,
+          "command": "pw-cat"
+        }
+      },
+      "state": {
+        "watchers": 1,
+        "running": true,
+        "desired": true,
+        "target": "nm_task4_a_168345",
+        "status": "listening",
+        "amplitude": 0,
+        "levels": [],
+        "attempts": 0,
+        "frames": 0,
+        "open": true
+      }
+    }
+  ]
+}

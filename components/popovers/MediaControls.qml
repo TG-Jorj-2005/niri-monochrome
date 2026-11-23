@@ -36,20 +36,21 @@ PopoverFrame {
             Label { text: MediaService.artist || "Unknown artist"; secondary: true; font.pixelSize: Theme.fontSm; width: parent.width }
             Label { text: MediaService.album; visible: text !== ""; secondary: true; font.pixelSize: Theme.fontXs; width: parent.width }
             Row { spacing: 6; topPadding: 4
-                Label { text: MediaService.playing ? "PLAYING" : (mc.p && mc.p.playbackState === 0 ? "STOPPED" : "PAUSED"); font.pixelSize: Theme.fontXs; font.letterSpacing: 1.2; color: Theme.silverMuted }
-                Label { text: "· " + MediaService.playerName; font.pixelSize: Theme.fontXs; color: Theme.textDisabled } } }
+                Label { text: MediaService.playing ? "PLAYING" : (mc.p && mc.p.playbackState === 0 ? "STOPPED" : "PAUSED"); font.pixelSize: Theme.fontXs; font.letterSpacing: 1.2; color: Theme.textSecondary }
+                Label { text: "· " + MediaService.playerName; font.pixelSize: Theme.fontXs; color: Theme.textSecondary } } }
     }
+    AudioVisualizer { width: parent.width; visible: UserConfig.data.media.visualizerEnabled; active: ShellState.open === "media" }
     // Progress (only when the player reports position)
     Item { visible: MediaService.hasPlayer && mc.p && mc.p.lengthSupported && mc.p.length > 0; width: parent.width; height: 14
         Rectangle { anchors.verticalCenter: parent.verticalCenter; width: parent.width; height: 2; color: Theme.border }
-        Rectangle { anchors.verticalCenter: parent.verticalCenter; width: mc.p && mc.p.length > 0 ? parent.width * Math.min(1, mc.p.position / mc.p.length) : 0; height: 2; color: Theme.silver }
+        Rectangle { anchors.verticalCenter: parent.verticalCenter; width: mc.p && mc.p.length > 0 ? parent.width * Math.min(1, mc.p.position / mc.p.length) : 0; height: 2; color: Theme.accent }
         Timer { interval: 1000; repeat: true; running: MediaService.playing && mc.p && mc.p.positionSupported; onTriggered: mc.p.positionChanged() } }
     Row {
         visible: MediaService.hasPlayer
         anchors.horizontalCenter: parent.horizontalCenter; spacing: 10
         IconButton { icon: "skip-back"; iconSize: 16; implicitWidth: 36; implicitHeight: 32; enabled: mc.p && mc.p.canGoPrevious; onClicked: MediaService.previous() }
-        Rectangle { width: 48; height: 32; radius: Theme.radiusControl; color: pma.containsMouse ? Theme.silverBright : Theme.silver; opacity: mc.p && mc.p.canTogglePlaying ? 1 : 0.4
-            MonoIcon { anchors.centerIn: parent; name: MediaService.playing ? "pause" : "play"; size: 16; color: Theme.inverse }
+        Rectangle { id: playbackButton; width: 48; height: 32; radius: Theme.radiusControl; color: Theme.accentFill(pma.containsMouse, pma.pressed); opacity: mc.p && mc.p.canTogglePlaying ? 1 : 0.4
+            MonoIcon { anchors.centerIn: parent; name: MediaService.playing ? "pause" : "play"; size: 16; color: Theme.textOnAccent(playbackButton.color) }
             MouseArea { id: pma; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: MediaService.toggle() } }
         IconButton { icon: "skip-forward"; iconSize: 16; implicitWidth: 36; implicitHeight: 32; enabled: mc.p && mc.p.canGoNext; onClicked: MediaService.next() }
         IconButton { icon: "arrow-right"; iconSize: 14; implicitWidth: 32; implicitHeight: 32; enabled: mc.p && mc.p.canRaise; tooltip: "Open player"; onClicked: { MediaService.raise(); ShellState.close() } }

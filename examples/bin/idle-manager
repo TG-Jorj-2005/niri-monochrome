@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Gestionare inactivitate cu swayidle. Praguri diferite pe baterie și pe priză.
+#   baterie: estompare 4 min, blocare 5, ecran stins 10, suspend 20
+#   priză:   estompare 9 min, blocare 10, ecran stins 15, fără suspend
+# Folosire: idle-manager start   (din niri la login)
+#           idle-manager <dim|lock|off|suspend> <bat|ac>   (apelat intern de swayidle)
+flag="${XDG_RUNTIME_DIR:-/tmp}/idle-dimmed"
+on_ac() { [ "$(cat /sys/class/power_supply/ACAD/online 2>/dev/null)" = "1" ]; }
+want() { case "$1" in bat) ! on_ac ;; ac) on_ac ;; esac; }
+
+case "$1" in
+  start)
+    pkill -x swayidle 2>/dev/null || true
+    exec swayidle -w \
+      timeout 240  'idle-manager dim bat'  resume 'idle-manager undim' \
+      timeout 300  'idle-manager lock bat' \
+      timeout 540  'idle-manager dim ac'   resume 'idle-manager undim' \
+      timeout 600  'idle-manager off bat; idle-manager lock ac' resume 'idle-manager on' \
+      timeout 900  'idle-manager off ac'   resume 'idle-manager on' \
+      timeout 1200 'idle-manager suspend bat' \
+      before-sleep 'niri-lock' \
+      lock 'niri-lock'
+    ;;
+  dim)     want "$2" && [ ! -e "$flag" ] && { brightnessctl --class=backlight -q -s set 20%; touch "$flag"; } ;;
+  undim)   [ -e "$flag" ] && { brightnessctl --class=backlight -q -r >/dev/null; rm -f "$flag"; } ;;
+  lock)    want "$2" && niri-lock ;;
+  off)     want "$2" && niri msg action power-off-monitors ;;
+  on)      niri msg action power-on-monitors ;;
+  suspend) want "$2" && systemctl suspend ;;
+esac
+exit 0

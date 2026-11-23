@@ -1,0 +1,5 @@
+  INFO: Launching config: "/tmp/nm-audio-live-gsl1v1gm/project/selftest-visualizer.qml"
+  INFO: Shell ID: "17dda36cc9997837567597b4a6114d5d" Path ID "17dda36cc9997837567597b4a6114d5d"
+  INFO: Saving logs to "/tmp/nm-audio-live-gsl1v1gm/runtime/quickshell/by-id/jwl32ureot/log.qslog"
+  WARN qt.qml.propertyCache.append: Member data of the object ClippingRectangle_QMLTYPE_59 overrides a member of the base object. Consider renaming it or adding final or override specifier
+  INFO: Configuration Loaded

@@ -1,0 +1,155 @@
+{
+  "cycles": 12,
+  "before": {
+    "t": 62291.573844868,
+    "ticks": 33841,
+    "rss_kib": 183968,
+    "fds": 64,
+    "children": [
+      "194827"
+    ]
+  },
+  "after": {
+    "t": 62303.066861988,
+    "ticks": 34230,
+    "rss_kib": 195316,
+    "fds": 72,
+    "children": [
+      "197630"
+    ]
+  },
+  "cpu_percent": 33.84663887109014,
+  "samples": [
+    {
+      "t": 62291.928628688,
+      "ticks": 33860,
+      "rss_kib": 199368,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62292.686491658,
+      "ticks": 33883,
+      "rss_kib": 202444,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62293.359826932,
+      "ticks": 33906,
+      "rss_kib": 202292,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62293.990068586,
+      "ticks": 33926,
+      "rss_kib": 201556,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62294.61479573,
+      "ticks": 33946,
+      "rss_kib": 201632,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62295.238665674,
+      "ticks": 33963,
+      "rss_kib": 201348,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62295.861447952,
+      "ticks": 33981,
+      "rss_kib": 201592,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62296.52090544,
+      "ticks": 34003,
+      "rss_kib": 200844,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62297.189218796,
+      "ticks": 34022,
+      "rss_kib": 200872,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62297.872328234,
+      "ticks": 34045,
+      "rss_kib": 201244,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62298.548883473,
+      "ticks": 34065,
+      "rss_kib": 201372,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    },
+    {
+      "t": 62299.261394928,
+      "ticks": 34086,
+      "rss_kib": 202104,
+      "fds": 73,
+      "children": [
+        "194827"
+      ]
+    }
+  ],
+  "focused_before": 4,
+  "focused_after": 75,
+  "final": {
+    "niriStatus": "ready",
+    "reconnects": 0,
+    "profileAvailable": true,
+    "profileBackend": "tuned-ppd",
+    "profile": 1,
+    "audio": "ready",
+    "network": "ready",
+    "bluetooth": "ready",
+    "brightness": "ready",
+    "brightnessWatchers": 0,
+    "notifications": "mako",
+    "shellServerApproved": false,
+    "shellLock": true,
+    "visualizerStatus": "idle",
+    "visualizer": false,
+    "visualizerWatchers": 0,
+    "overlay": "",
+    "dock": false
+  },
+  "reload_then_reopen": true
+}

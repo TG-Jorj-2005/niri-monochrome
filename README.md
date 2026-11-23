@@ -8,9 +8,9 @@ Niri configuration files are included as a reference under `examples/niri/`. Rev
 
 ## Demo
 
-[![NIRI MONOCHROME demo](docs/media/niri-monochrome-demo-preview.gif)](docs/media/niri-monochrome-demo.mp4)
+![NIRI MONOCHROME demo](docs/media/niri-monochrome-demo.webp)
 
-[Full demo video (MP4, 1:10)](docs/media/niri-monochrome-demo.mp4): bottom bar, wallpaper rotation, dock, launcher, Control Center, notifications, media controls, Settings, keyboard shortcuts, overview, power menu and lock screen. It was recorded in a nested Niri session with a private copy of the configuration, and every panel is opened over IPC (`qs -c niri-monochrome ipc call …`).
+The full 70-second demo plays above as an animated image; the original video is [docs/media/niri-monochrome-demo.mp4](docs/media/niri-monochrome-demo.mp4) (1080p, download). It shows the bottom bar, wallpaper rotation, dock, launcher, Control Center, notifications, media controls, Settings, keyboard shortcuts, overview, power menu and lock screen. It was recorded in a nested Niri session with a private copy of the configuration, and every panel is opened over IPC (`qs -c niri-monochrome ipc call …`).
 
 ## Screenshots
 

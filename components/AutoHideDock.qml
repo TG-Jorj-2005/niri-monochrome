@@ -21,8 +21,10 @@ Scope {
     property int selected: 0
 
     // Favorites whose desktop entry is missing are hidden here (Settings → Dock lists them as "not installed").
-    readonly property var favorites: cfg.favorites.map(id => ({ id: id, entry: ApplicationService.byId(id) })).filter(f => f.entry !== null)
-    readonly property var running: cfg.showRunning ? NiriService.windowList.map(w => ({ win: w, entry: ApplicationService.forAppId(w.app_id) })) : []
+    // Reading ApplicationService.visible makes these re-evaluate once DesktopEntries has loaded;
+    // byId()/forAppId() alone are not reactive, so favorites stayed empty when the shell started first.
+    readonly property var favorites: { ApplicationService.visible; return cfg.favorites.map(id => ({ id: id, entry: ApplicationService.byId(id) })).filter(f => f.entry !== null) }
+    readonly property var running: { ApplicationService.visible; return cfg.showRunning ? NiriService.windowList.map(w => ({ win: w, entry: ApplicationService.forAppId(w.app_id) })) : [] }
     // Running apps not among favorites are appended.
     readonly property var extra: {
         const seen = {}

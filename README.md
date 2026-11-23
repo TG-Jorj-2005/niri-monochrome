@@ -6,6 +6,12 @@ Use the project as `~/.config/quickshell/niri-monochrome`, start with `qs -c nir
 
 Niri configuration files are included as a reference under `examples/niri/`. Review them before applying: startup commands refer to existing user tools such as `idle-manager`, `volume-osd` and `bright-osd`.
 
+## Demo
+
+[![NIRI MONOCHROME demo](docs/media/niri-monochrome-demo-preview.gif)](docs/media/niri-monochrome-demo.mp4)
+
+[Full demo video (MP4, 1:10)](docs/media/niri-monochrome-demo.mp4): bottom bar, wallpaper rotation, dock, launcher, Control Center, notifications, media controls, Settings, keyboard shortcuts, overview, power menu and lock screen. It was recorded in a nested Niri session with a private copy of the configuration, and every panel is opened over IPC (`qs -c niri-monochrome ipc call …`).
+
 ## Screenshots
 
 Niri provides the capture backend; existing bindings are preserved:

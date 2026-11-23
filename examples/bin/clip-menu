@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Istoric clipboard (Ctrl+Shift+E / Mod+Shift+C): toate variantele copiate, înșirate numerotat în fuzzel.
+# Enter copiază alegerea înapoi în clipboard; Esc închide. Ultima intrare este cea mai recentă.
+list=$(cliphist list 2>/dev/null)
+if [ -z "$list" ]; then
+  notify-send -a osd -h string:x-canonical-private-synchronous:osd "Clipboard" "Istoricul este gol"
+  exit 0
+fi
+
+# Afișăm doar coloana 2 (fără ID-ul intern): "nr  │  conținut" pe un singur rând, tăiat la 110 caractere.
+sel=$(printf '%s\n' "$list" | awk -F'\t' '
+  {
+    s = $2
+    gsub(/^[ \t]+|[ \t]+$/, "", s)
+    gsub(/[ \t]+/, " ", s)
+    if (s ~ /^\[\[ binary data/) { sub(/^\[\[ binary data /, "", s); sub(/ \]\]$/, "", s); s = "imagine  " s }
+    if (length(s) > 110) s = substr(s, 1, 109) "…"
+    printf "%s\t%2d  │  %s\n", $1, NR, s
+  }' \
+  | fuzzel --dmenu --index --with-nth 2 --prompt "clipboard  " --placeholder "caută în istoric…" \
+           --lines 14 --width 80 --counter)
+
+[ -z "$sel" ] && exit 0
+printf '%s\n' "$list" | sed -n "$((sel + 1))p" | cliphist decode | wl-copy

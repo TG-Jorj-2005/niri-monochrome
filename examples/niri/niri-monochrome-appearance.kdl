@@ -1,7 +1,7 @@
 // Generated bounded effects; no full-screen overlay blur.
 layer-rule {
     match namespace="^nm-bar$"
-    geometry-corner-radius 9
+    geometry-corner-radius 7
     background-effect {
         blur true
         saturation 0

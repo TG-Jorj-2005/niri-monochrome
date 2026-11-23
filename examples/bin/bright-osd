@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Luminozitate ±5%, cu OSD în mako.
+case "$1" in
+  up)   brightnessctl --class=backlight -q set +5% ;;
+  down) brightnessctl --class=backlight -q -n1 set 5%- ;;
+esac
+cur=$(brightnessctl --class=backlight get); max=$(brightnessctl --class=backlight max)
+pct=$(( cur * 100 / max ))
+notify-send -a osd -h string:x-canonical-private-synchronous:osd -h int:value:"$pct" "Luminozitate: ${pct}%"

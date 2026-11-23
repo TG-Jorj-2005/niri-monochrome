@@ -2,7 +2,7 @@
 //  niri — config principal
 //  Fiecare secțiune stă în fișierul ei (vezi include-urile de mai jos).
 //  Reîncărcare: automată la salvare. Verificare: `niri validate`.
-//  Paletă: strict monocrom (negru / alb / griuri), colțuri drepte peste tot.
+//  Paletă: Obsidian Mist, cu colțuri drepte.
 //  Documentație locală: /usr/share/doc/niri/wiki/
 // ============================================================
 
@@ -42,7 +42,7 @@ cursor {
 // Overview (Mod+O sau gest cu 3 degete în sus).
 overview {
     zoom 0.5
-    backdrop-color "#080808"
+    backdrop-color "#111214"
     workspace-shadow {
         softness 40
         spread 8
@@ -65,7 +65,7 @@ xwayland-satellite {
 
 // Capacul laptopului: logind face suspend; aici doar blocăm înainte.
 switch-events {
-    lid-close { spawn "swaylock" "-f"; }
+    lid-close { spawn "sh" "-c" "exec ~/.local/bin/niri-lock"; }
 }
 
 hotkey-overlay {

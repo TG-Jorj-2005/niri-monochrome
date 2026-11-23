@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Meniu de power în fuzzel: blocare / deconectare / suspend / repornire / oprire.
+choice=$(printf 'Blochează\nDeconectare\nSuspend\nRepornire\nOprire\n' \
+  | fuzzel --dmenu --prompt "power  " --placeholder "" --lines 5 --width 24)
+case "$choice" in
+  Blochează)   swaylock -f ;;
+  Deconectare) niri msg action quit --skip-confirmation ;;
+  Suspend)     systemctl suspend ;;
+  Repornire)   systemctl reboot ;;
+  Oprire)      systemctl poweroff ;;
+esac

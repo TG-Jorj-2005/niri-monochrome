@@ -1,0 +1,39 @@
+# Mako — notificări Obsidian Mist, colțuri drepte. Reîncărcare: makoctl reload
+font=Adwaita Sans 11
+background-color=#1b1d1ff5
+text-color=#dadde0
+border-color=#303336
+border-size=1
+border-radius=0
+padding=14,16
+margin=12
+width=360
+max-visible=5
+default-timeout=6000
+icons=1
+max-icon-size=40
+anchor=top-right
+layer=overlay
+progress-color=over #829da340
+
+[urgency=low]
+text-color=#9ba1a4
+
+# Urgență mare: bordură albă, rămâne până o închizi.
+[urgency=high]
+border-color=#dadde0
+default-timeout=0
+
+# OSD pentru volum / luminozitate: scurt, centrat sus, fără icon.
+[app-name=osd]
+anchor=top-center
+default-timeout=1500
+width=280
+icons=0
+
+[app-name=color-pick]
+default-timeout=3000
+
+# Mod "nu deranja" (Mod+Shift+N): ascunde tot.
+[mode=dnd]
+invisible=1

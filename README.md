@@ -6,11 +6,9 @@ The repository contains the shell itself, plus the reference desktop configurati
 
 ## Demo
 
-[Watch the silent demo in the portfolio](https://tg-jorj-2005.github.io/proiecte/niri-monochrome/#prezentare).
+https://github.com/user-attachments/assets/a9561b00-a2e3-4c0a-902d-f311245024af
 
-![NIRI MONOCHROME demo](docs/media/niri-monochrome-demo.webp)
-
-The full 70-second demo plays above as an animated image; the original video is [docs/media/niri-monochrome-demo.mp4](docs/media/niri-monochrome-demo.mp4) (1080p, download). It shows the bottom bar, wallpaper rotation, dock, launcher, Control Center, notifications, media controls, Settings, keyboard shortcuts, overview, power menu and lock screen. It was recorded in a nested Niri session with a private copy of the configuration, and every panel is opened over IPC (`qs -c niri-monochrome ipc call …`).
+The 70-second recording shows the bottom bar, wallpaper rotation, dock, launcher, Control Center, notifications, media controls, Settings, keyboard shortcuts, overview, power menu and lock screen. It was recorded in a nested Niri session with a private copy of the configuration, and every panel is opened over IPC (`qs -c niri-monochrome ipc call …`).
 
 ## Requirements
 

@@ -4,6 +4,12 @@ Monochrome Quickshell desktop for Niri: bottom bar, dock, launcher, Control Cent
 
 The repository contains the shell itself, plus the reference desktop configuration it was built with. That configuration covers Niri, helper scripts, mako, fuzzel, swaylock and Alacritty. It does not include personal settings, saved state or wallpapers.
 
+## Live demo
+
+Launcher, dock, settings and keyboard shortcuts in a running Niri Monochrome session.
+
+https://github.com/user-attachments/assets/65a091e1-6cd6-4435-be44-19f1c355fc13
+
 ## Demo
 
 ![NIRI MONOCHROME demo](docs/media/niri-monochrome-demo.webp)
